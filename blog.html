@@ -1,0 +1,695 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Blog | Trichozen - Votre Blog de Trichologie</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": {
+                            DEFAULT: "#CFA674",
+                            light: "#CFA674",
+                            dark: "#1F455E"
+                        },
+                        "brand-blue": {
+                            DEFAULT: "#1F455E",
+                            light: "#1F455E",
+                            dark: "#1F455E"
+                        },
+                        "gold": {
+                            DEFAULT: "#CFA674",
+                            light: "#CFA674",
+                            dark: "#CFA674"
+                        },
+                        "background-dark": "#0F0F12",
+                        "background-light": "#1A1A23",
+                        "glass-white": "rgba(255, 255, 255, 0.08)",
+                        "glass-border": "rgba(255, 255, 255, 0.15)",
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-primary': 'linear-gradient(135deg, #CFA674 0%, #CFA674 100%)',
+                        'gradient-gold': 'linear-gradient(135deg, #CFA674 0%, #CFA674 100%)',
+                        'gradient-blue': 'linear-gradient(135deg, #1F455E 0%, #1F455E 100%)',
+                    },
+                    fontFamily: {
+                        "display": ["Oswald", "sans-serif"],
+                        "sans": ["Montserrat", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        /* NEXT GEN ANIMATIONS */
+        @keyframes revealText {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(230, 193, 92, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
+        }
+
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s ease-out;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .stagger-1 { transition-delay: 100ms; }
+        .stagger-2 { transition-delay: 200ms; }
+        .stagger-3 { transition-delay: 300ms; }
+        .stagger-4 { transition-delay: 400ms; }
+        .stagger-5 { transition-delay: 500ms; }
+        .stagger-6 { transition-delay: 600ms; }
+
+        .hover-glow:hover {
+            animation: glowPulse 2s infinite;
+        }
+
+        :root {
+            --primary-bordeaux: #800020;
+            --brand-blue: #1F455E;
+            --gold-accent: #CFA674;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .nav-link {
+            @apply text-[14px] uppercase tracking-[0.1em] font-medium transition-all duration-300 text-[#1F455E] hover:text-[#CFA674] flex items-center gap-1 relative;
+            padding: 0.5rem 0;
+        }
+        .nav-link span {
+            color: #CFA674;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .dropdown-group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            background: #FBF5F0;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(207, 166, 116, 0.3); /* Gold #CFA674 */
+        }
+        .dropdown-item {
+            @apply block px-6 py-3 text-[14px] uppercase tracking-widest text-[#1F455E] hover:text-[#CFA674] hover:bg-gradient-to-r from-primary/10 to-transparent transition-all duration-300;
+            border-left: 3px solid transparent;
+        }
+        .dropdown-item:hover {
+            border-left-color: #CFA674;
+            padding-left: 1.5rem;
+        }
+        
+        /* ADVANCED DESIGN REFINEMENTS */
+        .bg-noise {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .luxury-glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+                0 20px 40px -4px rgba(0, 0, 0, 0.1),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .corner-frame {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-color: #CFA674;
+            pointer-events: none;
+            z-index: 10;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .corner-frame::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-color: #CFA674; /* Gold Accent */
+            transition: all 0.5s ease;
+            opacity: 0.5;
+        }
+
+        .corner-tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
+        .corner-tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
+        .corner-bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
+        .corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
+
+        .corner-tl::after { top: 4px; left: 4px; border-top: 1px solid; border-left: 1px solid; }
+        .corner-tr::after { top: 4px; right: 4px; border-top: 1px solid; border-right: 1px solid; }
+        .corner-bl::after { bottom: 4px; left: 4px; border-bottom: 1px solid; border-left: 1px solid; }
+        .corner-br::after { bottom: 4px; right: 4px; border-bottom: 1px solid; border-right: 1px solid; }
+
+        .framed-content:hover .corner-tl { transform: translate(-15px, -15px); }
+        .framed-content:hover .corner-tr { transform: translate(15px, -15px); }
+        .framed-content:hover .corner-bl { transform: translate(-15px, 15px); }
+        .framed-content:hover .corner-br { transform: translate(15px, 15px); }
+
+        .framed-content:hover .corner-frame::after {
+             opacity: 1;
+             border-color: #CFA674;
+             transform: scale(0.9);
+        }
+
+        .parallax-hero {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Blog Card Styles */
+        .blog-card {
+            background: #ffffff;
+            border: 1px solid rgba(31, 69, 94, 0.1);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .blog-card:hover {
+            border-color: rgba(207, 166, 116, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+        }
+        .blog-card:hover::before {
+            opacity: 1;
+        }
+        .blog-card .image-container {
+            position: relative;
+            overflow: hidden;
+            height: 280px;
+        }
+        .blog-card .image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        .blog-card:hover .image-container::after {
+            opacity: 0.5;
+        }
+        .blog-card img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .blog-card:hover img {
+            transform: scale(1.1) rotate(1deg);
+        }
+
+        .sur-titre {
+            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
+        }
+
+        .hero-title {
+            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
+        }
+
+        @layer base {
+            h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
+            h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
+            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
+            h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
+            h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
+            h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
+            p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
+        }
+
+        .quote-style {
+            @apply font-sans font-medium italic text-[23px] leading-relaxed;
+        }
+    </style>
+</head>
+
+<body class="bg-[#EEF5FD] font-sans text-[#1F455E] selection:bg-primary selection:text-white">
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav h-20 grid grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
+        <!-- Logo Section (Left) -->
+        <div class="flex justify-start">
+            <a class="block w-40 hover:opacity-80 transition-opacity" href="home.html">
+                <img src="logo.png" alt="TRICHOZEN" class="w-full h-auto object-contain"
+                    style="filter: brightness(0) saturate(100%) invert(21%) sepia(21%) saturate(3207%) hue-rotate(176deg) brightness(96%) contrast(101%);">
+            </a>
+        </div>
+
+        <!-- Navigation Links (Center) -->
+        <div class="hidden lg:flex items-center gap-8 justify-center">
+            <a class="nav-link text-[#1F455E]" href="home.html">Home</a>
+            <div class="relative dropdown-group">
+                <a class="nav-link text-[#1F455E]" href="particulier.html">Particuliers <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Diagnostic online</a>
+                    <a class="dropdown-item" href="#">Présentiel</a>
+                    <a class="dropdown-item" href="#">Programme Essentiel</a>
+                </div>
+            </div>
+            <div class="relative dropdown-group">
+                <a class="nav-link text-[#1F455E]" href="professionnel.html">Professionnels <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Catalogue des formations</a>
+                    <div class="h-px bg-white/10 mx-6 my-1"></div>
+                    <a class="dropdown-item" href="#">Trichologie Fondamentale</a>
+                    <a class="dropdown-item" href="#">Protocoles de Soins Premium</a>
+                    <a class="dropdown-item" href="#">Business &amp; Management Luxe</a>
+                </div>
+            </div>
+            <a class="nav-link text-[#1F455E]" href="a-propos.html">À propos</a>
+            <div class="relative dropdown-group">
+                <a class="nav-link text-[#1F455E]" href="#">Ressources <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Espace Marques &amp; Médias</a>
+                    <a class="dropdown-item" href="blog.html">Votre blog TrichoZen</a>
+                    <a class="dropdown-item" href="#">Annuaire</a>
+                    <a class="dropdown-item" href="#">S'inscrire à la NewsLetter</a>
+                </div>
+            </div>
+            <a class="nav-link text-[#1F455E]" href="contact.html">Contact</a>
+        </div>
+
+        <!-- CTA Button (Right) -->
+        <div class="flex justify-end">
+            <button
+                class="border border-black text-black px-8 py-3 text-[10px] uppercase tracking-widest font-bold transition-all hover:bg-black hover:text-white">
+                RDV Expertise
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-[70vh] w-full overflow-hidden flex items-center justify-center">
+        <div class="absolute inset-0 z-0 parallax-hero"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBEr5LK4GiWB4PoHah1vTZzdUf82kA_NKzFk6J8y0lmCzfKkh6-kXw1IR1XFaqfEu4ZcTGbxbdurHFqWTZv4EJgBtz6J0VtBQ39wuVTIUk-xww-v-yOeC4_RY05Jfg6T3xG4gheiIusDyCMovAiT2k4RjWDoNg1IWy6ZbZJf6yFK9KfurDrGZQ1UDsr1gEeuY6bPaGPS9xrJ0VUyE3Uml26WR0EvCuYz38MwJEg0nx9X-XRJyx8ZDDntlltj57lx6vWcTdIHfHwaas2");'>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background-dark"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 max-w-4xl">
+            <div class="reveal-text">
+                <span class="text-[#CFA674] uppercase tracking-[0.5em] text-[11px] font-bold mb-6 block">EXPLORATION
+                    CAPILLAIRE</span>
+                <h1 class="text-6xl md:text-8xl font-display text-white leading-none mb-8 text-glow">
+                    L'Édito TrichoZen
+                </h1>
+                <p class="text-xl md:text-2xl font-light text-gray-300 font-display max-w-2xl mx-auto">
+                    Plongez dans l'univers de la science capillaire de pointe et découvrez les secrets d'une chevelure
+                    d'exception.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Text Section -->
+    <section class="relative py-24 bg-white overflow-hidden">
+        <div class="bg-noise"></div>
+        <div class="container mx-auto px-6 md:px-16 relative z-10">
+            <div class="max-w-5xl mx-auto">
+                <div class="framed-content relative p-12 md:p-20 bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div class="corner-frame corner-tl"></div>
+                    <div class="corner-frame corner-tr"></div>
+                    <div class="corner-frame corner-bl"></div>
+                    <div class="corner-frame corner-br"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div class="fade-in-up">
+                            <h2 class="text-4xl md:text-5xl font-display text-[#1F455E] mb-6">
+                                Expertise & <br><span class="text-[#CFA674]">Savoir-faire</span>
+                            </h2>
+                            <div class="w-20 h-1 bg-gradient-to-r from-primary to-gold mb-8"></div>
+                        </div>
+                        <div class="fade-in-up stagger-1">
+                            <p class="text-gray-600 font-light leading-relaxed text-lg">
+                                Notre blog est une invitation à comprendre la complexité et la beauté de vos cheveux à
+                                travers le prisme de la trichologie moderne. Nous partageons ici nos dernières
+                                découvertes, nos conseils d'experts et les rituels qui transforment votre capital
+                                capillaire.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Articles Grid -->
+    <section class="py-24 bg-[#EEF5FD] relative">
+        <div class="bg-noise"></div>
+        <div class="container mx-auto px-6 md:px-16 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="fade-in-up">
+                    <h3 class="text-[10px] uppercase tracking-widest text-[#CFA674] mb-2">Les dernières publications
+                    </h3>
+                    <h2 class="text-4xl font-display text-[#1F455E]">Articles Récents</h2>
+                </div>
+                <div class="fade-in-up stagger-1">
+                    <nav class="flex gap-8 border-b border-white/10 pb-2">
+                        <a href="#"
+                            class="text-[10px] uppercase tracking-widest text-white border-b-2 border-[#CFA674] pb-2 transition-all">Tout</a>
+                        <a href="#"
+                            class="text-[10px] uppercase tracking-widest text-gray-500 hover:text-white transition-all">Science</a>
+                        <a href="#"
+                            class="text-[10px] uppercase tracking-widest text-gray-500 hover:text-white transition-all">Rituels</a>
+                        <a href="#"
+                            class="text-[10px] uppercase tracking-widest text-gray-500 hover:text-white transition-all">Innovations</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                <!-- Article 1 -->
+                <article class="blog-card fade-in-up stagger-1">
+                    <div class="image-container">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE0saQk4RQ9Q2or6tt4ga0iaEY45zNEpxdaC26J9XpRdxChLUUVdbkUMZFYrmmSMlX6CoBid1SJSLJ9c_i8bSI8ZbZKbguKrFXHnNVSJ-vKCzKQ1UYQ5Eal_oMmILwnvAp_9mGwqOLhu1N_WuDGzUXnFjItiX-P-Gc_4rEIqTcHVjrfkmVq-Ao0cDKBebRaslevqPeTBIpZOeFjak1wO1NpzYT-4DEHUiKVmv9XEGIp-_KRJ-SJThTj-T9j6ZpAkG3NGxGCLfjg9va"
+                            alt="Article de blog" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h3 class="text-2xl font-display text-white">Les Fondamentaux de la Trichologie</h3>
+                        <p class="text-sm text-gray-600 font-light leading-relaxed">
+                            Et est admodum mirum videre plebem innumeram mentibus ardore quodam infuso cum dimicationum
+                            curulium. Découvrez les bases essentielles de la science capillaire.
+                        </p>
+                        <div class="pt-4 flex justify-between items-center">
+                            <span class="text-[10px] uppercase tracking-widest text-[#CFA674]">5 min de lecture</span>
+                            <button
+                                class="text-[11px] uppercase tracking-widest font-bold text-primary hover:text-[#CFA674] transition-colors flex items-center gap-2">
+                                LIRE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-card fade-in-up stagger-2">
+                    <div class="image-container">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_8U7GX7Jr0qZwKhAosZLrFnaBo0eVsyaknsJyHMDcFLYKPtpn5fq6fFb8XeCliXgEQwbaehYDeAP4ZNDUHLWsv7vRyPJGn9dlfh8sLuyvsan47q_zxQOhv2t60x6OnkR2-fPKmG3mBZfo0Lg8OTC-viiUn51ydnmrsakBlQ3qP4zyagGYE4xwwnzpDtSCmv4eMaZewe1z8rXspTuNJ0lIo-wDYrr7PAG9h5ynUhOcv_7RSL9YKDBQAbHfjdUY4x2VWa5Ue3yywFsj"
+                            alt="Article de blog" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h3 class="text-2xl font-display text-white">Soins Capillaires Premium</h3>
+                        <p class="text-sm text-gray-400 font-light leading-relaxed">
+                            Et est admodum mirum videre plebem innumeram mentibus ardore quodam infuso cum dimicationum
+                            curulium. Les rituels de beauté pour des cheveux exceptionnels.
+                        </p>
+                        <div class="pt-4 flex justify-between items-center">
+                            <span class="text-[10px] uppercase tracking-widest text-[#CFA674]">7 min de lecture</span>
+                            <button
+                                class="text-[11px] uppercase tracking-widest font-bold text-primary hover:text-[#CFA674] transition-colors flex items-center gap-2">
+                                LIRE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-card fade-in-up stagger-3">
+                    <div class="image-container">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqCIk81wWD_Vu7oEySNRLm1HKL_1S19qQFdo0HNFHHE6dNe9HugPEgLZR2wInMcjjjKtnimCzemFMAkqdp-xRfSXDaX6PPySKEfuR0gZnbMCzOtBiKCIimwZBUi1K_AeQrdl8O62vpsk9OjbkNG4VPW3xsBet5GdmMsfkxcFIAgwNxlzjvXIspcRNIHRTxsxrWvg-Wyw_G52c6n_DYWin4mFQ6uwQx5L_lKNpfiWXFfTL0tlh4gSeUyPPK2C7d5TnII46VJwWLPv84"
+                            alt="Article de blog" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h3 class="text-2xl font-display text-white">Diagnostic Capillaire Avancé</h3>
+                        <p class="text-sm text-gray-400 font-light leading-relaxed">
+                            Et est admodum mirum videre plebem innumeram mentibus ardore quodam infuso cum dimicationum
+                            curulium. L'expertise scientifique au service de vos cheveux.
+                        </p>
+                        <div class="pt-4 flex justify-between items-center">
+                            <span class="text-[10px] uppercase tracking-widest text-[#CFA674]">6 min de lecture</span>
+                            <button
+                                class="text-[11px] uppercase tracking-widest font-bold text-primary hover:text-[#CFA674] transition-colors flex items-center gap-2">
+                                LIRE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="blog-card fade-in-up stagger-4">
+                    <div class="image-container">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE0saQk4RQ9Q2or6tt4ga0iaEY45zNEpxdaC26J9XpRdxChLUUVdbkUMZFYrmmSMlX6CoBid1SJSLJ9c_i8bSI8ZbZKbguKrFXHnNVSJ-vKCzKQ1UYQ5Eal_oMmILwnvAp_9mGwqOLhu1N_WuDGzUXnFjItiX-P-Gc_4rEIqTcHVjrfkmVq-Ao0cDKBebRaslevqPeTBIpZOeFjak1wO1NpzYT-4DEHUiKVmv9XEGIp-_KRJ-SJThTj-T9j6ZpAkG3NGxGCLfjg9va"
+                            alt="Article de blog" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h3 class="text-2xl font-display text-white">Innovations en Trichologie</h3>
+                        <p class="text-sm text-gray-400 font-light leading-relaxed">
+                            Et est admodum mirum videre plebem innumeram mentibus ardore quodam infuso cum dimicationum
+                            curulium. Les dernières avancées scientifiques du domaine.
+                        </p>
+                        <div class="pt-4 flex justify-between items-center">
+                            <span class="text-[10px] uppercase tracking-widest text-[#CFA674]">8 min de lecture</span>
+                            <button
+                                class="text-[11px] uppercase tracking-widest font-bold text-primary hover:text-[#CFA674] transition-colors flex items-center gap-2">
+                                LIRE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="blog-card fade-in-up stagger-5">
+                    <div class="image-container">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_8U7GX7Jr0qZwKhAosZLrFnaBo0eVsyaknsJyHMDcFLYKPtpn5fq6fFb8XeCliXgEQwbaehYDeAP4ZNDUHLWsv7vRyPJGn9dlfh8sLuyvsan47q_zxQOhv2t60x6OnkR2-fPKmG3mBZfo0Lg8OTC-viiUn51ydnmrsakBlQ3qP4zyagGYE4xwwnzpDtSCmv4eMaZewe1z8rXspTuNJ0lIo-wDYrr7PAG9h5ynUhOcv_7RSL9YKDBQAbHfjdUY4x2VWa5Ue3yywFsj"
+                            alt="Article de blog" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h3 class="text-2xl font-display text-white">Protocoles de Traitement</h3>
+                        <p class="text-sm text-gray-400 font-light leading-relaxed">
+                            Et est admodum mirum videre plebem innumeram mentibus ardore quodam infuso cum dimicationum
+                            curulium. Des solutions personnalisées pour chaque problématique.
+                        </p>
+                        <div class="pt-4 flex justify-between items-center">
+                            <span class="text-[10px] uppercase tracking-widest text-[#CFA674]">9 min de lecture</span>
+                            <button
+                                class="text-[11px] uppercase tracking-widest font-bold text-primary hover:text-[#CFA674] transition-colors flex items-center gap-2">
+                                LIRE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="blog-card fade-in-up stagger-6">
+                    <div class="image-container">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqCIk81wWD_Vu7oEySNRLm1HKL_1S19qQFdo0HNFHHE6dNe9HugPEgLZR2wInMcjjjKtnimCzemFMAkqdp-xRfSXDaX6PPySKEfuR0gZnbMCzOtBiKCIimwZBUi1K_AeQrdl8O62vpsk9OjbkNG4VPW3xsBet5GdmMsfkxcFIAgwNxlzjvXIspcRNIHRTxsxrWvg-Wyw_G52c6n_DYWin4mFQ6uwQx5L_lKNpfiWXFfTL0tlh4gSeUyPPK2C7d5TnII46VJwWLPv84"
+                            alt="Article de blog" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h3 class="text-2xl font-display text-white">Formation Professionnelle</h3>
+                        <p class="text-sm text-gray-400 font-light leading-relaxed">
+                            Et est admodum mirum videre plebem innumeram mentibus ardore quodam infuso cum dimicationum
+                            curulium. Développez votre expertise en trichologie moderne.
+                        </p>
+                        <div class="pt-4 flex justify-between items-center">
+                            <span class="text-[10px] uppercase tracking-widest text-[#CFA674]">10 min de lecture</span>
+                            <button
+                                class="text-[11px] uppercase tracking-widest font-bold text-primary hover:text-[#CFA674] transition-colors flex items-center gap-2">
+                                LIRE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
+        <div class="container mx-auto px-6 md:px-16">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
+                <div class="md:col-span-4 space-y-8">
+                    <div class="flex items-center gap-3">
+                        <a class="block w-64 hover:opacity-80 transition-opacity" href="home.html">
+                            <img src="logo.png" alt="TRICHOZEN" class="w-full h-auto object-contain"
+                                style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
+                        </a>
+                    </div>
+                    <p class="font-light leading-relaxed max-w-sm text-white/70 mt-4">
+                        L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise,
+                        science et rituel d'exception.
+                    </p>
+                    <div class="flex gap-6 text-[#CFA674]">
+                        <a class="hover:text-white transition-colors" href="#"><span
+                                class="material-symbols-outlined">camera</span></a>
+                        <a class="hover:text-white transition-colors" href="#"><span
+                                class="material-symbols-outlined">play_circle</span></a>
+                        <a class="hover:text-white transition-colors" href="#"><span
+                                class="material-symbols-outlined">contact_mail</span></a>
+                    </div>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
+                    <ul class="space-y-4 text-sm font-light">
+                        <li><a class="hover:text-white transition-colors" href="home.html">Home</a></li>
+                        <li><a class="hover:text-white transition-colors" href="particulier.html">Particuliers</a></li>
+                        <li><a class="hover:text-white transition-colors" href="professionnel.html">Professionnels</a>
+                        </li>
+                        <li><a class="hover:text-white transition-colors" href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
+                    <ul class="space-y-4 text-sm font-light">
+                        <li><a class="hover:text-white transition-colors" href="a-propos.html">Qui sommes-nous</a></li>
+                        <li><a class="hover:text-white transition-colors" href="contact.html">Contact</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Presse</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Mentions Légales</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4 space-y-6">
+                    <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
+                    <p class="text-sm font-light text-white">Inscrivez-vous pour recevoir nos dernières actualités
+                        scientifiques.
+                    </p>
+                    <div class="flex">
+                        <input
+                            class="bg-[#142D3D] border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
+                            placeholder="Votre email" type="email" />
+                        <button
+                            class="bg-[#CFA674] text-white px-6 hover:bg-white hover:text-[#1F455E] transition-colors">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="pt-3 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
+                <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED .</p>
+                <div class="flex gap-12">
+                    <a class="text-white/40 hover:text-white transition-colors font-medium text-[10px]"
+                        href="#">POLITIQUE DE
+                        CONFIDENTIALITÉ</a>
+                    <a class="text-white/40 hover:text-white transition-colors font-medium text-[10px]" href="#">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // NEXT GEN ANIMATIONS OBSERVER
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.reveal-text, .fade-in-up, .scale-in');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1565 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Trichozen | Excellence en Trichologie</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": {
+                            DEFAULT: "#CFA674",
+                            light: "#CFA674",
+                            dark: "#1F455E"
+                        },
+                        "brand-blue": {
+                            DEFAULT: "#1F455E",
+                            light: "#1F455E",
+                            dark: "#1F455E"
+                        },
+                        "gold": {
+                            DEFAULT: "#CFA674",
+                            light: "#CFA674",
+                            dark: "#CFA674"
+                        },
+                        "background-dark": "#0F0F12",
+                        "background-light": "#1A1A23",
+                        "glass-white": "rgba(255, 255, 255, 0.08)",
+                        "glass-border": "rgba(255, 255, 255, 0.15)",
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-primary': 'linear-gradient(135deg, #CFA674 0%, #CFA674 100%)',
+                        'gradient-gold': 'linear-gradient(135deg, #CFA674 0%, #CFA674 100%)',
+                        'gradient-blue': 'linear-gradient(135deg, #1F455E 0%, #1F455E 100%)',
+                    },
+                    fontFamily: {
+                        "display": ["Oswald", "sans-serif"],
+                        "sans": ["Montserrat", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        /* NEXT GEN ANIMATIONS */
+        @keyframes revealText {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(230, 193, 92, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
+        }
+
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s ease-out;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .stagger-1 { transition-delay: 100ms; }
+        .stagger-2 { transition-delay: 200ms; }
+        .stagger-3 { transition-delay: 300ms; }
+        .stagger-4 { transition-delay: 400ms; }
+
+        .hover-glow:hover {
+            animation: glowPulse 2s infinite;
+        }
+
+        .parallax-slow {
+            transition: transform 0.1s ease-out;
+        }
+
+        /* TICKER ANIMATION */
+        @keyframes ticker-slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .ticker-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        
+        .ticker-container::before, .ticker-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        .ticker-container::before {
+            left: 0;
+            background: linear-gradient(to right, white 0%, transparent 100%);
+        }
+        
+        .ticker-container::after {
+            right: 0;
+            background: linear-gradient(to left, white 0%, transparent 100%);
+        }
+        
+        .ticker-wrapper {
+            display: inline-flex;
+            animation: ticker-slide 30s linear infinite;
+        }
+        
+        .ticker-wrapper:hover {
+            animation-play-state: paused;
+        }
+        
+        .brand-logo {
+            flex: 0 0 auto;
+            width: 150px;
+            height: 80px;
+            margin: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        
+        .brand-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .brand-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* VISUAL BOOST EFFECTS */
+        .watermark-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 15vw;
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.03);
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.1em;
+        }
+
+        .corner-frame {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-color: #CFA674; /* Primary color */
+            pointer-events: none;
+            z-index: 10;
+            transition: all 0.5s ease;
+        }
+
+        .corner-tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
+        .corner-tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
+        .corner-bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
+        .corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
+
+        .framed-content:hover .corner-tl { transform: translate(-10px, -10px); }
+        .framed-content:hover .corner-tr { transform: translate(10px, -10px); }
+        .framed-content:hover .corner-bl { transform: translate(-10px, 10px); }
+        .framed-content:hover .corner-br { transform: translate(10px, 10px); }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(230, 193, 92, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            z-index: 0;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* ADVANCED DESIGN REFINEMENTS */
+        .bg-noise {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .luxury-glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+                0 20px 40px -4px rgba(0, 0, 0, 0.1),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .corner-frame {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-color: #CFA674;
+            pointer-events: none;
+            z-index: 10;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .corner-frame::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-color: #CFA674; /* Gold Accent */
+            transition: all 0.5s ease;
+            opacity: 0.5;
+        }
+
+        .corner-tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
+        .corner-tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
+        .corner-bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
+        .corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
+
+        .corner-tl::after { top: 4px; left: 4px; border-top: 1px solid; border-left: 1px solid; }
+        .corner-tr::after { top: 4px; right: 4px; border-top: 1px solid; border-right: 1px solid; }
+        .corner-bl::after { bottom: 4px; left: 4px; border-bottom: 1px solid; border-left: 1px solid; }
+        .corner-br::after { bottom: 4px; right: 4px; border-bottom: 1px solid; border-right: 1px solid; }
+
+        .framed-content:hover .corner-tl { transform: translate(-15px, -15px); }
+        .framed-content:hover .corner-tr { transform: translate(15px, -15px); }
+        .framed-content:hover .corner-bl { transform: translate(-15px, 15px); }
+        .framed-content:hover .corner-br { transform: translate(15px, 15px); }
+
+        .framed-content:hover .corner-frame::after {
+             opacity: 1;
+             border-color: #CFA674;
+             transform: scale(0.9);
+        }
+
+        .carousel-container {
+            scroll-snap-type: x mandatory;
+            display: flex;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+        .carousel-slide {
+            scroll-snap-align: start;
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+            z-index: 1;
+        }
+        /* Styles des boutons de navigation du carrousel */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: linear-gradient(145deg, rgba(15, 15, 18, 0.9) 0%, rgba(26, 26, 35, 0.95) 100%);
+            border: 1px solid rgba(230, 193, 92, 0.25);
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        }
+        .carousel-nav:hover {
+            background: linear-gradient(135deg, #CFA674 0%, #CFA674 100%);
+            border-color: #CFA674;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 10px 30px rgba(154, 31, 64, 0.5);
+        }
+        .carousel-nav.prev {
+            left: 20px;
+        }
+        .carousel-nav.next {
+            right: 20px;
+        }
+        .carousel-pagination {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .carousel-dot.active {
+            background: #CFA674;
+            transform: scale(1.2);
+        }
+        :root {
+            --primary-bordeaux: #800020;
+            --brand-blue: #1F455E;
+            --gold-accent: #CFA674;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .nav-link {
+            @apply text-[14px] uppercase tracking-[0.1em] font-medium transition-all duration-300 text-[#1F455E] hover:text-[#CFA674] flex items-center gap-1 relative;
+            padding: 0.5rem 0;
+        }
+        .nav-link span {
+            color: #CFA674;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .dropdown-group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            background: #FBF5F0;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(207, 166, 116, 0.3); /* Gold #CFA674 */
+        }
+        .dropdown-item {
+            @apply block px-6 py-3 text-[14px] uppercase tracking-widest text-[#1F455E] hover:text-[#CFA674] hover:bg-gradient-to-r from-primary/10 to-transparent transition-all duration-300;
+            border-left: 3px solid transparent;
+        }
+        .dropdown-item:hover {
+            border-left-color: #CFA674;
+            padding-left: 1.5rem;
+        }
+        .premium-card {
+            background: white;
+            border: none;
+            border-radius: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+            overflow: visible;
+            position: relative;
+        }
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .premium-card:hover {
+            border-color: rgba(230, 193, 92, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+        }
+        .premium-card:hover::before {
+            opacity: 1;
+        }
+        .premium-card .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .premium-card .image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        .premium-card:hover .image-container::after {
+            opacity: 0.5;
+        }
+        .parallax-hero {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(128, 0, 32, 0.3);
+        }
+        body {
+            scroll-behavior: smooth;
+        }
+        .carousel-container {
+            scroll-snap-type: x mandatory;
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+        }
+        .carousel-slide {
+            scroll-snap-align: start;
+            flex-shrink: 0;
+            width: 100%;
+            height: 100vh;
+        }
+        .vertical-rl {
+            writing-mode: vertical-rl;
+        }
+        
+        /* Styles pour le carousel des formations */
+        .formations-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .formations-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .formation-card {
+            flex: 0 0 100%;
+            padding: 0 15px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .formation-card:not(.active) {
+            opacity: 0.5;
+            transform: scale(0.95);
+        }
+        
+        .formation-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.7);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .formation-nav:hover {
+            background: var(--primary-bordeaux);
+            border-color: var(--gold-accent);
+        }
+        
+        .formation-nav.prev {
+            left: 10px;
+        }
+        
+        .formation-nav.next {
+            right: 10px;
+        }
+        
+        .formation-pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .formation-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .formation-dot.active {
+            background: var(--gold-accent);
+            transform: scale(1.3);
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 3px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            background: var(--gold-accent) !important;
+            transform: scale(1.2);
+            opacity: 1 !important;
+        }
+        .sur-titre {
+            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
+        }
+
+        .hero-title {
+            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
+        }
+
+        @layer base {
+            h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
+            h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
+            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
+            h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
+            h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
+            h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
+            p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
+        }
+
+        .quote-style {
+            @apply font-sans font-medium italic text-[23px] leading-relaxed;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark font-sans text-[#1F455E] selection:bg-primary selection:text-white">
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav h-20 grid grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
+        <!-- Logo Section (Left) -->
+        <div class="flex justify-start">
+            <a class="block w-40 hover:opacity-80 transition-opacity" href="home.html">
+                <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc" alt="TRICHOZEN"
+                    class="w-full h-auto object-contain"
+                    style="filter: brightness(0) saturate(100%) invert(21%) sepia(21%) saturate(3207%) hue-rotate(176deg) brightness(96%) contrast(101%);">
+            </a>
+        </div>
+
+        <!-- Navigation Links (Center) -->
+        <div class="hidden lg:flex items-center gap-8 justify-center">
+            <a class="nav-link text-[#1F455E]" href="home.html">Home</a>
+            <div class="relative dropdown-group">
+                <a class="nav-link text-[#1F455E]" href="particulier.html">Particuliers <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Diagnostic online</a>
+                    <a class="dropdown-item" href="#">Présentiel</a>
+                    <a class="dropdown-item" href="#">Programme Essentiel</a>
+                </div>
+            </div>
+            <div class="relative dropdown-group">
+                <a class="nav-link text-[#1F455E]" href="professionnel.html">Professionnels <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Catalogue des formations</a>
+                    <div class="h-px bg-white/10 mx-6 my-1"></div>
+                    <a class="dropdown-item" href="#">Trichologie Fondamentale</a>
+                    <a class="dropdown-item" href="#">Protocoles de Soins Premium</a>
+                    <a class="dropdown-item" href="#">Business &amp; Management Luxe</a>
+                </div>
+            </div>
+            <a class="nav-link text-[#1F455E]" href="a-propos.html">À propos</a>
+            <div class="relative dropdown-group">
+                <a class="nav-link text-[#1F455E]" href="#">Ressources <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Espace Marques &amp; Médias</a>
+                    <a class="dropdown-item" href="blog.html">Votre blog TrichoZen</a>
+                    <a class="dropdown-item" href="#">Annuaire</a>
+                    <a class="dropdown-item" href="#">S'inscrire à la NewsLetter</a>
+                </div>
+            </div>
+            <a class="nav-link text-[#1F455E]" href="contact.html">Contact</a>
+        </div>
+
+        <!-- CTA Button (Right) -->
+        <div class="flex justify-end">
+            <button
+                class="bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:bg-[#1F455E] rounded">
+                RDV Expertise
+            </button>
+        </div>
+    </nav>
+    <section class="relative h-screen w-full overflow-hidden">
+        <div class="carousel-container hide-scrollbar h-full w-full" id="mainCarousel">
+            <button class="carousel-nav prev" onclick="prevSlide()">
+                <span class="material-symbols-outlined text-white text-2xl">chevron_left</span>
+            </button>
+            <button class="carousel-nav next" onclick="nextSlide()">
+                <span class="material-symbols-outlined text-white text-2xl">chevron_right</span>
+            </button>
+            <div class="carousel-slide relative flex items-center justify-center">
+                <div class="absolute inset-0 z-0 parallax-hero"
+                    style='background-image: url("https://lh3.googleusercontent.com/d/1T4e8ocyJebBiKjOar7E58qkT73Wk7_I3"); background-position: center 18%;'>
+                    <div class="carousel-overlay"></div>
+                </div>
+                <div class="relative z-10 text-center px-6 max-w-5xl">
+                    <div class="leading-snug border-l-4 border-[#CFA674] px-24 py-8 bg-white/5">
+                        <h1 class="hero-title mb-12 text-glow">
+                            L'Art de la Trichologie
+                        </h1>
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                            <button
+                                class="w-full md:w-auto px-6 py-4 bg-[#CFA674] text-white text-[13px] font-sans font-medium uppercase tracking-wide hover:bg-white hover:text-black transition-all duration-500 rounded">
+                                JE SUIS PARTICULIER
+                            </button>
+                            <button
+                                class="w-full md:w-auto px-6 py-4 bg-[#1F455E] text-white text-[13px] font-sans font-medium uppercase tracking-wide hover:bg-white hover:text-black transition-all duration-500 rounded">
+                                JE SUIS PROFESSIONNEL
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-slide relative flex items-center justify-center">
+                <div class="absolute inset-0 z-0 parallax-hero"
+                    style='background-image: url("https://lh3.googleusercontent.com/d/1HlEc4dQ_cAcr6ZXr6Iyb5A_swe2Mx8Cw");'>
+                    <div class="carousel-overlay"></div>
+                </div>
+                <div
+                    class="relative z-10 w-full container mx-auto px-8 md:px-16 flex flex-col items-center text-center">
+                    <div class="max-w-5xl">
+                        <div class="leading-snug border-l-4 border-[#CFA674] px-24 py-8 bg-white/5">
+                            <span class="sur-titre block mb-6">Expertise &amp; Analyse</span>
+                            <h2 class="hero-title mb-10">
+                                Votre diagnostic capillaire <br /> <span
+                                    class="text-3xl md:text-4xl block mt-4 font-sans font-light tracking-wider opacity-80">En
+                                    ligne ou en présentiel</span>
+                            </h2>
+                            <button
+                                class="px-6 py-4 bg-primary text-white text-[13px] font-medium uppercase tracking-wide hover:bg-[#CFA674] transition-all duration-500 shadow-2xl rounded">
+                                PRENDRE RDV
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav prev" onclick="prevSlide()">
+                    <span class="material-symbols-outlined text-white text-2xl">chevron_left</span>
+                </button>
+                <button class="carousel-nav next" onclick="nextSlide()">
+                    <span class="material-symbols-outlined text-white text-2xl">chevron_right</span>
+                </button>
+            </div>
+            <div class="carousel-slide relative flex items-center justify-center">
+                <div class="absolute inset-0 z-0 parallax-hero"
+                    style='background-image: url("https://lh3.googleusercontent.com/d/1gb1aSSYfEhV1mR9wifn2oWhFSOZzaUhi");'>
+                    <div class="carousel-overlay"></div>
+                </div>
+                <div
+                    class="relative z-10 w-full container mx-auto px-8 md:px-16 flex flex-col items-center text-center">
+                    <div class="max-w-5xl">
+                        <div class="leading-snug border-l-4 border-[#CFA674] px-24 py-8 bg-white/5">
+                            <span class="sur-titre block mb-6">Académie de Formation</span>
+                            <h2 class="hero-title mb-6">
+                                Formation Expertise Capillaire
+                            </h2>
+                            <p class="text-xl md:text-2xl font-light text-gray-300 mb-10 font-display">
+                                Durée : 3 Jours d'immersion scientifique
+                            </p>
+                            <button
+                                class="px-6 py-4 bg-brand-blue text-white text-[13px] font-medium uppercase tracking-wide hover:bg-primary transition-all duration-500 rounded">
+                                DÉCOUVRIR LE PROGRAMME
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav prev" onclick="prevSlide()">
+                    <span class="material-symbols-outlined text-white text-2xl">chevron_left</span>
+                </button>
+                <button class="carousel-nav next" onclick="nextSlide()">
+                    <span class="material-symbols-outlined text-white text-2xl">chevron_right</span>
+                </button>
+            </div>
+            <div class="carousel-slide relative flex items-center justify-center">
+                <div class="absolute inset-0 z-0 parallax-hero"
+                    style='background-image: url("https://lh3.googleusercontent.com/d/1mzqx6iTreyYYdHb1DH2x_WrVfyNDYGHh");'>
+                    <div class="carousel-overlay"></div>
+                </div>
+                <div
+                    class="relative z-10 w-full container mx-auto px-8 md:px-16 flex flex-col items-center text-center">
+                    <div class="max-w-5xl">
+                        <div class="leading-snug border-l-4 border-[#CFA674] px-24 py-8 bg-white/5">
+                            <span class="sur-titre block mb-6">Événement Exclusif</span>
+                            <h2 class="hero-title mb-6">
+                                Masterclass <span class="text-[#CFA674]">TrichoZen</span>
+                            </h2>
+                            <p class="text-xl md:text-2xl font-light text-gray-300 mb-10 font-display">
+                                L'excellence de la trichologie rencontre la haute coiffure
+                            </p>
+                            <button
+                                class="px-6 py-4 bg-brand-blue text-white text-[13px] font-medium uppercase tracking-wide hover:bg-primary transition-all duration-500 rounded">
+                                REJOINDRE LA MASTERCLASS
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav prev" onclick="prevSlide()">
+                    <span class="material-symbols-outlined text-white text-2xl">chevron_left</span>
+                </button>
+                <button class="carousel-nav next" onclick="nextSlide()">
+                    <span class="material-symbols-outlined text-white text-2xl">chevron_right</span>
+                </button>
+            </div>
+            <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-4 z-20">
+                <button class="carousel-dot active w-12 h-1 rounded-full" onclick="goToSlide(0)"></button>
+                <button class="carousel-dot w-12 h-1 bg-white/20 rounded-full" onclick="goToSlide(1)"></button>
+                <button class="carousel-dot w-12 h-1 bg-white/20 rounded-full" onclick="goToSlide(2)"></button>
+                <button class="carousel-dot w-12 h-1 bg-white/20 rounded-full" onclick="goToSlide(3)"></button>
+            </div>
+            <div class="absolute bottom-6 right-16 flex flex-col items-center gap-4 text-[#CFA674] z-50">
+                <span class="text-[10px] uppercase tracking-widest vertical-rl rotate-180 font-medium">SCROLL</span>
+                <div class="w-px h-12 bg-gradient-to-b from-gold to-transparent"></div>
+            </div>
+    </section>
+    <section class="py-32 overflow-hidden" style="background-color: #1F455E;">
+        <div class="container mx-auto px-6 mb-16 flex flex-col items-center">
+            <span class="sur-titre mb-4 reveal-text">Académie Expertise</span>
+            <h2 class="text-white text-center fade-in-up">Catalogue des Formations Pros</h2>
+        </div>
+        <div class="relative px-12 md:px-16">
+            <button id="prev-formation"
+                class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/70 text-[#CFA674] rounded-full flex items-center justify-center hover:bg-[#CFA674] hover:text-black transition-colors"
+                aria-label="Précédent">
+                <span class="material-symbols-outlined text-3xl">chevron_left</span>
+            </button>
+
+            <div id="formations-container"
+                class="flex overflow-x-auto gap-8 hide-scrollbar pb-12 scroll-smooth snap-x snap-mandatory">
+                <!-- Carte 1 - Trichologie Fondamentale -->
+                <div
+                    class="min-w-[320px] md:min-w-[600px] premium-card bg-white flex flex-col group fade-in-up stagger-1">
+                    <div class="absolute top-4 right-0 z-10">
+                        <span
+                            class="bg-[#CFA674] text-white px-6 py-2 text-[10px] uppercase tracking-widest font-bold">NOUVEAUTÉ</span>
+                    </div>
+                    <div class="h-64 w-full overflow-hidden">
+                        <img alt="Trichologie Fondamentale"
+                            class="w-full h-full object-cover object-center transition-all duration-700"
+                            src="https://lh3.googleusercontent.com/d/1tZOz_6PuR0cXBCXADThL2_isc3-eCp_q" />
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h4 class="text-[#CFA674] uppercase tracking-wider">Trichologie Fondamentale</h4>
+                        <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                        <p class="text-[#1F455E] leading-relaxed">
+                            Maîtrisez les bases de l'analyse capillaire avancée et du diagnostic scientifique.
+                        </p>
+                        <div class="pt-6 flex justify-between items-end">
+                            <div class="flex items-center gap-4">
+                                <p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold">DURÉE : <span
+                                        class="text-[#1F455E] lowercase font-medium">3 jours</span></p>
+                                <span class="text-[#CFA674]">|</span>
+                                <p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold">PRIX : <span
+                                        class="text-[#1F455E] capitalize font-medium">Sur devis</span></p>
+                            </div>
+                            <button
+                                class="text-[12px] uppercase tracking-widest font-medium text-[#CFA674] hover:text-[#1F455E] transition-colors flex items-center gap-2">
+                                DÉCOUVRIR <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 2 - Protocoles de Soins Premium -->
+                <div
+                    class="min-w-[320px] md:min-w-[600px] premium-card bg-white flex flex-col group fade-in-up stagger-2">
+                    <div class="absolute top-4 right-0 z-10">
+                        <span
+                            class="bg-[#CFA674] text-white px-6 py-2 text-[10px] uppercase tracking-widest font-bold">NOUVEAUTÉ</span>
+                    </div>
+                    <div class="h-64 w-full overflow-hidden">
+                        <img alt="Protocoles de Soins Premium"
+                            class="w-full h-full object-cover object-center transition-all duration-700"
+                            src="https://lh3.googleusercontent.com/d/1wkYn7Nb34VAdDiYE9AsLu-uCvpE7tb77" />
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h4 class="text-[#CFA674] uppercase tracking-wider">Protocoles de Soins Premium</h4>
+                        <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                        <p class="text-[#1F455E] leading-relaxed">
+                            Intégrez des rituels de soins haute-performance utilisant les dernières innovations biotech.
+                        </p>
+                        <div class="pt-6 flex justify-between items-end">
+                            <div class="flex items-center gap-4">
+                                <p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold">DURÉE : <span
+                                        class="text-[#1F455E] lowercase font-medium">2 jours</span></p>
+                                <span class="text-[#CFA674]">|</span>
+                                <p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold">PRIX : <span
+                                        class="text-[#1F455E] capitalize font-medium">1 200€</span></p>
+                            </div>
+                            <button
+                                class="text-[11px] uppercase tracking-widest font-bold text-[#CFA674] hover:text-[#1F455E] transition-colors flex items-center gap-2">
+                                DÉCOUVRIR <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 3 - Business & Management Luxe -->
+                <div
+                    class="min-w-[320px] md:min-w-[600px] premium-card bg-white flex flex-col group fade-in-up stagger-3">
+                    <div class="absolute top-4 right-0 z-10">
+                        <span
+                            class="bg-[#CFA674] text-white px-6 py-2 text-[10px] uppercase tracking-widest font-bold">NOUVEAUTÉ</span>
+                    </div>
+                    <div class="h-64 w-full overflow-hidden">
+                        <img alt="Business & Management Luxe"
+                            class="w-full h-full object-cover object-center transition-all duration-700"
+                            src="https://lh3.googleusercontent.com/d/1PtEAyfdh36z2TOOnPkbtcwKygpnifJ97" />
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h4 class="text-[#CFA674] uppercase tracking-wider">Business & Management Luxe</h4>
+                        <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                        <p class="text-[#1F455E] leading-relaxed">
+                            Développez votre clientèle haut de gamme et optimisez la rentabilité de votre centre.
+                        </p>
+                        <div class="pt-6 flex justify-between items-end">
+                            <div class="flex items-center gap-4">
+                                <p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold">DURÉE : <span
+                                        class="text-[#1F455E] lowercase font-medium">1 jour</span></p>
+                                <span class="text-[#CFA674]">|</span>
+                                <p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold">PRIX : <span
+                                        class="text-[#1F455E] capitalize font-medium">850€</span></p>
+                            </div>
+                            <button
+                                class="text-[11px] uppercase tracking-widest font-bold text-[#CFA674] hover:text-[#1F455E] transition-colors flex items-center gap-2">
+                                DÉCOUVRIR <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 4 - Soins Spécialisés -->
+                <div
+                    class="min-w-[320px] md:min-w-[600px] premium-card bg-white flex flex-col group fade-in-up stagger-4">
+                    <div class="absolute top-4 right-0 z-10">
+                        <span
+                            class="bg-[#CFA674] text-white px-6 py-2 text-[10px] uppercase tracking-widest font-bold">NOUVEAUTÉ</span>
+                    </div>
+                    <div class="h-64 w-full overflow-hidden">
+                        <img alt="Soins Spécialisés"
+                            class="w-full h-full object-cover object-center transition-all duration-700"
+                            src="https://lh3.googleusercontent.com/d/1L33h_c9ZQJbaN3X9BDh28htVBI3kNjM7" />
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h4 class="text-[#CFA674] uppercase tracking-wider">Soins Spécialisés</h4>
+                        <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                        <p class="text-[#1F455E] leading-relaxed">
+                            Approfondissez vos compétences avec nos protocoles de soins avancés pour des résultats
+                            exceptionnels.
+                        </p>
+                        <div class="pt-6 flex justify-between items-end">
+                            <div class="flex items-center gap-4">
+                                <p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold">DURÉE : <span
+                                        class="text-[#1F455E] lowercase font-medium">2 jours</span></p>
+                                <span class="text-[#CFA674]">|</span>
+                                <p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold">PRIX : <span
+                                        class="text-[#1F455E] capitalize font-medium">1 100€</span></p>
+                            </div>
+                            <button
+                                class="text-[11px] uppercase tracking-widest font-bold text-[#CFA674] hover:text-[#1F455E] transition-colors flex items-center gap-2">
+                                DÉCOUVRIR <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 5 - Perfectionnement Expert -->
+                <div
+                    class="min-w-[320px] md:min-w-[600px] premium-card bg-white flex flex-col group fade-in-up stagger-1">
+                    <div class="absolute top-4 right-0 z-10">
+                        <span
+                            class="bg-[#CFA674] text-white px-6 py-2 text-[10px] uppercase tracking-widest font-bold">NOUVEAUTÉ</span>
+                    </div>
+                    <div class="h-64 w-full overflow-hidden">
+                        <img alt="Perfectionnement Expert"
+                            class="w-full h-full object-cover object-center transition-all duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_8U7GX7Jr0qZwKhAosZLrFnaBo0eVsyaknsJyHMDcFLYKPtpn5fq6fFb8XeCliXgEQwbaehYDeAP4ZNDUHLWsv7vRyPJGn9dlfh8sLuyvsan47q_zxQOhv2t60x6OnkR2-fPKmG3mBZfo0Lg8OTC-viiUn51ydnmrsakBlQ3qP4zyagGYE4xwwnzpDtSCmv4eMaZewe1z8rXspTuNJ0lIo-wDYrr7PAG9h5ynUhOcv_7RSL9YKDBQAbHfjdUY4x2VWa5Ue3yywFsj" />
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h4 class="text-[#CFA674] uppercase tracking-wider">Perfectionnement Expert</h4>
+                        <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                        <p class="text-[#1F455E] leading-relaxed">
+                            Maîtrisez les techniques les plus avancées de la trichologie avec nos experts certifiés.
+                        </p>
+                        <div class="pt-6 flex justify-between items-end">
+                            <div class="flex items-center gap-4">
+                                <p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold">DURÉE : <span
+                                        class="text-[#1F455E] lowercase font-medium">3 jours</span></p>
+                                <span class="text-[#CFA674]">|</span>
+                                <p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold">PRIX : <span
+                                        class="text-[#1F455E] capitalize font-medium">1 500€</span></p>
+                            </div>
+                            <button
+                                class="text-[11px] uppercase tracking-widest font-bold text-[#CFA674] hover:text-[#1F455E] transition-colors flex items-center gap-2">
+                                DÉCOUVRIR <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="next-formation"
+                class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/70 text-[#CFA674] rounded-full flex items-center justify-center hover:bg-[#CFA674] hover:text-black transition-colors"
+                aria-label="Suivant">
+                <span class="material-symbols-outlined text-3xl">chevron_right</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Section Espace Particuliers -->
+    <section class="relative py-32 overflow-hidden" style="background-color: #EEF5FD;">
+        <!-- Visual Boost Elements -->
+        <div class="bg-noise"></div>
+        <div class="floating-shape w-96 h-96 -top-20 -left-20 opacity-30 mix-blend-multiply"></div>
+        <div class="floating-shape w-[500px] h-[500px] -bottom-40 -right-20 opacity-20 mix-blend-multiply"
+            style="animation-delay: -5s;"></div>
+        <div class="watermark-text opacity-10 mix-blend-overlay">SANCTUAIRE</div>
+
+        <div
+            class="relative z-10 text-center px-12 py-20 max-w-6xl mx-auto bg-white transition-all duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+            <span class="sur-titre mb-6 reveal-text">Votre sanctuaire privé</span>
+            <h1 class="text-[#1F455E] mb-10 fade-in-up stagger-1 tracking-wider">Espace Particuliers</h1>
+
+            <div class="w-24 h-[2px] bg-[#CFA674]/50 mx-auto mb-10"></div>
+
+            <p class="text-[#1F455E] mb-12 max-w-4xl mx-auto leading-relaxed">
+                Découvrez une approche sur-mesure de la beauté capillaire, alliant <br /> expertise scientifique et
+                rituels d'exception.
+            </p>
+            <button
+                class="bg-[#CFA674] text-white px-6 py-4 text-[13px] uppercase tracking-wide font-sans font-medium hover:bg-[#1F455E] transition-all duration-300 shadow-xl fade-in-up stagger-3 rounded">
+                DÉCOUVRIR L'EXPÉRIENCE
+            </button>
+        </div>
+    </section>
+
+    <!-- Section Qui Sommes-Nous -->
+    <section class="py-32" style="background-color: #ffffff;">
+        <div class="container mx-auto px-6 md:px-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div class="space-y-12">
+                    <div class="space-y-4">
+                        <span class="sur-titre reveal-text">L'Héritage Trichozen</span>
+                        <h1 class="text-[#1F455E] fade-in-up stagger-1">
+                            Qui Sommes-Nous ?</h1>
+                    </div>
+                    <div class="space-y-8">
+                        <p class="text-[#1F455E] leading-relaxed">
+                            Fruit d'une passion pour la science du cheveu, Trichozen allie l'exigence clinique à
+                            l'élégance du soin haut de gamme. Notre mission est de redéfinir les standards de la santé
+                            capillaire.
+                        </p>
+                        <p
+                            class="quote-style text-[#1F455E] border-l-2 border-[#CFA674] pl-8 py-6 bg-[#FBF5F0] text-[23px]">
+                            "L'expertise Trichozen associée au savoir-faire de Yébé pour une vision holistique de votre
+                            beauté."
+                        </p>
+                    </div>
+                    <button
+                        class="group flex items-center gap-2 text-[13px] uppercase tracking-wide font-medium text-[#CFA674] hover:text-[#1F455E] transition-colors">
+                        NOTRE HISTOIRE <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </button>
+                </div>
+                <div class="relative">
+                    <div class="aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl relative z-10 scale-in">
+                        <img alt="Yébé" class="w-full h-full object-cover transition-all duration-700 parallax-slow"
+                            src="https://www.trichozen.com/wp-content/uploads/2025/09/Yebe-DIOUF-1-682x1024.jpeg" />
+                    </div>
+                    <div class="absolute -bottom-10 -left-10 bg-[#1F455E] px-12 py-4 z-20 shadow-2xl text-white">
+                        <span class="font-sans font-medium text-3xl block mb-0 uppercase tracking-[0.2em]">YÉBÉ</span>
+                        <p class="text-[#CFA674] text-[13px] uppercase tracking-wide font-medium font-sans">
+                            FONDATRICE & EXPERTE
+                        </p>
+                    </div>
+                    <div class="absolute -top-10 -right-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 -z-0"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Statistiques -->
+    <section class="py-24 bg-[#CFA674]">
+        <div class="container mx-auto px-6 md:px-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-1px bg-white/10 border border-white/10">
+                <div class="p-16 flex flex-col items-center text-center space-y-4 bg-[#CFA674] fade-in-up stagger-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="white">
+                        <path
+                            d="M20.06 18C20.02 18 20 17.98 20 17.94V16.06C20 16.02 20.02 16 20.06 16H21.94C21.98 16 22 16.02 22 16.06V17.94C22 17.98 21.98 18 21.94 18H20.06M15.5 15.5C15.5 14.12 16.62 13 18 13V7C18 5.9 17.1 5 16 5H12C10.9 5 10 5.9 10 7V9H8V7C8 4.79 9.79 3 12 3H16C18.21 3 20 4.79 20 7V13C21.38 13 22.5 14.12 22.5 15.5V18.5C22.5 19.88 21.38 21 20 21H4C2.9 21 2 20.1 2 19V18C2 16.9 2.9 16 4 16H15.5V15.5M4 18V19H20V18H4M12 11C13.1 11 14 10.1 14 9C14 7.9 13.1 7 12 7C10.9 7 10 7.9 10 9C10 10.1 10.9 11 12 11Z" />
+                    </svg>
+                    <h4 class="text-5xl font-sans font-bold text-[#1F455E] uppercase">+<span class="counter"
+                            data-target="15">0</span></h4>
+                    <p class="text-[13px] uppercase tracking-wide text-[#1F455E] font-bold">Années d'expertise</p>
+                </div>
+                <div class="p-16 flex flex-col items-center text-center space-y-4 bg-[#CFA674] fade-in-up stagger-2">
+                    <span class="material-symbols-outlined text-white text-5xl">school</span>
+                    <h4 class="text-5xl font-sans font-bold text-[#1F455E] uppercase">+<span class="counter"
+                            data-target="2500">0</span></h4>
+                    <p class="text-[13px] uppercase tracking-wide text-[#1F455E] font-bold">Professionnels formés</p>
+                </div>
+                <div class="p-16 flex flex-col items-center text-center space-y-4 bg-[#CFA674] fade-in-up stagger-3">
+                    <span class="material-symbols-outlined text-white text-5xl">star</span>
+                    <h4 class="text-5xl font-sans font-bold text-[#1F455E] uppercase"><span class="counter"
+                            data-target="100">0</span>%</h4>
+                    <p class="text-[13px] uppercase tracking-wide text-[#1F455E] font-bold">Satisfaction clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-32 bg-[#faf5f1]">
+        <div class="container mx-auto px-6 md:px-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div
+                    class="order-2 lg:order-1 aspect-square md:aspect-video lg:aspect-square overflow-hidden shadow-2xl scale-in">
+                    <img alt="Innovation" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/d/1ljfqpY3oJKsgu2JY71NYWQQeITDSf0_4" />
+                </div>
+                <div class="order-1 lg:order-2 space-y-12">
+                    <div class="space-y-4">
+                        <span class="sur-titre reveal-text">Notre expertise</span>
+                        <h2 class="text-[#1F455E] fade-in-up stagger-1">
+                            POURQUOI CHOISIR TRICHOZEN
+                        </h2>
+                    </div>
+                    <div class="space-y-10">
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-bold font-sans text-[#CFA773] uppercase tracking-wide">
+                                EXCELLENCE SCIENTIFIQUE</h4>
+                            <div class="h-[2px] bg-[#CFA674]/80 w-44 mb-4"></div>
+                            <p class="text-[#1F455E] leading-relaxed">Des protocoles rigoureux issus de la
+                                recherche en trichologie.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-bold font-sans text-[#CFA773] uppercase tracking-wide">
+                                FORMATION D'ÉLITE</h4>
+                            <div class="h-[2px] bg-[#CFA674]/80 w-44 mb-4"></div>
+                            <p class="text-[#1F455E] leading-relaxed">Un savoir-faire unique transmis aux
+                                professionnels de la beauté.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-bold font-sans text-[#CFA773] uppercase tracking-wide">
+                                RÉSULTATS PROUVÉS</h4>
+                            <div class="h-[2px] bg-[#CFA674]/80 w-44 mb-4"></div>
+                            <p class="text-[#1F455E] leading-relaxed">Des milliers de diagnostics et de
+                                traitements réussis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-[#CFA674] mb-16 reveal-text">
+                ILS NOUS ONT FAIT CONFIANCE
+            </h1>
+            <div class="ticker-container fade-in-up stagger-2">
+                <div class="ticker-wrapper">
+                    <!-- Original Set -->
+                    <div class="brand-logo">
+                        <img src="https://www.trichozen.com/wp-content/uploads/2025/10/cb-logo-tbde-blk_3.jpg.webp"
+                            alt="Marque 1">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Ducray.jpg" alt="Ducray">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Waam-Cosmetics.jpeg"
+                            alt="Waam Cosmetics">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Uriage.png" alt="Uriage">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Evashair.jpg" alt="Evashair">
+                    </div>
+
+                    <!-- Duplicated Set for Infinite Scroll -->
+                    <div class="brand-logo">
+                        <img src="https://www.trichozen.com/wp-content/uploads/2025/10/cb-logo-tbde-blk_3.jpg.webp"
+                            alt="Marque 1">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Ducray.jpg" alt="Ducray">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Waam-Cosmetics.jpeg"
+                            alt="Waam Cosmetics">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Uriage.png" alt="Uriage">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Evashair.jpg" alt="Evashair">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
+        <div class="container mx-auto px-6 md:px-16">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
+                <div class="md:col-span-4 space-y-5">
+                    <div class="flex items-center gap-3">
+                        <a class="block w-72 hover:opacity-80 transition-opacity" href="#">
+                            <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc"
+                                alt="TRICHOZEN" class="w-full h-auto object-contain"
+                                style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
+                        </a>
+                    </div>
+                    <p class="leading-relaxed max-w-xl text-white">
+                        L'excellence de la trichologie moderne au service de votre <br> capital capillaire. Expertise,
+                        science et rituel d'exception.
+                    </p>
+                    <div class="flex gap-6 text-[#CFA674] justify-start">
+                        <a class="hover:text-white transition-colors" href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a class="hover:text-white transition-colors mb-3" href="#" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                            </svg>
+                        </a>
+                        <a class="hover:text-white transition-colors" href="#" aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
+                    <ul class="space-y-4">
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                href="#">Home</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                href="#">Particuliers</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                href="#">Professionnels</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                href="#">Ressources</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
+                    <ul class="space-y-4">
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                href="#">Qui sommes-nous</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                href="contact.html">Contact</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                href="#">Presse</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                href="#">Mentions Légales</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4 space-y-6">
+                    <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
+                    <p class="leading-relaxed text-white">Inscrivez-vous pour recevoir nos dernières actualités
+                        scientifiques.
+                    </p>
+                    <div class="flex">
+                        <input
+                            class="bg-[#142D3D] border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
+                            placeholder="Votre email" type="email" />
+                        <button
+                            class="bg-[#CFA674] text-white px-4 hover:bg-white hover:text-[#1F455E] transition-colors rounded">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
+                <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED .</p>
+                <div class="flex gap-12">
+                    <a class="text-white/40 hover:text-white transition-colors font-medium text-[10px]"
+                        href="#">POLITIQUE DE
+                        CONFIDENTIALITÉ</a>
+                    <a class="text-white/40 hover:text-white transition-colors font-medium text-[10px]" href="#">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        // Initialiser la pagination au chargement
+        document.addEventListener('DOMContentLoaded', function () {
+            updatePagination();
+        });
+
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+
+            document.getElementById('mainCarousel').scrollTo({
+                left: window.innerWidth * index,
+                behavior: 'smooth'
+            });
+
+            currentSlide = index;
+            updatePagination();
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        function updatePagination() {
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                    dot.classList.remove('bg-white/40');
+                } else {
+                    dot.classList.remove('active');
+                    dot.classList.add('bg-white/40');
+                }
+            });
+        }
+
+        // Auto-advance slides every 5 seconds
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        // Pause autoplay on hover
+        // Pause autoplay on hover
+        const carousel = document.getElementById('mainCarousel');
+        if (carousel) {
+            // Update active dot on scroll
+            carousel.addEventListener('scroll', () => {
+                const index = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+                if (currentSlide !== index) {
+                    currentSlide = index;
+                    updatePagination();
+                }
+            });
+
+            carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            carousel.addEventListener('mouseleave', () => {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        }
+
+        // Gestion du carrousel des formations avec défilement
+        const formationsContainer = document.getElementById('formations-container');
+        const prevFormationBtn = document.getElementById('prev-formation');
+        const nextFormationBtn = document.getElementById('next-formation');
+        const formationCards = document.querySelectorAll('.premium-card');
+        const cardWidth = 320 + 32; // Largeur de la carte + gap
+
+        // Initialisation au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            // Masquer le bouton précédent au chargement initial
+            if (formationsContainer && prevFormationBtn && nextFormationBtn) {
+                updateFormationButtons();
+                formationsContainer.style.scrollBehavior = 'smooth';
+            }
+        });
+
+        function updateFormationButtons() {
+            if (!formationsContainer || !prevFormationBtn || !nextFormationBtn) return;
+
+            // Cache le bouton précédent si on est au début
+            prevFormationBtn.style.display = formationsContainer.scrollLeft <= 10 ? 'none' : 'flex';
+
+            // Cache le bouton suivant si on est à la fin
+            const maxScroll = formationsContainer.scrollWidth - formationsContainer.clientWidth;
+            nextFormationBtn.style.display = formationsContainer.scrollLeft >= maxScroll - 10 ? 'none' : 'flex';
+        }
+
+        function scrollFormations(direction) {
+            if (!formationsContainer) return;
+
+            const scrollAmount = direction === 'next' ? cardWidth : -cardWidth;
+            formationsContainer.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+
+            // Mise à jour de l'état des boutons après l'animation
+            setTimeout(updateFormationButtons, 300);
+        }
+
+        // Événements des boutons
+        if (prevFormationBtn && nextFormationBtn && formationsContainer) {
+            prevFormationBtn.addEventListener('click', () => scrollFormations('prev'));
+            nextFormationBtn.addEventListener('click', () => scrollFormations('next'));
+
+            // Désactiver le glisser-déposer natif pour éviter les conflits
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            formationsContainer.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - formationsContainer.offsetLeft;
+                scrollLeft = formationsContainer.scrollLeft;
+                formationsContainer.style.cursor = 'grabbing';
+                formationsContainer.style.scrollBehavior = 'auto';
+            });
+
+            formationsContainer.addEventListener('mouseleave', () => {
+                isDown = false;
+                if (formationsContainer) {
+                    formationsContainer.style.cursor = 'grab';
+                    formationsContainer.style.scrollBehavior = 'smooth';
+                }
+            });
+
+            formationsContainer.addEventListener('mouseup', () => {
+                isDown = false;
+                if (formationsContainer) {
+                    formationsContainer.style.cursor = 'grab';
+                    formationsContainer.style.scrollBehavior = 'smooth';
+                }
+            });
+
+            formationsContainer.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - formationsContainer.offsetLeft;
+                const walk = (x - startX) * 1.5; // Vitesse de défilement
+                formationsContainer.scrollLeft = scrollLeft - walk;
+            });
+
+            // Mettre à jour l'état des boutons au défilement
+            formationsContainer.addEventListener('scroll', updateFormationButtons);
+
+            // Mettre à jour l'état initial des boutons
+            updateFormationButtons();
+        }
+
+        // Style pour le défilement fluide
+        const style = document.createElement('style');
+        style.setAttribute('id', 'formations-carousel-styles');
+        style.textContent = `
+            #formations-container {
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                cursor: grab;
+                padding: 0 16px;
+                scroll-padding: 0 16px;
+            }
+            
+            #formations-container:active {
+                cursor: grabbing;
+            }
+            
+            .premium-card {
+            background: white;
+            border: none;
+            border-radius: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+            overflow: visible;
+            position: relative;
+        }
+            
+            .hide-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            
+            .hide-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+            
+            @media (max-width: 768px) {
+                #formations-container {
+                    padding: 0 16px;
+                }
+                
+                #prev-formation, #next-formation {
+                    display: none !important;
+                }
+                
+                .premium-card {
+            background: white;
+            border: none;
+            border-radius: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+            overflow: visible;
+            position: relative;
+        }
+            }
+        `;
+
+        // Ne pas ajouter le style s'il existe déjà
+        if (!document.getElementById('formations-carousel-styles')) {
+            document.head.appendChild(style);
+        }
+
+        // NEXT GEN ANIMATIONS OBSERVER
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.reveal-text, .fade-in-up, .scale-in');
+            animatedElements.forEach(el => observer.observe(el));
+
+            // Counter Animation
+            function animateValue(obj, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    obj.innerHTML = Math.floor(progress * (end - start) + start);
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        obj.innerHTML = end;
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        if (!isNaN(target)) {
+                            animateValue(counter, 0, target, 2000);
+                        }
+                        counterObserver.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.counter').forEach((counter) => {
+                counterObserver.observe(counter);
+            });
+        });
+    </script>
+</body>
+
+</html>

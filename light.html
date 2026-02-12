@@ -1,0 +1,542 @@
+﻿<!DOCTYPE html>
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trichozen | Excellence en Trichologie</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#800020", // Deep Bordeaux
+                        "gold": "#C5A028",
+                        "charcoal": "#1A1A1A",
+                        "off-white": "#FDFDFB",
+                        "ivory": "#F9F7F2",
+                        "light-grey": "#F0F0F0",
+                        "glass-border": "rgba(0, 0, 0, 0.08)",
+                        "custom-blue": "#1F455E",
+                    },
+                    fontFamily: {
+                        "display": ["Cormorant Garamond", "serif"],
+                        "sans": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --primary-bordeaux: #800020;
+            --gold-accent: #C5A028;
+            --charcoal: #1A1A1A;
+            --custom-blue: #1F455E;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .premium-card {
+            background: white;
+            border: none;
+            border-radius: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        .premium-card:hover {
+            border-color: var(--primary-bordeaux);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -20px rgba(128, 0, 32, 0.15);
+        }
+        .parallax-hero {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .text-glow-light {
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+        }
+        body {
+            scroll-behavior: smooth;
+            background-color: #FDFDFB;
+        }
+        .bordeaux-underline {
+            position: relative;
+        }
+        .bordeaux-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary-bordeaux);
+            transition: width 0.3s ease;
+        }
+        .bordeaux-underline:hover::after {
+            width: 100%;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .carousel-container {
+            scroll-snap-type: x mandatory;
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+        }
+        .carousel-slide {
+            scroll-snap-align: start;
+            flex: 0 0 100%;
+            height: 100vh;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 260px;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            border-top: 2px solid var(--primary-bordeaux);
+            z-index: 60;
+        }
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(0,0,0,0.6);
+            transition: all 0.3s ease;
+        }
+        .dropdown-item:hover {
+            background: #F9F7F2;
+            color: var(--primary-bordeaux);
+            padding-left: 2rem;
+        }
+    </style>
+</head>
+<body class="font-sans text-charcoal selection:bg-primary selection:text-white">
+<nav class="fixed top-0 left-0 w-full z-50 glass-nav h-20 flex items-center justify-between px-8 md:px-12">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<svg class="size-6 md:size-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="text-xl md:text-2xl font-display font-bold tracking-[0.15em] text-charcoal uppercase">TRICHOZEN</span>
+</div>
+<div class="flex-1 flex items-center ml-12 gap-8 text-[11px] uppercase tracking-[0.15em] font-bold text-charcoal/80">
+<a class="hover:text-primary transition-colors bordeaux-underline" href="#">Home</a>
+<div class="relative dropdown">
+<a class="hover:text-primary transition-colors bordeaux-underline cursor-pointer flex items-center gap-1" href="#">
+                Particuliers <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="#">Page prÃ©sentation diagnostic on line</a>
+<a class="dropdown-item" href="#">PrÃ©sentiel</a>
+<a class="dropdown-item" href="#">Programme Essentiel</a>
+</div>
+</div>
+<div class="relative dropdown">
+<a class="hover:text-primary transition-colors bordeaux-underline cursor-pointer flex items-center gap-1" href="#">
+                Professionnels <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="#">Catalogue des formations</a>
+</div>
+</div>
+<a class="hover:text-primary transition-colors bordeaux-underline" href="#">Ã€ propos</a>
+<div class="relative dropdown">
+<a class="hover:text-primary transition-colors bordeaux-underline cursor-pointer flex items-center gap-1" href="#">
+                Ressources <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="#">Espace Marques &amp; MÃ©dias</a>
+<a class="dropdown-item" href="#">Votre blog TrichoZen</a>
+<a class="dropdown-item" href="#">Annuaire</a>
+<a class="dropdown-item" href="#">S'inscrire Ã  la NewsLetter</a>
+</div>
+</div>
+<a class="hover:text-primary transition-colors bordeaux-underline" href="#">Contact</a>
+</div>
+<div class="flex items-center">
+<button class="bg-primary hover:bg-red-950 text-white px-7 py-3 text-[10px] uppercase tracking-widest font-bold transition-all shadow-lg shadow-primary/20">
+            RDV EXPERTISE
+        </button>
+</div>
+</nav>
+<section class="relative h-screen w-full overflow-hidden bg-ivory">
+<div class="carousel-container h-full hide-scrollbar">
+<div class="carousel-slide relative flex items-center justify-center" id="slide-1">
+<div class="absolute inset-0 z-0 bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBEr5LK4GiWB4PoHah1vTZzdUf82kA_NKzFk6J8y0lmCzfKkh6-kXw1IR1XFaqfEu4ZcTGbxbdurHFqWTZv4EJgBtz6J0VtBQ39wuVTIUk-xww-v-yOeC4_RY05Jfg6T3xG4gheiIusDyCMovAiT2k4RjWDoNg1IWy6ZbZJf6yFK9KfurDrGZQ1UDsr1gEeuY6bPaGPS9xrJ0VUyE3Uml26WR0EvCuYz38MwJEg0nx9X-XRJyx8ZDDntlltj57lx6vWcTdIHfHwaas2");'>
+<div class="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-ivory"></div>
+</div>
+<div class="relative z-10 text-center px-6">
+<h2 class="text-[10px] uppercase tracking-[0.8em] text-primary font-bold mb-12">Bienvenue dans l'univers Trichozen</h2>
+<div class="flex flex-col md:flex-row gap-8 items-center justify-center">
+<button class="min-w-[280px] bg-custom-blue text-white px-10 py-6 text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-charcoal transition-all duration-500 shadow-xl">
+                        JE SUIS PARTICULIER
+                    </button>
+<button class="min-w-[280px] bg-primary text-white px-10 py-6 text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-charcoal transition-all duration-500 shadow-xl">
+                        JE SUIS PROFESSIONNEL
+                    </button>
+</div>
+</div>
+</div>
+<div class="carousel-slide relative flex items-center justify-center" id="slide-2">
+<div class="absolute inset-0 z-0 bg-cover bg-center opacity-60" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDjMPsZFg7wUl0kF6BBHiNfBOec-EWwAdl9mibTem-09AlWdY4MQavmShc9MvdzgA2WK2hohVLR2FROIt06HilxEQt65yusSwOouYgV99Euo0xJtUg2_eP1CZjAtiTrW9tR8GcpcqtR4YEA1tZYmKoxIa1urAIskbokP7wAxfflcMVYeVLHoxADZzGTlSkjoH0a4lYnqsIB4RFC9VJ1dQZ144lO7j2K1-FF8DPEEXetrDmJCfovoLOsrGMCekx-cTxR3noQfr1SFWNC");'></div>
+<div class="absolute inset-0 bg-ivory/40"></div>
+<div class="relative z-10 text-center px-6 max-w-4xl">
+<h2 class="text-[10px] uppercase tracking-[0.6em] text-primary font-bold mb-8 italic">Votre santÃ© capillaire</h2>
+<h3 class="text-5xl md:text-7xl font-display text-charcoal italic mb-10 leading-tight">Votre diagnostic capillaire | <br/>En ligne ou en prÃ©sentiel</h3>
+<button class="bg-primary text-white px-12 py-5 text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-charcoal transition-all shadow-xl">
+                    PRENDRE RENDEZ-VOUS
+                </button>
+</div>
+</div>
+<div class="carousel-slide relative flex items-center justify-center" id="slide-3">
+<div class="absolute inset-0 z-0 bg-cover bg-center grayscale opacity-40" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAE0saQk4RQ9Q2or6tt4ga0iaEY45zNEpxdaC26J9XpRdxChLUUVdbkUMZFYrmmSMlX6CoBid1SJSLJ9c_i8bSI8ZbZKbguKrFXHnNVSJ-vKCzKQ1UYQ5Eal_oMmILwnvAp_9mGwqOLhu1N_WuDGzUXnFjItiX-P-Gc_4rEIqTcHVjrfkmVq-Ao0cDKBebRaslevqPeTBIpZOeFjak1wO1NpzYT-4DEHUiKVmv9XEGIp-_KRJ-SJThTj-T9j6ZpAkG3NGxGCLfjg9va");'></div>
+<div class="absolute inset-0 bg-gradient-to-r from-ivory via-ivory/80 to-transparent"></div>
+<div class="relative z-10 text-left px-8 md:px-32 w-full max-w-7xl">
+<div class="max-w-2xl">
+<h2 class="text-[10px] uppercase tracking-[0.6em] text-primary font-bold mb-6">AcadÃ©mie Trichozen</h2>
+<h3 class="text-5xl md:text-8xl font-display text-charcoal italic mb-4 leading-tight">Formation Expertise Trichologie</h3>
+<p class="text-2xl font-display text-charcoal/70 mb-12 italic">DurÃ©e : 3 Jours</p>
+<button class="bg-charcoal text-white px-12 py-5 text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-primary transition-all shadow-xl">
+                        DÃ‰COUVRIR LE PROGRAMME
+                    </button>
+</div>
+</div>
+</div>
+<div class="carousel-slide relative flex items-center bg-white overflow-hidden" id="slide-4">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-display font-bold text-light-grey/40 uppercase tracking-tighter select-none pointer-events-none whitespace-nowrap z-0">
+                MASTERCLASS
+            </div>
+<div class="container mx-auto px-8 md:px-16 grid grid-cols-12 items-center h-full gap-8 relative z-10">
+<div class="col-span-1 hidden md:flex items-center justify-center">
+<span class="vertical-text text-[10px] uppercase tracking-[0.8em] text-primary font-bold border-r border-primary/20 pr-4 py-8">
+                        Ã‰DITION LIMITÃ‰E 2024
+                    </span>
+</div>
+<div class="col-span-12 md:col-span-5 flex flex-col justify-center space-y-8">
+<h2 class="text-7xl md:text-9xl font-display font-bold text-charcoal leading-none">MASTER<br/><span class="italic text-primary">CLASS</span></h2>
+<p class="text-xl font-display italic text-charcoal/60 max-w-sm">
+                        L'immersion ultime dans l'univers de la trichologie de luxe avec nos experts internationaux.
+                    </p>
+<div class="pt-6">
+<button class="bg-primary text-white px-10 py-6 text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-charcoal transition-all shadow-2xl flex items-center gap-4">
+                            REJOINDRE LA MASTERCLASS <span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+</div>
+</div>
+<div class="col-span-12 md:col-span-6 flex justify-end">
+<div class="relative w-full aspect-[3/4] md:w-[80%] bg-ivory overflow-hidden shadow-[30px_30px_0px_0px_rgba(128,0,32,0.1)]">
+<img alt="Luxury Portrait" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqCIk81wWD_Vu7oEySNRLm1HKL_1S19qQFdo0HNFHHE6dNe9HugPEgLZR2wInMcjjjKtnimCzemFMAkqdp-xRfSXDaX6PPySKEfuR0gZnbMCzOtBiKCIimwZBUi1K_AeQrdl8O62vpsk9OjbkNG4VPW3xsBet5GdmMsfkxcFIAgwNxlzjvXIspcRNIHRTxsxrWvg-Wyw_G52c6n_DYWin4mFQ6uwQx5L_lKNpfiWXFfTL0tlh4gSeUyPPK2C7d5TnII46VJwWLPv84"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-4 z-20">
+<a class="w-12 h-1 bg-primary/20 hover:bg-primary transition-colors" href="#slide-1"></a>
+<a class="w-12 h-1 bg-primary/20 hover:bg-primary transition-colors" href="#slide-2"></a>
+<a class="w-12 h-1 bg-primary/20 hover:bg-primary transition-colors" href="#slide-3"></a>
+<a class="w-12 h-1 bg-primary/20 hover:bg-primary transition-colors" href="#slide-4"></a>
+</div>
+</section>
+<section class="py-32 bg-off-white border-y border-black/5">
+<div class="container mx-auto px-6 mb-20 flex flex-col items-center">
+<h2 class="text-[10px] uppercase tracking-[0.6em] text-primary font-bold mb-6">AcadÃ©mie Expertise</h2>
+<h3 class="text-4xl md:text-6xl font-display text-charcoal text-center italic">Catalogue des Formations Pros</h3>
+</div>
+<div class="flex overflow-x-auto gap-10 px-8 md:px-32 hide-scrollbar pb-16">
+<div class="min-w-[340px] md:min-w-[480px] premium-card flex flex-col group">
+<div class="aspect-[16/10] overflow-hidden">
+<img alt="Formation 1" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE0saQk4RQ9Q2or6tt4ga0iaEY45zNEpxdaC26J9XpRdxChLUUVdbkUMZFYrmmSMlX6CoBid1SJSLJ9c_i8bSI8ZbZKbguKrFXHnNVSJ-vKCzKQ1UYQ5Eal_oMmILwnvAp_9mGwqOLhu1N_WuDGzUXnFjItiX-P-Gc_4rEIqTcHVjrfkmVq-Ao0cDKBebRaslevqPeTBIpZOeFjak1wO1NpzYT-4DEHUiKVmv9XEGIp-_KRJ-SJThTj-T9j6ZpAkG3NGxGCLfjg9va"/>
+</div>
+<div class="p-10 space-y-6">
+<h4 class="text-3xl font-display text-charcoal italic">Trichologie Fondamentale</h4>
+<p class="text-base text-charcoal/60 font-light leading-relaxed">
+                    MaÃ®trisez les bases de l'analyse capillaire avancÃ©e et du diagnostic scientifique Ã  travers nos protocoles certifiÃ©s.
+                </p>
+<div class="pt-6 flex justify-between items-end border-t border-black/5">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold mb-1">DurÃ©e | Investissement</p>
+<p class="text-xl font-display text-charcoal font-medium">3 Jours | Sur devis</p>
+</div>
+<button class="text-[11px] uppercase tracking-widest font-bold text-primary hover:translate-x-1 transition-transform flex items-center gap-2">
+                        DÃ‰COUVRIR <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="min-w-[340px] md:min-w-[480px] premium-card flex flex-col group">
+<div class="aspect-[16/10] overflow-hidden">
+<img alt="Formation 2" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_8U7GX7Jr0qZwKhAosZLrFnaBo0eVsyaknsJyHMDcFLYKPtpn5fq6fFb8XeCliXgEQwbaehYDeAP4ZNDUHLWsv7vRyPJGn9dlfh8sLuyvsan47q_zxQOhv2t60x6OnkR2-fPKmG3mBZfo0Lg8OTC-viiUn51ydnmrsakBlQ3qP4zyagGYE4xwwnzpDtSCmv4eMaZewe1z8rXspTuNJ0lIo-wDYrr7PAG9h5ynUhOcv_7RSL9YKDBQAbHfjdUY4x2VWa5Ue3yywFsj"/>
+</div>
+<div class="p-10 space-y-6">
+<h4 class="text-3xl font-display text-charcoal italic">Protocoles de Soins Premium</h4>
+<p class="text-base text-charcoal/60 font-light leading-relaxed">
+                    IntÃ©grez des rituels de soins haute-performance utilisant les derniÃ¨res innovations en biotechnologie capillaire.
+                </p>
+<div class="pt-6 flex justify-between items-end border-t border-black/5">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold mb-1">DurÃ©e | Investissement</p>
+<p class="text-xl font-display text-charcoal font-medium">2 Jours | 1200â‚¬</p>
+</div>
+<button class="text-[11px] uppercase tracking-widest font-bold text-primary hover:translate-x-1 transition-transform flex items-center gap-2">
+                        DÃ‰COUVRIR <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="min-w-[340px] md:min-w-[480px] premium-card flex flex-col group">
+<div class="aspect-[16/10] overflow-hidden">
+<img alt="Formation 3" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqCIk81wWD_Vu7oEySNRLm1HKL_1S19qQFdo0HNFHHE6dNe9HugPEgLZR2wInMcjjjKtnimCzemFMAkqdp-xRfSXDaX6PPySKEfuR0gZnbMCzOtBiKCIimwZBUi1K_AeQrdl8O62vpsk9OjbkNG4VPW3xsBet5GdmMsfkxcFIAgwNxlzjvXIspcRNIHRTxsxrWvg-Wyw_G52c6n_DYWin4mFQ6uwQx5L_lKNpfiWXFfTL0tlh4gSeUyPPK2C7d5TnII46VJwWLPv84"/>
+</div>
+<div class="p-10 space-y-6">
+<h4 class="text-3xl font-display text-charcoal italic">Business &amp; Management Luxe</h4>
+<p class="text-base text-charcoal/60 font-light leading-relaxed">
+                    DÃ©veloppez votre clientÃ¨le haut de gamme et optimisez la rentabilitÃ© de votre centre d'expertise.
+                </p>
+<div class="pt-6 flex justify-between items-end border-t border-black/5">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-[#CFA674] font-bold mb-1">DurÃ©e | Investissement</p>
+<p class="text-xl font-display text-charcoal font-medium">1 Jour | 850â‚¬</p>
+</div>
+<button class="text-[11px] uppercase tracking-widest font-bold text-primary hover:translate-x-1 transition-transform flex items-center gap-2">
+                        DÃ‰COUVRIR <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Espace Particuliers" class="w-full h-full object-cover scale-110 blur-sm opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjMPsZFg7wUl0kF6BBHiNfBOec-EWwAdl9mibTem-09AlWdY4MQavmShc9MvdzgA2WK2hohVLR2FROIt06HilxEQt65yusSwOouYgV99Euo0xJtUg2_eP1CZjAtiTrW9tR8GcpcqtR4YEA1tZYmKoxIa1urAIskbokP7wAxfflcMVYeVLHoxADZzGTlSkjoH0a4lYnqsIB4RFC9VJ1dQZ144lO7j2K1-FF8DPEEXetrDmJCfovoLOsrGMCekx-cTxR3noQfr1SFWNC"/>
+<div class="absolute inset-0 bg-ivory/80 mix-blend-overlay"></div>
+</div>
+<div class="relative z-10 text-center px-6 max-w-4xl">
+<h2 class="text-[10px] uppercase tracking-[0.7em] text-primary font-bold mb-8">Votre sanctuaire privÃ©</h2>
+<h3 class="text-5xl md:text-8xl font-display text-charcoal italic mb-10 leading-tight">Espace Particuliers</h3>
+<p class="text-xl md:text-2xl font-light text-charcoal/70 mb-14 leading-relaxed font-display italic max-w-2xl mx-auto">
+            AccÃ©dez Ã  une consultation personnalisÃ©e et des protocoles de soins uniques adaptÃ©s Ã  vos besoins spÃ©cifiques.
+        </p>
+<div class="flex flex-col items-center gap-10">
+<span class="text-[11px] uppercase tracking-[0.3em] font-bold text-primary bg-white/60 py-4 px-10 rounded-full border border-primary/10 shadow-sm backdrop-blur-md">
+                Diagnostic &amp; programme sur-mesure
+            </span>
+<button class="bg-primary text-white px-16 py-6 text-[12px] uppercase tracking-[0.4em] font-bold hover:bg-charcoal transition-all duration-700 shadow-2xl hover:shadow-primary/30">
+                JE DÃ‰COUVRE L'EXPÃ‰RIENCE
+            </button>
+</div>
+</div>
+</section>
+<section class="py-40 bg-white">
+<div class="container mx-auto px-6 md:px-16">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div class="space-y-12">
+<div class="space-y-4">
+<h2 class="text-[10px] uppercase tracking-[0.6em] text-primary font-bold">L'HÃ©ritage Trichozen</h2>
+<h3 class="text-6xl md:text-7xl font-display italic text-charcoal">Qui Sommes-Nous</h3>
+</div>
+<div class="space-y-8 text-charcoal/70 font-light leading-relaxed text-lg">
+<p>
+                        Fruit d'une passion pour la science du cheveu, Trichozen allie l'exigence clinique Ã  l'Ã©lÃ©gance du soin haut de gamme. Notre mission est de redÃ©finir les standards de la santÃ© capillaire.
+                    </p>
+<p class="font-display italic text-3xl text-charcoal leading-snug border-l-4 border-primary pl-8 py-4 bg-ivory">
+                        "L'expertise Trichozen associÃ©e au savoir-faire de YÃ©bÃ© pour une vision holistique de votre beautÃ©."
+                    </p>
+</div>
+<button class="group flex items-center gap-4 text-[11px] uppercase tracking-[0.4em] font-bold text-charcoal hover:text-primary transition-colors">
+                    NOTRE HISTOIRE <span class="w-12 h-px bg-charcoal group-hover:bg-primary group-hover:w-20 transition-all"></span>
+</button>
+</div>
+<div class="relative">
+<div class="aspect-[4/5] bg-ivory overflow-hidden shadow-2xl relative z-10">
+<img alt="YÃ©bÃ©" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqCIk81wWD_Vu7oEySNRLm1HKL_1S19qQFdo0HNFHHE6dNe9HugPEgLZR2wInMcjjjKtnimCzemFMAkqdp-xRfSXDaX6PPySKEfuR0gZnbMCzOtBiKCIimwZBUi1K_AeQrdl8O62vpsk9OjbkNG4VPW3xsBet5GdmMsfkxcFIAgwNxlzjvXIspcRNIHRTxsxrWvg-Wyw_G52c6n_DYWin4mFQ6uwQx5L_lKNpfiWXFfTL0tlh4gSeUyPPK2C7d5TnII46VJwWLPv84"/>
+</div>
+<div class="absolute -bottom-10 -left-10 bg-primary p-12 z-20 shadow-2xl">
+<span class="text-white font-display text-5xl italic block mb-2">YÃ©bÃ©</span>
+<p class="text-white/80 text-[10px] uppercase tracking-[0.3em] font-bold">Fondatrice &amp; Experte</p>
+</div>
+<div class="absolute -top-10 -right-10 w-64 h-64 border border-[#CFA674]/20 -z-0"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-light-grey">
+<div class="container mx-auto px-6 md:px-16">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-charcoal/5 border border-charcoal/5">
+<div class="p-20 flex flex-col items-center text-center space-y-6 bg-off-white hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-[#CFA674] text-5xl font-extralight">spa</span>
+<h4 class="text-6xl font-display text-charcoal">15+</h4>
+<p class="text-[11px] uppercase tracking-[0.4em] text-primary font-bold">AnnÃ©es d'expertise</p>
+<div class="w-8 h-px bg-primary/20"></div>
+<p class="text-[10px] text-charcoal/40 uppercase tracking-widest">Savoir-faire unique</p>
+</div>
+<div class="p-20 flex flex-col items-center text-center space-y-6 bg-off-white hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-[#CFA674] text-5xl font-extralight">school</span>
+<h4 class="text-6xl font-display text-charcoal">2.5k</h4>
+<p class="text-[11px] uppercase tracking-[0.4em] text-primary font-bold">Professionnels formÃ©s</p>
+<div class="w-8 h-px bg-primary/20"></div>
+<p class="text-[10px] text-charcoal/40 uppercase tracking-widest">AcadÃ©mies Partenaires</p>
+</div>
+<div class="p-20 flex flex-col items-center text-center space-y-6 bg-off-white hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-[#CFA674] text-5xl font-extralight">verified</span>
+<h4 class="text-6xl font-display text-charcoal">100%</h4>
+<p class="text-[11px] uppercase tracking-[0.4em] text-primary font-bold">Satisfaction clients</p>
+<div class="w-8 h-px bg-primary/20"></div>
+<p class="text-[10px] text-charcoal/40 uppercase tracking-widest">Engagement Excellence</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-40 bg-ivory">
+<div class="container mx-auto px-6 md:px-16">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div class="order-2 lg:order-1 relative">
+<div class="aspect-square md:aspect-video lg:aspect-square overflow-hidden shadow-2xl relative z-10">
+<img alt="Innovation Trichozen" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv8MTjz3B4cxEMQrLz80BaAimlEWINoQlOvwDJFohkiKRjhwj6uKSZGd9fbP19NIVfkhPnF_9rB2UmOFAXX4z8m9xN4ifLBaFhvOQX17-1w5VxrnnPEABS12DKwODyBlPkMKjKwa_9IIFgmb2eEnNZm90H_rFVUovGvazKm6rp98NwmVxhdiqQFGx6vZYt6zSBjCtLQHlrjGGNMz2WOhsehxKkNjhdSfwfG02aIve5icCfSCtit3wMdP-O_P7r2Fs2nVFcX5BP3PcH"/>
+</div>
+<div class="absolute -bottom-6 -right-6 w-full h-full border border-primary/10 -z-0"></div>
+</div>
+<div class="order-1 lg:order-2 space-y-16">
+<div class="space-y-6">
+<h2 class="text-[10px] uppercase tracking-[0.6em] text-primary font-bold">Pourquoi choisir</h2>
+<h3 class="text-6xl font-display text-charcoal italic">TRICHOZEN</h3>
+</div>
+<div class="space-y-12">
+<div class="space-y-5 group">
+<h4 class="text-2xl font-display text-charcoal border-b border-primary/10 pb-4 group-hover:border-primary transition-colors flex justify-between items-center">
+                            EXCELLENCE SCIENTIFIQUE
+                            <span class="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors">magnification_small</span>
+</h4>
+<p class="text-charcoal/60 font-light leading-relaxed text-lg">
+                            Des protocoles validÃ©s scientifiquement pour des rÃ©sultats mesurables et durables sur la santÃ© du cuir chevelu.
+                        </p>
+</div>
+<div class="space-y-5 group">
+<h4 class="text-2xl font-display text-charcoal border-b border-primary/10 pb-4 group-hover:border-primary transition-colors flex justify-between items-center">
+                            ACCOMPAGNEMENT SUR-MESURE
+                            <span class="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors">clinical_notes</span>
+</h4>
+<p class="text-charcoal/60 font-light leading-relaxed text-lg">
+                            Chaque individu est unique, nos diagnostics le sont aussi. Une personnalisation absolue pour votre capital capillaire.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 bg-white">
+<div class="container mx-auto px-6 text-center">
+<h2 class="text-[11px] uppercase tracking-[0.7em] text-charcoal/40 font-bold mb-20">ILS NOUS ONT FAIT CONFIANCE</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-16 items-center opacity-60">
+<div class="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer hover:opacity-100">
+<span class="text-2xl font-bold font-display tracking-widest">MARQUE I</span>
+</div>
+<div class="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer hover:opacity-100">
+<span class="text-2xl font-bold font-display tracking-widest">MARQUE II</span>
+</div>
+<div class="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer hover:opacity-100">
+<span class="text-2xl font-bold font-display tracking-widest">MARQUE III</span>
+</div>
+<div class="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer hover:opacity-100">
+<span class="text-2xl font-bold font-display tracking-widest">MARQUE IV</span>
+</div>
+<div class="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer hover:opacity-100">
+<span class="text-2xl font-bold font-display tracking-widest">MARQUE V</span>
+</div>
+<div class="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer hover:opacity-100">
+<span class="text-2xl font-bold font-display tracking-widest">MARQUE VI</span>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-charcoal text-white/70 pt-32 pb-12">
+<div class="container mx-auto px-6 md:px-16">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-24">
+<div class="md:col-span-4 space-y-10">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<svg class="size-10" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="text-3xl font-display font-bold tracking-[0.2em] text-white uppercase">TRICHOZEN</span>
+</div>
+<p class="font-light leading-relaxed max-w-sm text-lg opacity-80">
+                    L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise, science et rituels d'exception.
+                </p>
+<div class="flex gap-8">
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-2xl">camera</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-2xl">play_circle</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-2xl">contact_mail</span></a>
+</div>
+</div>
+<div class="md:col-span-2 space-y-8">
+<h5 class="text-[12px] uppercase tracking-[0.3em] text-white font-bold">NAVIGATION</h5>
+<ul class="space-y-4 text-sm font-light">
+<li><a class="hover:text-primary transition-colors" href="#">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Particuliers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Professionnels</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Ressources</a></li>
+</ul>
+</div>
+<div class="md:col-span-2 space-y-8">
+<h5 class="text-[12px] uppercase tracking-[0.3em] text-white font-bold">SOCIÃ‰TÃ‰</h5>
+<ul class="space-y-4 text-sm font-light">
+<li><a class="hover:text-primary transition-colors" href="#">Qui sommes-nous</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Presse</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Mentions LÃ©gales</a></li>
+</ul>
+</div>
+<div class="md:col-span-4 space-y-8">
+<h5 class="text-[12px] uppercase tracking-[0.3em] text-white font-bold">NEWSLETTER</h5>
+<p class="text-sm font-light opacity-80">Inscrivez-vous pour recevoir nos derniÃ¨res actualitÃ©s scientifiques.</p>
+<div class="flex group border-b border-white/20 pb-2 focus-within:border-primary transition-colors">
+<input class="bg-transparent border-none px-0 py-3 flex-1 text-sm focus:ring-0 placeholder:text-white/30" placeholder="votre@email.com" type="email"/>
+<button class="text-white hover:text-primary transition-colors px-4">
+<span class="material-symbols-outlined">east</span>
+</button>
+</div>
+</div>
+</div>
+<div class="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] uppercase tracking-[0.3em] text-white/30">
+<p>Â© 2024 TRICHOZEN MEDICAL GROUP. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-16">
+<a class="hover:text-white transition-colors" href="#">CONFIDENTIALITÃ‰</a>
+<a class="hover:text-white transition-colors" href="#">CGV</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

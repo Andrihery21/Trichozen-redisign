@@ -1,0 +1,693 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>À Propos | Trichozen</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": {
+                            DEFAULT: "#CFA674",
+                            light: "#CFA674",
+                            dark: "#1F455E"
+                        },
+                        "brand-blue": {
+                            DEFAULT: "#1F455E",
+                            light: "#1F455E",
+                            dark: "#1F455E"
+                        },
+                        "gold": {
+                            DEFAULT: "#CFA674",
+                            light: "#CFA674",
+                            dark: "#CFA674"
+                        },
+                        "background-dark": "#0F0F12",
+                        "background-light": "#1A1A23",
+                        "glass-white": "rgba(255, 255, 255, 0.08)",
+                        "glass-border": "rgba(255, 255, 255, 0.15)",
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(135deg, #CFA674 0%, #CFA674 100%)',
+                        'gradient-gold': 'linear-gradient(135deg, #CFA674 0%, #CFA674 100%)',
+                    },
+                    fontFamily: {
+                        "display": ["Oswald", "sans-serif"],
+                        "sans": ["Montserrat", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .nav-link {
+            @apply text-[14px] uppercase tracking-[0.1em] font-medium transition-all duration-300 text-[#1F455E] hover:text-[#CFA674] flex items-center gap-1 relative;
+            padding: 0.5rem 0;
+        }
+        .nav-link span {
+            color: #CFA674;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .luxury-glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .bg-noise {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .corner-frame {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-color: #CFA674;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .corner-tl { top: -10px; left: -10px; border-top: 1px solid; border-left: 1px solid; }
+        .corner-tr { top: -10px; right: -10px; border-top: 1px solid; border-right: 1px solid; }
+        .corner-bl { bottom: -10px; left: -10px; border-bottom: 1px solid; border-left: 1px solid; }
+        .corner-br { bottom: -10px; right: -10px; border-bottom: 1px solid; border-right: 1px solid; }
+
+        .dropdown-group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            background: #FBF5F0;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(207, 166, 116, 0.3); /* Gold #CFA674 */
+        }
+        .dropdown-item {
+            @apply block px-6 py-3 text-[14px] uppercase tracking-widest text-[#1F455E] hover:text-[#CFA674] hover:bg-gradient-to-r from-primary/10 to-transparent transition-all duration-300;
+            border-left: 3px solid transparent;
+        }
+        .dropdown-item:hover {
+            border-left-color: #CFA674;
+            padding-left: 1.5rem;
+        }
+
+        /* ============================================
+           ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
+           ============================================ */
+
+        /* Reveal Animations */
+        @keyframes revealText {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(230, 193, 92, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s ease-out;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .stagger-1 { transition-delay: 100ms; }
+        .stagger-2 { transition-delay: 200ms; }
+        .stagger-3 { transition-delay: 300ms; }
+        .stagger-4 { transition-delay: 400ms; }
+
+        .hover-glow:hover {
+            animation: glowPulse 2s infinite;
+        }
+
+        /* Luxury Glassmorphism */
+        .luxury-glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+                0 20px 40px -4px rgba(0, 0, 0, 0.1),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Premium Card Style */
+        .premium-card {
+            background: white;
+            border: none;
+            border-radius: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .premium-card:hover {
+            border-color: rgba(230, 193, 92, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        .premium-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Corner Frames with Double Border */
+        .corner-frame {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-color: #CFA674;
+            pointer-events: none;
+            z-index: 10;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .corner-frame::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-color: #CFA674;
+            transition: all 0.5s ease;
+            opacity: 0.5;
+        }
+
+        .corner-tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
+        .corner-tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
+        .corner-bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
+        .corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
+
+        .corner-tl::after { top: 4px; left: 4px; border-top: 1px solid; border-left: 1px solid; }
+        .corner-tr::after { top: 4px; right: 4px; border-top: 1px solid; border-right: 1px solid; }
+        .corner-bl::after { bottom: 4px; left: 4px; border-bottom: 1px solid; border-left: 1px solid; }
+        .corner-br::after { bottom: 4px; right: 4px; border-bottom: 1px solid; border-right: 1px solid; }
+
+        .framed-content:hover .corner-tl { transform: translate(-15px, -15px); }
+        .framed-content:hover .corner-tr { transform: translate(15px, -15px); }
+        .framed-content:hover .corner-bl { transform: translate(-15px, 15px); }
+        .framed-content:hover .corner-br { transform: translate(15px, 15px); }
+
+        .framed-content:hover .corner-frame::after {
+            opacity: 1;
+            border-color: #CFA674;
+            transform: scale(0.9);
+        }
+
+        /* Floating Shapes */
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(230, 193, 92, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            z-index: 0;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        /* Watermark Text */
+        .watermark-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 15vw;
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.03);
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.1em;
+        }
+
+        /* Parallax Hero */
+        .parallax-hero {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Image Container Overlay */
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-container:hover::after {
+            opacity: 0.5;
+        }
+
+        .sur-titre {
+            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
+        }
+
+        .hero-title {
+            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
+        }
+
+        @layer base {
+            h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
+            h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
+            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
+            h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
+            h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
+            h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
+            p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
+        }
+
+        .quote-style {
+            @apply font-sans font-medium italic text-[23px] leading-relaxed;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark font-sans text-gray-200 selection:bg-primary selection:text-white overflow-x-hidden">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav h-20 grid grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
+        <div class="flex justify-start">
+            <a class="block w-40 hover:opacity-80 transition-opacity" href="home.html">
+                <img src="logo.png" alt="TRICHOZEN" class="w-full h-auto object-contain"
+                    style="filter: brightness(0) saturate(100%) invert(21%) sepia(21%) saturate(3207%) hue-rotate(176deg) brightness(96%) contrast(101%);">
+            </a>
+        </div>
+        <div class="hidden lg:flex items-center gap-8 justify-center">
+            <a class="nav-link text-[#1F455E]" href="home.html">Home</a>
+            <div class="relative dropdown-group">
+                <a class="nav-link text-[#1F455E]" href="particulier.html">Particuliers <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Diagnostic online</a>
+                    <a class="dropdown-item" href="#">Présentiel</a>
+                    <a class="dropdown-item" href="#">Programme Essentiel</a>
+                </div>
+            </div>
+            <div class="relative dropdown-group">
+                <a class="nav-link text-[#1F455E]" href="professionnel.html">Professionnels <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Catalogue des formations</a>
+                    <div class="h-px bg-white/10 mx-6 my-1"></div>
+                    <a class="dropdown-item" href="#">Trichologie Fondamentale</a>
+                    <a class="dropdown-item" href="#">Protocoles de Soins Premium</a>
+                </div>
+            </div>
+            <a class="nav-link text-[#1F455E] font-bold" href="a-propos.html">À propos</a>
+            <div class="relative dropdown-group">
+                <a class="nav-link text-[#1F455E]" href="#">Ressources <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Espace Marques &amp; Médias</a>
+                    <a class="dropdown-item" href="blog.html">Votre blog TrichoZen</a>
+                    <a class="dropdown-item" href="#">Annuaire</a>
+                    <a class="dropdown-item" href="#">S'inscrire à la NewsLetter</a>
+                </div>
+            </div>
+            <a class="nav-link text-[#1F455E]" href="contact.html">Contact</a>
+        </div>
+        <div class="flex justify-end">
+            <button
+                class="border border-black text-black px-8 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-black hover:text-white transition-all">
+                RDV Expertise
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section
+            class="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden py-32">
+            <!-- Floating Shapes -->
+            <div class="floating-shape" style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;">
+            </div>
+            <div class="floating-shape" style="width: 200px; height: 200px; top: 60%; right: 10%; animation-delay: 3s;">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent"></div>
+            <div class="relative z-10 max-w-4xl space-y-8">
+                <h1 class="text-6xl md:text-8xl font-display text-white reveal-text visible parallax-element morph-text"
+                    data-speed="0.5">TRICHOZEN</h1>
+                <h2 class="text-3xl md:text-5xl font-display text-[#CFA674] reveal-text visible parallax-element text-gradient-animate"
+                    style="transition-delay: 200ms;" data-speed="0.3">par Yébé Diouf</h2>
+                <div class="w-24 h-px bg-[#CFA674]/50 mx-auto my-12"></div>
+                <p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed italic max-w-3xl mx-auto reveal-text visible"
+                    style="transition-delay: 400ms;">
+                    "L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise, science
+                    et rituels d'exception."
+                </p>
+                <p class="text-base md:text-lg text-gray-400 font-light leading-relaxed max-w-2xl mx-auto reveal-text visible"
+                    style="transition-delay: 600ms;">
+                    Depuis plus de 15 ans, nous accompagnons les particuliers et formons les professionnels pour
+                    redéfinir les standards du soin capillaire scientifique.
+                </p>
+            </div>
+            <div class="bg-noise"></div>
+        </section>
+
+        <!-- Biography Section -->
+        <section class="py-24 px-8 md:px-24 bg-[#faf5f1]">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="space-y-8 reveal-text visible">
+                    <h3 class="text-5xl md:text-6xl font-display text-[#1F455E]">Yébé Diouf</h3>
+                    <div class="space-y-6 text-gray-600 text-lg font-light leading-relaxed">
+                        <p>Fondatrice de Trichozen et experte reconnue en trichologie, Yébé Diouf a dédié sa carrière à
+                            la compréhension profonde de la fibre capillaire et du cuir chevelu.</p>
+                        <p>Son approche unique combine rigueur scientifique, technologies de pointe et une sensibilité
+                            esthétique héritée du luxe, permettant de traiter les problématiques les plus complexes avec
+                            une vision holistique.</p>
+                        <p>Aujourd'hui, elle partage son savoir-faire à travers une académie de formation qui accueille
+                            les plus grands noms de la coiffure et de l'esthétique.</p>
+                    </div>
+                </div>
+                <div class="relative reveal-text visible framed-content stagger-2" style="transition-delay: 300ms;">
+                    <div class="aspect-[4/5] rounded-lg overflow-hidden border border-white/10 premium-shadow">
+                        <img src="yebe_diouf_portrait.png" alt="Yébé Diouf"
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000">
+                    </div>
+                    <div class="corner-frame corner-tr"></div>
+                    <div class="corner-frame corner-bl"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="relative order-2 lg:order-1 fade-in-up stagger-2" style="transition-delay: 300ms;">
+                    <div
+                        class="aspect-[4/5] rounded-lg overflow-hidden border border-[#1F455E]/10 hover-glow shadow-2xl">
+                        <img src="trichology_abstract_v2.png" alt="Vision Trichologie"
+                            class="w-full h-full object-cover parallax-element" data-speed="-0.2">
+                    </div>
+                    <div class="corner-frame corner-tl"></div>
+                    <div class="corner-frame corner-br"></div>
+                </div>
+                <div class="space-y-8 order-1 lg:order-2 reveal-text visible">
+                    <h3 class="text-[10px] uppercase tracking-[0.8em] text-[#CFA674] font-bold">NOTRE PHILOSOPHIE</h3>
+                    <h4 class="text-4xl md:text-5xl font-display text-[#1F455E]">VISION DE LA TRICHOLOGIE</h4>
+                    <div class="space-y-6 text-gray-600 text-lg font-light leading-relaxed">
+                        <p>La trichologie n'est pas qu'une science du cheveu, c'est l'art de restaurer la confiance et
+                            l'harmonie. Nous croyons en une approche personnalisée où chaque diagnostic est le début
+                            d'une transformation.</p>
+                        <p>Notre vision est de démocratiser l'expertise capillaire de haut niveau, en rendant accessible
+                            les meilleures technologies tout en conservant une approche humaine et bienveillante.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legitimacy Section -->
+        <section class="py-32 px-8 md:px-24 text-center bg-[#1F455E]">
+            <div class="max-w-4xl mx-auto space-y-12">
+                <h3 class="text-4xl md:text-6xl font-display text-white reveal-text visible">LÉGITIMITÉ &
+                    FORMATIONS</h3>
+                <div class="w-16 h-px bg-[#CFA674]/50 mx-auto"></div>
+                <div class="space-y-8 text-white/80 text-xl font-light leading-relaxed italic reveal-text visible"
+                    style="transition-delay: 200ms;">
+                    <p>Certifiée par les plus grandes institutions internationales de trichologie, l'expertise Trichozen
+                        s'appuie sur des années de recherche et une pratique clinique quotidienne.</p>
+                    <p>Nos formations sont le reflet de cette exigence : un transfert de compétences direct, efficace et
+                        tourné vers l'excellence opérationnelle.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pourquoi Trichozen -->
+        <section class="py-32 px-8 md:px-24 bg-white">
+            <div class="max-w-7xl mx-auto space-y-24">
+                <h3 class="text-center text-4xl md:text-5xl font-display text-white outline-text">POURQUOI
+                    TRICHOZEN ?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                    <!-- Item 1 -->
+                    <div
+                        class="p-10 text-center space-y-8 hover:border-[#CFA674]/30 transition-all duration-500 group premium-card fade-in-up shadow-2xl">
+                        <div
+                            class="w-16 h-16 rounded-full border border-[#CFA674]/20 flex items-center justify-center mx-auto group-hover:bg-[#CFA674]/10 transition-colors">
+                            <span class="material-symbols-outlined text-[#CFA674] text-3xl">science</span>
+                        </div>
+                        <div class="space-y-4">
+                            <h5 class="text-xl font-display text-[#1F455E]">Expertise Scientifique</h5>
+                            <p class="text-sm text-gray-600 font-light leading-relaxed">Protocoles basés sur les
+                                dernières découvertes biologiques et technologiques.</p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div
+                        class="p-10 text-center space-y-8 hover:border-[#CFA674]/30 transition-all duration-500 group premium-card fade-in-up stagger-1 shadow-2xl">
+                        <div
+                            class="w-16 h-16 rounded-full border border-[#CFA674]/20 flex items-center justify-center mx-auto group-hover:bg-[#CFA674]/10 transition-colors">
+                            <span class="material-symbols-outlined text-[#CFA674] text-3xl">psychology</span>
+                        </div>
+                        <div class="space-y-4">
+                            <h5 class="text-xl font-display text-[#1F455E]">Approche Holistique</h5>
+                            <p class="text-sm text-gray-600 font-light leading-relaxed">Nous traitons la cause, pas
+                                seulement le symptôme, pour un résultat durable.</p>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div
+                        class="p-10 text-center space-y-8 hover:border-[#CFA674]/30 transition-all duration-500 group premium-card fade-in-up stagger-2 shadow-2xl">
+                        <div
+                            class="w-16 h-16 rounded-full border border-[#CFA674]/20 flex items-center justify-center mx-auto group-hover:bg-[#CFA674]/10 transition-colors">
+                            <span
+                                class="material-symbols-outlined text-[#CFA674] text-3xl icon-rotate">workspace_premium</span>
+                        </div>
+                        <div class="space-y-4">
+                            <h5 class="text-xl font-display text-[#1F455E]">Standards de Luxe</h5>
+                            <p class="text-sm text-gray-600 font-light leading-relaxed">Une expérience client soignée
+                                jusque dans les moindres détails sensoriels.</p>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div
+                        class="p-10 text-center space-y-8 hover:border-[#CFA674]/30 transition-all duration-500 group premium-card fade-in-up stagger-3 shadow-2xl">
+                        <div
+                            class="w-16 h-16 rounded-full border border-[#CFA674]/20 flex items-center justify-center mx-auto group-hover:bg-[#CFA674]/10 transition-colors">
+                            <span class="material-symbols-outlined text-[#CFA674] text-3xl">diversity_3</span>
+                        </div>
+                        <div class="space-y-4">
+                            <h5 class="text-xl font-display text-[#1F455E]">Communauté Active</h5>
+                            <p class="text-sm text-gray-600 font-light leading-relaxed">Un réseau de professionnels
+                                certifiés partageant les mêmes valeurs d'excellence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
+            <div class="container mx-auto px-6 md:px-16">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4">
+                    <div class="md:col-span-4 space-y-8">
+                        <a class="block w-64 hover:opacity-80 transition-opacity" href="#">
+                            <img src="logo.png" alt="TRICHOZEN" class="w-full h-auto object-contain"
+                                style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
+                        </a>
+                        <p class="leading-relaxed max-w-sm text-white mt-4">
+                            L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise,
+                            science et rituel d'exception.
+                        </p>
+                        <div class="flex gap-6 text-[#CFA674]">
+                            <a class="hover:text-white transition-colors" href="#"><span
+                                    class="material-symbols-outlined">camera</span></a>
+                            <a class="hover:text-white transition-colors" href="#"><span
+                                    class="material-symbols-outlined">play_circle</span></a>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 space-y-6">
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
+                        <ul class="space-y-4 text-sm font-light">
+                            <li><a class="hover:text-white transition-colors" href="design.html">Home</a></li>
+                            <li><a class="hover:text-white transition-colors" href="particulier.html">Particuliers</a>
+                            </li>
+                            <li><a class="hover:text-white transition-colors"
+                                    href="professionnel.html">Professionnels</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:col-span-2 space-y-6">
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
+                        <ul class="space-y-4 text-sm font-light">
+                            <li><a class="hover:text-white transition-colors" href="contact.html">Contact</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Mentions Légales</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:col-span-4 space-y-6">
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
+                        <p class="text-sm font-light text-white">Inscrivez-vous pour recevoir nos dernières actualités
+                            scientifiques.
+                        </p>
+                        <div class="flex">
+                            <input
+                                class="bg-white/5 border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
+                                placeholder="Votre email" type="email" />
+                            <button
+                                class="bg-[#CFA674] text-white px-6 hover:bg-white hover:text-[#1F455E] transition-colors">
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="pt-3 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
+                    <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED .
+                    </p>
+                    <div class="flex gap-12">
+                        <a class="text-white/40 hover:text-white transition-colors font-medium text-[10px]"
+                            href="#">POLITIQUE DE
+                            CONFIDENTIALITÉ</a>
+                        <a class="text-white/40 hover:text-white transition-colors font-medium text-[10px]"
+                            href="#">CGV</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // ============================================
+        // ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
+        // ============================================
+
+        // Intersection Observer for Reveal Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe all reveal elements
+            document.querySelectorAll('.reveal-text, .fade-in-up, .scale-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>

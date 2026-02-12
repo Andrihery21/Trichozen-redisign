@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Formations - Carrousel</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e61980",
+                        "background-light": "#f8f6f7",
+                        "background-dark": "#150b10",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    keyframes: {
+                        'fade-in': {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        'slide-in': {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        },
+                        'slide-out': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 0.5s ease-in-out',
+                        'slide-in': 'slide-in 0.5s ease-in-out',
+                        'slide-out': 'slide-out 0.5s ease-in-out',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .carousel-slide {
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .carousel-slide.next {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        .carousel-slide.prev {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        .carousel-overlay {
+            background: linear-gradient(to bottom, rgba(21, 11, 16, 0.2), rgba(21, 11, 16, 0.8));
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-slate-100">
+    <!-- Navigation -->
+    <nav class="fixed top-0 z-50 w-full bg-background-dark/80 backdrop-blur-md border-b border-white/5 px-6 md:px-20 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="text-primary">
+                    <svg class="w-8 h-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+                    </svg>
+                </div>
+                <h2 class="text-lg font-bold tracking-tight text-white">Bien-Ãªtre Intime</h2>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- Carousel Section -->
+        <section class="relative h-screen overflow-hidden">
+            <!-- Carousel Container -->
+            <div id="carousel" class="h-full relative">
+                <!-- Slide 1 -->
+                <div class="carousel-slide active absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+                    <div class="carousel-overlay absolute inset-0 flex items-center justify-center">
+                        <div class="text-center px-6 max-w-4xl mx-auto">
+                            <h2 class="font-serif text-4xl md:text-6xl font-light mb-6 text-white">Bienvenue sur notre plateforme</h2>
+                            <div class="flex flex-wrap justify-center gap-4 mt-8">
+                                <button class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full font-bold transition-all transform hover:scale-105">
+                                    JE SUIS PARTICULIER
+                                </button>
+                                <button class="bg-white/10 hover:bg-white/20 text-white px-8 py-3 rounded-full font-bold transition-all transform hover:scale-105 border border-white/20">
+                                    JE SUIS PROFESSIONNEL
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-slide next absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80');">
+                    <div class="carousel-overlay absolute inset-0 flex items-center justify-center">
+                        <div class="text-center px-6 max-w-4xl mx-auto">
+                            <h2 class="font-serif text-4xl md:text-6xl font-light mb-6 text-white">Votre diagnostic capillaire</h2>
+                            <p class="text-xl text-slate-200 mb-8 max-w-2xl mx-auto">Obtenez une analyse personnalisÃ©e de vos besoins capillaires, disponible en ligne ou en prÃ©sentiel.</p>
+                            <button class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full font-bold transition-all transform hover:scale-105">
+                                Prendre rendez-vous
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide next absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80');">
+                    <div class="carousel-overlay absolute inset-0 flex items-center justify-center">
+                        <div class="text-center px-6 max-w-4xl mx-auto">
+                            <h2 class="font-serif text-4xl md:text-6xl font-light mb-2 text-white">Masterclass ComplÃ¨te</h2>
+                            <p class="text-xl text-slate-200 mb-8">Formation intensive de 8 semaines</p>
+                            <button class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full font-bold transition-all transform hover:scale-105">
+                                DÃ©couvrir la formation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="carousel-slide next absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+                    <div class="carousel-overlay absolute inset-0 flex items-center justify-center">
+                        <div class="text-center px-6 max-w-4xl mx-auto">
+                            <h2 class="font-serif text-4xl md:text-6xl font-light mb-6 text-white">Beauty Master Pro</h2>
+                            <p class="text-xl text-slate-200 mb-8">Formation certifiante en soins capillaires avancÃ©s</p>
+                            <button class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full font-bold transition-all transform hover:scale-105">
+                                En savoir plus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full z-10 transition-all">
+                <span class="material-symbols-outlined">arrow_back_ios</span>
+            </button>
+            <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full z-10 transition-all">
+                <span class="material-symbols-outlined">arrow_forward_ios</span>
+            </button>
+
+            <!-- Indicators -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+                <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all indicator" data-slide="0"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all indicator" data-slide="1"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all indicator" data-slide="2"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all indicator" data-slide="3"></button>
+            </div>
+        </section>
+
+        <!-- Formations Section -->
+        <section class="py-20 px-6 md:px-20 bg-background-dark/50">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="font-serif text-3xl md:text-5xl font-light mb-4">Nos Formations</h2>
+                    <p class="text-slate-400 max-w-2xl mx-auto">DÃ©couvrez nos programmes de formation complets pour devenir un expert en soins capillaires.</p>
+                </div>
+
+                <div class="relative">
+                    <div id="formationsList" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                        <!-- Formation 1 -->
+                        <div class="bg-white/5 rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all group">
+                            <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+                            <div class="p-6">
+                                <h3 class="font-serif text-xl font-medium mb-2">Soins du Cheveu Naturel</h3>
+                                <div class="flex items-center text-sm text-slate-400 mb-4">
+                                    <span class="material-symbols-outlined text-primary mr-2">schedule</span>
+                                    <span>8 semaines</span>
+                                </div>
+                                <p class="text-slate-400 text-sm mb-6">Apprenez les techniques essentielles pour prendre soin des cheveux naturels et crÃ©pus.</p>
+                                <button class="w-full bg-primary/10 hover:bg-primary/20 text-primary py-2 rounded-lg transition-all">En savoir plus</button>
+                            </div>
+                        </div>
+
+                        <!-- Formation 2 -->
+                        <div class="bg-white/5 rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all group">
+                            <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1595475884565-9815e54bea94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+                            <div class="p-6">
+                                <h3 class="font-serif text-xl font-medium mb-2">Coloration Professionnelle</h3>
+                                <div class="flex items-center text-sm text-slate-400 mb-4">
+                                    <span class="material-symbols-outlined text-primary mr-2">schedule</span>
+                                    <span>6 semaines</span>
+                                </div>
+                                <p class="text-slate-400 text-sm mb-6">MaÃ®trisez les techniques de coloration professionnelle et les tendances actuelles.</p>
+                                <button class="w-full bg-primary/10 hover:bg-primary/20 text-primary py-2 rounded-lg transition-all">En savoir plus</button>
+                            </div>
+                        </div>
+
+                        <!-- Formation 3 -->
+                        <div class="bg-white/5 rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all group">
+                            <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1605980776566-0486c3ac7617?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+                            <div class="p-6">
+                                <h3 class="font-serif text-xl font-medium mb-2">Extensions de Cheveux</h3>
+                                <div class="flex items-center text-sm text-slate-400 mb-4">
+                                    <span class="material-symbols-outlined text-primary mr-2">schedule</span>
+                                    <span>4 semaines</span>
+                                </div>
+                                <p class="text-slate-400 text-sm mb-6">DÃ©couvrez les diffÃ©rentes mÃ©thodes de pose d'extensions capillaires naturelles.</p>
+                                <button class="w-full bg-primary/10 hover:bg-primary/20 text-primary py-2 rounded-lg transition-all">En savoir plus</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons for Formations -->
+                    <div class="flex justify-center space-x-4">
+                        <button id="prevFormation" class="bg-white/5 hover:bg-white/10 p-3 rounded-full transition-all">
+                            <span class="material-symbols-outlined">arrow_back_ios</span>
+                        </button>
+                        <button id="nextFormation" class="bg-white/5 hover:bg-white/10 p-3 rounded-full transition-all">
+                            <span class="material-symbols-outlined">arrow_forward_ios</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.getElementById('carousel');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            // Initialize carousel
+            function showSlide(index) {
+                // Update indicators
+                indicators.forEach((indicator, i) => {
+                    if (i === index) {
+                        indicator.classList.add('bg-white', 'w-6');
+                        indicator.classList.remove('bg-white/50', 'w-3');
+                    } else {
+                        indicator.classList.remove('bg-white', 'w-6');
+                        indicator.classList.add('bg-white/50', 'w-3');
+                    }
+                });
+
+                // Update slides
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active', 'next', 'prev');
+                    
+                    if (i === index) {
+                        slide.classList.add('active');
+                    } else if (i === (index + 1) % totalSlides) {
+                        slide.classList.add('next');
+                    } else if (i === (index - 1 + totalSlides) % totalSlides) {
+                        slide.classList.add('prev');
+                    } else {
+                        slide.classList.add('next');
+                    }
+                });
+            }
+
+            // Next slide
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+
+            // Previous slide
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(currentSlide);
+            }
+
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // Indicator click
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                });
+            });
+
+            // Auto-advance slides every 5 seconds
+            let slideInterval = setInterval(nextSlide, 5000);
+
+            // Pause on hover
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+
+            // Initialize first slide
+            showSlide(currentSlide);
+
+            // Formations carousel
+            const formationsList = document.getElementById('formationsList');
+            const prevFormationBtn = document.getElementById('prevFormation');
+            const nextFormationBtn = document.getElementById('nextFormation');
+            let currentFormation = 0;
+            const totalFormations = document.querySelectorAll('#formationsList > div').length;
+
+            function updateFormations() {
+                const offset = -currentFormation * 100;
+                formationsList.style.transform = `translateX(${offset}%)`;
+            }
+
+            prevFormationBtn.addEventListener('click', () => {
+                if (currentFormation > 0) {
+                    currentFormation--;
+                    updateFormations();
+                }
+            });
+
+            nextFormationBtn.addEventListener('click', () => {
+                if (currentFormation < totalFormations - 3) {
+                    currentFormation++;
+                    updateFormations();
+                }
+            });
+
+            // Initialize formations
+            updateFormations();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,644 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Contact | Trichozen</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": {
+                            DEFAULT: "#CFA674",
+                            light: "#CFA674",
+                            dark: "#1F455E"
+                        },
+                        "brand-blue": {
+                            DEFAULT: "#1F455E",
+                            light: "#1F455E",
+                            dark: "#1F455E"
+                        },
+                        "gold": {
+                            DEFAULT: "#CFA674",
+                            light: "#CFA674",
+                            dark: "#CFA674"
+                        },
+                        "background-dark": "#0F0F12",
+                        "background-light": "#1A1A23",
+                        "glass-white": "rgba(255, 255, 255, 0.08)",
+                        "glass-border": "rgba(255, 255, 255, 0.15)",
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-primary': 'linear-gradient(135deg, #CFA674 0%, #CFA674 100%)',
+                        'gradient-gold': 'linear-gradient(135deg, #CFA674 0%, #CFA674 100%)',
+                        'gradient-blue': 'linear-gradient(135deg, #1F455E 0%, #1F455E 100%)',
+                    },
+                    fontFamily: {
+                        "display": ["Oswald", "sans-serif"],
+                        "sans": ["Montserrat", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        /* NEXT GEN ANIMATIONS */
+        @keyframes revealText {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(230, 193, 92, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
+        }
+
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s ease-out;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .stagger-1 { transition-delay: 100ms; }
+        .stagger-2 { transition-delay: 200ms; }
+        .stagger-3 { transition-delay: 300ms; }
+        .stagger-4 { transition-delay: 400ms; }
+
+        .hover-glow:hover {
+            animation: glowPulse 2s infinite;
+        }
+
+        .parallax-slow {
+            transition: transform 0.1s ease-out;
+        }
+
+        /* VISUAL BOOST EFFECTS */
+        .watermark-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 15vw;
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.03);
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.1em;
+        }
+
+        .corner-frame {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-color: #CFA674; /* Primary color */
+            pointer-events: none;
+            z-index: 10;
+            transition: all 0.5s ease;
+        }
+
+        .corner-tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
+        .corner-tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
+        .corner-bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
+        .corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
+
+        .framed-content:hover .corner-tl { transform: translate(-10px, -10px); }
+        .framed-content:hover .corner-tr { transform: translate(10px, -10px); }
+        .framed-content:hover .corner-bl { transform: translate(-10px, 10px); }
+        .framed-content:hover .corner-br { transform: translate(10px, 10px); }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(230, 193, 92, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            z-index: 0;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* ADVANCED DESIGN REFINEMENTS */
+        .bg-noise {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .luxury-glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+                0 20px 40px -4px rgba(0, 0, 0, 0.1),
+                inset 0 0 30px rgba(255, 255, 255, 0.02);
+        }
+
+        .premium-card {
+            background: white;
+            border: none;
+            border-radius: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        .premium-card:hover {
+            border-color: rgba(230, 193, 92, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        .parallax-hero {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(128, 0, 32, 0.3);
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .nav-link {
+            @apply text-[14px] uppercase tracking-[0.1em] font-medium transition-all duration-300 text-[#1F455E] hover:text-[#CFA674] flex items-center gap-1 relative;
+            padding: 0.5rem 0;
+        }
+        .nav-link span {
+            color: #CFA674;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .dropdown-group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            background: #FBF5F0;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(207, 166, 116, 0.3); /* Gold #CFA674 */
+        }
+        .dropdown-item {
+            @apply block px-6 py-3 text-[14px] uppercase tracking-widest text-[#1F455E] hover:text-[#CFA674] hover:bg-gradient-to-r from-primary/10 to-transparent transition-all duration-300;
+            border-left: 3px solid transparent;
+        }
+        .dropdown-item:hover {
+            border-left-color: #CFA674;
+            padding-left: 1.5rem;
+        }
+        
+        .sur-titre {
+            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
+        }
+
+        .hero-title {
+            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
+        }
+
+        @layer base {
+            h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
+            h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
+            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
+            h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
+            h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
+            h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
+            p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
+        }
+
+        .quote-style {
+            @apply font-sans font-medium italic text-[23px] leading-relaxed;
+        }
+    </style>
+</head>
+
+<body class="bg-[#faf5f1] font-sans text-[#1F455E] selection:bg-primary selection:text-white overflow-x-hidden">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav h-20 grid grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
+        <!-- Logo Section (Left) -->
+        <div class="flex justify-start">
+            <a class="block w-40 hover:opacity-80 transition-opacity" href="home.html">
+                <img src="logo.png" alt="TRICHOZEN" class="w-full h-auto object-contain"
+                    style="filter: brightness(0) saturate(100%) invert(21%) sepia(21%) saturate(3207%) hue-rotate(176deg) brightness(96%) contrast(101%);">
+            </a>
+        </div>
+
+        <!-- Navigation Links (Center) -->
+        <div class="hidden lg:flex items-center gap-8 justify-center">
+            <a class="nav-link text-[#1F455E]" href="home.html">Home</a>
+            <div class="relative dropdown-group">
+                <a class="nav-link text-[#1F455E]" href="particulier.html">Particuliers <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Diagnostic online</a>
+                    <a class="dropdown-item" href="#">Présentiel</a>
+                    <a class="dropdown-item" href="#">Programme Essentiel</a>
+                </div>
+            </div>
+            <div class="relative dropdown-group">
+                <a class="nav-link text-[#1F455E]" href="professionnel.html">Professionnels <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Catalogue des formations</a>
+                    <div class="h-px bg-white/10 mx-6 my-1"></div>
+                    <a class="dropdown-item" href="#">Trichologie Fondamentale</a>
+                    <a class="dropdown-item" href="#">Protocoles de Soins Premium</a>
+                    <a class="dropdown-item" href="#">Business &amp; Management Luxe</a>
+                </div>
+            </div>
+            <a class="nav-link text-[#1F455E]" href="a-propos.html">À propos</a>
+            <div class="relative dropdown-group">
+                <a class="nav-link text-[#1F455E]" href="#">Ressources <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Espace Marques &amp; Médias</a>
+                    <a class="dropdown-item" href="blog.html">Votre blog TrichoZen</a>
+                    <a class="dropdown-item" href="#">Annuaire</a>
+                    <a class="dropdown-item" href="#">S'inscrire à la NewsLetter</a>
+                </div>
+            </div>
+            <a class="nav-link text-[#1F455E] font-bold" href="contact.html">Contact</a>
+        </div>
+
+        <!-- CTA Button (Right) -->
+        <div class="flex justify-end">
+            <button
+                class="border border-black text-black px-8 py-3 text-[10px] uppercase tracking-widest font-bold transition-all hover:bg-black hover:text-white">
+                RDV Expertise
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative h-[60vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+            <div class="absolute inset-0 z-0 parallax-hero"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBEr5LK4GiWB4PoHah1vTZzdUf82kA_NKzFk6J8y0lmCzfKkh6-kXw1IR1XFaqfEu4ZcTGbxbdurHFqWTZv4EJgBtz6J0VtBQ39wuVTIUk-xww-v-yOeC4_RY05Jfg6T3xG4gheiIusDyCMovAiT2k4RjWDoNg1IWy6ZbZJf6yFK9KfurDrGZQ1UDsr1gEeuY6bPaGPS9xrJ0VUyE3Uml26WR0EvCuYz38MwJEg0nx9X-XRJyx8ZDDntlltj57lx6vWcTdIHfHwaas2"); filter: brightness(0.3);'>
+            </div>
+
+            <div class="floating-shape" style="width: 400px; height: 400px; top: -10%; left: -5%; animation-delay: 0s;">
+            </div>
+            <div class="floating-shape"
+                style="width: 300px; height: 300px; bottom: 10%; right: -5%; animation-delay: 2s;"></div>
+
+            <div class="relative z-10 max-w-4xl space-y-8">
+                <h1 class="text-6xl md:text-8xl font-display text-white reveal-text visible">
+                    Contactez-nous
+                </h1>
+                <div class="w-24 h-px bg-[#CFA674]/50 mx-auto my-8"></div>
+                <p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed italic max-w-2xl mx-auto reveal-text visible"
+                    style="transition-delay: 200ms;">
+                    Une question sur nos services, une demande de formation ou une prise de rendez-vous ?<br />
+                    Nos experts sont à votre écoute pour vous accompagner.
+                </p>
+            </div>
+            <div class="bg-noise"></div>
+        </section>
+
+        <!-- Use strict grid alignment for contact content -->
+        <section class="py-24 px-8 md:px-24 bg-[#faf5f1] relative">
+            <div class="bg-noise"></div>
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 relative z-10">
+
+                <!-- Contact Info Column -->
+                <div class="space-y-16">
+                    <div class="space-y-8 reveal-text">
+                        <h3 class="text-[10px] uppercase tracking-[0.5em] text-[#CFA674] font-bold">Nos Coordonnées</h3>
+                        <h2 class="text-4xl md:text-5xl font-display text-[#1F455E]">
+                            Le Sanctuaire <br /> Trichozen
+                        </h2>
+                        <p class="text-gray-600 font-light leading-relaxed text-lg">
+                            Situé au cœur de la capitale, notre espace est un havre de paix dédié à la santé capillaire
+                            et à la sérénité. Venez découvrir notre cabine exclusive.
+                        </p>
+                    </div>
+
+                    <div class="space-y-10 fade-in-up stagger-1">
+                        <!-- Address -->
+                        <div class="flex items-start gap-6 group">
+                            <div
+                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-[#CFA674] group-hover:bg-[#CFA674] group-hover:text-background-dark transition-all duration-500">
+                                <span class="material-symbols-outlined">location_on</span>
+                            </div>
+                            <div>
+                                <h4 class="text-[#1F455E] text-lg font-display mb-2">Adresse</h4>
+                                <p class="text-gray-600 font-light text-sm leading-relaxed">
+                                    88 Avenue des Champs-Élysées<br />
+                                    75008 Paris, France
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="flex items-start gap-6 group">
+                            <div
+                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-[#CFA674] group-hover:bg-[#CFA674] group-hover:text-background-dark transition-all duration-500">
+                                <span class="material-symbols-outlined">call</span>
+                            </div>
+                            <div>
+                                <h4 class="text-[#1F455E] text-lg font-display mb-2">Téléphone</h4>
+                                <p class="text-gray-600 font-light text-sm leading-relaxed">
+                                    +33 (0)1 45 67 89 10<br />
+                                    <span class="text-white/30 text-xs">Lun-Ven, 9h-19h</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-start gap-6 group">
+                            <div
+                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-[#CFA674] group-hover:bg-[#CFA674] group-hover:text-background-dark transition-all duration-500">
+                                <span class="material-symbols-outlined">mail</span>
+                            </div>
+                            <div>
+                                <h4 class="text-[#1F455E] text-lg font-display mb-2">Email</h4>
+                                <p class="text-gray-600 font-light text-sm leading-relaxed">
+                                    contact@trichozen.com<br />
+                                    rdv@trichozen.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Socials -->
+                    <div class="pt-8 border-t border-white/10 fade-in-up stagger-2">
+                        <h5 class="text-[10px] uppercase tracking-widest text-white/50 mb-6">Suivez-nous</h5>
+                        <div class="flex gap-4">
+                            <a href="#"
+                                class="w-10 h-10 flex items-center justify-center border border-[#1F455E]/20 rounded-full text-[#1F455E] hover:border-[#CFA674] hover:text-[#CFA674] transition-colors">
+                                <span class="material-symbols-outlined text-sm">camera_alt</span>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 flex items-center justify-center border border-[#1F455E]/20 rounded-full text-[#1F455E] hover:border-[#CFA674] hover:text-[#CFA674] transition-colors">
+                                <span class="material-symbols-outlined text-sm">alternate_email</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Column -->
+                <div class="relative fade-in-up stagger-2">
+                    <div class="bg-white p-10 md:p-14 rounded-2xl border border-[#CFA674]/10 shadow-2xl relative">
+                        <!-- Decorative Corner Frames -->
+                        <div class="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#CFA674]/30"></div>
+                        <div class="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[#CFA674]/30"></div>
+
+                        <h3 class="text-3xl font-display text-[#1F455E] mb-8">Envoyez-nous un message</h3>
+
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-2">Nom</label>
+                                    <input type="text"
+                                        class="w-full bg-[#faf5f1] border border-[#1F455E]/10 rounded-lg px-4 py-3 text-[#1F455E] focus:border-[#CFA674]/50 focus:ring-0 transition-colors"
+                                        placeholder="Votre nom" />
+                                </div>
+                                <div class="space-y-2">
+                                    <label
+                                        class="text-[10px] uppercase tracking-widest text-gray-400 ml-2">Prénom</label>
+                                    <input type="text"
+                                        class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-[#CFA674]/50 focus:ring-0 transition-colors"
+                                        placeholder="Votre prénom" />
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-2">Email</label>
+                                <input type="email"
+                                    class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-[#CFA674]/50 focus:ring-0 transition-colors"
+                                    placeholder="votre@email.com" />
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-2">Sujet</label>
+                                <select
+                                    class="w-full bg-[#faf5f1] border border-[#1F455E]/10 rounded-lg px-4 py-3 text-[#1F455E] focus:border-[#CFA674]/50 focus:ring-0 transition-colors">
+                                    <option>Je souhaite prendre rendez-vous</option>
+                                    <option>Renseignements Formation</option>
+                                    <option>Presse & Partenariats</option>
+                                    <option>Autre demande</option>
+                                </select>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-2">Message</label>
+                                <textarea rows="5"
+                                    class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-[#CFA674]/50 focus:ring-0 transition-colors"
+                                    placeholder="Comment pouvons-nous vous aider ?"></textarea>
+                            </div>
+
+                            <div class="pt-4">
+                                <button type="submit"
+                                    class="w-full py-4 bg-gradient-to-r from-primary to-primary-light text-white text-[11px] uppercase tracking-[0.3em] font-bold hover:shadow-[0_0_20px_rgba(154,31,64,0.4)] transition-all duration-300 transform hover:-translate-y-1">
+                                    Envoyer le message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section
+            class="h-[50vh] w-full relative grayscale invert opacity-50 hover:opacity-100 transition-opacity duration-700 map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.4984187285153!2d2.2922926156743895!3d48.867807779288334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fec70fb1d8f%3A0xd9b5676e112e643d!2sAv.%20des%20Champs-%C3%89lys%C3%A9es%2C%20Paris!5e0!3m2!1sfr!2sfr!4v1645459283483!5m2!1sfr!2sfr"
+                allowfullscreen="" loading="lazy"></iframe>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
+            <div class="container mx-auto px-6 md:px-16">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4">
+                    <!-- Brand Column -->
+                    <div class="md:col-span-4 space-y-8">
+                        <a class="block w-64 hover:opacity-80 transition-opacity" href="#">
+                            <img src="logo.png" alt="TRICHOZEN" class="w-full h-auto object-contain"
+                                style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
+                        </a>
+                        <p class="leading-relaxed max-w-sm text-white mt-4">
+                            L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise,
+                            science et rituel d'exception.
+                        </p>
+                        <div class="flex gap-6 text-[#CFA674]">
+                            <a class="hover:text-white transition-colors" href="#"><span
+                                    class="material-symbols-outlined">camera</span></a>
+                            <a class="hover:text-white transition-colors" href="#"><span
+                                    class="material-symbols-outlined">play_circle</span></a>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Column -->
+                    <div class="md:col-span-2 space-y-6">
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
+                        <ul class="space-y-4 text-sm font-light">
+                            <li><a class="hover:text-white transition-colors" href="home.html">Home</a></li>
+                            <li><a class="hover:text-white transition-colors" href="particulier.html">Particuliers</a>
+                            </li>
+                            <li><a class="hover:text-white transition-colors"
+                                    href="professionnel.html">Professionnels</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Legal Column -->
+                    <div class="md:col-span-2 space-y-6">
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
+                        <ul class="space-y-4 text-sm font-light">
+                            <li><a class="hover:text-white transition-colors" href="contact.html">Contact</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Mentions Légales</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter Column -->
+                    <div class="md:col-span-4 space-y-6">
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
+                        <p class="text-sm font-light text-white">Inscrivez-vous pour recevoir nos dernières actualités
+                            scientifiques.
+                        </p>
+                        <div class="flex">
+                            <input
+                                class="bg-white/5 border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
+                                placeholder="Votre email" type="email" />
+                            <button
+                                class="bg-[#CFA674] text-white px-6 hover:bg-white hover:text-[#1F455E] transition-colors">
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div
+                    class="pt-3 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
+                    <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED .
+                    </p>
+                    <div class="flex gap-12">
+                        <a class="text-white/40 hover:text-white transition-colors font-medium text-[10px]"
+                            href="#">POLITIQUE DE
+                            CONFIDENTIALITÉ</a>
+                        <a class="text-white/40 hover:text-white transition-colors font-medium text-[10px]"
+                            href="#">CGV</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // ============================================
+        // ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
+        // ============================================
+
+        // Intersection Observer for Reveal Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe all reveal elements
+            document.querySelectorAll('.reveal-text, .fade-in-up, .scale-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>
