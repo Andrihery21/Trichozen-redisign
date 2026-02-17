@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark" lang="fr">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Académie Professionnelle | Trichozen</title>
+    <title>Programme Essentiel | Trichozen</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
@@ -145,6 +145,28 @@
            ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
            ============================================ */
 
+        .sur-titre {
+            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
+        }
+
+        .hero-title {
+            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
+        }
+
+        @layer base {
+            h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
+            h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
+            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
+            h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
+            h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
+            h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
+            p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
+        }
+
+        .quote-style {
+            @apply font-sans font-medium italic text-[23px] leading-relaxed;
+        }
+
         /* Reveal Animations */
         @keyframes revealText {
             0% { transform: translateY(100%); opacity: 0; }
@@ -259,7 +281,7 @@
             opacity: 1;
         }
 
-        /* Corner Frames with Double Border */
+        /* corner frames */
         .corner-frame {
             position: absolute;
             width: 50px;
@@ -290,17 +312,6 @@
         .corner-bl::after { bottom: 4px; left: 4px; border-bottom: 1px solid; border-left: 1px solid; }
         .corner-br::after { bottom: 4px; right: 4px; border-bottom: 1px solid; border-right: 1px solid; }
 
-        .framed-content:hover .corner-tl { transform: translate(-15px, -15px); }
-        .framed-content:hover .corner-tr { transform: translate(15px, -15px); }
-        .framed-content:hover .corner-bl { transform: translate(-15px, 15px); }
-        .framed-content:hover .corner-br { transform: translate(15px, 15px); }
-
-        .framed-content:hover .corner-frame::after {
-            opacity: 1;
-            border-color: #CFA674;
-            transform: scale(0.9);
-        }
-
         /* Floating Shapes */
         .floating-shape {
             position: absolute;
@@ -308,23 +319,6 @@
             background: linear-gradient(135deg, rgba(230, 193, 92, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
             z-index: 0;
             animation: float 10s infinite ease-in-out;
-        }
-
-        /* Watermark Text */
-        .watermark-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 15vw;
-            font-weight: 700;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.03);
-            white-space: nowrap;
-            pointer-events: none;
-            z-index: 0;
-            font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 0.1em;
         }
 
         /* Parallax Hero */
@@ -335,48 +329,15 @@
             background-size: cover;
         }
 
-        /* Image Container Overlay */
-        .image-container {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .image-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .image-container:hover::after {
-            opacity: 0.5;
-        }
-
-        .sur-titre {
-            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
-        }
-
-        .hero-title {
-            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
-        }
-
-        @layer base {
-            h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
-            h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
-            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
-            h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
-            h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
-            h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
-            p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
-        }
-
-        .quote-style {
-            @apply font-sans font-medium italic text-[23px] leading-relaxed;
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
@@ -406,14 +367,14 @@
                 </div>
             </div>
             <div class="relative dropdown-group">
-                <a class="nav-link text-[#1F455E] font-bold" href="professionnel.html">Professionnels <span
+                <a class="nav-link text-[#1F455E]" href="professionnel.html">Professionnels <span
                         class="material-symbols-outlined text-[14px]">expand_more</span></a>
                 <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
-                    <a class="dropdown-item" href="#">Catalogue des formations</a>
+                    <a class="dropdown-item" href="professionnel.html#catalogue">Catalogue des formations</a>
                     <div class="h-px bg-white/10 mx-6 my-1"></div>
                     <a class="dropdown-item" href="professionnel-template.html">Trichologie Fondamentale</a>
                     <a class="dropdown-item" href="#">Protocoles de Soins Premium</a>
-                    <a class="dropdown-item" href="#">Business & Management Luxe</a>
+                    <a class="dropdown-item" href="#">Business &amp; Management Luxe</a>
                 </div>
             </div>
             <a class="nav-link text-[#1F455E]" href="a-propos.html">À propos</a>
@@ -421,7 +382,7 @@
                 <a class="nav-link text-[#1F455E]" href="#">Ressources <span
                         class="material-symbols-outlined text-[14px]">expand_more</span></a>
                 <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
-                    <a class="dropdown-item" href="#">Espace Marques & Médias</a>
+                    <a class="dropdown-item" href="#">Espace Marques &amp; Médias</a>
                     <a class="dropdown-item" href="blog.html">Votre blog TrichoZen</a>
                     <a class="dropdown-item" href="#">Annuaire</a>
                     <a class="dropdown-item" href="#">S'inscrire à la NewsLetter</a>
@@ -441,55 +402,203 @@
 
     <!-- Main Content -->
     <main class="pt-20">
-        <!-- Section 1: Hero Professionnels -->
-        <section class="relative h-screen flex items-center px-8 md:px-24 overflow-hidden border-b border-white/10">
-            <!-- Floating Shapes -->
-            <div class="floating-shape" style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;">
+
+        <!-- Section 6: Programme Essentiel Banner -->
+        <section id="programme" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://lh3.googleusercontent.com/d/177ublWwq3rfeCGZNcopWeOGxbOUdJMuB"
+                    class="w-full h-full object-cover scale-110 opacity-40 animate-pulse parallax-hero"
+                    alt="Programme Essentiel">
+                <div class="absolute inset-0 bg-background-dark/40"></div>
             </div>
-            <div class="floating-shape"
-                style="width: 200px; height: 200px; bottom: 10%; right: 5%; animation-delay: 3s;"></div>
-            <div class="absolute inset-0 z-0">
-                <img src="https://drive.google.com/thumbnail?sz=w2000&id=1FW6hlJH8uTVEzGhfOizQTRM49kQYLhB2"
-                    class="w-full h-full object-cover opacity-60 parallax-hero" alt="Academy">
-                <div
-                    class="absolute inset-0 bg-gradient-to-r from-background-dark/90 via-background-dark/20 to-transparent">
+            <div class="relative z-10 px-8 fade-in-up">
+                <h2 class="text-6xl md:text-8xl font-display text-white mb-4 uppercase tracking-[0.1em]">
+                    PROGRAMME ESSENTIEL</h2>
+                <p class="text-[12px] uppercase tracking-[0.4em] text-[#CFA674] font-bold mb-10">Durée : 3 mois | Prix :
+                    450€
+                </p>
+                <button
+                    class="bg-[#CFA674] text-white px-8 py-4 text-[13px] uppercase tracking-wide font-medium hover:bg-[#1F455E] transition-all transform hover:scale-110 shadow-[0_0_30px_rgba(255,255,255,0.2)] rounded">
+                    RÉSERVER
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 7: Programme Présentation -->
+        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
+            <div
+                class="max-w-4xl mx-auto border-2 border-[#CFA674]/20 p-12 md:p-24 text-center space-y-12 bg-white/40 luxury-glass fade-in-up">
+                <div class="flex flex-col items-center justify-center">
+                    <h2 class="sur-titre mb-6 reveal-text block">Présentation du Programme</h2>
+                </div>
+                <div class="space-y-6">
+                    <p class="text-2xl md:text-4xl font-display leading-snug text-[#1F455E]">
+                        "Une transformation profonde qui ne se contente pas de soigner vos cheveux, mais redéfinit votre
+                        relation à votre beauté originelle."
+                    </p>
+                    <p class="text-sm text-[#1F455E] font-light max-w-2xl mx-auto leading-relaxed">
+                        Le Programme Essentiel est notre accompagnement signature. Durant 3 mois, nous vous guidons
+                        étape par étape vers une autonomie totale et une santé capillaire retrouvée grâce à notre
+                        protocole exclusif.
+                    </p>
                 </div>
             </div>
-            <div
-                class="relative z-10 grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 items-center w-full max-w-[1600px] mx-auto">
-                <div class="space-y-8 reveal-text">
-                    <div
-                        class="leading-snug border-l-4 border-[#CFA674] pl-4 md:pl-8 pr-12 md:pr-24 py-8 bg-white/5 w-full">
-                        <h1 class="text-7xl md:text-9xl font-display text-white leading-none">
-                            Professionnels</h1>
-                        <p
-                            class="text-xl text-white/80 font-medium max-w-2xl leading-relaxed fade-in-up stagger-1 mt-6">
-                            Élevez votre expertise. Nos formations certifiantes vous ouvrent les portes de la
-                            trichologie
-                            moderne, alliant rigueur scientifique et excellence opérationnelle.
-                        </p>
+        </section>
+
+        <!-- Section 8: Le Programme (Detailed) -->
+        <section id="prestations" class="py-24 px-8 md:px-24 bg-[#FBF5F0] relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col lg:flex-row gap-20">
+                    <!-- Left Column: Text Content -->
+                    <div class="lg:w-3/5 space-y-20">
+                        <div class="flex flex-col items-start justify-start">
+                            <h2 class="sur-titre mb-8 block reveal-text">Le Programme</h2>
+                        </div>
+
+                        <!-- Content Block: Objectifs -->
+                        <div class="space-y-8 fade-in-up">
+                            <h3
+                                class="flex items-center gap-4 text-xl uppercase tracking-[0.2em] font-bold text-[#CFA674]">
+                                <span class="w-4 h-4 bg-[#CFA674]"></span> OBJECTIFS
+                            </h3>
+                            <div class="space-y-6 text-[#1F455E] font-light leading-relaxed">
+                                <p>Comprendre et maîtriser les mécanismes de croissance et de santé de votre chevelure.
+                                </p>
+                                <ul class="list-disc pl-5 space-y-2 font-medium">
+                                    <li>Stabiliser les problématiques de chute ou de fragilité.</li>
+                                    <li>Restaurer l'équilibre du cuir chevelu.</li>
+                                    <li>Optimiser la densité et la brillance naturelle.</li>
+                                    <li>Instaurer une routine d'entretien durable and efficace.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Content Block: Contenu -->
+                        <div class="space-y-8 fade-in-up stagger-1">
+                            <h3
+                                class="flex items-center gap-4 text-xl uppercase tracking-[0.2em] font-bold text-[#CFA674]">
+                                <span class="w-4 h-4 bg-[#CFA674]"></span> CONTENU
+                            </h3>
+                            <div class="space-y-6 text-[#1F455E] font-light leading-relaxed">
+                                <p>Un parcours structuré alliant technologie et approche naturelle.</p>
+                                <ul class="list-disc pl-5 space-y-2 font-medium">
+                                    <li>Bilan initial ultra-détaillé (microscopie incluse en présentiel).</li>
+                                    <li>Kit de produits professionnels sélectionnés sur mesure.</li>
+                                    <li>6 sessions d'accompagnement (visio ou physique).</li>
+                                    <li>Accès à nos guides digitaux exclusifs.</li>
+                                    <li>Suivi nutritionnel et recommandation de compléments.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Content Block: Pourquoi -->
+                        <div class="space-y-8 fade-in-up stagger-2">
+                            <h3
+                                class="flex items-center gap-4 text-xl uppercase tracking-[0.2em] font-bold text-[#CFA674]">
+                                <span class="w-4 h-4 bg-[#CFA674]"></span> POURQUOI
+                            </h3>
+                            <div class="space-y-6 text-[#1F455E] font-light leading-relaxed">
+                                <p>Parce que chaque cheveu a une histoire qui mérite une réponse unique et experte.</p>
+                                <ul class="list-disc pl-5 space-y-2 font-medium">
+                                    <li>Expertise certifiée en trichologie fondamentale.</li>
+                                    <li>Résultats visibles dès le premier mois.</li>
+                                    <li>Accompagnement humain et personnalisé.</li>
+                                    <li>Produits d'excellence sans compromis sur la santé.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Content Block: Le Suivi -->
+                        <div class="space-y-8 fade-in-up stagger-3">
+                            <h3
+                                class="flex items-center gap-4 text-xl uppercase tracking-[0.2em] font-bold text-[#CFA674]">
+                                <span class="w-4 h-4 bg-[#CFA674]"></span> LE SUIVI
+                            </h3>
+                            <div class="space-y-6 text-[#1F455E] font-light leading-relaxed">
+                                <p>Nous ne vous laissons jamais seul(e) face à vos interrogations.</p>
+                                <ul class="list-disc pl-5 space-y-2 font-medium">
+                                    <li>Hotline dédiée durant toute la durée du programme.</li>
+                                    <li>Ajustements mensuels du protocole selon l'évolution.</li>
+                                    <li>Point d'étape final pour consolider les acquis.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Sticky Image -->
+                    <div class="lg:w-2/5">
+                        <div class="sticky top-32 relative">
+                            <div class="aspect-[4/5] overflow-hidden shadow-2xl relative z-10 group">
+                                <img src="https://lh3.googleusercontent.com/d/1ReGnbdQ4WcxEF38ujAhJAUC7M7MWzL2i"
+                                    class="w-full h-full object-cover brightness-95 group-hover:scale-105 transition-all duration-1000"
+                                    alt="Detail">
+                            </div>
+                            <!-- Stylized Frame -->
+                            <div class="absolute -top-10 -right-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 z-0">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="flex justify-center md:justify-end fade-in-up stagger-2">
+            </div>
+        </section>
+
+        <!-- Section 9: Pour qui ? (Professional Grid) -->
+        <section class="py-32 px-8 md:px-24 bg-[#EEF5FD]">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col items-center justify-center text-center mb-20">
+                    <h2 class="sur-titre mb-8 block reveal-text">Pour qui ?</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                    <!-- Option 1: Universel -->
                     <div
-                        class="luxury-glass p-0 rounded-2xl border border-[#CFA674]/20 relative group max-w-sm premium-card framed-content overflow-hidden">
-                        <div
-                            class="absolute -top-4 -right-4 bg-[#CFA674] text-background-dark px-4 py-1 text-[10px] font-bold uppercase tracking-widest z-20">
-                            Formation Phare
+                        class="premium-card pb-12 pt-0 px-0 space-y-6 flex flex-col justify-between fade-in-up overflow-hidden">
+                        <div class="overflow-hidden h-64 w-full">
+                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1hvoTVWkRX0BYJ-q7ZFRwDP_zUe__3c2V"
+                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
+                                alt="Universel">
                         </div>
-                        <div class="corner-frame corner-tl"></div>
-                        <div class="corner-frame corner-tr"></div>
-                        <div class="corner-frame corner-bl"></div>
-                        <div class="corner-frame corner-br"></div>
-                        <img src="https://drive.google.com/thumbnail?sz=w2000&id=1cxx7qxtKX2bIx3Bq-7e9NA5_MwU2ugh2"
-                            class="w-full h-40 object-cover transition-all duration-700" alt="Formation">
-                        <div class="pt-4 px-6 pb-6">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider">Trichologie
-                                Fondamentale</h3>
-                            <p class="text-sm text-[#1F455E] mb-4 font-bold">Prix : 1500€</p>
+                        <div class="px-10">
+                            <h3 class="text-2xl font-bold text-[#CFA674] mb-4 uppercase tracking-widest text-left">
+                                Universel
+                            </h3>
+                            <div class="border-b border-[#CFA674] w-1/4 mb-6"></div>
+                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">
+                                Adapté à tous les types de cheveux européens et asiatiques, avec un focus sur la
+                                densité, la chute saisonnière et la santé du cuir chevelu.
+                            </p>
+                        </div>
+                        <div class="mx-10">
                             <button
-                                class="w-full py-4 text-[13px] uppercase tracking-wider font-bold bg-[#1F455E] text-white hover:bg-[#CFA674] transition-all rounded">
-                                Voir le Dossier
+                                class="w-full py-5 bg-[#CFA674] text-white text-[13px] uppercase tracking-widest font-bold hover:bg-[#1F455E] transition-all rounded shadow-lg">
+                                Réserver le Programme
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Option 2: Afro -->
+                    <div
+                        class="premium-card pb-12 pt-0 px-0 space-y-6 flex flex-col justify-between fade-in-up stagger-1 overflow-hidden">
+                        <div class="overflow-hidden h-64 w-full">
+                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=15I1smZioVVU7W-7ZqUUUpFly1SN_8uhx"
+                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
+                                alt="Afro">
+                        </div>
+                        <div class="px-10">
+                            <h3
+                                class="text-2xl font-bold text-[#CFA674] mb-4 uppercase tracking-widest text-left leading-tight">
+                                Cheveux Afro-Texturés
+                            </h3>
+                            <div class="border-b border-[#CFA674] w-1/4 mb-6"></div>
+                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">
+                                Spécifiquement conçu pour les textures crépues, frisées et bouclées, abordant les enjeux
+                                d'hydratation profonde, d'élasticité et de pousse.
+                            </p>
+                        </div>
+                        <div class="mx-10">
+                            <button
+                                class="w-full py-5 bg-[#CFA674] text-white text-[13px] uppercase tracking-widest font-bold hover:bg-[#1F455E] transition-all rounded shadow-lg">
+                                Réserver le Programme
                             </button>
                         </div>
                     </div>
@@ -497,143 +606,7 @@
             </div>
         </section>
 
-        <!-- Section 2: Catalog Grid -->
-        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
-            <div class="max-w-7xl mx-auto text-center">
-                <span class="sur-titre mb-16 reveal-text block">NOTRE CATALOGUE DE FORMATIONS</span>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Card Template -->
-                    <div
-                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
-                        <div class="overflow-hidden h-48 w-full">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1q3VkyMUfOsW3tx_yyl97g4L2lwwErnvM"
-                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                alt="Formation">
-                        </div>
-                        <div class="px-8">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                Trichologie Fondamentale</h3>
-                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">Maîtrisez les bases
-                                physiologiques
-                                et les pathologies du cuir chevelu.</p>
-                        </div>
-                        <div
-                            class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                            <span>Durée : 3 Jours</span>
-                            <span>1500€</span>
-                        </div>
-                    </div>
-                    <div
-                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-1 overflow-hidden">
-                        <div class="overflow-hidden h-48 w-full">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1B5Up9lUMkpcjBGxHKVbxV_h4UP4DAvpA"
-                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                alt="Formation">
-                        </div>
-                        <div class="px-8">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                Protocoles de Soins Premium</h3>
-                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">Intégrez nos techniques
-                                exclusives
-                                de massage et de soin en cabine.</p>
-                        </div>
-                        <div
-                            class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                            <span>Durée : 2 Jours</span>
-                            <span>950€</span>
-                        </div>
-                    </div>
-                    <div
-                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-2 overflow-hidden">
-                        <div class="overflow-hidden h-48 w-full">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=16lgZ0HsO8o8YEsBuPCVi2u_12dsgXOxc"
-                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                alt="Formation">
-                        </div>
-                        <div class="px-8">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                Business & Management</h3>
-                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">Optimisez la
-                                rentabilité de votre
-                                espace trichologie de luxe.</p>
-                        </div>
-                        <div
-                            class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                            <span>Durée : 1 Jour</span>
-                            <span>600€</span>
-                        </div>
-                    </div>
-                    <div
-                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
-                        <div class="overflow-hidden h-48 w-full">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1hvoTVWkRX0BYJ-q7ZFRwDP_zUe__3c2V"
-                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                alt="Formation">
-                        </div>
-                        <div class="px-8">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                Expertise Afro-Texturés</h3>
-                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">Spécialisation avancée
-                                sur les
-                                problématiques des cheveux crépus.</p>
-                        </div>
-                        <div
-                            class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                            <span>Durée : 2 Jours</span>
-                            <span>1100€</span>
-                        </div>
-                    </div>
-                    <div
-                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-1 overflow-hidden">
-                        <div class="overflow-hidden h-48 w-full">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=15I1smZioVVU7W-7ZqUUUpFly1SN_8uhx"
-                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                alt="Formation">
-                        </div>
-                        <div class="px-8">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">Analyse
-                                Microscopique</h3>
-                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">Apprenez à utiliser les
-                                outils de
-                                diagnostic technologique de pointe.</p>
-                        </div>
-                        <div
-                            class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                            <span>Durée : 1 Jour</span>
-                            <span>450€</span>
-                        </div>
-                    </div>
-                    <div
-                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-2 overflow-hidden">
-                        <div class="overflow-hidden h-48 w-full">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1vG_C14VfFw6dIxD5ndPQQuFAXWIZ5XwJ"
-                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                alt="Formation">
-                        </div>
-                        <div class="px-8">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                Masterclass Ventes</h3>
-                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">Techniques de
-                                recommandation retail
-                                pour produits d'exception.</p>
-                        </div>
-                        <div
-                            class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                            <span>Durée : 1 Jour</span>
-                            <span>400€</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
+        <!-- Official Footer from design.html -->
         <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
             <div class="container mx-auto px-6 md:px-16">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
@@ -734,10 +707,6 @@
     <div class="bg-noise"></div>
 
     <script>
-        // ============================================
-        // ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
-        // ============================================
-
         // Intersection Observer for Reveal Animations
         const observerOptions = {
             threshold: 0.1,
@@ -752,13 +721,15 @@
             });
         }, observerOptions);
 
-        // Initialize on DOM load
         document.addEventListener('DOMContentLoaded', () => {
-            // Observe all reveal elements
             document.querySelectorAll('.reveal-text, .fade-in-up, .scale-in').forEach(el => {
                 observer.observe(el);
             });
         });
+
+        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+            document.body.classList.add('reduce-motion');
+        }
     </script>
 </body>
 

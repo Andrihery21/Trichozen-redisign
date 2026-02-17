@@ -316,9 +316,9 @@
                 <a class="nav-link text-[#1F455E]" href="particulier.html">Particuliers <span
                         class="material-symbols-outlined text-[14px]">expand_more</span></a>
                 <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
-                    <a class="dropdown-item" href="#">Diagnostic online</a>
-                    <a class="dropdown-item" href="#">Présentiel</a>
-                    <a class="dropdown-item" href="#">Programme Essentiel</a>
+                    <a class="dropdown-item" href="diagnostique.html">Diagnostic online</a>
+                    <a class="dropdown-item" href="particulier.html#prestations">Présentiel</a>
+                    <a class="dropdown-item" href="programme-essentiel.html">Programme Essentiel</a>
                 </div>
             </div>
             <div class="relative dropdown-group">
@@ -327,7 +327,7 @@
                 <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
                     <a class="dropdown-item" href="#">Catalogue des formations</a>
                     <div class="h-px bg-white/10 mx-6 my-1"></div>
-                    <a class="dropdown-item" href="#">Trichologie Fondamentale</a>
+                    <a class="dropdown-item" href="professionnel-template.html">Trichologie Fondamentale</a>
                     <a class="dropdown-item" href="#">Protocoles de Soins Premium</a>
                     <a class="dropdown-item" href="#">Business &amp; Management Luxe</a>
                 </div>
@@ -537,67 +537,87 @@
         <!-- Footer -->
         <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
             <div class="container mx-auto px-6 md:px-16">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4">
-                    <!-- Brand Column -->
-                    <div class="md:col-span-4 space-y-8">
-                        <a class="block w-64 hover:opacity-80 transition-opacity" href="#">
-                            <img src="logo.png" alt="TRICHOZEN" class="w-full h-auto object-contain"
-                                style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
-                        </a>
-                        <p class="leading-relaxed max-w-sm text-white mt-4">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
+                    <div class="md:col-span-4 space-y-5">
+                        <div class="flex items-center gap-3">
+                            <a class="block w-72 hover:opacity-80 transition-opacity" href="#">
+                                <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc"
+                                    alt="TRICHOZEN" class="w-full h-auto object-contain"
+                                    style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
+                            </a>
+                        </div>
+                        <p class="leading-relaxed max-w-xl text-white">
                             L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise,
                             science et rituel d'exception.
                         </p>
-                        <div class="flex gap-6 text-[#CFA674]">
-                            <a class="hover:text-white transition-colors" href="#"><span
-                                    class="material-symbols-outlined">camera</span></a>
-                            <a class="hover:text-white transition-colors" href="#"><span
-                                    class="material-symbols-outlined">play_circle</span></a>
+                        <div class="flex gap-6 text-[#CFA674] justify-start">
+                            <a class="hover:text-white transition-colors" href="#" aria-label="Instagram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                </svg>
+                            </a>
+                            <a class="hover:text-white transition-colors mb-3" href="#" aria-label="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                                </svg>
+                            </a>
+                            <a class="hover:text-white transition-colors" href="#" aria-label="YouTube">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Navigation Column -->
                     <div class="md:col-span-2 space-y-6">
                         <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
-                        <ul class="space-y-4 text-sm font-light">
-                            <li><a class="hover:text-white transition-colors" href="home.html">Home</a></li>
-                            <li><a class="hover:text-white transition-colors" href="particulier.html">Particuliers</a>
-                            </li>
-                            <li><a class="hover:text-white transition-colors"
-                                    href="professionnel.html">Professionnels</a></li>
+                        <ul class="space-y-4">
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                    href="#">Home</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                    href="#">Particuliers</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                    href="#">Professionnels</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                    href="#">Ressources</a></li>
                         </ul>
                     </div>
-
-                    <!-- Legal Column -->
                     <div class="md:col-span-2 space-y-6">
                         <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
-                        <ul class="space-y-4 text-sm font-light">
-                            <li><a class="hover:text-white transition-colors" href="contact.html">Contact</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Mentions Légales</a></li>
+                        <ul class="space-y-4">
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                    href="#">Qui sommes-nous</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                    href="contact.html">Contact</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                    href="#">Presse</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                                    href="#">Mentions Légales</a></li>
                         </ul>
                     </div>
-
-                    <!-- Newsletter Column -->
                     <div class="md:col-span-4 space-y-6">
                         <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
-                        <p class="text-sm font-light text-white">Inscrivez-vous pour recevoir nos dernières actualités
+                        <p class="leading-relaxed text-white">Inscrivez-vous pour recevoir nos dernières actualités
                             scientifiques.
                         </p>
                         <div class="flex">
                             <input
-                                class="bg-white/5 border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
+                                class="bg-[#142D3D] border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
                                 placeholder="Votre email" type="email" />
                             <button
-                                class="bg-[#CFA674] text-white px-6 hover:bg-white hover:text-[#1F455E] transition-colors">
+                                class="bg-[#CFA674] text-white px-4 hover:bg-white hover:text-[#1F455E] transition-colors rounded">
                                 <span class="material-symbols-outlined">arrow_forward</span>
                             </button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Copyright -->
                 <div
-                    class="pt-3 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
+                    class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
                     <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED .
                     </p>
                     <div class="flex gap-12">

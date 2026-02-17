@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark" lang="fr">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Académie Professionnelle | Trichozen</title>
+    <title>Diagnostic Capillaire | Trichozen</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
@@ -145,6 +145,28 @@
            ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
            ============================================ */
 
+        .sur-titre {
+            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
+        }
+
+        .hero-title {
+            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
+        }
+
+        @layer base {
+            h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
+            h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
+            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
+            h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
+            h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
+            h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
+            p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
+        }
+
+        .quote-style {
+            @apply font-sans font-medium italic text-[23px] leading-relaxed;
+        }
+
         /* Reveal Animations */
         @keyframes revealText {
             0% { transform: translateY(100%); opacity: 0; }
@@ -163,7 +185,7 @@
         
         @keyframes glowPulse {
             0% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
-            50% { box-shadow: 0 0 20px rgba(230, 193, 92, 0.6); }
+            50% { box-shadow: 0 0 20px rgba(230, 193, 116, 0.6); }
             100% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
         }
 
@@ -357,26 +379,15 @@
             opacity: 0.5;
         }
 
-        .sur-titre {
-            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
-        }
-
-        .hero-title {
-            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
-        }
-
-        @layer base {
-            h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
-            h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
-            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
-            h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
-            h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
-            h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
-            p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
-        }
-
-        .quote-style {
-            @apply font-sans font-medium italic text-[23px] leading-relaxed;
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
@@ -406,14 +417,14 @@
                 </div>
             </div>
             <div class="relative dropdown-group">
-                <a class="nav-link text-[#1F455E] font-bold" href="professionnel.html">Professionnels <span
+                <a class="nav-link text-[#1F455E]" href="professionnel.html">Professionnels <span
                         class="material-symbols-outlined text-[14px]">expand_more</span></a>
                 <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
-                    <a class="dropdown-item" href="#">Catalogue des formations</a>
+                    <a class="dropdown-item" href="professionnel.html#catalogue">Catalogue des formations</a>
                     <div class="h-px bg-white/10 mx-6 my-1"></div>
                     <a class="dropdown-item" href="professionnel-template.html">Trichologie Fondamentale</a>
                     <a class="dropdown-item" href="#">Protocoles de Soins Premium</a>
-                    <a class="dropdown-item" href="#">Business & Management Luxe</a>
+                    <a class="dropdown-item" href="#">Business &amp; Management Luxe</a>
                 </div>
             </div>
             <a class="nav-link text-[#1F455E]" href="a-propos.html">À propos</a>
@@ -421,7 +432,7 @@
                 <a class="nav-link text-[#1F455E]" href="#">Ressources <span
                         class="material-symbols-outlined text-[14px]">expand_more</span></a>
                 <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
-                    <a class="dropdown-item" href="#">Espace Marques & Médias</a>
+                    <a class="dropdown-item" href="#">Espace Marques &amp; Médias</a>
                     <a class="dropdown-item" href="blog.html">Votre blog TrichoZen</a>
                     <a class="dropdown-item" href="#">Annuaire</a>
                     <a class="dropdown-item" href="#">S'inscrire à la NewsLetter</a>
@@ -441,199 +452,115 @@
 
     <!-- Main Content -->
     <main class="pt-20">
-        <!-- Section 1: Hero Professionnels -->
-        <section class="relative h-screen flex items-center px-8 md:px-24 overflow-hidden border-b border-white/10">
-            <!-- Floating Shapes -->
-            <div class="floating-shape" style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;">
+
+        <!-- Section 3: Diagnostic en Ligne Banner -->
+        <section class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://lh3.googleusercontent.com/d/1VW9SocI8zUqNTgLt8b6XcA4s_5HWlBX-"
+                    class="w-full h-full object-cover opacity-40" alt="Online Diagnostic">
+                <div class="absolute inset-0 bg-background-dark/60"></div>
             </div>
-            <div class="floating-shape"
-                style="width: 200px; height: 200px; bottom: 10%; right: 5%; animation-delay: 3s;"></div>
-            <div class="absolute inset-0 z-0">
-                <img src="https://drive.google.com/thumbnail?sz=w2000&id=1FW6hlJH8uTVEzGhfOizQTRM49kQYLhB2"
-                    class="w-full h-full object-cover opacity-60 parallax-hero" alt="Academy">
-                <div
-                    class="absolute inset-0 bg-gradient-to-r from-background-dark/90 via-background-dark/20 to-transparent">
-                </div>
+            <div class="relative z-10 px-8">
+                <h2 class="text-5xl md:text-7xl font-display text-white mb-4 uppercase tracking-[0.2em]">Votre
+                    diagnostic capillaire en ligne</h2>
+                <p class="text-[12px] uppercase tracking-[0.4em] text-[#CFA674] font-bold mb-10">Durée : 45min | Prix :
+                    65€
+                </p>
+                <button
+                    class="bg-[#CFA674] text-white px-8 py-4 text-[13px] uppercase tracking-wide font-medium hover:bg-[#1F455E] transition-all transform hover:scale-110 rounded">
+                    RÉSERVER
+                </button>
             </div>
+        </section>
+
+        <!-- Section 4: Présentation Box -->
+        <section class="py-24 px-8 md:px-24 bg-white">
             <div
-                class="relative z-10 grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 items-center w-full max-w-[1600px] mx-auto">
-                <div class="space-y-8 reveal-text">
-                    <div
-                        class="leading-snug border-l-4 border-[#CFA674] pl-4 md:pl-8 pr-12 md:pr-24 py-8 bg-white/5 w-full">
-                        <h1 class="text-7xl md:text-9xl font-display text-white leading-none">
-                            Professionnels</h1>
-                        <p
-                            class="text-xl text-white/80 font-medium max-w-2xl leading-relaxed fade-in-up stagger-1 mt-6">
-                            Élevez votre expertise. Nos formations certifiantes vous ouvrent les portes de la
-                            trichologie
-                            moderne, alliant rigueur scientifique et excellence opérationnelle.
-                        </p>
-                    </div>
+                class="max-w-4xl mx-auto border-2 border-[#1F455E]/10 p-12 md:p-24 text-center space-y-12 luxury-glass fade-in-up">
+                <div class="flex flex-col items-center justify-center">
+                    <h2 class="sur-titre mb-6 reveal-text block">Présentation</h2>
                 </div>
-                <div class="flex justify-center md:justify-end fade-in-up stagger-2">
-                    <div
-                        class="luxury-glass p-0 rounded-2xl border border-[#CFA674]/20 relative group max-w-sm premium-card framed-content overflow-hidden">
-                        <div
-                            class="absolute -top-4 -right-4 bg-[#CFA674] text-background-dark px-4 py-1 text-[10px] font-bold uppercase tracking-widest z-20">
-                            Formation Phare
-                        </div>
-                        <div class="corner-frame corner-tl"></div>
-                        <div class="corner-frame corner-tr"></div>
-                        <div class="corner-frame corner-bl"></div>
-                        <div class="corner-frame corner-br"></div>
-                        <img src="https://drive.google.com/thumbnail?sz=w2000&id=1cxx7qxtKX2bIx3Bq-7e9NA5_MwU2ugh2"
-                            class="w-full h-40 object-cover transition-all duration-700" alt="Formation">
-                        <div class="pt-4 px-6 pb-6">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider">Trichologie
-                                Fondamentale</h3>
-                            <p class="text-sm text-[#1F455E] mb-4 font-bold">Prix : 1500€</p>
-                            <button
-                                class="w-full py-4 text-[13px] uppercase tracking-wider font-bold bg-[#1F455E] text-white hover:bg-[#CFA674] transition-all rounded">
-                                Voir le Dossier
-                            </button>
-                        </div>
-                    </div>
+                <div class="space-y-6">
+                    <p class="text-2xl md:text-3xl font-display leading-relaxed text-[#1F455E]">
+                        "Un diagnostic en ligne n'est pas qu'une simple consultation. C'est le point de départ d'une
+                        réconciliation avec votre capital beauté, alliant expertise scientifique et écoute
+                        bienveillante."
+                    </p>
+                    <p class="text-sm text-[#1F455E] italic">
+                        L'étape clé pour poser le socle d'une chevelure saine et vigoureuse, où que vous soyez.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: Catalog Grid -->
-        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
-            <div class="max-w-7xl mx-auto text-center">
-                <span class="sur-titre mb-16 reveal-text block">NOTRE CATALOGUE DE FORMATIONS</span>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Card Template -->
-                    <div
-                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
-                        <div class="overflow-hidden h-48 w-full">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1q3VkyMUfOsW3tx_yyl97g4L2lwwErnvM"
-                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                alt="Formation">
+        <!-- Section 5: Accordions (Informations Complémentaires) -->
+        <section class="py-24 px-8 md:px-24 bg-[#faf5f1]">
+            <div class="max-w-4xl mx-auto space-y-12">
+                <div class="text-center mb-16 flex flex-col items-center">
+                    <h2 class="sur-titre mb-8 reveal-text block">Informations Complémentaires</h2>
+                </div>
+
+                <div class="space-y-0.5 border-t border-[#1F455E]/10">
+                    <details class="group py-8 border-b border-[#1F455E]/10 cursor-pointer">
+                        <summary class="flex justify-between items-center list-none outline-none">
+                            <span
+                                class="text-[12px] uppercase tracking-[0.3em] font-medium text-[#1F455E] group-hover:text-[#CFA674] transition-colors">Pour
+                                qui ?</span>
+                            <span
+                                class="material-symbols-outlined text-[#CFA674] transition-transform group-open:rotate-180">expand_more</span>
+                        </summary>
+                        <div class="mt-8 text-[#1F455E] font-light leading-relaxed max-w-2xl">
+                            Ce diagnostic s'adresse à toute personne désireuse de comprendre la nature de ses cheveux,
+                            face à des problématiques de chute, de casse ou de cuir chevelu sensible.
                         </div>
-                        <div class="px-8">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                Trichologie Fondamentale</h3>
-                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">Maîtrisez les bases
-                                physiologiques
-                                et les pathologies du cuir chevelu.</p>
+                    </details>
+
+                    <details class="group py-8 border-b border-[#1F455E]/10 cursor-pointer">
+                        <summary class="flex justify-between items-center list-none outline-none">
+                            <span
+                                class="text-[12px] uppercase tracking-[0.3em] font-medium text-[#1F455E] group-hover:text-[#CFA674] transition-colors">Pourquoi
+                                ? (Importance)</span>
+                            <span
+                                class="material-symbols-outlined text-[#CFA674] transition-transform group-open:rotate-180">expand_more</span>
+                        </summary>
+                        <div class="mt-8 text-[#1F455E] font-light leading-relaxed max-w-2xl">
+                            Identifier les causes profondes permet d'adapter précisément les rituels de soin et de
+                            nutrition, évitant ainsi les dépenses inutiles en produits inadaptés.
                         </div>
-                        <div
-                            class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                            <span>Durée : 3 Jours</span>
-                            <span>1500€</span>
+                    </details>
+
+                    <details class="group py-8 border-b border-[#1F455E]/10 cursor-pointer">
+                        <summary class="flex justify-between items-center list-none outline-none">
+                            <span
+                                class="text-[12px] uppercase tracking-[0.3em] font-medium text-[#1F455E] group-hover:text-[#CFA674] transition-colors">Comment
+                                se déroule le diagnostic ?</span>
+                            <span
+                                class="material-symbols-outlined text-[#CFA674] transition-transform group-open:rotate-180">expand_more</span>
+                        </summary>
+                        <div class="mt-8 text-[#1F455E] font-light leading-relaxed max-w-2xl">
+                            Un échange visiophonique de 45 minutes incluant l'analyse de vos photos macro, vos habitudes
+                            capillaires et votre hygiène de vie.
                         </div>
-                    </div>
-                    <div
-                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-1 overflow-hidden">
-                        <div class="overflow-hidden h-48 w-full">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1B5Up9lUMkpcjBGxHKVbxV_h4UP4DAvpA"
-                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                alt="Formation">
+                    </details>
+
+                    <details class="group py-8 border-b border-[#1F455E]/10 cursor-pointer">
+                        <summary class="flex justify-between items-center list-none outline-none">
+                            <span
+                                class="text-[12px] uppercase tracking-[0.3em] font-medium text-[#1F455E] group-hover:text-[#CFA674] transition-colors">Et
+                                après ?</span>
+                            <span
+                                class="material-symbols-outlined text-[#CFA674] transition-transform group-open:rotate-180">expand_more</span>
+                        </summary>
+                        <div class="mt-8 text-[#1F455E] font-light leading-relaxed max-w-2xl">
+                            Vous recevez un protocole détaillé et personnalisé sous 48h, incluant routine de soins,
+                            recommandations alimentaires et compléments éventuels.
                         </div>
-                        <div class="px-8">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                Protocoles de Soins Premium</h3>
-                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">Intégrez nos techniques
-                                exclusives
-                                de massage et de soin en cabine.</p>
-                        </div>
-                        <div
-                            class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                            <span>Durée : 2 Jours</span>
-                            <span>950€</span>
-                        </div>
-                    </div>
-                    <div
-                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-2 overflow-hidden">
-                        <div class="overflow-hidden h-48 w-full">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=16lgZ0HsO8o8YEsBuPCVi2u_12dsgXOxc"
-                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                alt="Formation">
-                        </div>
-                        <div class="px-8">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                Business & Management</h3>
-                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">Optimisez la
-                                rentabilité de votre
-                                espace trichologie de luxe.</p>
-                        </div>
-                        <div
-                            class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                            <span>Durée : 1 Jour</span>
-                            <span>600€</span>
-                        </div>
-                    </div>
-                    <div
-                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
-                        <div class="overflow-hidden h-48 w-full">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1hvoTVWkRX0BYJ-q7ZFRwDP_zUe__3c2V"
-                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                alt="Formation">
-                        </div>
-                        <div class="px-8">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                Expertise Afro-Texturés</h3>
-                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">Spécialisation avancée
-                                sur les
-                                problématiques des cheveux crépus.</p>
-                        </div>
-                        <div
-                            class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                            <span>Durée : 2 Jours</span>
-                            <span>1100€</span>
-                        </div>
-                    </div>
-                    <div
-                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-1 overflow-hidden">
-                        <div class="overflow-hidden h-48 w-full">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=15I1smZioVVU7W-7ZqUUUpFly1SN_8uhx"
-                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                alt="Formation">
-                        </div>
-                        <div class="px-8">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">Analyse
-                                Microscopique</h3>
-                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">Apprenez à utiliser les
-                                outils de
-                                diagnostic technologique de pointe.</p>
-                        </div>
-                        <div
-                            class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                            <span>Durée : 1 Jour</span>
-                            <span>450€</span>
-                        </div>
-                    </div>
-                    <div
-                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-2 overflow-hidden">
-                        <div class="overflow-hidden h-48 w-full">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1vG_C14VfFw6dIxD5ndPQQuFAXWIZ5XwJ"
-                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                alt="Formation">
-                        </div>
-                        <div class="px-8">
-                            <h3 class="text-xl font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                Masterclass Ventes</h3>
-                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                            <p class="text-[#1F455E] font-medium leading-relaxed text-left">Techniques de
-                                recommandation retail
-                                pour produits d'exception.</p>
-                        </div>
-                        <div
-                            class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                            <span>Durée : 1 Jour</span>
-                            <span>400€</span>
-                        </div>
-                    </div>
+                    </details>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- Official Footer from design.html -->
         <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
             <div class="container mx-auto px-6 md:px-16">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
@@ -759,6 +686,10 @@
                 observer.observe(el);
             });
         });
+        // Performance optimization
+        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+            document.body.classList.add('reduce-motion');
+        }
     </script>
 </body>
 
