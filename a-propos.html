@@ -383,14 +383,18 @@
 <body class="bg-background-dark font-sans text-gray-200 selection:bg-primary selection:text-white overflow-x-hidden">
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 w-full z-50 glass-nav h-20 grid grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
+        <!-- Logo (Left) -->
         <div class="flex justify-start">
             <a class="block w-40 hover:opacity-80 transition-opacity" href="home.html">
                 <img src="logo.png" alt="TRICHOZEN" class="w-full h-auto object-contain"
                     style="filter: brightness(0) saturate(100%) invert(21%) sepia(21%) saturate(3207%) hue-rotate(176deg) brightness(96%) contrast(101%);">
             </a>
         </div>
+
+        <!-- Navigation Links (Center) -->
         <div class="hidden lg:flex items-center gap-8 justify-center">
             <a class="nav-link text-[#1F455E]" href="home.html">Home</a>
+
             <div class="relative dropdown-group">
                 <a class="nav-link text-[#1F455E]" href="particulier.html">Particuliers <span
                         class="material-symbols-outlined text-[14px]">expand_more</span></a>
@@ -400,6 +404,7 @@
                     <a class="dropdown-item" href="programme-essentiel.html">Programme Essentiel</a>
                 </div>
             </div>
+
             <div class="relative dropdown-group">
                 <a class="nav-link text-[#1F455E]" href="professionnel.html">Professionnels <span
                         class="material-symbols-outlined text-[14px]">expand_more</span></a>
@@ -408,9 +413,12 @@
                     <div class="h-px bg-white/10 mx-6 my-1"></div>
                     <a class="dropdown-item" href="professionnel-template.html">Trichologie Fondamentale</a>
                     <a class="dropdown-item" href="#">Protocoles de Soins Premium</a>
+                    <a class="dropdown-item" href="#">Business &amp; Management Luxe</a>
                 </div>
             </div>
-            <a class="nav-link text-[#1F455E] font-bold" href="a-propos.html">À propos</a>
+
+            <a class="nav-link text-[#1F455E]" href="a-propos.html">À propos</a>
+
             <div class="relative dropdown-group">
                 <a class="nav-link text-[#1F455E]" href="#">Ressources <span
                         class="material-symbols-outlined text-[14px]">expand_more</span></a>
@@ -421,11 +429,14 @@
                     <a class="dropdown-item" href="#">S'inscrire à la NewsLetter</a>
                 </div>
             </div>
+
             <a class="nav-link text-[#1F455E]" href="contact.html">Contact</a>
         </div>
+
+        <!-- CTA Button (Right) -->
         <div class="flex justify-end">
             <button
-                class="border border-black text-black px-8 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-black hover:text-white transition-all">
+                class="bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:bg-[#1F455E] rounded">
                 RDV Expertise
             </button>
         </div>
@@ -433,80 +444,90 @@
 
     <main class="pt-20">
         <!-- Hero Section -->
-        <section
-            class="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden py-32">
+        <section class="relative h-screen flex items-center px-8 md:px-24 overflow-hidden border-b border-white/10">
             <!-- Floating Shapes -->
             <div class="floating-shape" style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;">
             </div>
-            <div class="floating-shape" style="width: 200px; height: 200px; top: 60%; right: 10%; animation-delay: 3s;">
+            <div class="floating-shape"
+                style="width: 200px; height: 200px; bottom: 10%; right: 5%; animation-delay: 3s;"></div>
+            <div class="absolute inset-0 z-0">
+                <img src="https://lh3.googleusercontent.com/d/1_TC9xGhtsZpOJUEbM9nBrVHr_zQf8THh"
+                    class="w-full h-full object-cover opacity-60 parallax-hero" alt="About Hero">
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-background-dark/95 via-background-dark/60 to-background-dark/30">
+                </div>
             </div>
-            <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent"></div>
-            <div class="relative z-10 max-w-4xl space-y-8">
-                <h1 class="text-6xl md:text-8xl font-display text-white reveal-text visible parallax-element morph-text"
-                    data-speed="0.5">TRICHOZEN</h1>
-                <h2 class="text-3xl md:text-5xl font-display text-[#CFA674] reveal-text visible parallax-element text-gradient-animate"
-                    style="transition-delay: 200ms;" data-speed="0.3">par Yébé Diouf</h2>
-                <div class="w-24 h-px bg-[#CFA674]/50 mx-auto my-12"></div>
-                <p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed italic max-w-3xl mx-auto reveal-text visible"
-                    style="transition-delay: 400ms;">
-                    "L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise, science
-                    et rituels d'exception."
-                </p>
-                <p class="text-base md:text-lg text-gray-400 font-light leading-relaxed max-w-2xl mx-auto reveal-text visible"
-                    style="transition-delay: 600ms;">
-                    Depuis plus de 15 ans, nous accompagnons les particuliers et formons les professionnels pour
-                    redéfinir les standards du soin capillaire scientifique.
-                </p>
+            <div class="relative z-10 w-full max-w-4xl mx-auto reveal-text visible">
+                <div
+                    class="leading-snug border-l-4 border-[#CFA674] pl-4 md:pl-8 pr-4 md:pr-8 py-8 bg-white/5 w-fit mx-auto text-left">
+                    <h1 class="text-7xl md:text-9xl font-display text-white leading-none">TRICHOZEN</h1>
+                    <h2 class="text-3xl md:text-5xl font-display text-[#CFA674] mt-4 uppercase tracking-wider">par Yébé
+                        Diouf</h2>
+                    <p class="text-xl text-white/80 font-medium max-w-2xl leading-relaxed fade-in-up stagger-1 mt-6">
+                        "L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise,
+                        science et rituels d'exception."
+                    </p>
+                </div>
             </div>
             <div class="bg-noise"></div>
         </section>
 
         <!-- Biography Section -->
-        <section class="py-24 px-8 md:px-24 bg-[#faf5f1]">
+        <section class="py-24 px-8 md:px-24 bg-[#1F455E]">
             <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div class="space-y-8 reveal-text visible">
-                    <h3 class="text-5xl md:text-6xl font-display text-[#1F455E]">Yébé Diouf</h3>
-                    <div class="space-y-6 text-[#1F455E] text-lg font-light leading-relaxed">
-                        <p>Fondatrice de Trichozen et experte reconnue en trichologie, Yébé Diouf a dédié sa carrière à
+                    <span class="sur-titre block mb-6 reveal-text">LA FONDATRICE</span>
+                    <h2 class="text-white">Yébé Diouf</h2>
+                    <div class="space-y-6 text-white text-lg font-light leading-relaxed">
+                        <p class="text-white">Fondatrice de Trichozen et experte reconnue en trichologie, Yébé Diouf a
+                            dédié sa carrière à
                             la compréhension profonde de la fibre capillaire et du cuir chevelu.</p>
-                        <p>Son approche unique combine rigueur scientifique, technologies de pointe et une sensibilité
+                        <p class="text-white">Son approche unique combine rigueur scientifique, technologies de pointe
+                            et une sensibilité
                             esthétique héritée du luxe, permettant de traiter les problématiques les plus complexes avec
                             une vision holistique.</p>
-                        <p>Aujourd'hui, elle partage son savoir-faire à travers une académie de formation qui accueille
+                        <p class="text-white">Aujourd'hui, elle partage son savoir-faire à travers une académie de
+                            formation qui accueille
                             les plus grands noms de la coiffure et de l'esthétique.</p>
                     </div>
                 </div>
-                <div class="relative reveal-text visible framed-content stagger-2" style="transition-delay: 300ms;">
-                    <div class="aspect-[4/5] rounded-lg overflow-hidden border border-white/10 premium-shadow">
-                        <img src="yebe_diouf_portrait.png" alt="Yébé Diouf"
-                            class="w-full h-full object-cover transition-all duration-1000">
+                <div class="relative">
+                    <div class="aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl relative z-10 scale-in">
+                        <img src="https://lh3.googleusercontent.com/d/16knvX4t9xBfhqdm2iMNY67C887XEBd-Z"
+                            alt="Yébé Diouf" class="w-full h-full object-cover transition-all duration-700">
                     </div>
-                    <div class="corner-frame corner-tr"></div>
-                    <div class="corner-frame corner-bl"></div>
+                    <div class="absolute -bottom-10 -left-10 bg-[#CFA674] px-12 py-4 z-20 shadow-2xl text-white">
+                        <span class="font-sans font-medium text-3xl block mb-0 uppercase tracking-[0.2em]">YÉBÉ</span>
+                        <p class="text-[#1F455E] text-[13px] uppercase tracking-wide font-medium font-sans">
+                            FONDATRICE &amp; EXPERTE
+                        </p>
+                    </div>
+                    <div class="absolute -top-10 -right-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 -z-0"></div>
                 </div>
             </div>
         </section>
 
         <!-- Vision Section -->
-        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
+        <section class="py-32 px-8 md:px-24 bg-[#EEF5FD] overflow-hidden">
             <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div class="relative order-2 lg:order-1 fade-in-up stagger-2" style="transition-delay: 300ms;">
-                    <div
-                        class="aspect-[4/5] rounded-lg overflow-hidden border border-[#1F455E]/10 hover-glow shadow-2xl">
-                        <img src="trichology_abstract_v2.png" alt="Vision Trichologie"
-                            class="w-full h-full object-cover parallax-element" data-speed="-0.2">
+                <div class="relative order-2 lg:order-1">
+                    <div class="aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl relative z-10 scale-in">
+                        <img src="https://lh3.googleusercontent.com/d/16334O2p9homZ3YEvfH-7V83dsHU8zVAs"
+                            alt="Vision Trichologie" class="w-full h-full object-cover transition-all duration-700">
                     </div>
-                    <div class="corner-frame corner-tl"></div>
-                    <div class="corner-frame corner-br"></div>
+                    <div class="absolute -top-10 -left-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 -z-0"></div>
                 </div>
-                <div class="space-y-8 order-1 lg:order-2 reveal-text visible">
-                    <h3 class="text-[10px] uppercase tracking-[0.8em] text-[#CFA674] font-bold">NOTRE PHILOSOPHIE</h3>
-                    <h4 class="text-4xl md:text-5xl font-display text-[#1F455E]">VISION DE LA TRICHOLOGIE</h4>
-                    <div class="space-y-6 text-[#1F455E] text-lg font-light leading-relaxed">
-                        <p>La trichologie n'est pas qu'une science du cheveu, c'est l'art de restaurer la confiance et
+                <div class="space-y-8 order-1 lg:order-2">
+                    <span class="sur-titre block mb-6 reveal-text">NOTRE PHILOSOPHIE</span>
+                    <h2 class="text-[#1F455E] fade-in-up">VISION DE LA TRICHOLOGIE</h2>
+                    <div class="space-y-6 text-[#1F455E]/80 text-lg font-light leading-relaxed">
+                        <p class="text-[#1F455E]">La trichologie n'est pas qu'une science du cheveu, c'est l'art de
+                            restaurer la confiance et
                             l'harmonie. Nous croyons en une approche personnalisée où chaque diagnostic est le début
                             d'une transformation.</p>
-                        <p>Notre vision est de démocratiser l'expertise capillaire de haut niveau, en rendant accessible
+                        <p class="text-[#1F455E]">Notre vision est de démocratiser l'expertise capillaire de haut
+                            niveau, en
+                            rendant accessible
                             les meilleures technologies tout en conservant une approche humaine et bienveillante.</p>
                     </div>
                 </div>
@@ -514,12 +535,12 @@
         </section>
 
         <!-- Legitimacy Section -->
-        <section class="py-32 px-8 md:px-24 text-center bg-[#1F455E]">
+        <section class="py-32 px-8 md:px-24 text-center bg-[#FBF5F0]">
             <div class="max-w-4xl mx-auto space-y-12">
-                <h3 class="text-4xl md:text-6xl font-display text-white reveal-text visible">LÉGITIMITÉ &
-                    FORMATIONS</h3>
+                <h2 class="text-[#1F455E] reveal-text visible">LÉGITIMITÉ &
+                    FORMATIONS</h2>
                 <div class="w-16 h-px bg-[#CFA674]/50 mx-auto"></div>
-                <div class="space-y-8 text-white/80 text-xl font-light leading-relaxed italic reveal-text visible"
+                <div class="space-y-8 text-[#1F455E]/80 text-xl font-light leading-relaxed italic reveal-text visible"
                     style="transition-delay: 200ms;">
                     <p>Certifiée par les plus grandes institutions internationales de trichologie, l'expertise Trichozen
                         s'appuie sur des années de recherche et une pratique clinique quotidienne.</p>
@@ -530,10 +551,10 @@
         </section>
 
         <!-- Pourquoi Trichozen -->
-        <section class="py-32 px-8 md:px-24 bg-white">
+        <section class="py-32 px-8 md:px-24 bg-[#CFA773]">
             <div class="max-w-7xl mx-auto space-y-24">
-                <h3 class="text-center text-4xl md:text-5xl font-display text-white outline-text">POURQUOI
-                    TRICHOZEN ?</h3>
+                <h2 class="text-center text-[#1F455E]">POURQUOI
+                    TRICHOZEN ?</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                     <!-- Item 1 -->
                     <div
