@@ -304,7 +304,8 @@
         <!-- Logo Section (Left) -->
         <div class="flex justify-start">
             <a class="block w-40 hover:opacity-80 transition-opacity" href="home.html">
-                <img src="logo.png" alt="TRICHOZEN" class="w-full h-auto object-contain"
+                <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc" alt="TRICHOZEN"
+                    class="w-full h-auto object-contain"
                     style="filter: brightness(0) saturate(100%) invert(21%) sepia(21%) saturate(3207%) hue-rotate(176deg) brightness(96%) contrast(101%);">
             </a>
         </div>
@@ -349,7 +350,7 @@
         <!-- CTA Button (Right) -->
         <div class="flex justify-end">
             <button
-                class="border border-black text-black px-8 py-3 text-[10px] uppercase tracking-widest font-bold transition-all hover:bg-black hover:text-white">
+                class="bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded">
                 RDV Expertise
             </button>
         </div>
@@ -357,43 +358,53 @@
 
     <main class="pt-20">
         <!-- Hero Section -->
-        <section class="relative h-[60vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-            <div class="absolute inset-0 z-0 parallax-hero"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBEr5LK4GiWB4PoHah1vTZzdUf82kA_NKzFk6J8y0lmCzfKkh6-kXw1IR1XFaqfEu4ZcTGbxbdurHFqWTZv4EJgBtz6J0VtBQ39wuVTIUk-xww-v-yOeC4_RY05Jfg6T3xG4gheiIusDyCMovAiT2k4RjWDoNg1IWy6ZbZJf6yFK9KfurDrGZQ1UDsr1gEeuY6bPaGPS9xrJ0VUyE3Uml26WR0EvCuYz38MwJEg0nx9X-XRJyx8ZDDntlltj57lx6vWcTdIHfHwaas2"); filter: brightness(0.3);'>
-            </div>
-
+        <section
+            class="relative h-screen flex items-center px-8 md:px-24 overflow-hidden border-b border-white/10 bg-[#0F0F12]">
+            <!-- Floating Shapes -->
             <div class="floating-shape" style="width: 400px; height: 400px; top: -10%; left: -5%; animation-delay: 0s;">
             </div>
             <div class="floating-shape"
                 style="width: 300px; height: 300px; bottom: 10%; right: -5%; animation-delay: 2s;"></div>
 
-            <div class="relative z-10 max-w-4xl space-y-8">
-                <h1 class="text-6xl md:text-8xl font-display text-white reveal-text visible">
-                    Contactez-nous
-                </h1>
-                <div class="w-24 h-px bg-[#CFA674]/50 mx-auto my-8"></div>
-                <p class="text-xl md:text-2xl text-[#1F455E] font-light leading-relaxed italic max-w-2xl mx-auto reveal-text visible"
-                    style="transition-delay: 200ms;">
-                    Une question sur nos services, une demande de formation ou une prise de rendez-vous ?<br />
-                    Nos experts sont à votre écoute pour vous accompagner.
-                </p>
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 z-0 parallax-hero w-full h-full opacity-60"
+                    style='background-image: url("https://drive.google.com/thumbnail?sz=w2000&id=1-t4DD4s0qhaUhyYQZp_7QDOBtUb2EWcL");'>
+                </div>
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-background-dark/90 via-background-dark/20 to-transparent">
+                </div>
+            </div>
+
+            <div class="relative z-10 w-full max-w-4xl mx-auto flex justify-center">
+                <div class="reveal-text w-full max-w-3xl">
+                    <div
+                        class="leading-snug border-l-4 border-[#CFA674] pl-6 md:pl-10 pr-8 md:pr-12 py-10 bg-white/5 w-full">
+                        <h1 class="text-7xl md:text-9xl font-display text-white leading-none">
+                            Contactez-nous</h1>
+                        <p
+                            class="text-xl text-white/80 font-medium max-w-2xl leading-relaxed fade-in-up stagger-1 mt-8">
+                            Une question sur nos services, une demande de formation ou une prise de rendez-vous ?<br />
+                            Nos experts sont à votre écoute pour vous accompagner.
+                        </p>
+                    </div>
+                </div>
             </div>
             <div class="bg-noise"></div>
         </section>
 
         <!-- Use strict grid alignment for contact content -->
-        <section class="py-24 px-8 md:px-24 bg-[#faf5f1] relative">
+        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD] relative">
             <div class="bg-noise"></div>
             <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 relative z-10">
 
                 <!-- Contact Info Column -->
                 <div class="space-y-16">
-                    <div class="space-y-8 reveal-text">
-                        <h3 class="text-[10px] uppercase tracking-[0.5em] text-[#CFA674] font-bold">Nos Coordonnées</h3>
+                    <div class="space-y-4 reveal-text">
+                        <span class="sur-titre block">Nos Coordonnées</span>
                         <h2 class="text-4xl md:text-5xl font-display text-[#1F455E]">
                             Le Sanctuaire <br /> Trichozen
                         </h2>
-                        <p class="text-[#1F455E] font-light leading-relaxed text-lg">
+                        <p class="text-[#1F455E] font-medium leading-relaxed text-lg">
                             Situé au cœur de la capitale, notre espace est un havre de paix dédié à la santé capillaire
                             et à la sérénité. Venez découvrir notre cabine exclusive.
                         </p>
@@ -476,14 +487,14 @@
                                 <div class="space-y-2">
                                     <label class="text-[10px] uppercase tracking-widest text-[#1F455E] ml-2">Nom</label>
                                     <input type="text"
-                                        class="w-full bg-[#faf5f1] border border-[#1F455E]/10 rounded-lg px-4 py-3 text-[#1F455E] focus:border-[#CFA674]/50 focus:ring-0 transition-colors"
+                                        class="w-full bg-[#EEF5FD] border border-[#1F455E]/10 rounded-lg px-4 py-3 text-[#1F455E] focus:border-[#CFA674]/50 focus:ring-0 transition-colors placeholder:opacity-50"
                                         placeholder="Votre nom" />
                                 </div>
                                 <div class="space-y-2">
                                     <label
                                         class="text-[10px] uppercase tracking-widest text-[#1F455E] ml-2">Prénom</label>
                                     <input type="text"
-                                        class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-[#CFA674]/50 focus:ring-0 transition-colors"
+                                        class="w-full bg-[#EEF5FD] border border-[#1F455E]/10 rounded-lg px-4 py-3 text-[#1F455E] focus:border-[#CFA674]/50 focus:ring-0 transition-colors placeholder:opacity-50"
                                         placeholder="Votre prénom" />
                                 </div>
                             </div>
@@ -491,14 +502,14 @@
                             <div class="space-y-2">
                                 <label class="text-[10px] uppercase tracking-widest text-[#1F455E] ml-2">Email</label>
                                 <input type="email"
-                                    class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-[#CFA674]/50 focus:ring-0 transition-colors"
+                                    class="w-full bg-[#EEF5FD] border border-[#1F455E]/10 rounded-lg px-4 py-3 text-[#1F455E] focus:border-[#CFA674]/50 focus:ring-0 transition-colors placeholder:opacity-50"
                                     placeholder="votre@email.com" />
                             </div>
 
                             <div class="space-y-2">
                                 <label class="text-[10px] uppercase tracking-widest text-[#1F455E] ml-2">Sujet</label>
                                 <select
-                                    class="w-full bg-[#faf5f1] border border-[#1F455E]/10 rounded-lg px-4 py-3 text-[#1F455E] focus:border-[#CFA674]/50 focus:ring-0 transition-colors">
+                                    class="w-full bg-[#EEF5FD] border border-[#1F455E]/10 rounded-lg px-4 py-3 text-[#1F455E] focus:border-[#CFA674]/50 focus:ring-0 transition-colors">
                                     <option>Je souhaite prendre rendez-vous</option>
                                     <option>Renseignements Formation</option>
                                     <option>Presse & Partenariats</option>
@@ -509,13 +520,13 @@
                             <div class="space-y-2">
                                 <label class="text-[10px] uppercase tracking-widest text-[#1F455E] ml-2">Message</label>
                                 <textarea rows="5"
-                                    class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-[#CFA674]/50 focus:ring-0 transition-colors"
+                                    class="w-full bg-[#EEF5FD] border border-[#1F455E]/10 rounded-lg px-4 py-3 text-[#1F455E] focus:border-[#CFA674]/50 focus:ring-0 transition-colors placeholder:opacity-50"
                                     placeholder="Comment pouvons-nous vous aider ?"></textarea>
                             </div>
 
                             <div class="pt-4">
                                 <button type="submit"
-                                    class="w-full py-4 bg-gradient-to-r from-primary to-primary-light text-white text-[11px] uppercase tracking-[0.3em] font-bold hover:shadow-[0_0_20px_rgba(154,31,64,0.4)] transition-all duration-300 transform hover:-translate-y-1">
+                                    class="w-full py-4 bg-[#CFA674] text-white text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded shadow-lg">
                                     Envoyer le message
                                 </button>
                             </div>
@@ -524,14 +535,6 @@
                 </div>
 
             </div>
-        </section>
-
-        <!-- Map Section -->
-        <section
-            class="h-[50vh] w-full relative opacity-50 hover:opacity-100 transition-opacity duration-700 map-container">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.4984187285153!2d2.2922926156743895!3d48.867807779288334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fec70fb1d8f%3A0xd9b5676e112e643d!2sAv.%20des%20Champs-%C3%89lys%C3%A9es%2C%20Paris!5e0!3m2!1sfr!2sfr!4v1645459283483!5m2!1sfr!2sfr"
-                allowfullscreen="" loading="lazy"></iframe>
         </section>
 
         <!-- Footer -->
@@ -577,26 +580,26 @@
                     <div class="md:col-span-2 space-y-6">
                         <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
                         <ul class="space-y-4">
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Home</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Particuliers</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Professionnels</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Ressources</a></li>
                         </ul>
                     </div>
                     <div class="md:col-span-2 space-y-6">
                         <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
                         <ul class="space-y-4">
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Qui sommes-nous</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="contact.html">Contact</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Presse</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Mentions Légales</a></li>
                         </ul>
                     </div>
@@ -610,7 +613,7 @@
                                 class="bg-[#142D3D] border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
                                 placeholder="Votre email" type="email" />
                             <button
-                                class="bg-[#CFA674] text-white px-4 hover:bg-white hover:text-[#1F455E] transition-colors rounded">
+                                class="bg-[#CFA674] text-white px-4 hover:opacity-80 transition-colors rounded">
                                 <span class="material-symbols-outlined">arrow_forward</span>
                             </button>
                         </div>
@@ -621,10 +624,10 @@
                     <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED .
                     </p>
                     <div class="flex gap-12">
-                        <a class="text-white/40 hover:text-white transition-colors font-medium text-[10px]"
+                        <a class="text-white/40 transition-colors font-medium text-[10px]"
                             href="#">POLITIQUE DE
                             CONFIDENTIALITÉ</a>
-                        <a class="text-white/40 hover:text-white transition-colors font-medium text-[10px]"
+                        <a class="text-white/40 transition-colors font-medium text-[10px]"
                             href="#">CGV</a>
                     </div>
                 </div>

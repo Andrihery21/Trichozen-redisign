@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="dark" lang="fr">
 
 <head>
@@ -444,7 +444,7 @@
         <!-- CTA Button (Right) -->
         <div class="flex justify-end">
             <button
-                class="bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:bg-[#1F455E] rounded">
+                class="bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded">
                 RDV Expertise
             </button>
         </div>
@@ -467,16 +467,16 @@
                     65€
                 </p>
                 <button
-                    class="bg-[#CFA674] text-white px-8 py-4 text-[13px] uppercase tracking-wide font-medium hover:bg-[#1F455E] transition-all transform hover:scale-110 rounded">
+                    class="bg-[#CFA674] text-white px-8 py-4 text-[13px] uppercase tracking-wide font-medium hover:opacity-80 transition-all transform hover:scale-110 rounded">
                     RÉSERVER
                 </button>
             </div>
         </section>
 
         <!-- Section 4: Présentation Box -->
-        <section class="py-24 px-8 md:px-24 bg-white">
+        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
             <div
-                class="max-w-4xl mx-auto border-2 border-[#1F455E]/10 p-12 md:p-24 text-center space-y-12 luxury-glass fade-in-up">
+                class="max-w-4xl mx-auto border-2 border-[#1F455E]/10 p-12 md:p-24 text-center space-y-12 luxury-glass !bg-[#FBF5F0] fade-in-up">
                 <div class="flex flex-col items-center justify-center">
                     <h2 class="sur-titre mb-6 reveal-text block">Présentation</h2>
                 </div>
@@ -489,6 +489,47 @@
                     <p class="text-sm text-[#1F455E] italic">
                         L'étape clé pour poser le socle d'une chevelure saine et vigoureuse, où que vous soyez.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Comment se déroule le diagnostic -->
+        <section class="py-24 px-8 md:px-24 bg-[#2F6385] overflow-hidden relative">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 flex flex-col items-center">
+                    <h2 class="sur-titre mb-8 reveal-text block text-white/90">Comment se déroule le diagnostic ?</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <!-- Step 1 -->
+                    <div class="premium-card !bg-[#FBF5F0] p-10 space-y-6 fade-in-up stagger-1">
+                        <div
+                            class="w-12 h-12 bg-[#1F455E] text-white flex items-center justify-center rounded-full font-display text-xl">
+                            01</div>
+                        <h4 class="text-[#1F455E]">Photos Macro</h4>
+                        <p class="text-sm">Envoi préalable de photos macro de votre cuir chevelu et de vos cheveux selon
+                            notre guide précis.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="premium-card !bg-[#FBF5F0] p-10 space-y-6 fade-in-up stagger-2">
+                        <div
+                            class="w-12 h-12 bg-[#CFA674] text-white flex items-center justify-center rounded-full font-display text-xl">
+                            02</div>
+                        <h4 class="text-[#1F455E]">Échange Visioconférence</h4>
+                        <p class="text-sm">Un échange de 45 minutes pour analyser vos habitudes, votre hygiène de vie et
+                            vos antécédents.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="premium-card !bg-[#FBF5F0] p-10 space-y-6 fade-in-up stagger-3">
+                        <div
+                            class="w-12 h-12 bg-[#1F455E] text-white flex items-center justify-center rounded-full font-display text-xl">
+                            03</div>
+                        <h4 class="text-[#1F455E]">Protocole Personnalisé</h4>
+                        <p class="text-sm">Réception sous 48h de votre protocole détaillé incluant soins, nutrition et
+                            compléments.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -529,19 +570,7 @@
                         </div>
                     </details>
 
-                    <details class="group py-8 border-b border-[#1F455E]/10 cursor-pointer">
-                        <summary class="flex justify-between items-center list-none outline-none">
-                            <span
-                                class="text-[12px] uppercase tracking-[0.3em] font-medium text-[#1F455E] group-hover:text-[#CFA674] transition-colors">Comment
-                                se déroule le diagnostic ?</span>
-                            <span
-                                class="material-symbols-outlined text-[#CFA674] transition-transform group-open:rotate-180">expand_more</span>
-                        </summary>
-                        <div class="mt-8 text-[#1F455E] font-light leading-relaxed max-w-2xl">
-                            Un échange visiophonique de 45 minutes incluant l'analyse de vos photos macro, vos habitudes
-                            capillaires et votre hygiène de vie.
-                        </div>
-                    </details>
+
 
                     <details class="group py-8 border-b border-[#1F455E]/10 cursor-pointer">
                         <summary class="flex justify-between items-center list-none outline-none">
@@ -603,26 +632,26 @@
                     <div class="md:col-span-2 space-y-6">
                         <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
                         <ul class="space-y-4">
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Home</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Particuliers</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Professionnels</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Ressources</a></li>
                         </ul>
                     </div>
                     <div class="md:col-span-2 space-y-6">
                         <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
                         <ul class="space-y-4">
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Qui sommes-nous</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="contact.html">Contact</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Presse</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider hover:text-white transition-colors"
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Mentions Légales</a></li>
                         </ul>
                     </div>
@@ -636,7 +665,7 @@
                                 class="bg-[#142D3D] border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
                                 placeholder="Votre email" type="email" />
                             <button
-                                class="bg-[#CFA674] text-white px-4 hover:bg-white hover:text-[#1F455E] transition-colors rounded">
+                                class="bg-[#CFA674] text-white px-4 hover:opacity-80 transition-colors rounded">
                                 <span class="material-symbols-outlined">arrow_forward</span>
                             </button>
                         </div>
@@ -647,10 +676,10 @@
                     <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED .
                     </p>
                     <div class="flex gap-12">
-                        <a class="text-white/40 hover:text-white transition-colors font-medium text-[10px]"
+                        <a class="text-white/40 transition-colors font-medium text-[10px]"
                             href="#">POLITIQUE DE
                             CONFIDENTIALITÉ</a>
-                        <a class="text-white/40 hover:text-white transition-colors font-medium text-[10px]"
+                        <a class="text-white/40 transition-colors font-medium text-[10px]"
                             href="#">CGV</a>
                     </div>
                 </div>
