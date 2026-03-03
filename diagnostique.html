@@ -164,7 +164,7 @@
         }
 
         .quote-style {
-            @apply font-sans font-medium italic text-[23px] leading-relaxed;
+            @apply font-sans font-medium italic text-[22px] leading-relaxed;
         }
 
         /* Reveal Animations */
@@ -458,7 +458,6 @@
             <div class="absolute inset-0">
                 <img src="https://lh3.googleusercontent.com/d/1VW9SocI8zUqNTgLt8b6XcA4s_5HWlBX-"
                     class="w-full h-full object-cover opacity-40" alt="Online Diagnostic">
-                <div class="absolute inset-0 bg-background-dark/60"></div>
             </div>
             <div class="relative z-10 px-8">
                 <h2 class="text-5xl md:text-7xl font-display text-white mb-4 uppercase tracking-[0.2em]">Votre
@@ -493,42 +492,246 @@
             </div>
         </section>
 
-        <!-- Section: Comment se déroule le diagnostic -->
-        <section class="py-24 px-8 md:px-24 bg-[#2F6385] overflow-hidden relative">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16 flex flex-col items-center">
-                    <h2 class="sur-titre mb-8 reveal-text block text-white/90">Comment se déroule le diagnostic ?</h2>
+        <!-- Section: Votre Diagnostic Capillaire (Inspired by professionnel-template.html) -->
+        <section class="py-24 px-8 md:px-24 bg-[#FBF5F0]">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col lg:flex-row gap-20">
+                    <div class="lg:w-3/5 space-y-20">
+                        <span class="sur-titre reveal-text block mb-16">VOTRE DIAGNOSTIC CAPILLAIRE</span>
+
+                        <div class="space-y-8">
+                            <h3
+                                class="flex items-center gap-4 text-xl uppercase tracking-wider font-bold text-[#CFA674]">
+                                <span class="w-4 h-4 bg-[#CFA674]"></span> POURQUOI EN AVEZ-VOUS BESOIN ?
+                            </h3>
+                            <div class="space-y-6">
+                                <p class="text-[#1F455E] font-medium leading-relaxed">
+                                    Une chute de cheveux ou un cuir chevelu sensible n'est jamais le fruit du hasard.
+                                    C'est un signal d'alerte de votre corps qui nécessite une analyse experte pour agir
+                                    à la source.
+                                </p>
+                                <ul class="list-disc pl-5 space-y-4 text-[#1F455E] font-medium leading-relaxed">
+                                    <li>Identification des carences nutritionnelles.</li>
+                                    <li>Analyse des facteurs de stress et mode de vie.</li>
+                                    <li>Compréhension de votre cycle pilaire.</li>
+                                    <li>Économie de temps et d'argent sur des produits inadaptés.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="space-y-8">
+                            <h3
+                                class="flex items-center gap-4 text-xl uppercase tracking-wider font-bold text-[#CFA674]">
+                                <span class="w-4 h-4 bg-[#CFA674]"></span> LE DIAGNOSTIC CHEZ TRICHOZEN
+                            </h3>
+                            <div class="space-y-6">
+                                <p class="text-[#1F455E] font-medium leading-relaxed">
+                                    Plus qu'une simple consultation, c'est un moment privilégié d'écoute et de science
+                                    pour définir votre nouveau rituel d'exception.
+                                </p>
+                                <ul class="list-disc pl-5 space-y-4 text-[#1F455E] font-medium leading-relaxed">
+                                    <li>Analyse macroscopique rigoureuse (photos HD).</li>
+                                    <li>Entretien personnalisé de 45 minutes en visio.</li>
+                                    <li>Protocole holistique exclusif sous 48h.</li>
+                                    <li>Suivi de progression et ajustements réguliers.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:w-2/5">
+                        <div class="sticky top-32 relative">
+                            <div class="aspect-[4/5] overflow-hidden shadow-2xl relative z-10 group">
+                                <img src="https://lh3.googleusercontent.com/d/1WbNbos-zgmFNgj7ocKbcG1WPuo2AyYDP"
+                                    class="w-full h-full object-cover brightness-90 group-hover:scale-105 transition-all duration-1000"
+                                    alt="Votre Diagnostic Capillaire">
+                            </div>
+                            <div class="absolute -top-10 -right-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 -z-10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Comment se déroule le diagnostic (Style Section 2) -->
+        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
+            <div
+                class="max-w-4xl mx-auto border-2 border-[#1F455E]/10 p-12 md:p-24 text-center space-y-12 luxury-glass !bg-[#FBF5F0] fade-in-up">
+                <div class="flex flex-col items-center justify-center">
+                    <h2 class="sur-titre mb-6 reveal-text block">Comment se déroule le diagnostic</h2>
+                </div>
+                <div class="space-y-8">
+                    <p class="text-xl md:text-2xl font-display leading-relaxed text-[#1F455E]">
+                        Un parcours d'expertise en trois temps pour révéler le plein potentiel de votre chevelure.
+                    </p>
+                    <div class="grid grid-cols-1 gap-8 text-left max-w-xl mx-auto">
+                        <div class="space-y-2">
+                            <h4
+                                class="text-[#CFA674] text-sm uppercase tracking-widest font-bold flex items-center gap-2">
+                                <span class="w-2 h-2 bg-[#CFA674]"></span> 01. ANALYSE MACRO
+                            </h4>
+                            <p class="text-sm text-[#1F455E]">Étude de vos photos haute définition pour identifier les
+                                déséquilibres visibles.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4
+                                class="text-[#CFA674] text-sm uppercase tracking-widest font-bold flex items-center gap-2">
+                                <span class="w-2 h-2 bg-[#CFA674]"></span> 02. CONSULTATION LIVE
+                            </h4>
+                            <p class="text-sm text-[#1F455E]">Échange approfondi sur vos habitudes et votre physiologie
+                                capillaire.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4
+                                class="text-[#CFA674] text-sm uppercase tracking-widest font-bold flex items-center gap-2">
+                                <span class="w-2 h-2 bg-[#CFA674]"></span> 03. PLAN DE SOINS
+                            </h4>
+                            <p class="text-sm text-[#1F455E]">Remise de votre protocole sur-mesure combinant science et
+                                rituels premium.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: CHOISIS LE FORMAT QUI TE CONVIENT (Style Premium Cards) -->
+        <section class="py-32 px-8 md:px-24 bg-[#2F6385]">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col items-center justify-center text-center mb-20">
+                    <h2 class="sur-titre mb-8 block reveal-text">CHOISIS LE FORMAT QUI TE CONVIENT</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <!-- Step 1 -->
-                    <div class="premium-card !bg-[#FBF5F0] p-10 space-y-6 fade-in-up stagger-1">
-                        <div
-                            class="w-12 h-12 bg-[#1F455E] text-white flex items-center justify-center rounded-full font-display text-xl">
-                            01</div>
-                        <h4 class="text-[#1F455E]">Photos Macro</h4>
-                        <p class="text-sm">Envoi préalable de photos macro de votre cuir chevelu et de vos cheveux selon
-                            notre guide précis.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto">
+                    <!-- Option 1: Diagnostic en Ligne -->
+                    <div class="premium-card bg-white flex flex-col group fade-in-up">
+                        <div class="p-8 space-y-4 flex-grow">
+                            <h3
+                                class="text-2xl font-bold text-[#CFA674] mb-4 uppercase tracking-widest text-left leading-tight">
+                                DIAGNOSTIC EN LIGNE
+                            </h3>
+                            <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                            <div class="space-y-4">
+                                <p
+                                    class="text-[12px] uppercase tracking-[0.3em] text-[#1F455E] opacity-60 font-bold mb-4">
+                                    Durée : 45min | Prix : 65€
+                                </p>
+                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">
+                                    Parfait si vous avez : une problématique précise, une question ciblée ou une envie
+                                    de validation rapide.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-8 pt-0">
+                            <button
+                                class="w-full py-5 bg-[#CFA674] text-white text-[13px] uppercase tracking-widest font-bold hover:opacity-80 transition-all rounded shadow-lg">
+                                RÉSERVER LE DIAGNOSTIC
+                            </button>
+                        </div>
                     </div>
 
-                    <!-- Step 2 -->
-                    <div class="premium-card !bg-[#FBF5F0] p-10 space-y-6 fade-in-up stagger-2">
-                        <div
-                            class="w-12 h-12 bg-[#CFA674] text-white flex items-center justify-center rounded-full font-display text-xl">
-                            02</div>
-                        <h4 class="text-[#1F455E]">Échange Visioconférence</h4>
-                        <p class="text-sm">Un échange de 45 minutes pour analyser vos habitudes, votre hygiène de vie et
-                            vos antécédents.</p>
+                    <!-- Option 2: Diagnostic en Présentiel -->
+                    <div class="premium-card bg-white flex flex-col group fade-in-up stagger-1">
+                        <div class="p-8 space-y-4 flex-grow">
+                            <h3
+                                class="text-2xl font-bold text-[#CFA674] mb-4 uppercase tracking-widest text-left leading-tight">
+                                DIAGNOSTIC EN PRÉSENTIEL
+                            </h3>
+                            <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                            <div class="space-y-4">
+                                <p
+                                    class="text-[12px] uppercase tracking-[0.3em] text-[#1F455E] opacity-60 font-bold mb-4">
+                                    Durée : 1h30 | Prix : 120€
+                                </p>
+                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">
+                                    Performant si : problématique ancienne, question vitale ou envie de bilan complet
+                                    avec microscopie.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-8 pt-0">
+                            <button
+                                class="w-full py-5 bg-[#CFA674] text-white text-[13px] uppercase tracking-widest font-bold hover:opacity-80 transition-all rounded shadow-lg">
+                                RÉSERVER LE DIAGNOSTIC
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Testimonials (RETOUR D'EXPÉRIENCE) -->
+        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col items-center justify-center text-center mb-20">
+                    <h2 class="sur-titre mb-8 block reveal-text">RETOUR D'EXPÉRIENCE</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
+                    <!-- Testimonial 1 -->
+                    <div
+                        class="premium-card bg-[#FBF5F0] p-8 flex flex-col items-center text-center space-y-6 fade-in-up">
+                        <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#CFA674]/30">
+                            <img src="testimonial_1.png" alt="Sophie" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex text-[#CFA674]">
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                        </div>
+                        <p class="quote-style text-[#1F455E]">
+                            "Une expertise qui a changé ma vision de mes cheveux. Le diagnostic est précis et le
+                            protocole facile à suivre."
+                        </p>
+                        <div class="pt-4">
+                            <h4 class="text-[#CFA674] text-sm uppercase tracking-widest font-bold">Sophie</h4>
+                        </div>
                     </div>
 
-                    <!-- Step 3 -->
-                    <div class="premium-card !bg-[#FBF5F0] p-10 space-y-6 fade-in-up stagger-3">
-                        <div
-                            class="w-12 h-12 bg-[#1F455E] text-white flex items-center justify-center rounded-full font-display text-xl">
-                            03</div>
-                        <h4 class="text-[#1F455E]">Protocole Personnalisé</h4>
-                        <p class="text-sm">Réception sous 48h de votre protocole détaillé incluant soins, nutrition et
-                            compléments.</p>
+                    <!-- Testimonial 2 -->
+                    <div
+                        class="premium-card bg-[#FBF5F0] p-8 flex flex-col items-center text-center space-y-6 fade-in-up stagger-1">
+                        <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#CFA674]/30">
+                            <img src="testimonial_2_female.png" alt="Marie" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex text-[#CFA674]">
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                        </div>
+                        <p class="quote-style text-[#1F455E]">
+                            "Enfin des réponses concrètes à mes problèmes de chute. Je vois déjà une différence en
+                            quelques semaines."
+                        </p>
+                        <div class="pt-4">
+                            <h4 class="text-[#CFA674] text-sm uppercase tracking-widest font-bold">Marie</h4>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div
+                        class="premium-card bg-[#FBF5F0] p-8 flex flex-col items-center text-center space-y-6 fade-in-up stagger-2">
+                        <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#CFA674]/30">
+                            <img src="testimonial_3.png" alt="Léa" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex text-[#CFA674]">
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            <span class="material-symbols-outlined text-sm">star</span>
+                        </div>
+                        <p class="quote-style text-[#1F455E]">
+                            "Moment très enrichissant. On sent la passion et la science derrière chaque conseil. Je
+                            recommande à 100%."
+                        </p>
+                        <div class="pt-4">
+                            <h4 class="text-[#CFA674] text-sm uppercase tracking-widest font-bold">Léa</h4>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -551,7 +754,8 @@
                                 class="material-symbols-outlined text-[#CFA674] transition-transform group-open:rotate-180">expand_more</span>
                         </summary>
                         <div class="mt-8 text-[#1F455E] font-light leading-relaxed max-w-2xl">
-                            Ce diagnostic s'adresse à toute personne désireuse de comprendre la nature de ses cheveux,
+                            Ce diagnostic s'adresse à toute personne désireuse de comprendre la nature de ses
+                            cheveux,
                             face à des problématiques de chute, de casse ou de cuir chevelu sensible.
                         </div>
                     </details>
@@ -602,7 +806,8 @@
                             </a>
                         </div>
                         <p class="leading-relaxed max-w-xl text-white">
-                            L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise,
+                            L'excellence de la trichologie moderne au service de votre capital capillaire.
+                            Expertise,
                             science et rituel d'exception.
                         </p>
                         <div class="flex gap-6 text-[#CFA674] justify-start">
@@ -664,8 +869,7 @@
                             <input
                                 class="bg-[#142D3D] border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
                                 placeholder="Votre email" type="email" />
-                            <button
-                                class="bg-[#CFA674] text-white px-4 hover:opacity-80 transition-colors rounded">
+                            <button class="bg-[#CFA674] text-white px-4 hover:opacity-80 transition-colors rounded">
                                 <span class="material-symbols-outlined">arrow_forward</span>
                             </button>
                         </div>
@@ -673,14 +877,13 @@
                 </div>
                 <div
                     class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
-                    <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED .
+                    <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED
+                        .
                     </p>
                     <div class="flex gap-12">
-                        <a class="text-white/40 transition-colors font-medium text-[10px]"
-                            href="#">POLITIQUE DE
+                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">POLITIQUE DE
                             CONFIDENTIALITÉ</a>
-                        <a class="text-white/40 transition-colors font-medium text-[10px]"
-                            href="#">CGV</a>
+                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">CGV</a>
                     </div>
                 </div>
             </div>
