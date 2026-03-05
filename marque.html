@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Marques & Médias | Trichozen</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": {
+                            DEFAULT: "#CFA674",
+                            light: "#CFA674",
+                            dark: "#1F455E"
+                        },
+                        "brand-blue": {
+                            DEFAULT: "#1F455E",
+                            light: "#1F455E",
+                            dark: "#1F455E"
+                        },
+                        "gold": {
+                            DEFAULT: "#CFA674",
+                            light: "#CFA674",
+                            dark: "#CFA674"
+                        },
+                        "background-dark": "#0F0F12",
+                        "background-light": "#1A1A23",
+                        "glass-white": "rgba(255, 255, 255, 0.08)",
+                        "glass-border": "rgba(255, 255, 255, 0.15)",
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-primary': 'linear-gradient(135deg, #CFA674 0%, #CFA674 100%)',
+                        'gradient-gold': 'linear-gradient(135deg, #CFA674 0%, #CFA674 100%)',
+                        'gradient-blue': 'linear-gradient(135deg, #1F455E 0%, #1F455E 100%)',
+                    },
+                    fontFamily: {
+                        "display": ["Oswald", "sans-serif"],
+                        "sans": ["Montserrat", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .premium-card {
+            background: white;
+            border: none;
+            border-radius: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        .premium-card:hover {
+            border-color: rgba(230, 193, 92, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .nav-link {
+            @apply text-[14px] uppercase tracking-[0.1em] font-medium transition-all duration-300 text-[#1F455E] hover:text-[#CFA674] flex items-center gap-1 relative;
+            padding: 0.5rem 0;
+        }
+        .nav-link span {
+            color: #CFA674;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .dropdown-group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            background: #FBF5F0;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(207, 166, 116, 0.3); /* Gold #CFA674 */
+        }
+        .dropdown-item {
+            @apply block px-6 py-3 text-[14px] uppercase tracking-widest text-[#1F455E] hover:text-[#CFA674] hover:bg-gradient-to-r from-primary/10 to-transparent transition-all duration-300;
+            border-left: 3px solid transparent;
+        }
+        .dropdown-item:hover {
+            border-left-color: #CFA674;
+            padding-left: 1.5rem;
+        }
+
+        .luxury-glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-noise {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        
+        /* Reveal Animations */
+        @keyframes revealText {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 100ms; }
+        .stagger-2 { transition-delay: 200ms; }
+        .stagger-3 { transition-delay: 300ms; }
+
+        .sur-titre {
+            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
+        }
+
+        .hero-title {
+            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
+        }
+
+        @layer base {
+            h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
+            h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
+            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
+            h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
+            h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
+            h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
+            p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
+        }
+        
+        .quote-style {
+            @apply font-sans font-medium italic text-[22px] leading-relaxed;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(207, 166, 116, 0.3);
+        }
+
+        /* Specific for Marque Page */
+        .brand-bullet {
+            @apply w-4 h-4 bg-[#1F455E] mr-3 mt-1 flex-shrink-0;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0F0F12] font-sans text-gray-200">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav h-20 grid grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
+        <div class="flex justify-start">
+            <a class="block w-40 hover:opacity-80 transition-opacity" href="home.html">
+                <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc" alt="TRICHOZEN"
+                    class="w-full h-auto object-contain"
+                    style="filter: brightness(0) saturate(100%) invert(21%) sepia(21%) saturate(3207%) hue-rotate(176deg) brightness(96%) contrast(101%);">
+            </a>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-8 justify-center">
+            <a class="nav-link" href="home.html">Home</a>
+            <div class="relative dropdown-group">
+                <a class="nav-link" href="particulier.html">Particuliers <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="diagnostique.html">Diagnostic online</a>
+                    <a class="dropdown-item" href="particulier.html#prestations">Présentiel</a>
+                    <a class="dropdown-item" href="programme-essentiel.html">Programme Essentiel</a>
+                </div>
+            </div>
+            <div class="relative dropdown-group">
+                <a class="nav-link" href="professionnel.html">Professionnels <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Catalogue des formations</a>
+                    <div class="h-px bg-white/10 mx-6 my-1"></div>
+                    <a class="dropdown-item" href="professionnel-template.html">Trichologie Fondamentale</a>
+                    <a class="dropdown-item" href="#">Protocoles de Soins Premium</a>
+                    <a class="dropdown-item" href="#">Business & Management Luxe</a>
+                </div>
+            </div>
+            <a class="nav-link" href="a-propos.html">À propos</a>
+            <div class="relative dropdown-group">
+                <a class="nav-link font-bold" href="#">Ressources <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item font-bold" href="#">Espace Marques & Médias</a>
+                    <a class="dropdown-item" href="blog.html">Votre blog TrichoZen</a>
+                    <a class="dropdown-item" href="#">Annuaire</a>
+                    <a class="dropdown-item" href="#">S'inscrire à la NewsLetter</a>
+                </div>
+            </div>
+            <a class="nav-link" href="contact.html">Contact</a>
+        </div>
+
+        <div class="flex justify-end">
+            <button
+                class="bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded">
+                RDV Expertise
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://lh3.googleusercontent.com/d/1FW6hlJH8uTVEzGhfOizQTRM49kQYLhB2"
+                    class="w-full h-full object-cover" alt="Clouds Background">
+                <div class="absolute inset-0 bg-black/30"></div>
+            </div>
+            <div class="relative z-10 text-center px-4 max-w-5xl">
+                <div class="leading-snug border-l-4 border-[#CFA674] px-24 py-8 bg-white/20">
+                    <h1 class="hero-title mb-12 text-glow reveal-text">
+                        ESPACE MÉDIAS & MARQUES
+                    </h1>
+                    <div class="fade-in-up stagger-1">
+                        <button
+                            class="bg-[#1F455E] text-white px-12 py-4 font-display text-2xl uppercase tracking-widest hover:bg-[#CFA674] transition-all duration-300">
+                            CTA
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Presentation Section -->
+        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD] relative z-10">
+            <div class="max-w-4xl mx-auto border-2 border-[#1F455E]/10 p-12 md:p-24 text-center space-y-12 luxury-glass fade-in-up"
+                style="background-color: #FBF5F0 !important;">
+                <div class="flex flex-col items-center justify-center">
+                    <h2 class="sur-titre mb-6 reveal-text block">Présentation</h2>
+                </div>
+                <div class="space-y-6">
+                    <p class="text-2xl md:text-3xl font-display leading-relaxed text-[#1F455E]">
+                        "Un accompagnement sur-mesure pour les acteurs de la beauté et de la santé capillaire, alliant
+                        expertise scientifique de pointe et vision business d'exception."
+                    </p>
+                    <p class="text-sm text-[#1F455E] italic">
+                        L'alliance stratégique pour valoriser votre savoir-faire et innover au service de l'excellence
+                        capillaire.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collaboration Marques Section -->
+        <section id="collaboration" class="py-24 px-8 md:px-24 bg-[#FBF5F0] relative overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <span class="sur-titre reveal-text block mb-16">COLLABORATION MARQUES</span>
+
+                <div class="flex flex-col lg:flex-row gap-20">
+                    <!-- Left Column: Text content -->
+                    <div class="lg:w-3/5 space-y-20">
+                        <!-- Subsection 1 -->
+                        <div class="space-y-8 fade-in-up">
+                            <h3
+                                class="flex items-center gap-4 text-xl uppercase tracking-wider font-bold text-[#CFA674]">
+                                <span class="w-4 h-4 bg-[#CFA674]"></span> LE PB DES MARQUES AUJOURD'HUI
+                            </h3>
+                            <div class="space-y-6 text-[#1F455E]">
+                                <p class="text-lg">
+                                    Unde Rufus ea tempestate praefectus praetorio ad discrimen tandem musarum occultum,
+                                    ire imago simul et fletus, et abnegi credide rerer in ordine nos digitalem semper et
+                                    rarduari
+                                </p>
+                                <ul class="list-disc pl-5 space-y-4 text-[#1F455E] font-medium leading-relaxed">
+                                    <li>Hac ita persuasione reducti intra moenia</li>
+                                    <li>Ultima Syriam est Palaestina per intervalla</li>
+                                    <li>Incenderat autem audaces usque ad insaniam homines</li>
+                                    <li>Homines enim eruditos et sobrios ut infaustos et</li>
+                                    <li>Eodem tempore etiam Hymetii praedarae incolis</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Subsection 2 -->
+                        <div class="space-y-8 fade-in-up">
+                            <h3
+                                class="flex items-center gap-4 text-xl uppercase tracking-wider font-bold text-[#CFA674]">
+                                <span class="w-4 h-4 bg-[#CFA674]"></span> CE QUE TRICHOZEN APPORTE
+                            </h3>
+                            <div class="space-y-6 text-[#1F455E]">
+                                <p class="text-lg">
+                                    Unde Rufus ea tempestate praefectus praetorio ad discrimen tandem musarum occultum,
+                                    ire imago simul et fletus, et abnegi credide rerer in ordine nos digitalem semper et
+                                    rarduari
+                                </p>
+                                <ul class="list-disc pl-5 space-y-4 text-[#1F455E] font-medium leading-relaxed">
+                                    <li>Hac ita persuasione reducti intra moenia</li>
+                                    <li>Ultima Syriam est Palaestina per intervalla</li>
+                                    <li>Incenderat autem audaces usque ad insaniam homines</li>
+                                    <li>Homines enim eruditos et sobrios ut infaustos et</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Sticky Image -->
+                    <div class="lg:w-2/5">
+                        <div class="sticky top-32 relative">
+                            <div class="aspect-[4/5] overflow-hidden shadow-2xl relative z-10 group">
+                                <img src="https://lh3.googleusercontent.com/d/1HlEc4dQ_cAcr6ZXr6Iyb5A_swe2Mx8Cw"
+                                    class="w-full h-full object-cover transition-all duration-1000 brightness-90 group-hover:scale-105"
+                                    alt="Collaboration Context">
+                            </div>
+                            <div class="absolute -top-10 -right-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 -z-10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typologie d'Interventions Section -->
+        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD] relative z-10">
+            <div class="max-w-4xl mx-auto border-2 border-[#1F455E]/10 p-12 md:p-24 text-center space-y-12 luxury-glass fade-in-up"
+                style="background-color: #FBF5F0 !important;">
+                <div class="flex flex-col items-center justify-center">
+                    <h2 class="sur-titre mb-6 reveal-text block">TYPOLOGIE D'INTERVENTIONS</h2>
+                </div>
+                <div class="text-left space-y-12">
+                    <p class="font-sans font-medium text-xl leading-relaxed text-[#1F455E]">
+                        Quibus ita sceleste patratis Paulus enses pernuim muven usque ad principia castra multos conne
+                        tas paine cerent adtuclit in :
+                    </p>
+                    <ul class="space-y-6 font-sans text-lg text-[#1F455E]">
+                        <li class="flex items-start">
+                            <span class="material-symbols-outlined mr-4 mt-0.5 text-[#CFA674]">check_circle</span>
+                            <span>Quibus ita sceleste patratis Paulus enses pernuim muven usque ad principia castra
+                                multos conne tas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-symbols-outlined mr-4 mt-0.5 text-[#CFA674]">check_circle</span>
+                            <span>Ita sceleste patratis Paulus enses pernuim muven usque ad principia castra multos
+                                conne tas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-symbols-outlined mr-4 mt-0.5 text-[#CFA674]">check_circle</span>
+                            <span>Paulus enses pernuim muven usque ad principia castra multos conne tas</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nos Réalisations Section -->
+        <section class="py-32 px-8 md:px-24 bg-[#2F6385] overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col items-center justify-center text-center mb-20">
+                    <h2 class="sur-titre mb-8 block reveal-text">NOS RÉALISATIONS</h2>
+                </div>
+
+                <div class="relative group">
+                    <!-- Carousel Container -->
+                    <div id="realisations-carousel"
+                        class="flex gap-8 overflow-x-auto pb-12 hide-scrollbar snap-x snap-mandatory scroll-smooth">
+                        <!-- Card 1 -->
+                        <div
+                            class="min-w-full md:min-w-[45%] lg:min-w-[48%] premium-card bg-white p-10 snap-center reveal-text flex flex-col justify-between shadow-xl">
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div class="max-w-[70%] text-left">
+                                        <h3
+                                            class="text-2xl font-bold text-[#CFA674] uppercase tracking-widest text-left leading-tight">
+                                            EXPERTISE SCIENTIFIQUE
+                                        </h3>
+                                        <p class="text-[#CFA674] italic font-medium text-lg mt-1">nom de la marque</p>
+                                    </div>
+                                    <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc"
+                                        class="h-5 w-auto opacity-50 contrast-125" alt="Brand Logo"
+                                        style="filter: grayscale(1) brightness(0.2);">
+                                </div>
+                                <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                                <p class="text-[#1F455E] leading-relaxed font-sans text-lg text-left font-medium">
+                                    Adverit post multas Scutillo Scutariarum tribonus vulamente subgressus ingenti
+                                    pensatonis
+                                    odficc gallicus qui eum adulatili sermone seris admiral solus omnium profi dadi
+                                    pallenti
+                                    vutu adsumulato saepius readitanda quod flagrantius vutis eum videre fater cuporet
+                                    adruelis
+                                    siguid per inscrutandum postumia.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div
+                            class="min-w-full md:min-w-[45%] lg:min-w-[48%] premium-card bg-white p-10 snap-center reveal-text flex flex-col justify-between shadow-xl">
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div class="max-w-[70%] text-left">
+                                        <h3
+                                            class="text-2xl font-bold text-[#CFA674] uppercase tracking-widest text-left leading-tight">
+                                            EXPERTISE SCIENTIFIQUE
+                                        </h3>
+                                        <p class="text-[#CFA674] italic font-medium text-lg mt-1">nom de la marque</p>
+                                    </div>
+                                    <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc"
+                                        class="h-5 w-auto opacity-50 contrast-125" alt="Brand Logo"
+                                        style="filter: grayscale(1) brightness(0.2);">
+                                </div>
+                                <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                                <p class="text-[#1F455E] leading-relaxed font-sans text-lg text-left font-medium">
+                                    Adverit post multas Scutillo Scutariarum tribonus vulamente subgressus ingenti
+                                    pensatonis
+                                    odficc gallicus qui eum adulatili sermone seris admiral solus omnium profi dadi
+                                    pallenti
+                                    vutu adsumulato saepius readitanda quod flagrantius vutis eum videre fater cuporet
+                                    adruelis
+                                    siguid per inscrutandum postumia.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div
+                            class="min-w-full md:min-w-[45%] lg:min-w-[48%] premium-card bg-white p-10 snap-center reveal-text flex flex-col justify-between shadow-xl">
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div class="max-w-[70%] text-left">
+                                        <h3
+                                            class="text-2xl font-bold text-[#CFA674] uppercase tracking-widest text-left leading-tight">
+                                            EXPERTISE SCIENTIFIQUE
+                                        </h3>
+                                        <p class="text-[#CFA674] italic font-medium text-lg mt-1">nom de la marque</p>
+                                    </div>
+                                    <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc"
+                                        class="h-5 w-auto opacity-50 contrast-125" alt="Brand Logo"
+                                        style="filter: grayscale(1) brightness(0.2);">
+                                </div>
+                                <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                                <p class="text-[#1F455E] leading-relaxed font-sans text-lg text-left font-medium">
+                                    Adverit post multas Scutillo Scutariarum tribonus vulamente subgressus ingenti
+                                    pensatonis
+                                    odficc gallicus qui eum adulatili sermone seris admiral solus omnium profi dadi
+                                    pallenti
+                                    vutu adsumulato saepius readitanda quod flagrantius vutis eum videre fater cuporet
+                                    adruelis
+                                    siguid per inscrutandum postumia.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <button onclick="scrollReal('prev')"
+                        class="absolute -left-4 top-1/2 -translate-y-12 lg:-translate-x-12 w-16 h-16 bg-[#1F455E] text-white rounded-full flex items-center justify-center shadow-xl hover:bg-[#CFA674] transition-all duration-300 z-10">
+                        <span class="material-symbols-outlined text-3xl">chevron_left</span>
+                    </button>
+                    <button onclick="scrollReal('next')"
+                        class="absolute -right-4 top-1/2 -translate-y-12 lg:translate-x-12 w-16 h-16 bg-[#1F455E] text-white rounded-full flex items-center justify-center shadow-xl hover:bg-[#CFA674] transition-all duration-300 z-10">
+                        <span class="material-symbols-outlined text-3xl">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Testimonials (RETOUR D'EXPÉRIENCE) -->
+        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col items-center justify-center text-center mb-20">
+                    <h2 class="sur-titre mb-8 block reveal-text">Témoignages</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
+                    <!-- Testimonial 1 -->
+                    <div
+                        class="premium-card bg-[#FBF5F0] p-8 flex flex-col items-center text-center space-y-6 shadow-xl fade-in-up">
+                        <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#CFA674]/30">
+                            <img src="testimonial_1.png" alt="Sophie" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex text-[#CFA674]">
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="quote-style text-[#1F455E]">
+                            "Une expertise qui a changé ma vision de mes cheveux. Le diagnostic est précis et le
+                            protocole facile à suivre."
+                        </p>
+                        <div class="pt-4">
+                            <h4 class="text-[#CFA674] text-sm uppercase tracking-widest font-bold">Sophie</h4>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div
+                        class="premium-card bg-[#FBF5F0] p-8 flex flex-col items-center text-center space-y-6 shadow-xl fade-in-up stagger-1">
+                        <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#CFA674]/30">
+                            <img src="testimonial_2_female.png" alt="Marie" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex text-[#CFA674]">
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="quote-style text-[#1F455E]">
+                            "Enfin des réponses concrètes à mes problèmes de chute. Je vois déjà une différence en
+                            quelques semaines."
+                        </p>
+                        <div class="pt-4">
+                            <h4 class="text-[#CFA674] text-sm uppercase tracking-widest font-bold">Marie</h4>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div
+                        class="premium-card bg-[#FBF5F0] p-8 flex flex-col items-center text-center space-y-6 shadow-xl fade-in-up stagger-2">
+                        <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#CFA674]/30">
+                            <img src="testimonial_3.png" alt="Léa" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex text-[#CFA674]">
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="quote-style text-[#1F455E]">
+                            "Moment très enrichissant. On sent la passion et la science derrière chaque conseil. Je
+                            recommande à 100%."
+                        </p>
+                        <div class="pt-4">
+                            <h4 class="text-[#CFA674] text-sm uppercase tracking-widest font-bold">Léa</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Moved CTAs -->
+                <div class="flex flex-col md:flex-row justify-center items-center gap-12 mt-20 reveal-text">
+                    <button
+                        class="w-full md:w-[450px] bg-[#CFA674] text-white px-12 py-6 font-sans font-bold text-xl uppercase tracking-widest hover:opacity-80 transition-all duration-300 rounded shadow-lg whitespace-nowrap">
+                        télécharger le kit média
+                    </button>
+                    <button
+                        class="w-full md:w-[450px] bg-[#CFA674] text-white px-12 py-6 font-sans font-bold text-xl uppercase tracking-widest hover:opacity-80 transition-all duration-300 rounded shadow-lg whitespace-nowrap">
+                        nous contacter
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
+        <div class="container mx-auto px-6 md:px-16">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
+                <div class="md:col-span-4 space-y-5">
+                    <div class="flex items-center gap-3">
+                        <a class="block w-72 hover:opacity-80 transition-opacity" href="#">
+                            <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc"
+                                alt="TRICHOZEN" class="w-full h-auto object-contain"
+                                style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
+                        </a>
+                    </div>
+                    <p class="leading-relaxed max-w-xl text-white">
+                        L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise,
+                        science et rituel d'exception.
+                    </p>
+                    <div class="flex gap-6 text-[#CFA674] justify-start">
+                        <a class="hover:text-white transition-colors" href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a class="hover:text-white transition-colors mb-3" href="#" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                            </svg>
+                        </a>
+                        <a class="hover:text-white transition-colors" href="#" aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
+                    <ul class="space-y-4">
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="home.html">Home</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="particulier.html">Particuliers</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="professionnel.html">Professionnels</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="#">Ressources</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
+                    <ul class="space-y-4">
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors" href="#">Qui
+                                sommes-nous</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="contact.html">Contact</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="#">Presse</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="#">Mentions Légales</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4 space-y-6">
+                    <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
+                    <p class="leading-relaxed text-white">Inscrivez-vous pour recevoir nos dernières actualités
+                        scientifiques.
+                    </p>
+                    <div class="flex">
+                        <input
+                            class="bg-[#142D3D] border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
+                            placeholder="Votre email" type="email" />
+                        <button class="bg-[#CFA674] text-white px-4 hover:opacity-80 transition-colors rounded">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
+                <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED .</p>
+                <div class="flex gap-12">
+                    <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">POLITIQUE DE
+                        CONFIDENTIALITÉ</a>
+                    <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for Reveal Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Realisations Carousel Scroll
+        function scrollReal(direction) {
+            const carousel = document.getElementById('realisations-carousel');
+            const scrollAmount = carousel.offsetWidth;
+            if (direction === 'next') {
+                carousel.scrollLeft += scrollAmount;
+            } else {
+                carousel.scrollLeft -= scrollAmount;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal-text, .fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>
