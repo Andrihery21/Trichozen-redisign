@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Marques 2 | Trichozen</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": {
+                            DEFAULT: "#CFA674",
+                            light: "#CFA674",
+                            dark: "#1F455E"
+                        },
+                        "brand-blue": {
+                            DEFAULT: "#1F455E",
+                            light: "#1F455E",
+                            dark: "#1F455E"
+                        },
+                        "gold": {
+                            DEFAULT: "#CFA674",
+                            light: "#CFA674",
+                            dark: "#CFA674"
+                        },
+                        "background-dark": "#0F0F12",
+                        "background-light": "#1A1A23",
+                        "glass-white": "rgba(255, 255, 255, 0.08)",
+                        "glass-border": "rgba(255, 255, 255, 0.15)",
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-primary': 'linear-gradient(135deg, #CFA674 0%, #CFA674 100%)',
+                        'gradient-gold': 'linear-gradient(135deg, #CFA674 0%, #CFA674 100%)',
+                        'gradient-blue': 'linear-gradient(135deg, #1F455E 0%, #1F455E 100%)',
+                    },
+                    fontFamily: {
+                        "display": ["Oswald", "sans-serif"],
+                        "sans": ["Montserrat", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .premium-card {
+            background: white;
+            border: none;
+            border-radius: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        .premium-card:hover {
+            border-color: rgba(230, 193, 92, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .nav-link {
+            @apply text-[14px] uppercase tracking-[0.1em] font-medium transition-all duration-300 text-[#1F455E] hover:text-[#CFA674] flex items-center gap-1 relative;
+            padding: 0.5rem 0;
+        }
+        .nav-link span {
+            color: #CFA674;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .dropdown-group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            background: #FBF5F0;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(207, 166, 116, 0.3);
+        }
+        .dropdown-item {
+            @apply block px-6 py-3 text-[14px] uppercase tracking-widest text-[#1F455E] hover:text-[#CFA674] hover:bg-gradient-to-r from-primary/10 to-transparent transition-all duration-300;
+            border-left: 3px solid transparent;
+        }
+        .dropdown-item:hover {
+            border-left-color: #CFA674;
+            padding-left: 1.5rem;
+        }
+
+        .luxury-glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 100ms; }
+        .stagger-2 { transition-delay: 200ms; }
+        .stagger-3 { transition-delay: 300ms; }
+
+        .sur-titre {
+            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
+        }
+
+        .hero-title {
+            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
+        }
+
+        @layer base {
+            h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
+            h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
+            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
+            h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
+            h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
+            h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
+            p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
+        }
+
+        .bg-noise {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .ticker-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        
+        @keyframes ticker-slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .ticker-wrapper {
+            display: inline-flex;
+            animation: ticker-slide 30s linear infinite;
+        }
+        
+        .brand-logo {
+            flex: 0 0 auto;
+            width: 150px;
+            height: 80px;
+            margin: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        
+        .brand-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .footer-logo {
+            filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);
+        }
+    </style>
+</head>
+
+<body class="bg-[#FBF5F0] font-sans text-[#1F455E]">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav h-20 grid grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
+        <div class="flex justify-start">
+            <a class="block w-40 hover:opacity-80 transition-opacity" href="home.html">
+                <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc" alt="TRICHOZEN"
+                    class="w-full h-auto object-contain"
+                    style="filter: brightness(0) saturate(100%) invert(21%) sepia(21%) saturate(3207%) hue-rotate(176deg) brightness(96%) contrast(101%);">
+            </a>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-8 justify-center">
+            <a class="nav-link" href="home.html">Home</a>
+            <div class="relative dropdown-group">
+                <a class="nav-link" href="particulier.html">Particuliers <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="diagnostique.html">Diagnostic online</a>
+                    <a class="dropdown-item" href="particulier.html#prestations">Présentiel</a>
+                    <a class="dropdown-item" href="programme-essentiel.html">Programme Essentiel</a>
+                </div>
+            </div>
+            <div class="relative dropdown-group">
+                <a class="nav-link" href="professionnel.html">Professionnels <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="#">Catalogue des formations</a>
+                    <div class="h-px bg-white/10 mx-6 my-1"></div>
+                    <a class="dropdown-item" href="professionnel-template.html">Trichologie Fondamentale</a>
+                    <a class="dropdown-item" href="#">Protocoles de Soins Premium</a>
+                    <a class="dropdown-item" href="#">Business & Management Luxe</a>
+                </div>
+            </div>
+            <a class="nav-link" href="a-propos.html">À propos</a>
+            <div class="relative dropdown-group">
+                <a class="nav-link" href="#">Ressources <span
+                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                    <a class="dropdown-item" href="marque.html">Espace Marques & Médias</a>
+                    <a class="dropdown-item" href="blog.html">Votre blog TrichoZen</a>
+                    <a class="dropdown-item" href="#">Annuaire</a>
+                    <a class="dropdown-item" href="#">S'inscrire à la NewsLetter</a>
+                </div>
+            </div>
+            <a class="nav-link" href="contact.html">Contact</a>
+        </div>
+
+        <div class="flex justify-end">
+            <button
+                class="bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded">
+                RDV Expertise
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://lh3.googleusercontent.com/d/1FW6hlJH8uTVEzGhfOizQTRM49kQYLhB2"
+                    class="w-full h-full object-cover" alt="Hero Background">
+                <div class="absolute inset-0 bg-black/40"></div>
+            </div>
+            <div class="relative z-10 text-center px-4 max-w-5xl">
+                <h1 class="hero-title mb-8 reveal-text">
+                    L'EXPERTISE CAPILLAIRE AU SERVICE DE VOTRE CRÉDIBILITÉ
+                </h1>
+                <div class="fade-in-up stagger-1">
+                    <button
+                        class="bg-[#CFA674] text-white px-12 py-5 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded shadow-2xl">
+                        Discutons de votre projet
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Block (Aligned with Diagnostic Charter) -->
+        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
+            <div
+                class="max-w-4xl mx-auto border-2 border-[#1F455E]/10 p-12 md:p-24 text-center space-y-12 luxury-glass !bg-[#FBF5F0] fade-in-up">
+                <div class="flex flex-col items-center justify-center">
+                    <h2 class="sur-titre mb-6 reveal-text block">L'EXPERTISE TRICHOZEN</h2>
+                </div>
+                <div class="space-y-6">
+                    <p class="text-lg font-sans font-medium leading-relaxed text-[#1F455E]">
+                        Unde Rufus ea tempestate praefectus praetorio ad discrimen tandem musarum occultum, ire imago
+                        simul et fletus, et abnegi credide rerer in ordine nos digitalem semper et rarduari.
+                    </p>
+                    <p class="text-sm text-[#1F455E] italic">
+                        Présence d’un avant-support trichologique : pourquoi faire appel à un trichologue en tant que
+                        marque ?
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Propositions Section 1 -->
+        <section class="py-24 px-8 md:px-24 bg-white relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col lg:flex-row gap-16 items-start">
+                    <div class="lg:w-1/2 space-y-12">
+                        <div class="space-y-4">
+                            <span class="sur-titre mb-6 reveal-text block">DES COLLABORATIONS À HAUTE VALEUR
+                                AJOUTÉE</span>
+                            <h2 class="text-[#1F455E] uppercase tracking-wider text-4xl font-display">CE QUE NOUS
+                                PROPOSONS</h2>
+                            <p class="text-[#1F455E] text-lg">Chaque collaboration est pensée sur-mesure, avec une
+                                exigence constante d’apporter du fond, de la précision et de l’impact à votre projet.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-6">
+                            <!-- Card 1 -->
+                            <div class="bg-[#FFF9E5] premium-card">
+                                <div class="border-l-4 border-[#CFA674] p-8 space-y-4 h-full">
+                                    <span class="text-xs uppercase font-bold text-[#1F455E]">Marques</span>
+                                    <h3 class="text-2xl font-bold uppercase text-[#CFA674]">Consulting scientifique &
+                                        capillaire</h3>
+                                    <p class="text-sm leading-relaxed">Analyse trichologique de vos formulations,
+                                        positionnement produit, valorisation des allégations capillaires : une expertise
+                                        pointue au service de votre R&D et de votre communication.</p>
+                                </div>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="bg-[#FFF9E5] premium-card">
+                                <div class="border-l-4 border-[#CFA674] p-8 space-y-4 h-full">
+                                    <span class="text-xs uppercase font-bold text-[#1F455E]">Marques</span>
+                                    <h3 class="text-2xl font-bold uppercase text-[#CFA674]">Accompagnement de marques
+                                    </h3>
+                                    <p class="text-sm leading-relaxed">Stratégie capillaire, revue scientifique de vos
+                                        gammes, recommandation d'étiquetage : l'expertise Trichozen pour garantir votre
+                                        caution scientifique.</p>
+                                </div>
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="bg-[#FFF9E5] premium-card">
+                                <div class="border-l-4 border-[#CFA674] p-8 space-y-4 h-full">
+                                    <span class="text-xs uppercase font-bold text-[#1F455E]">Marques - Médias</span>
+                                    <h3 class="text-2xl font-bold uppercase text-[#CFA674]">Création de contenus experts
+                                    </h3>
+                                    <p class="text-sm leading-relaxed">Articles, fiches produits, scripts vidéo,
+                                        newsletters
+                                        : des contenus à haute valeur pédagogique, rigoureux et accessibles, à votre
+                                        image
+                                        ou à celle de Trichozen.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 h-full">
+                        <img src="https://lh3.googleusercontent.com/d/1HlEc4dQ_cAcr6ZXr6Iyb5A_swe2Mx8Cw"
+                            class="w-full h-[800px] object-cover shadow-2xl rounded" alt="Collab 1">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Propositions Section 2 -->
+        <section class="py-24 px-8 md:px-24 bg-[#FBF5F0] relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col lg:flex-row-reverse gap-16 items-start">
+                    <div class="lg:w-1/2 space-y-12">
+                        <div class="grid grid-cols-1 gap-6">
+                            <!-- Card 4 -->
+                            <div class="bg-[#FFF9E5] premium-card">
+                                <div class="border-l-4 border-[#CFA674] p-8 space-y-4 h-full">
+                                    <span class="text-xs uppercase font-bold text-[#1F455E]">Médias</span>
+                                    <h3 class="text-2xl font-bold uppercase text-[#CFA674]">Interventions médias &
+                                        porte-parole</h3>
+                                    <p class="text-sm leading-relaxed">Interviews, plateaux TV, podcasts : une voix
+                                        d'expert
+                                        pour décrypter les sujets liés à la santé capillaire sur tous les types de
+                                        médias.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Card 5 -->
+                            <div class="bg-[#FFF9E5] premium-card">
+                                <div class="border-l-4 border-[#CFA674] p-8 space-y-4 h-full">
+                                    <span class="text-xs uppercase font-bold text-[#1F455E]">Événements</span>
+                                    <h3 class="text-2xl font-bold uppercase text-[#CFA674]">Conférences & ateliers</h3>
+                                    <p class="text-sm leading-relaxed">Masterclass sur mesure, interventions en
+                                        entreprise :
+                                        de la pédagogie concrète pour vos auditoires et le grand public ou vos
+                                        collaborateurs.</p>
+                                </div>
+                            </div>
+                            <!-- Card 6 -->
+                            <div class="bg-[#FFF9E5] premium-card">
+                                <div class="border-l-4 border-[#CFA674] p-8 space-y-4 h-full">
+                                    <span class="text-xs uppercase font-bold text-[#1F455E]">Entreprises</span>
+                                    <h3 class="text-2xl font-bold uppercase text-[#CFA674]">Teambuilding & formation des
+                                        équipes</h3>
+                                    <p class="text-sm leading-relaxed">Formations pour vos conseillers de vente ou vos
+                                        équipes marketing : boostez la caution scientifique de vos collaborateurs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 h-full">
+                        <img src="https://lh3.googleusercontent.com/d/1ljfqpY3oJKsgu2JY71NYWQQeITDSf0_4"
+                            class="w-full h-[600px] object-cover shadow-2xl rounded" alt="Collab 2">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pour Qui ? -->
+        <section class="py-24 px-8 md:px-24 bg-[#2F6385]">
+            <div class="max-w-7xl mx-auto text-center space-y-16">
+                <h2 class="text-white uppercase tracking-wider text-4xl font-display reveal-text">POUR QUI ?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Unit 1 -->
+                    <div
+                        class="bg-white p-10 space-y-4 shadow-lg premium-card transition-all duration-300 hover:translate-y-[-10px] fade-in-up text-left">
+                        <div class="w-full text-center">
+                            <span class="material-symbols-outlined text-5xl text-[#CFA674] mb-2">workspace_premium</span>
+                        </div>
+                        <h4 class="text-[#CFA674] uppercase tracking-wider text-xl font-sans font-bold">Vous êtes une
+                            marque capillaire</h4>
+                        <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                        <p class="text-[#1F455E] leading-relaxed text-sm">Un accompagnement sur mesure pour vos
+                            lancements produits et
+                            marketing.</p>
+                    </div>
+                    <!-- Unit 2 -->
+                    <div
+                        class="bg-white p-10 space-y-4 shadow-lg premium-card transition-all duration-300 hover:translate-y-[-10px] fade-in-up text-left stagger-1">
+                        <div class="w-full text-center">
+                            <span class="material-symbols-outlined text-5xl text-[#CFA674] mb-2">newspaper</span>
+                        </div>
+                        <h4 class="text-[#CFA674] uppercase tracking-wider text-xl font-sans font-bold">Vous êtes un
+                            média ou un journaliste</h4>
+                        <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                        <p class="text-[#1F455E] leading-relaxed text-sm">Une expertise pointue et des contenus
+                            rigoureux pour vos sujets
+                            santé et beauté.</p>
+                    </div>
+                    <!-- Unit 3 -->
+                    <div
+                        class="bg-white p-10 space-y-4 shadow-lg premium-card transition-all duration-300 hover:translate-y-[-10px] fade-in-up text-left stagger-2">
+                        <div class="w-full text-center">
+                            <span class="material-symbols-outlined text-5xl text-[#CFA674] mb-2">groups</span>
+                        </div>
+                        <h4 class="text-[#CFA674] uppercase tracking-wider text-xl font-sans font-bold">Vous êtes une
+                            entreprise (RH/CSE)</h4>
+                        <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                        <p class="text-[#1F455E] leading-relaxed text-sm">Des ateliers bien-être et prévention pour la
+                            santé capillaire de
+                            vos collaborateurs.</p>
+                    </div>
+                    <!-- Unit 4 -->
+                    <div
+                        class="bg-white p-10 space-y-4 shadow-lg premium-card transition-all duration-300 hover:translate-y-[-10px] fade-in-up text-left stagger-3">
+                        <div class="w-full text-center">
+                            <span class="material-symbols-outlined text-5xl text-[#CFA674] mb-2">event</span>
+                        </div>
+                        <h4 class="text-[#CFA674] uppercase tracking-wider text-xl font-sans font-bold">Vous organisez
+                            un événement</h4>
+                        <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
+                        <p class="text-[#1F455E] leading-relaxed text-sm">Conférences et ateliers sur mesure pour vos
+                            événements
+                            professionnels.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Partners (ILS NOUS ONT FAIT CONFIANCE) -->
+        <section class="py-24 bg-white border-t border-gray-200">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-[#CFA674] mb-16 reveal-text">
+                    ILS NOUS ONT FAIT CONFIANCE
+                </h1>
+                <div class="ticker-container fade-in-up stagger-2">
+                    <div class="ticker-wrapper">
+                        <!-- Original Set -->
+                        <div class="brand-logo">
+                            <img src="https://www.trichozen.com/wp-content/uploads/2025/10/cb-logo-tbde-blk_3.jpg.webp"
+                                alt="Marque 1">
+                        </div>
+                        <div class="brand-logo">
+                            <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Ducray.jpg" alt="Ducray">
+                        </div>
+                        <div class="brand-logo">
+                            <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Waam-Cosmetics.jpeg"
+                                alt="Waam Cosmetics">
+                        </div>
+                        <div class="brand-logo">
+                            <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Uriage.png" alt="Uriage">
+                        </div>
+                        <div class="brand-logo">
+                            <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Evashair.jpg" alt="Evashair">
+                        </div>
+
+                        <!-- Duplicated Set for Infinite Scroll -->
+                        <div class="brand-logo">
+                            <img src="https://www.trichozen.com/wp-content/uploads/2025/10/cb-logo-tbde-blk_3.jpg.webp"
+                                alt="Marque 1">
+                        </div>
+                        <div class="brand-logo">
+                            <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Ducray.jpg" alt="Ducray">
+                        </div>
+                        <div class="brand-logo">
+                            <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Waam-Cosmetics.jpeg"
+                                alt="Waam Cosmetics">
+                        </div>
+                        <div class="brand-logo">
+                            <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Uriage.png" alt="Uriage">
+                        </div>
+                        <div class="brand-logo">
+                            <img src="https://www.trichozen.com/wp-content/uploads/2025/08/Evashair.jpg" alt="Evashair">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pourquoi Trichozen -->
+        <section class="py-32 bg-[#E5E7EB]">
+            <div class="container mx-auto px-6 md:px-16">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div class="aspect-square md:aspect-video lg:aspect-square overflow-hidden shadow-2xl scale-in">
+                        <img alt="Innovation" class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/d/1ljfqpY3oJKsgu2JY71NYWQQeITDSf0_4" />
+                    </div>
+                    <div class="space-y-12">
+                        <div class="space-y-4">
+                            <span class="sur-titre reveal-text text-sm">Notre expertise</span>
+                            <h2 class="text-[#1F455E] uppercase tracking-wider text-4xl font-display">POURQUOI CHOISIR
+                                TRICHOZEN</h2>
+                        </div>
+                        <div class="space-y-10">
+                            <div class="space-y-4">
+                                <h4 class="text-xl font-bold font-sans text-[#CFA773] uppercase tracking-wide">
+                                    EXCELLENCE SCIENTIFIQUE</h4>
+                                <div class="h-[2px] bg-[#CFA674]/80 w-44"></div>
+                                <p class="text-[#1F455E]">Des protocoles rigoureux issus de la recherche en trichologie.
+                                </p>
+                            </div>
+                            <div class="space-y-4">
+                                <h4 class="text-xl font-bold font-sans text-[#CFA773] uppercase tracking-wide">FORMATION
+                                    D'ÉLITE</h4>
+                                <div class="h-[2px] bg-[#CFA674]/80 w-44"></div>
+                                <p class="text-[#1F455E]">Un savoir-faire unique transmis aux professionnels de la
+                                    beauté.</p>
+                            </div>
+                            <div class="space-y-4">
+                                <h4 class="text-xl font-bold font-sans text-[#CFA773] uppercase tracking-wide">RÉSULTATS
+                                    PROUVÉS</h4>
+                                <div class="h-[2px] bg-[#CFA674]/80 w-44"></div>
+                                <p class="text-[#1F455E]">Des milliers de diagnostics et de traitements réussis.</p>
+                            </div>
+                            <!-- 4th point as requested -->
+                            <div class="space-y-4">
+                                <h4 class="text-xl font-bold font-sans text-[#CFA773] uppercase tracking-wide">
+                                    ACCOMPAGNEMENT STRATÉGIQUE</h4>
+                                <div class="h-[2px] bg-[#CFA674]/80 w-44"></div>
+                                <p class="text-[#1F455E]">Une vision 360° pour propulser votre marque vers l’excellence.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <section class="py-32 px-8 bg-[#FBF5F0] text-center text-[#1F455E] relative overflow-hidden">
+            <div class="relative z-10 max-w-4xl mx-auto space-y-12">
+                <h2 class="text-4xl md:text-5xl font-display uppercase tracking-widest leading-tight">Votre projet
+                    mérite une expertise à la hauteur</h2>
+                <p class="text-xl max-w-2xl mx-auto font-light">Partenariat, intervention, consulting, collaborations
+                    médias — parlez-nous de votre projet et nous répondrons avec vous sous 48 heures.</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8 pt-8">
+                    <button
+                        class="w-full md:w-auto bg-[#CFA674] text-white px-12 py-5 text-[13px] font-sans uppercase tracking-wide font-medium transition-all duration-300 hover:opacity-80 rounded shadow-2xl">
+                        télécharger le kit média
+                    </button>
+                    <button
+                        class="w-full md:w-auto bg-[#CFA674] text-white px-12 py-5 text-[13px] font-sans uppercase tracking-wide font-medium transition-all duration-300 hover:opacity-80 rounded shadow-2xl">
+                        soumettre une demande
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
+        <div class="container mx-auto px-6 md:px-16">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
+                <div class="md:col-span-4 space-y-5">
+                    <div class="flex items-center gap-3">
+                        <a class="block w-72 hover:opacity-80 transition-opacity" href="#">
+                            <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc"
+                                alt="TRICHOZEN" class="w-full h-auto object-contain"
+                                style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
+                        </a>
+                    </div>
+                    <p class="leading-relaxed max-w-xl text-white">
+                        L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise,
+                        science et rituel d'exception.
+                    </p>
+                    <div class="flex gap-6 text-[#CFA674] justify-start">
+                        <a class="hover:text-white transition-colors" href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a class="hover:text-white transition-colors mb-3" href="#" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                            </svg>
+                        </a>
+                        <a class="hover:text-white transition-colors" href="#" aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
+                    <ul class="space-y-4">
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="#">Home</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="#">Particuliers</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="#">Professionnels</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="#">Ressources</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
+                    <ul class="space-y-4">
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors" href="#">Qui
+                                sommes-nous</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="contact.html">Contact</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="#">Presse</a></li>
+                        <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                href="#">Mentions Légales</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4 space-y-6">
+                    <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
+                    <p class="leading-relaxed text-white">Inscrivez-vous pour recevoir nos dernières actualités
+                        scientifiques.
+                    </p>
+                    <div class="flex">
+                        <input
+                            class="bg-[#142D3D] border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
+                            placeholder="Votre email" type="email" />
+                        <button class="bg-[#CFA674] text-white px-4 hover:opacity-80 transition-colors rounded">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
+                <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED .</p>
+                <div class="flex gap-12">
+                    <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">POLITIQUE DE
+                        CONFIDENTIALITÉ</a>
+                    <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal-text, .fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>
