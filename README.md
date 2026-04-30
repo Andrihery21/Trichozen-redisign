@@ -1,1 +1,0 @@
-# Trichozen-redisign
