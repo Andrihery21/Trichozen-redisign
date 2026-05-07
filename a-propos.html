@@ -1,10 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark" lang="fr">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>À Propos | Trichozen</title>
+    <title>À Propos | Yébé Diouf, Trichologue Paris & Experte en Santé Capillaire — TrichoZen</title>
+    <meta name="description"
+        content="Découvrez le parcours de Yébé Diouf, trichologue à Paris et fondatrice de TrichoZen. Approche fonctionnelle de la trichologie, expertise en santé capillaire, formation des professionnels et conseil aux marques.">
+    <meta name="keywords"
+        content="trichologue Paris, approche fonctionnelle, experte santé capillaire, Yébé Diouf, TrichoZen, experte en trichologie">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
@@ -377,364 +381,509 @@
         .quote-style {
             @apply font-sans font-medium italic text-[23px] leading-relaxed;
         }
+
+        /* ===== RESPONSIVE SYSTEM ===== */
+        *, *::before, *::after { box-sizing: border-box; }
+        body { overflow-x: hidden; }
+        img, video { max-width: 100%; height: auto; }
+
+        .hero-title { font-size: clamp(1.8rem, 5vw, 4rem) !important; }
+        .sur-titre { font-size: clamp(0.8rem, 1.8vw, 1.5rem) !important; }
+        .quote-style { font-size: clamp(0.95rem, 1.8vw, 1.4rem) !important; }
+
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.98);
+            z-index: 200;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.75rem;
+            padding: 2rem;
+        }
+        #mobile-menu.open { display: flex; }
+        #mobile-menu-close {
+            position: absolute;
+            top: 1.25rem; right: 1.25rem;
+            background: none; border: none;
+            cursor: pointer; color: #1F455E;
+        }
+
+        @layer base {
+            h1 { font-size: clamp(1.75rem, 4.5vw, 3rem) !important; }
+            h2 { font-size: clamp(1.4rem, 3.5vw, 2.5rem) !important; }
+            h3 { font-size: clamp(1rem, 2.5vw, 2rem) !important; }
+            h4 { font-size: clamp(0.9rem, 2vw, 1.5rem) !important; }
+        }
+
+        /* Fix giant TRICHOZEN hero text */
+        @media (max-width: 1024px) {
+            .text-7xl { font-size: clamp(2.5rem, 8vw, 4.5rem) !important; }
+            .text-9xl { font-size: clamp(3rem, 10vw, 6rem) !important; }
+            .leading-snug.border-l-4 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+        }
+
+        @media (max-width: 768px) {
+            .text-7xl { font-size: clamp(2rem, 8vw, 3rem) !important; }
+            .text-9xl { font-size: clamp(2.2rem, 9vw, 3.5rem) !important; }
+            .text-5xl { font-size: clamp(1.8rem, 6vw, 2.5rem) !important; }
+            .leading-snug.border-l-4 { padding-left: 1rem !important; padding-right: 1rem !important; }
+            .absolute.-bottom-10.-left-10 { bottom: -0.5rem !important; left: 0 !important; }
+            .absolute.-top-10.-right-10 { display: none !important; }
+        }
+
+        @media (max-width: 480px) {
+            .text-7xl, .text-9xl { font-size: clamp(1.8rem, 9vw, 2.5rem) !important; }
+            .sur-titre { font-size: clamp(0.75rem, 3.5vw, 1rem) !important; }
+            .w-72 { max-width: 8rem !important; }
+        }
+
+        /* Hero headings: 64px fixe sur toutes les pages */
+        .hero-title { font-size: 64px !important; }
+        h1.font-display, h1[class*='font-display'] { font-size: 64px !important; }
+        h1.text-7xl, h1.text-5xl, h1.text-8xl, h1.text-9xl { font-size: 64px !important; }
     </style>
 </head>
 
 <body class="bg-background-dark font-sans text-gray-200 selection:bg-primary selection:text-white overflow-x-hidden">
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full z-50 glass-nav h-20 grid grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
-        <!-- Logo (Left) -->
-        <div class="flex justify-start">
-            <a class="block w-40 hover:opacity-80 transition-opacity" href="home.html">
-                <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc" alt="TRICHOZEN"
-                    class="w-full h-auto object-contain"
-                    style="filter: brightness(0) saturate(100%) invert(21%) sepia(21%) saturate(3207%) hue-rotate(176deg) brightness(96%) contrast(101%);">
-            </a>
-        </div>
-
-        <!-- Navigation Links (Center) -->
-        <div class="hidden lg:flex items-center gap-8 justify-center">
-            <a class="nav-link text-[#1F455E]" href="home.html">Home</a>
-
-            <div class="relative dropdown-group">
-                <a class="nav-link text-[#1F455E]" href="particulier.html">Particuliers <span
-                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
-                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
-                    <a class="dropdown-item" href="diagnostique.html">Diagnostic online</a>
-                    <a class="dropdown-item" href="particulier.html#prestations">Présentiel</a>
-                    <a class="dropdown-item" href="programme-essentiel.html">Programme Essentiel</a>
-                </div>
+    <div bg-background-dark font-sans text-gray-200 selection:bg-primary selection:text-white overflow-x-hidden"
+        style="width: 100%; max-width: 100%; margin: 0; padding: 0; display: block;">
+        <!-- Navbar -->
+        <nav
+            class="fixed top-0 left-0 w-full z-50 glass-nav h-20 flex justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
+            <!-- Logo (Left) -->
+            <div class="flex justify-start">
+                <a class="block w-40 hover:opacity-80 transition-opacity" href="home.html">
+                    <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc" alt="TRICHOZEN"
+                        class="w-full h-auto object-contain"
+                        style="filter: brightness(0) saturate(100%) invert(21%) sepia(21%) saturate(3207%) hue-rotate(176deg) brightness(96%) contrast(101%);">
+                </a>
             </div>
 
-            <div class="relative dropdown-group">
-                <a class="nav-link text-[#1F455E]" href="professionnel.html">Professionnels <span
-                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
-                <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
-                    <a class="dropdown-item" href="#">Catalogue des formations</a>
-                    <div class="h-px bg-white/10 mx-6 my-1"></div>
-                    <a class="dropdown-item" href="professionnel-template.html">Trichologie Fondamentale</a>
-                    <a class="dropdown-item" href="#">Protocoles de Soins Premium</a>
-                    <a class="dropdown-item" href="#">Business &amp; Management Luxe</a>
+            <!-- Navigation Links (Center) -->
+            <div class="hidden lg:flex items-center gap-8 justify-center">
+                <a class="nav-link text-[#1F455E]" href="home.html">Home</a>
+
+                <div class="relative dropdown-group">
+                    <a class="nav-link text-[#1F455E]" href="particulier.html">Particuliers <span
+                            class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                        <a class="dropdown-item" href="diagnostique.html">Diagnostic online</a>
+                        <a class="dropdown-item" href="particulier.html#prestations">Présentiel</a>
+                        <a class="dropdown-item" href="programme-essentiel.html">Programme Essentiel</a>
+                    </div>
                 </div>
+
+                <div class="relative dropdown-group">
+                    <a class="nav-link text-[#1F455E]" href="professionnel.html">Professionnels <span
+                            class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
+                        <a class="dropdown-item" href="#">Catalogue des formations</a>
+                        <div class="h-px bg-white/10 mx-6 my-1"></div>
+                        <a class="dropdown-item" href="professionnel-template.html">Trichologie Fondamentale</a>
+                        <a class="dropdown-item" href="#">Protocoles de Soins Premium</a>
+                        <a class="dropdown-item" href="#">Business &amp; Management Luxe</a>
+                    </div>
+                </div>
+
+                <a class="nav-link text-[#1F455E]" href="a-propos.html">À propos</a>
+
+                <div class="relative dropdown-group">
+                    <a class="nav-link text-[#1F455E]" href="#">Ressources <span
+                            class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                        <a class="dropdown-item" href="#">Espace Marques &amp; Médias</a>
+                        <a class="dropdown-item" href="blog.html">Votre blog TrichoZen</a>
+                        <a class="dropdown-item" href="#">Annuaire</a>
+                        <a class="dropdown-item" href="#">S'inscrire à la NewsLetter</a>
+                    </div>
+                </div>
+
+                <a class="nav-link text-[#1F455E]" href="contact.html">Contact</a>
             </div>
 
-            <a class="nav-link text-[#1F455E]" href="a-propos.html">À propos</a>
-
-            <div class="relative dropdown-group">
-                <a class="nav-link text-[#1F455E]" href="#">Ressources <span
-                        class="material-symbols-outlined text-[14px]">expand_more</span></a>
-                <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
-                    <a class="dropdown-item" href="#">Espace Marques &amp; Médias</a>
-                    <a class="dropdown-item" href="blog.html">Votre blog TrichoZen</a>
-                    <a class="dropdown-item" href="#">Annuaire</a>
-                    <a class="dropdown-item" href="#">S'inscrire à la NewsLetter</a>
-                </div>
+            <!-- CTA Button (Right) -->
+            <div class="flex justify-end items-center gap-3">
+                <a href="https://calendly.com/capillcare"
+                    class="hidden md:block bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded">
+                    RDV Expertise
+                </a>
+                <button id="burger-btn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Menu"
+                    onclick="document.getElementById('mobile-menu').classList.add('open')">
+                    <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                    <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                    <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                </button>
             </div>
+        </nav>
 
-            <a class="nav-link text-[#1F455E]" href="contact.html">Contact</a>
-        </div>
-
-        <!-- CTA Button (Right) -->
-        <div class="flex justify-end">
-            <button
-                class="bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded">
-                RDV Expertise
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+            <button id="mobile-menu-close" onclick="document.getElementById('mobile-menu').classList.remove('open')"
+                aria-label="Fermer">
+                <span class="material-symbols-outlined" style="font-size:2rem;color:#1F455E">close</span>
             </button>
+            <a href="home.html"
+                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Home</a>
+            <a href="particulier.html"
+                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Particuliers</a>
+            <a href="professionnel.html"
+                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Professionnels</a>
+            <a href="a-propos.html"
+                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">À
+                propos</a>
+            <a href="blog.html"
+                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Blog</a>
+            <a href="contact.html"
+                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Contact</a>
+            <a href="contact.html"
+                style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;">RDV
+                Expertise</a>
         </div>
-    </nav>
 
-    <main class="pt-20">
-        <!-- Hero Section -->
-        <section class="relative h-screen flex items-center px-8 md:px-24 overflow-hidden border-b border-white/10">
-            <!-- Floating Shapes -->
-            <div class="floating-shape" style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;">
-            </div>
-            <div class="floating-shape"
-                style="width: 200px; height: 200px; bottom: 10%; right: 5%; animation-delay: 3s;"></div>
-            <div class="absolute inset-0 z-0">
-                <img src="https://lh3.googleusercontent.com/d/1_TC9xGhtsZpOJUEbM9nBrVHr_zQf8THh"
-                    class="w-full h-full object-cover opacity-60 parallax-hero" alt="About Hero">
-            </div>
-            <div class="relative z-10 w-full max-w-4xl mx-auto reveal-text visible">
-                <div
-                    class="leading-snug border-l-4 border-[#CFA674] pl-4 md:pl-8 pr-4 md:pr-8 py-8 bg-white/20 w-fit mx-auto text-left">
-                    <h1 class="text-7xl md:text-9xl font-display text-white leading-none">TRICHOZEN</h1>
-                    <h2 class="text-3xl md:text-5xl font-display text-[#CFA674] mt-4 uppercase tracking-wider">par Yébé
-                        Diouf</h2>
-                    <p class="text-xl text-white/80 font-medium max-w-2xl leading-relaxed fade-in-up stagger-1 mt-6">
-                        "L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise,
-                        science et rituels d'exception."
-                    </p>
-                </div>
-            </div>
-            <div class="bg-noise"></div>
-        </section>
 
-        <!-- Biography Section -->
-        <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div class="space-y-8 reveal-text visible">
-                    <span class="sur-titre block mb-6 reveal-text">LA FONDATRICE</span>
-                    <h2 class="text-[#1F455E]">Yébé Diouf</h2>
-                    <div class="space-y-6 text-[#1F455E] text-lg font-light leading-relaxed">
-                        <p class="text-[#1F455E]">Fondatrice de Trichozen et experte reconnue en trichologie, Yébé Diouf
-                            a
-                            dédié sa carrière à
-                            la compréhension profonde de la fibre capillaire et du cuir chevelu.</p>
-                        <p class="text-[#1F455E]">Son approche unique combine rigueur scientifique, technologies de
-                            pointe
-                            et une sensibilité
-                            esthétique héritée du luxe, permettant de traiter les problématiques les plus complexes avec
-                            une vision holistique.</p>
-                        <p class="text-[#1F455E]">Aujourd'hui, elle partage son savoir-faire à travers une académie de
-                            formation qui accueille
-                            les plus grands noms de la coiffure et de l'esthétique.</p>
-                    </div>
+        <main class="pt-10">
+            <!-- Hero Section -->
+            <section class="relative h-screen flex items-center px-8 md:px-24 overflow-hidden border-b border-white/10">
+                <!-- Floating Shapes -->
+                <div class="floating-shape"
+                    style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;">
                 </div>
-                <div class="relative">
-                    <div class="aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl relative z-10 scale-in">
-                        <img src="https://lh3.googleusercontent.com/d/16knvX4t9xBfhqdm2iMNY67C887XEBd-Z"
-                            alt="Yébé Diouf" class="w-full h-full object-cover transition-all duration-700">
-                    </div>
-                    <div class="absolute -bottom-10 -left-10 bg-[#CFA674] px-12 py-4 z-20 shadow-2xl text-white">
-                        <span class="font-sans font-medium text-3xl block mb-0 uppercase tracking-[0.2em]">YÉBÉ</span>
-                        <p class="text-[#1F455E] text-[13px] uppercase tracking-wide font-medium font-sans">
-                            FONDATRICE &amp; EXPERTE
+                <div class="floating-shape"
+                    style="width: 200px; height: 200px; bottom: 10%; right: 5%; animation-delay: 3s;"></div>
+                <div class="absolute inset-0 z-0 bg-black/70">
+                    <img src="https://lh3.googleusercontent.com/d/1_TC9xGhtsZpOJUEbM9nBrVHr_zQf8THh"
+                        class="w-full h-full object-cover opacity-70 parallax-hero" alt="About Hero">
+                </div>
+                <div class="absolute inset-0 bg-black/0"></div>
+                <div class="relative z-10 w-full max-w-4xl mx-auto reveal-text visible">
+                    <div
+                        class="leading-snug border-l-4 border-[#CFA674] pl-4 md:pl-8 pr-4 md:pr-8 py-8 bg-white/20 w-fit mx-auto text-left">
+                        <h1 class="text-7xl md:text-9xl font-display text-white leading-none"
+                            style="font-size:64px!important">TRICHOZEN</h1>
+                        <h2 class="text-3xl md:text-5xl font-display text-[#CFA674] mt-4 uppercase tracking-wider">Au
+                            coeur
+                            du cheveu</h2>
+                        <p
+                            class="text-xl text-white/80 font-medium max-w-2xl leading-relaxed fade-in-up stagger-1 mt-6">
+                            "Le cheveu révèle l'état du corps, l'histoire de la personne, les déséquilibres qu'on n'a
+                            pas
+                            encore nommés. TrichoZen est né de cette conviction."
+                            <span class="text-white font-bold ml-2">Yébé Diouf</span>
                         </p>
                     </div>
-                    <div class="absolute -top-10 -right-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 -z-0"></div>
                 </div>
-            </div>
-        </section>
+                <div class="bg-noise"></div>
+            </section>
 
-        <!-- Vision Section -->
-        <section class="py-32 px-8 md:px-24 bg-[#1F455E] overflow-hidden">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div class="relative order-2 lg:order-1">
-                    <div class="aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl relative z-10 scale-in">
-                        <img src="https://lh3.googleusercontent.com/d/16334O2p9homZ3YEvfH-7V83dsHU8zVAs"
-                            alt="Vision Trichologie" class="w-full h-full object-cover transition-all duration-700">
-                    </div>
-                    <div class="absolute -top-10 -left-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 -z-0"></div>
-                </div>
-                <div class="space-y-8 order-1 lg:order-2">
-                    <span class="sur-titre block mb-6 reveal-text">NOTRE PHILOSOPHIE</span>
-                    <h2 class="text-white fade-in-up">VISION DE LA TRICHOLOGIE</h2>
-                    <div class="space-y-6 text-white/80 text-lg font-light leading-relaxed">
-                        <p class="text-white">La trichologie n'est pas qu'une science du cheveu, c'est l'art de
-                            restaurer la confiance et
-                            l'harmonie. Nous croyons en une approche personnalisée où chaque diagnostic est le début
-                            d'une transformation.</p>
-                        <p class="text-white">Notre vision est de démocratiser l'expertise capillaire de haut
-                            niveau, en
-                            rendant accessible
-                            les meilleures technologies tout en conservant une approche humaine et bienveillante.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Legitimacy Section -->
-        <section class="py-32 px-8 md:px-24 text-center bg-[#FBF5F0]">
-            <div class="max-w-4xl mx-auto space-y-12">
-                <h2 class="text-[#1F455E] reveal-text visible">LÉGITIMITÉ &
-                    FORMATIONS</h2>
-                <div class="w-16 h-px bg-[#CFA674]/50 mx-auto"></div>
-                <div class="space-y-8 text-[#1F455E]/80 text-xl font-light leading-relaxed italic reveal-text visible"
-                    style="transition-delay: 200ms;">
-                    <p>Certifiée par les plus grandes institutions internationales de trichologie, l'expertise Trichozen
-                        s'appuie sur des années de recherche et une pratique clinique quotidienne.</p>
-                    <p>Nos formations sont le reflet de cette exigence : un transfert de compétences direct, efficace et
-                        tourné vers l'excellence opérationnelle.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pourquoi Trichozen -->
-        <section class="py-32 px-8 md:px-24 bg-[#CFA773]">
-            <div class="max-w-7xl mx-auto space-y-24">
-                <h2 class="text-center text-[#1F455E]">POURQUOI
-                    TRICHOZEN ?</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                    <!-- Item 1 -->
-                    <div
-                        class="p-10 text-center space-y-8 hover:border-[#CFA674]/30 transition-all duration-500 group premium-card fade-in-up shadow-2xl">
-                        <div
-                            class="w-16 h-16 rounded-full border border-[#CFA674]/20 flex items-center justify-center mx-auto group-hover:bg-[#CFA674]/10 transition-colors">
-                            <span class="material-symbols-outlined text-[#CFA674] text-3xl">science</span>
-                        </div>
-                        <div class="space-y-4">
-                            <h5 class="text-xl font-display text-[#1F455E]">Expertise Scientifique</h5>
-                            <p class="text-sm text-[#1F455E] font-light leading-relaxed">Protocoles basés sur les
-                                dernières découvertes biologiques et technologiques.</p>
+            <!-- Biography Section -->
+            <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div class="space-y-8 reveal-text visible">
+                        <span class="sur-titre block mb-6 reveal-text">LA FONDATRICE</span>
+                        <h2 class="text-[#1F455E]">Yébé Diouf</h2>
+                        <div class="space-y-6 text-[#1F455E] text-lg font-light leading-relaxed">
+                            <p class="text-[#1F455E]">Fondatrice de TrichoZen, Yébé Diouf a bâti son expertise à partir
+                                d'une épreuve personnelle : une chute de cheveux aux tempes qui a tout changé. Ce vécu
+                                de l'intérieur, avec son impact sur l'image de soi et la confiance, est devenu le point
+                                de départ d'une quête de compréhension profonde du cuir chevelu et de la fibre
+                                capillaire.</p>
+                            <p class="text-[#1F455E]">Son approche est née d'un constat simple : les solutions
+                                cosmétiques seules ne répondent pas à la réalité des problèmes capillaires. Elle a
+                                choisi d'aller plus loin: vers le diagnostic, l'analyse trichologique, la compréhension
+                                des mécanismes internes et externes qui influencent la santé du cheveu. Une vision
+                                fonctionnelle, scientifique et profondément humaine.
+                            </p>
+                            <p class="text-[#1F455E]">Aujourd'hui, elle accompagne particuliers, professionnels, marques
+                                et entreprises à travers le diagnostic capillaire, la formation, le conseil et la
+                                sensibilisation. Avec une expertise couvrant tous les types de cheveux, dont une
+                                connaissance approfondie des cheveux texturés, elle transmet un savoir-faire rare,
+                                accessible et ancré dans la réalité de terrain.
+                            </p>
                         </div>
                     </div>
-                    <!-- Item 2 -->
-                    <div
-                        class="p-10 text-center space-y-8 hover:border-[#CFA674]/30 transition-all duration-500 group premium-card fade-in-up stagger-1 shadow-2xl">
-                        <div
-                            class="w-16 h-16 rounded-full border border-[#CFA674]/20 flex items-center justify-center mx-auto group-hover:bg-[#CFA674]/10 transition-colors">
-                            <span class="material-symbols-outlined text-[#CFA674] text-3xl">psychology</span>
+                    <div class="relative">
+                        <div class="aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl relative z-10 scale-in">
+                            <img src="https://lh3.googleusercontent.com/d/16knvX4t9xBfhqdm2iMNY67C887XEBd-Z"
+                                alt="Yébé Diouf" class="w-full h-full object-cover transition-all duration-700">
                         </div>
-                        <div class="space-y-4">
-                            <h5 class="text-xl font-display text-[#1F455E]">Approche Holistique</h5>
-                            <p class="text-sm text-[#1F455E] font-light leading-relaxed">Nous traitons la cause, pas
-                                seulement le symptôme, pour un résultat durable.</p>
-                        </div>
-                    </div>
-                    <!-- Item 3 -->
-                    <div
-                        class="p-10 text-center space-y-8 hover:border-[#CFA674]/30 transition-all duration-500 group premium-card fade-in-up stagger-2 shadow-2xl">
-                        <div
-                            class="w-16 h-16 rounded-full border border-[#CFA674]/20 flex items-center justify-center mx-auto group-hover:bg-[#CFA674]/10 transition-colors">
+                        <div class="absolute -bottom-10 -left-10 bg-[#CFA674] px-12 py-4 z-20 shadow-2xl text-white">
                             <span
-                                class="material-symbols-outlined text-[#CFA674] text-3xl icon-rotate">workspace_premium</span>
+                                class="font-sans font-medium text-3xl block mb-0 uppercase tracking-[0.2em]">YÉBÉ</span>
+                            <p class="text-[#1F455E] text-[13px] uppercase tracking-wide font-medium font-sans">
+                                FONDATRICE &amp; EXPERTE
+                            </p>
                         </div>
-                        <div class="space-y-4">
-                            <h5 class="text-xl font-display text-[#1F455E]">Standards de Luxe</h5>
-                            <p class="text-sm text-[#1F455E] font-light leading-relaxed">Une expérience client soignée
-                                jusque dans les moindres détails sensoriels.</p>
+                        <div class="absolute -top-10 -right-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 -z-0"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vision Section -->
+            <section class="py-32 px-8 md:px-24 bg-[#1F455E] overflow-hidden">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div class="relative order-2 lg:order-1">
+                        <div class="aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl relative z-10 scale-in">
+                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1aj11TD1EWpjnsYVaxrNnRJF8U-HagG3C"
+                                alt="Vision Trichologie" class="w-full h-full object-cover transition-all duration-700">
+                        </div>
+                        <div class="absolute -top-10 -left-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 -z-0"></div>
+                    </div>
+                    <div class="space-y-8 order-1 lg:order-2">
+                        <span class="sur-titre block mb-6 reveal-text">Vision & approche</span>
+                        <h2 class="text-white fade-in-up uppercase">Scientifique, fonctionnelle, humaine</h2>
+                        <div class="space-y-6 text-white/80 text-lg font-light leading-relaxed">
+                            <p class="text-white">La trichologie n'est pas une science de surface, c'est une discipline
+                                de
+                                compréhension. Le cuir chevelu est un tissu vivant qui réagit au corps, au stress, aux
+                                carences, aux inflammations et aux déséquilibres hormonaux. Les cheveux ne poussent pas
+                                dans
+                                le vide. Ils parlent. Encore faut-il savoir les écouter.</p>
+                            <p class="text-white">Nous croyons en une trichologie qui observe, qui questionne et qui
+                                relie.
+                                Qui ne simplifie pas à l'excès, mais rend les choses compréhensibles. Qui fait dialoguer
+                                la
+                                science, l'expérience clinique et la réalité vécue par chaque personne.</p>
+                            <p class="text-white">Notre vision est de rendre cette expertise plus accessible et plus
+                                exigeante. Parce que trop de personnes souffrent sans réponse précise, ou passent d'un
+                                produit à l'autre sans comprendre. Remettre le diagnostic et la pédagogie au centre.
+                                C'est
+                                le sens profond de TrichoZen.</p>
                         </div>
                     </div>
-                    <!-- Item 4 -->
-                    <div
-                        class="p-10 text-center space-y-8 hover:border-[#CFA674]/30 transition-all duration-500 group premium-card fade-in-up stagger-3 shadow-2xl">
+                </div>
+            </section>
+
+            <!-- Legitimacy Section -->
+            <section class="py-32 px-8 md:px-24 text-center bg-[#FBF5F0]">
+                <div class="max-w-4xl mx-auto space-y-12">
+                    <h2 class="text-[#1F455E] reveal-text visible">Légitimité & Expertise</h2>
+                    <div class="w-16 h-px bg-[#CFA674]/50 mx-auto"></div>
+                    <div class="space-y-8 text-[#1F455E]/80 text-xl font-light leading-relaxed italic reveal-text visible"
+                        style="transition-delay: 200ms;">
+                        <p>Une légitimité née d'une expérience personnelle, approfondie par des années de pratique et de
+                            diagnostic capillaire, pas d'un parcours académique standardisé. C'est cette réalité vécue,
+                            combinée à une spécialisation en trichologie fonctionnelle, qui fonde la crédibilité de
+                            TrichoZen.</p>
+                        <p>Cette expertise couvre l'ensemble du champ capillaire : diagnostics pour les particuliers,
+                            formations professionnelles en trichologie, interventions auprès des marques, conférences de
+                            presse et ateliers de sensibilisation en entreprise, avec une connaissance approfondie des
+                            cheveux texturés, trop souvent mal accompagnés.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pourquoi Trichozen -->
+            <section class="py-32 px-8 md:px-24 bg-[#CFA773]">
+                <div class="max-w-7xl mx-auto space-y-24">
+                    <h2 class="text-center text-[#1F455E]">Les valeurs de TrichoZen</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                        <!-- Item 1 -->
                         <div
-                            class="w-16 h-16 rounded-full border border-[#CFA674]/20 flex items-center justify-center mx-auto group-hover:bg-[#CFA674]/10 transition-colors">
-                            <span class="material-symbols-outlined text-[#CFA674] text-3xl">diversity_3</span>
+                            class="p-10 text-center space-y-8 hover:border-[#CFA674]/30 transition-all duration-500 group premium-card fade-in-up shadow-2xl">
+                            <div
+                                class="w-16 h-16 rounded-full border border-[#CFA674]/20 flex items-center justify-center mx-auto group-hover:bg-[#CFA674]/10 transition-colors">
+                                <span class="material-symbols-outlined text-[#CFA674] text-3xl">science</span>
+                            </div>
+                            <div class="space-y-4">
+                                <h5 class="text-xl font-display text-[#1F455E]">Excellence</h5>
+                                <p class="text-base text-[#1F455E] font-medium leading-relaxed">Un standard d'exigence
+                                    dans
+                                    chaque diagnostic capillaire, chaque formation, chaque intervention et chaque prise
+                                    de
+                                    parole. Rien n'est laissé au hasard, tout est au service de la précision et de la
+                                    pertinence.</p>
+                            </div>
                         </div>
-                        <div class="space-y-4">
-                            <h5 class="text-xl font-display text-[#1F455E]">Communauté Active</h5>
-                            <p class="text-sm text-[#1F455E] font-light leading-relaxed">Un réseau de professionnels
-                                certifiés partageant les mêmes valeurs d'excellence.</p>
+                        <!-- Item 2 -->
+                        <div
+                            class="p-10 text-center space-y-8 hover:border-[#CFA674]/30 transition-all duration-500 group premium-card fade-in-up stagger-1 shadow-2xl">
+                            <div
+                                class="w-16 h-16 rounded-full border border-[#CFA674]/20 flex items-center justify-center mx-auto group-hover:bg-[#CFA674]/10 transition-colors">
+                                <span class="material-symbols-outlined text-[#CFA674] text-3xl">psychology</span>
+                            </div>
+                            <div class="space-y-4">
+                                <h5 class="text-xl font-display text-[#1F455E]">Bienveillance</h5>
+                                <p class="text-base text-[#1F455E] font-medium leading-relaxed">Un espace d'écoute
+                                    authentique,
+                                    sans jugement, où chaque personne est accueillie telle qu'elle est, avec son
+                                    histoire
+                                    capillaire, ses doutes et ses objectifs propres.</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
-            <div class="container mx-auto px-6 md:px-16">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
-                    <div class="md:col-span-4 space-y-5">
-                        <div class="flex items-center gap-3">
-                            <a class="block w-72 hover:opacity-80 transition-opacity" href="#">
-                                <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc"
-                                    alt="TRICHOZEN" class="w-full h-auto object-contain"
-                                    style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
-                            </a>
+                        <!-- Item 3 -->
+                        <div
+                            class="p-10 text-center space-y-8 hover:border-[#CFA674]/30 transition-all duration-500 group premium-card fade-in-up stagger-2 shadow-2xl">
+                            <div
+                                class="w-16 h-16 rounded-full border border-[#CFA674]/20 flex items-center justify-center mx-auto group-hover:bg-[#CFA674]/10 transition-colors">
+                                <span
+                                    class="material-symbols-outlined text-[#CFA674] text-3xl icon-rotate">workspace_premium</span>
+                            </div>
+                            <div class="space-y-4">
+                                <h5 class="text-xl font-display text-[#1F455E]">Innovation responsable</h5>
+                                <p class="text-base text-[#1F455E] font-medium leading-relaxed">Une expertise fermement
+                                    ancrée
+                                    dans la science, ouverte aux nouvelles approches trichologiques, mais jamais dans
+                                    l'effet de mode. La rigueur avant la tendance.</p>
+                            </div>
                         </div>
-                        <p class="leading-relaxed max-w-xl text-white">
-                            L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise,
-                            science et rituel d'exception.
-                        </p>
-                        <div class="flex gap-6 text-[#CFA674] justify-start">
-                            <a class="hover:text-white transition-colors" href="#" aria-label="Instagram">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="currentColor">
-                                    <path
-                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                                </svg>
-                            </a>
-                            <a class="hover:text-white transition-colors mb-3" href="#" aria-label="LinkedIn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 24 24"
-                                    fill="currentColor">
-                                    <path
-                                        d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-                                </svg>
-                            </a>
-                            <a class="hover:text-white transition-colors" href="#" aria-label="YouTube">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="currentColor">
-                                    <path
-                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="md:col-span-2 space-y-6">
-                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
-                        <ul class="space-y-4">
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="#">Home</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="#">Particuliers</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="#">Professionnels</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="#">Ressources</a></li>
-                        </ul>
-                    </div>
-                    <div class="md:col-span-2 space-y-6">
-                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
-                        <ul class="space-y-4">
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="#">Qui sommes-nous</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="contact.html">Contact</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="#">Presse</a></li>
-                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="#">Mentions Légales</a></li>
-                        </ul>
-                    </div>
-                    <div class="md:col-span-4 space-y-6">
-                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
-                        <p class="leading-relaxed text-white">Inscrivez-vous pour recevoir nos dernières actualités
-                            scientifiques.
-                        </p>
-                        <div class="flex">
-                            <input
-                                class="bg-[#142D3D] border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
-                                placeholder="Votre email" type="email" />
-                            <button class="bg-[#CFA674] text-white px-4 hover:opacity-80 transition-colors rounded">
-                                <span class="material-symbols-outlined">arrow_forward</span>
-                            </button>
+                        <!-- Item 4 -->
+                        <div
+                            class="p-10 text-center space-y-8 hover:border-[#CFA674]/30 transition-all duration-500 group premium-card fade-in-up stagger-3 shadow-2xl">
+                            <div
+                                class="w-16 h-16 rounded-full border border-[#CFA674]/20 flex items-center justify-center mx-auto group-hover:bg-[#CFA674]/10 transition-colors">
+                                <span class="material-symbols-outlined text-[#CFA674] text-3xl">diversity_3</span>
+                            </div>
+                            <div class="space-y-4">
+                                <h5 class="text-xl font-display text-[#1F455E]">Transmission</h5>
+                                <p class="text-base text-[#1F455E] font-medium leading-relaxed">Partager, former,
+                                    vulgariser
+                                    :
+                                    rendre la trichologie fonctionnelle accessible au plus grand nombre: des
+                                    particuliers
+                                    aux professionnels, des marques aux entreprises.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div
-                    class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
-                    <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED .
-                    </p>
-                    <div class="flex gap-12">
-                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">POLITIQUE DE
-                            CONFIDENTIALITÉ</a>
-                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">CGV</a>
+            </section>
+
+            <!-- Footer -->
+            <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
+                <div class="container mx-auto px-6 md:px-16">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
+                        <div class="md:col-span-4 space-y-5">
+                            <div class="flex items-center gap-3">
+                                <a class="block w-72 hover:opacity-80 transition-opacity" href="#">
+                                    <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc"
+                                        alt="TRICHOZEN" class="w-full h-auto object-contain"
+                                        style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
+                                </a>
+                            </div>
+                            <p class="leading-relaxed max-w-xl text-white">
+                                Expertise trichologique au service de la santé de votre cuir chevelu et de vos
+                                cheveux. Diagnostic · Formation · Conseil · Sensibilisation.
+                            </p>
+                            <div class="flex gap-6 text-[#CFA674] justify-start">
+                                <a class="hover:text-white transition-colors"
+                                    href="https://www.instagram.com/yebediouf/" aria-label="Instagram">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path
+                                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                    </svg>
+                                </a>
+                                <a class="hover:text-white transition-colors"
+                                    href="https://www.tiktok.com/@yebe_trichologue" aria-label="TikTok">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.06-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.59-1.01V14.5a7.5 7.5 0 1 1-7.5-7.5c.34 0 .68.04 1.01.12v4.01a3.5 3.5 0 1 0 2.49 3.37V0L12.525.02z" />
+                                    </svg>
+                                </a>
+                                <a class="hover:text-white transition-colors"
+                                    href="https://fr.linkedin.com/in/yebe-diouf" aria-label="LinkedIn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path
+                                            d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                                    </svg>
+                                </a>
+                                <a class="hover:text-white transition-colors"
+                                    href="https://www.youtube.com/@yebe_trichologue" aria-label="YouTube">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path
+                                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2 space-y-6">
+                            <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
+                            <ul class="space-y-4">
+                                <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                        href="#">Home</a></li>
+                                <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                        href="#">Particuliers</a></li>
+                                <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                        href="#">Professionnels</a></li>
+                                <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                        href="#">Ressources</a></li>
+                            </ul>
+                        </div>
+                        <div class="md:col-span-2 space-y-6">
+                            <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
+                            <ul class="space-y-4">
+                                <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                        href="#">Qui sommes-nous</a></li>
+                                <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                        href="contact.html">Contact</a></li>
+                                <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                        href="#">Presse</a></li>
+                                <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                        href="#">Mentions Légales</a></li>
+                            </ul>
+                        </div>
+                        <div class="md:col-span-4 space-y-6">
+                            <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
+                            <p class="leading-relaxed text-white">Recevez nos conseils d'experte en santé capillaire et
+                                les
+                                actualités TrichoZen directement dans votre boîte mail.
+                            </p>
+                            <div class="flex">
+                                <input
+                                    class="bg-[#142D3D] border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
+                                    placeholder="Votre email" type="email" />
+                                <button class="bg-[#CFA674] text-white px-4 hover:opacity-80 transition-colors rounded">
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
+                        <p class="text-white/40 font-medium text-[10px]">2026 TrichoZen — Tous droits réservés.</p>
+                        <div class="flex gap-12">
+                            <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">POLITIQUE DE
+                                CONFIDENTIALITÉ</a>
+                            <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">CGV</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
-    </main>
+            </footer>
+        </main>
 
-    <script>
-        // ============================================
-        // ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
-        // ============================================
+        <script>
+            // ============================================
+            // ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
+            // ============================================
 
-        // Intersection Observer for Reveal Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+            // Intersection Observer for Reveal Animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Initialize on DOM load
+            document.addEventListener('DOMContentLoaded', () => {
+                // Observe all reveal elements
+                document.querySelectorAll('.reveal-text, .fade-in-up, .scale-in').forEach(el => {
+                    observer.observe(el);
+                });
             });
-        }, observerOptions);
-
-        // Initialize on DOM load
-        document.addEventListener('DOMContentLoaded', () => {
-            // Observe all reveal elements
-            document.querySelectorAll('.reveal-text, .fade-in-up, .scale-in').forEach(el => {
-                observer.observe(el);
-            });
-        });
-    </script>
+        </script>
+    </div>
 </body>
 
 </html>

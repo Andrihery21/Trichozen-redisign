@@ -128,7 +128,7 @@
         @layer base {
             h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
             h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
-            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
+            h3 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
             h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
             h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
             h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
@@ -216,12 +216,75 @@
                 transition-duration: 0.01ms !important;
             }
         }
+
+        /* ===== RESPONSIVE SYSTEM ===== */
+        *, *::before, *::after { box-sizing: border-box; }
+        body { overflow-x: hidden; }
+        img, video { max-width: 100%; height: auto; }
+
+        .hero-title { font-size: clamp(1.8rem, 5vw, 4rem) !important; }
+        .sur-titre { font-size: clamp(0.8rem, 1.8vw, 1.5rem) !important; }
+        .quote-style { font-size: clamp(0.95rem, 1.8vw, 1.4rem) !important; }
+
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.98);
+            z-index: 200;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.75rem;
+            padding: 2rem;
+        }
+        #mobile-menu.open { display: flex; }
+        #mobile-menu-close {
+            position: absolute;
+            top: 1.25rem; right: 1.25rem;
+            background: none; border: none;
+            cursor: pointer; color: #1F455E;
+        }
+
+        @layer base {
+            h1 { font-size: clamp(1.75rem, 4.5vw, 4rem) !important; }
+            h2 { font-size: clamp(1.4rem, 3.5vw, 2.5rem) !important; }
+            h3 { font-size: clamp(1rem, 2.5vw, 1.5rem) !important; }
+            h4 { font-size: clamp(0.9rem, 2vw, 1.5rem) !important; }
+        }
+
+        @media (max-width: 1024px) {
+            .text-7xl { font-size: clamp(2.5rem, 8vw, 4.5rem) !important; }
+            .text-8xl { font-size: clamp(2.5rem, 8vw, 4.5rem) !important; }
+            .text-9xl { font-size: clamp(3rem, 10vw, 6rem) !important; }
+            .leading-snug.border-l-4 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+        }
+
+        @media (max-width: 768px) {
+            .text-7xl { font-size: clamp(1.8rem, 7vw, 2.8rem) !important; }
+            .text-8xl { font-size: clamp(1.8rem, 7vw, 2.8rem) !important; }
+            .text-9xl { font-size: clamp(2rem, 8vw, 3rem) !important; }
+            .text-5xl { font-size: clamp(1.5rem, 6vw, 2.2rem) !important; }
+            .leading-snug.border-l-4 { padding-left: 1rem !important; padding-right: 1rem !important; }
+            .absolute.-bottom-10.-left-10 { bottom: -0.5rem !important; left: 0 !important; }
+            .absolute.-top-10.-right-10 { display: none !important; }
+            .absolute.-top-10.-left-10 { display: none !important; }
+            .whitespace-nowrap { white-space: normal !important; }
+            .brand-logo { width: 100px !important; margin: 0 20px !important; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: clamp(1.4rem, 7vw, 2rem) !important; }
+            .sur-titre { font-size: clamp(0.75rem, 3.5vw, 1rem) !important; }
+            .w-72 { max-width: 8rem !important; }
+        }
     </style>
 </head>
 
 <body class="bg-background-dark font-sans text-[#1F455E] selection:bg-primary selection:text-white">
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full z-50 glass-nav h-20 grid grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
+    <nav
+        class="fixed top-0 left-0 w-full z-50 glass-nav h-20 flex justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
         <div class="flex justify-start">
             <a class="block w-40 hover:opacity-80 transition-opacity" href="home.html">
                 <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc" alt="TRICHOZEN"
@@ -264,13 +327,43 @@
             </div>
             <a class="nav-link text-[#1F455E]" href="contact.html">Contact</a>
         </div>
-        <div class="flex justify-end">
+        <div class="flex justify-end items-center gap-3">
             <button
-                class="bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded">
+                class="hidden md:block bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded">
                 RDV Expertise
+            </button>
+            <button id="burger-btn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Menu"
+                onclick="document.getElementById('mobile-menu').classList.add('open')">
+                <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+        <button id="mobile-menu-close" onclick="document.getElementById('mobile-menu').classList.remove('open')"
+            aria-label="Fermer">
+            <span class="material-symbols-outlined" style="font-size:2rem;color:#1F455E">close</span>
+        </button>
+        <a href="home.html"
+            style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Home</a>
+        <a href="particulier.html"
+            style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Particuliers</a>
+        <a href="professionnel.html"
+            style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Professionnels</a>
+        <a href="a-propos.html"
+            style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">A
+            propos</a>
+        <a href="blog.html"
+            style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Blog</a>
+        <a href="contact.html"
+            style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Contact</a>
+        <a href="contact.html"
+            style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;">RDV
+            Expertise</a>
+    </div>
 
     <main class="pt-20">
 
@@ -286,11 +379,9 @@
                     style="animation-delay: 5s;"></div>
             </div>
             <div class="relative z-10 px-6 max-w-5xl mx-auto">
-                <div class="leading-snug border-l-4 border-[#CFA674] px-8 md:px-24 py-12 bg-white/20">
+                <div class="leading-snug border-l-4 border-[#CFA674] px-8 md:px-24 py-8 bg-white/20">
                     <div class="fade-in-up">
-                        <span
-                            class="inline-block text-[11px] font-sans font-medium uppercase tracking-[0.25em] text-[#CFA674] border border-[#CFA674]/40 px-5 py-2 mb-10">Programme
-                            Capillaire · Édition Grand Public</span>
+                        <span class="sur-titre block mb-10">Programme Capillaire · Édition Grand Public</span>
                     </div>
                     <h1 class="hero-title mb-6 tracking-[0.05em] fade-in-up stagger-1">
                         Le Programme Essentiel
@@ -369,7 +460,7 @@
                         <span
                             class="absolute top-5 right-6 text-7xl font-display font-medium text-[#CFA674]/10">01</span>
                         <span class="material-symbols-outlined text-4xl text-[#CFA674] mb-4">search</span>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">Vous
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">Vous
                             traitez les
                             symptômes</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Shampoing anti-chute sur une
@@ -380,7 +471,7 @@
                         <span
                             class="absolute top-5 right-6 text-7xl font-display font-medium text-[#CFA674]/10">02</span>
                         <span class="material-symbols-outlined text-4xl text-[#CFA674] mb-4">hourglass_empty</span>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">Vous
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">Vous
                             agissez trop
                             tard</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Les pertes capillaires sont
@@ -391,7 +482,7 @@
                         <span
                             class="absolute top-5 right-6 text-7xl font-display font-medium text-[#CFA674]/10">03</span>
                         <span class="material-symbols-outlined text-4xl text-[#CFA674] mb-4">payments</span>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">Vous
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">Vous
                             surinvestissez
                             en produits</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Le marché capillaire repose sur
@@ -402,7 +493,7 @@
                         <span
                             class="absolute top-5 right-6 text-7xl font-display font-medium text-[#CFA674]/10">04</span>
                         <span class="material-symbols-outlined text-4xl text-[#CFA674] mb-4">genetics</span>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">
                             Votre texture mérite
                             une approche spécifique</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Les cheveux crépus, frisés et
@@ -420,7 +511,8 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                     <div class="text-left reveal-text">
                         <span class="sur-titre block mb-4">La promesse</span>
-                        <h2 class="text-[40px] font-display text-white uppercase mb-6 leading-tight">Pas de miracle.<br>Une
+                        <h2 class="text-[40px] font-display text-white uppercase mb-6 leading-tight">Pas de
+                            miracle.<br>Une
                             compréhension.</h2>
                         <p class="text-white font-medium leading-relaxed max-w-xl">Vos cheveux ne tombent jamais
                             sans
@@ -457,13 +549,15 @@
             <div class="max-w-7xl mx-auto">
                 <div class="mb-20 reveal-text text-center">
                     <span class="sur-titre block mb-4">Le contenu</span>
-                    <h2 class="text-[40px] font-display text-[#1F455E] uppercase leading-tight mx-auto max-w-2xl">9 modules pour tout
+                    <h2 class="text-[40px] font-display text-[#1F455E] uppercase leading-tight mx-auto max-w-2xl">9
+                        modules pour tout
                         comprendre,<br>une fois pour toutes</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div class="premium-card bg-white p-8 fade-in-up">
                         <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">Module 01</p>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3">Anatomie du cheveu et
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3">Anatomie du cheveu
+                            et
                             du follicule</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Ce qui se passe sous la peau. Le
                             follicule, le bulbe, la papille dermique. Le cycle pilaire. Pourquoi la chute commence en
@@ -471,7 +565,8 @@
                     </div>
                     <div class="premium-card bg-white p-8 fade-in-up stagger-1">
                         <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">Module 02</p>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3">Le cuir chevelu comme
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3">Le cuir chevelu
+                            comme
                             organe vivant</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Structure, microbiote, film
                             hydrolipidique. Les spécificités du cuir chevelu afro. Comment le lire comme une peau
@@ -484,14 +579,15 @@
                     </div>
                     <div class="premium-card bg-white p-8 fade-in-up stagger-2">
                         <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">Module 03</p>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3">La chute : décryptage
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3">La chute :
+                            décryptage
                             complet</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Chute réactionnelle, carentielle,
                             hormonale, par traction, génétique. Comprendre son type avant de traiter.</p>
                     </div>
                     <div class="premium-card bg-white p-8 fade-in-up">
                         <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">Module 04</p>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3">Tempes dégarnies :
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3">Tempes dégarnies :
                             comprendre et agir</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">L'alopécie de traction expliquée.
                             Les signaux d'alerte. Ce qui est encore récupérable. La stratégie de protection des tempes.
@@ -504,7 +600,7 @@
                     </div>
                     <div class="premium-card bg-white p-8 fade-in-up stagger-1">
                         <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">Module 05</p>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3">Densité, casse et
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3">Densité, casse et
                             affinement</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Chute vs casse : deux problèmes
                             différents. Les causes spécifiques aux textures afro. La miniaturisation folliculaire.</p>
@@ -516,28 +612,29 @@
                     </div>
                     <div class="premium-card bg-white p-8 fade-in-up stagger-2">
                         <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">Module 06</p>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3">Le corps comme
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3">Le corps comme
                             déclencheur</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Stress, alimentation, hormones,
                             thyroïde, fer et ferritine. Quand le corps parle à travers les cheveux.</p>
                     </div>
                     <div class="premium-card bg-white p-8 fade-in-up">
                         <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">Module 07</p>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3">Pellicules,
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3">Pellicules,
                             démangeaisons, inflammation</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Pellicules sèches vs grasses.
                             Dermite séborrhéique. Le lien entre inflammation et chute. La saisonnalité des troubles.</p>
                     </div>
                     <div class="premium-card bg-white p-8 fade-in-up stagger-1">
                         <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">Module 08</p>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3">Cosmétiques : vérités
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3">Cosmétiques :
+                            vérités
                             et limites</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Ce que les shampoings, huiles et
                             sérums peuvent vraiment faire. Marketing vs biologie. Le minimalisme trichologique.</p>
                     </div>
                     <div class="premium-card bg-white p-8 fade-in-up stagger-2">
                         <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">Module 09</p>
-                        <h3 class="text-lg font-bold text-[#CFA674] uppercase tracking-wider mb-3">Prévention et
+                        <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3">Prévention et
                             stratégie à long terme</h3>
                         <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Construire votre stratégie à 20,
                             30, 40 ans et plus. Capital folliculaire. Stabilisation. Autonomie trichologique.</p>
@@ -558,7 +655,8 @@
                     <div class="lg:w-3/5">
                         <div class="mb-10 reveal-text text-left">
                             <span class="sur-titre block mb-4">Pour vous si…</span>
-                            <h2 class="text-[40px] font-display text-[#1F455E] uppercase leading-tight">Ce programme vous
+                            <h2 class="text-[40px] font-display text-[#1F455E] uppercase leading-tight">Ce programme
+                                vous
                                 ressemble</h2>
                         </div>
                         <ul class="space-y-0">
@@ -634,7 +732,7 @@
                         <div class="p-8 border-b border-[#1F455E]/5 text-center flex flex-col items-center">
                             <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-3">Palier 1
                             </p>
-                            <h3 class="text-xl font-bold text-[#CFA674] uppercase tracking-wider mb-2">Essentiel Solo
+                            <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-2">Essentiel Solo
                             </h3>
                             <p class="text-sm text-[#1F455E] font-medium mb-6">Le programme complet, en autonomie
                                 totale.
@@ -674,12 +772,13 @@
                         class="premium-card bg-white flex flex-col fade-in-up stagger-1 relative md:-mt-12 md:-mb-12 md:-mx-4 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] z-40 border-2 border-[#CFA674]">
                         <div class="absolute top-4 right-0 z-10">
                             <span
-                                class="bg-[#CFA674] text-white px-5 py-2 text-[12px] uppercase tracking-widest font-bold">Le plus choisi</span>
+                                class="bg-[#CFA674] text-white px-5 py-2 text-[12px] uppercase tracking-widest font-bold">Le
+                                plus choisi</span>
                         </div>
                         <div class="p-8 border-b border-[#1F455E]/5 text-center flex flex-col items-center">
                             <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-3">Palier 2
                             </p>
-                            <h3 class="text-xl font-bold text-[#CFA674] uppercase tracking-wider mb-2">Essentiel +
+                            <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-2">Essentiel +
                                 Stratégie</h3>
                             <p class="text-sm text-[#1F455E] font-medium mb-6">Le programme + une stratégie capillaire
                                 sur mesure.</p>
@@ -718,7 +817,8 @@
                         <div class="p-8 border-b border-[#1F455E]/5 text-center flex flex-col items-center">
                             <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-3">Palier 3
                             </p>
-                            <h3 class="text-xl font-bold text-[#CFA674] uppercase tracking-wider mb-2">Essentiel Premium
+                            <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-2">Essentiel
+                                Premium
                             </h3>
                             <p class="text-sm text-[#1F455E] font-medium mb-6">Le programme + un suivi structuré sur 3
                                 mois.</p>
@@ -756,7 +856,7 @@
                 <div
                     class="bg-[#1F455E] p-10 md:p-12 mt-28 flex flex-col md:flex-row items-center justify-between gap-8 fade-in-up">
                     <div>
-                        <h3 class="text-xl font-display text-white mb-2">Offre de lancement — Early Bird</h3>
+                        <h3 class="text-2xl font-display text-white mb-2">Offre de lancement — Early Bird</h3>
                         <p class="text-sm text-white font-medium">−20% sur tous les paliers · 2 semaines seulement
                         </p>
                     </div>
@@ -786,7 +886,8 @@
             <div class="max-w-7xl mx-auto">
                 <div class="mb-16 reveal-text text-center">
                     <span class="sur-titre block mb-4">Témoignages</span>
-                    <h2 class="text-[40px] font-display text-[#1F455E] uppercase leading-tight mx-auto max-w-2xl">Ce qu'elles en disent</h2>
+                    <h2 class="text-[40px] font-display text-[#1F455E] uppercase leading-tight mx-auto max-w-2xl">Ce
+                        qu'elles en disent</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="premium-card bg-white p-8 flex flex-col space-y-6 fade-in-up">
@@ -983,15 +1084,15 @@
             <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
                 <div class="md:col-span-4 space-y-5">
                     <div class="flex items-center gap-3">
-                        <a class="block w-72 hover:opacity-80 transition-opacity" href="home.html">
+                        <a class="block w-72 hover:opacity-80 transition-opacity" href="#">
                             <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc"
                                 alt="TRICHOZEN" class="w-full h-auto object-contain"
                                 style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
                         </a>
                     </div>
                     <p class="leading-relaxed max-w-xl text-white">
-                        L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise,
-                        science et rituel d'exception.
+                        TrichoZen — Expertise trichologique au service de la santé de votre cuir chevelu et de vos
+                        cheveux. Diagnostic · Formation · Conseil · Sensibilisation.
                     </p>
                     <div class="flex gap-6 text-[#CFA674] justify-start">
                         <a class="hover:text-white transition-colors" href="#" aria-label="Instagram">
@@ -1001,7 +1102,14 @@
                                     d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
                         </a>
-                        <a class="hover:text-white transition-colors mb-3" href="#" aria-label="LinkedIn">
+                        <a class="hover:text-white transition-colors" href="#" aria-label="TikTok">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.06-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.59-1.01V14.5a7.5 7.5 0 1 1-7.5-7.5c.34 0 .68.04 1.01.12v4.01a3.5 3.5 0 1 0 2.49 3.37V0L12.525.02z" />
+                            </svg>
+                        </a>
+                        <a class="hover:text-white transition-colors" href="#" aria-label="LinkedIn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 24 24"
                                 fill="currentColor">
                                 <path
@@ -1021,7 +1129,7 @@
                     <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
                     <ul class="space-y-4">
                         <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                href="home.html">Home</a></li>
+                                href="#">Home</a></li>
                         <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                 href="particulier.html">Particuliers</a></li>
                         <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
@@ -1034,7 +1142,8 @@
                     <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
                     <ul class="space-y-4">
                         <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                href="a-propos.html">Qui sommes-nous</a></li>
+                                href="a-propos.html">Qui
+                                sommes-nous</a></li>
                         <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                 href="contact.html">Contact</a></li>
                         <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
@@ -1045,8 +1154,9 @@
                 </div>
                 <div class="md:col-span-4 space-y-6">
                     <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
-                    <p class="leading-relaxed text-white">Inscrivez-vous pour recevoir nos dernières actualités
-                        scientifiques.</p>
+                    <p class="leading-relaxed text-white">Recevez nos conseils d'experte en santé capillaire et les
+                        actualités TrichoZen directement dans votre boîte mail.
+                    </p>
                     <div class="flex">
                         <input
                             class="bg-[#142D3D] border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
@@ -1059,7 +1169,7 @@
             </div>
             <div
                 class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
-                <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED.</p>
+                <p class="text-white/40 font-medium text-[10px]">2026 TrichoZen — Tous droits réservés.</p>
                 <div class="flex gap-12">
                     <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">POLITIQUE DE
                         CONFIDENTIALITÉ</a>

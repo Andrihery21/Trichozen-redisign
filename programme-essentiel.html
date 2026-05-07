@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark" lang="fr">
 
 <head>
@@ -7,10 +7,10 @@
     <title>Programme Essentiel | Trichozen</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
+        href="https://fonts.googleapis.com/css2—family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
         rel="stylesheet" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        href="https://fonts.googleapis.com/css2—family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
@@ -339,12 +339,80 @@
                 transition-duration: 0.01ms !important;
             }
         }
+
+        /* ===== RESPONSIVE SYSTEM ===== */
+        *, *::before, *::after { box-sizing: border-box; }
+        body { overflow-x: hidden; }
+        img, video { max-width: 100%; height: auto; }
+
+        .hero-title { font-size: clamp(1.8rem, 5vw, 4rem) !important; }
+        .sur-titre { font-size: clamp(0.8rem, 1.8vw, 1.5rem) !important; }
+        .quote-style { font-size: clamp(0.95rem, 1.8vw, 1.4rem) !important; }
+
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.98);
+            z-index: 200;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.75rem;
+            padding: 2rem;
+        }
+        #mobile-menu.open { display: flex; }
+        #mobile-menu-close {
+            position: absolute;
+            top: 1.25rem; right: 1.25rem;
+            background: none; border: none;
+            cursor: pointer; color: #1F455E;
+        }
+
+        @layer base {
+            h1 { font-size: clamp(1.75rem, 4.5vw, 3rem) !important; }
+            h2 { font-size: clamp(1.4rem, 3.5vw, 2.5rem) !important; }
+            h3 { font-size: clamp(1rem, 2.5vw, 2rem) !important; }
+            h4 { font-size: clamp(0.9rem, 2vw, 1.5rem) !important; }
+        }
+
+        @media (max-width: 1024px) {
+            .text-7xl { font-size: clamp(2.5rem, 8vw, 4.5rem) !important; }
+            .text-8xl { font-size: clamp(2.5rem, 8vw, 4.5rem) !important; }
+            .text-9xl { font-size: clamp(3rem, 10vw, 6rem) !important; }
+            .leading-snug.border-l-4 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+        }
+
+        @media (max-width: 768px) {
+            .text-7xl { font-size: clamp(1.8rem, 7vw, 2.8rem) !important; }
+            .text-8xl { font-size: clamp(1.8rem, 7vw, 2.8rem) !important; }
+            .text-9xl { font-size: clamp(2rem, 8vw, 3rem) !important; }
+            .text-5xl { font-size: clamp(1.5rem, 6vw, 2.2rem) !important; }
+            .leading-snug.border-l-4 { padding-left: 1rem !important; padding-right: 1rem !important; }
+            .absolute.-bottom-10.-left-10 { bottom: -0.5rem !important; left: 0 !important; }
+            .absolute.-top-10.-right-10 { display: none !important; }
+            .absolute.-top-10.-left-10 { display: none !important; }
+            .whitespace-nowrap { white-space: normal !important; }
+            .brand-logo { width: 100px !important; margin: 0 20px !important; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: clamp(1.4rem, 7vw, 2rem) !important; }
+            .sur-titre { font-size: clamp(0.75rem, 3.5vw, 1rem) !important; }
+            .w-72 { max-width: 8rem !important; }
+        }
+
+        /* Hero headings: 64px fixe sur toutes les pages */
+        .hero-title { font-size: 64px !important; }
+        h1.font-display, h1[class*='font-display'] { font-size: 64px !important; }
+        h1.text-7xl, h1.text-5xl { font-size: 64px !important; }
     </style>
 </head>
 
 <body class="bg-background-dark font-sans text-gray-200">
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full z-50 glass-nav h-20 grid grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
+    <nav
+        class="fixed top-0 left-0 w-full z-50 glass-nav h-20 flex justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
         <!-- Logo Section (Left) -->
         <div class="flex justify-start">
             <a class="block w-40 hover:opacity-80 transition-opacity" href="home.html">
@@ -362,7 +430,7 @@
                         class="material-symbols-outlined text-[14px]">expand_more</span></a>
                 <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
                     <a class="dropdown-item" href="diagnostique.html">Diagnostic online</a>
-                    <a class="dropdown-item" href="particulier.html#prestations">Présentiel</a>
+                    <a class="dropdown-item" href="particulier.html#prestations">Pr�sentiel</a>
                     <a class="dropdown-item" href="programme-essentiel.html">Programme Essentiel</a>
                 </div>
             </div>
@@ -377,28 +445,57 @@
                     <a class="dropdown-item" href="#">Business &amp; Management Luxe</a>
                 </div>
             </div>
-            <a class="nav-link text-[#1F455E]" href="a-propos.html">À propos</a>
+            <a class="nav-link text-[#1F455E]" href="a-propos.html">—— propos</a>
             <div class="relative dropdown-group">
                 <a class="nav-link text-[#1F455E]" href="#">Ressources <span
                         class="material-symbols-outlined text-[14px]">expand_more</span></a>
                 <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
-                    <a class="dropdown-item" href="#">Espace Marques &amp; Médias</a>
+                    <a class="dropdown-item" href="#">Espace Marques &amp; M�dias</a>
                     <a class="dropdown-item" href="blog.html">Votre blog TrichoZen</a>
                     <a class="dropdown-item" href="#">Annuaire</a>
-                    <a class="dropdown-item" href="#">S'inscrire à la NewsLetter</a>
+                    <a class="dropdown-item" href="#">S'inscrire � la NewsLetter</a>
                 </div>
             </div>
             <a class="nav-link text-[#1F455E]" href="contact.html">Contact</a>
         </div>
 
         <!-- CTA Button (Right) -->
-        <div class="flex justify-end">
+        <div class="flex justify-end items-center gap-3">
             <button
-                class="bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded">
+                class="hidden md:block bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded">
                 RDV Expertise
+            </button>
+            <button id="burger-btn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Menu"
+                onclick="document.getElementById('mobile-menu').classList.add('open')">
+                <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
             </button>
         </div>
     </nav>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+        <button id="mobile-menu-close" onclick="document.getElementById('mobile-menu').classList.remove('open')"
+            aria-label="Fermer">
+            <span class="material-symbols-outlined" style="font-size:2rem;color:#1F455E">close</span>
+        </button>
+        <a href="home.html"
+            style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Home</a>
+        <a href="particulier.html"
+            style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Particuliers</a>
+        <a href="professionnel.html"
+            style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Professionnels</a>
+        <a href="a-propos.html"
+            style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">A
+            propos</a>
+        <a href="blog.html"
+            style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Blog</a>
+        <a href="contact.html"
+            style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Contact</a>
+        <a href="contact.html"
+            style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;">RDV
+            Expertise</a>
+    </div>
 
     <!-- Main Content -->
     <main class="pt-20">
@@ -413,31 +510,31 @@
             <div class="relative z-10 px-8 fade-in-up">
                 <h2 class="text-6xl md:text-8xl font-display text-white mb-4 uppercase tracking-[0.1em]">
                     PROGRAMME ESSENTIEL</h2>
-                <p class="text-[12px] uppercase tracking-[0.4em] text-[#CFA674] font-bold mb-10">Durée : 3 mois | Prix :
-                    450€
+                <p class="text-[12px] uppercase tracking-[0.4em] text-[#CFA674] font-bold mb-10">Dur�e : 3 mois | Prix :
+                    450—,—
                 </p>
                 <button
                     class="bg-[#CFA674] text-white px-8 py-4 text-[13px] uppercase tracking-wide font-medium hover:opacity-80 transition-all transform hover:scale-110 shadow-[0_0_30px_rgba(255,255,255,0.2)] rounded">
-                    RÉSERVER
+                    R——SERVER
                 </button>
             </div>
         </section>
 
-        <!-- Section 7: Programme Présentation -->
+        <!-- Section 7: Programme Pr�sentation -->
         <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
             <div
                 class="max-w-4xl mx-auto border-2 border-[#CFA674]/20 p-12 md:p-24 text-center space-y-12 bg-white/40 luxury-glass fade-in-up">
                 <div class="flex flex-col items-center justify-center">
-                    <h2 class="sur-titre mb-6 reveal-text block">Présentation du Programme</h2>
+                    <h2 class="sur-titre mb-6 reveal-text block">Pr�sentation du Programme</h2>
                 </div>
                 <div class="space-y-6">
                     <p class="text-2xl md:text-4xl font-display leading-snug text-[#1F455E]">
-                        "Une transformation profonde qui ne se contente pas de soigner vos cheveux, mais redéfinit votre
-                        relation à votre beauté originelle."
+                        "Une transformation profonde qui ne se contente pas de soigner vos cheveux, mais red�finit votre
+                        relation � votre beaut� originelle."
                     </p>
                     <p class="text-sm text-[#1F455E] font-light max-w-2xl mx-auto leading-relaxed">
                         Le Programme Essentiel est notre accompagnement signature. Durant 3 mois, nous vous guidons
-                        étape par étape vers une autonomie totale et une santé capillaire retrouvée grâce à notre
+                        �tape par �tape vers une autonomie totale et une sant� capillaire retrouv�e gr�ce � notre
                         protocole exclusif.
                     </p>
                 </div>
@@ -461,12 +558,12 @@
                                 <span class="w-4 h-4 bg-[#CFA674]"></span> OBJECTIFS
                             </h3>
                             <div class="space-y-6 text-[#1F455E] font-light leading-relaxed">
-                                <p>Comprendre et maîtriser les mécanismes de croissance et de santé de votre chevelure.
+                                <p>Comprendre et ma�triser les m�canismes de croissance et de sant� de votre chevelure.
                                 </p>
                                 <ul class="list-disc pl-5 space-y-2 font-medium">
-                                    <li>Stabiliser les problématiques de chute ou de fragilité.</li>
-                                    <li>Restaurer l'équilibre du cuir chevelu.</li>
-                                    <li>Optimiser la densité et la brillance naturelle.</li>
+                                    <li>Stabiliser les probl�matiques de chute ou de fragilit�.</li>
+                                    <li>Restaurer l'�quilibre du cuir chevelu.</li>
+                                    <li>Optimiser la densit� et la brillance naturelle.</li>
                                     <li>Instaurer une routine d'entretien durable and efficace.</li>
                                 </ul>
                             </div>
@@ -479,13 +576,13 @@
                                 <span class="w-4 h-4 bg-[#CFA674]"></span> CONTENU
                             </h3>
                             <div class="space-y-6 text-[#1F455E] font-light leading-relaxed">
-                                <p>Un parcours structuré alliant technologie et approche naturelle.</p>
+                                <p>Un parcours structur� alliant technologie et approche naturelle.</p>
                                 <ul class="list-disc pl-5 space-y-2 font-medium">
-                                    <li>Bilan initial ultra-détaillé (microscopie incluse en présentiel).</li>
-                                    <li>Kit de produits professionnels sélectionnés sur mesure.</li>
+                                    <li>Bilan initial ultra-d�taill� (microscopie incluse en pr�sentiel).</li>
+                                    <li>Kit de produits professionnels s�lectionn�s sur mesure.</li>
                                     <li>6 sessions d'accompagnement (visio ou physique).</li>
-                                    <li>Accès à nos guides digitaux exclusifs.</li>
-                                    <li>Suivi nutritionnel et recommandation de compléments.</li>
+                                    <li>Acc�s � nos guides digitaux exclusifs.</li>
+                                    <li>Suivi nutritionnel et recommandation de compl�ments.</li>
                                 </ul>
                             </div>
                         </div>
@@ -497,12 +594,12 @@
                                 <span class="w-4 h-4 bg-[#CFA674]"></span> POURQUOI
                             </h3>
                             <div class="space-y-6 text-[#1F455E] font-light leading-relaxed">
-                                <p>Parce que chaque cheveu a une histoire qui mérite une réponse unique et experte.</p>
+                                <p>Parce que chaque cheveu a une histoire qui m�rite une r�ponse unique et experte.</p>
                                 <ul class="list-disc pl-5 space-y-2 font-medium">
-                                    <li>Expertise certifiée en trichologie fondamentale.</li>
-                                    <li>Résultats visibles dès le premier mois.</li>
-                                    <li>Accompagnement humain et personnalisé.</li>
-                                    <li>Produits d'excellence sans compromis sur la santé.</li>
+                                    <li>Expertise certifi�e en trichologie fondamentale.</li>
+                                    <li>R�sultats visibles d�s le premier mois.</li>
+                                    <li>Accompagnement humain et personnalis�.</li>
+                                    <li>Produits d'excellence sans compromis sur la sant�.</li>
                                 </ul>
                             </div>
                         </div>
@@ -514,11 +611,11 @@
                                 <span class="w-4 h-4 bg-[#CFA674]"></span> LE SUIVI
                             </h3>
                             <div class="space-y-6 text-[#1F455E] font-light leading-relaxed">
-                                <p>Nous ne vous laissons jamais seul(e) face à vos interrogations.</p>
+                                <p>Nous ne vous laissons jamais seul(e) face � vos interrogations.</p>
                                 <ul class="list-disc pl-5 space-y-2 font-medium">
-                                    <li>Hotline dédiée durant toute la durée du programme.</li>
-                                    <li>Ajustements mensuels du protocole selon l'évolution.</li>
-                                    <li>Point d'étape final pour consolider les acquis.</li>
+                                    <li>Hotline d�di�e durant toute la dur�e du programme.</li>
+                                    <li>Ajustements mensuels du protocole selon l'�volution.</li>
+                                    <li>Point d'�tape final pour consolider les acquis.</li>
                                 </ul>
                             </div>
                         </div>
@@ -541,18 +638,18 @@
             </div>
         </section>
 
-        <!-- Section 9: Pour qui ? (Professional Grid) -->
+        <!-- Section 9: Pour qui — (Professional Grid) -->
         <section class="py-32 px-8 md:px-24 bg-[#EEF5FD]">
             <div class="max-w-7xl mx-auto">
                 <div class="flex flex-col items-center justify-center text-center mb-20">
-                    <h2 class="sur-titre mb-8 block reveal-text">Pour qui ?</h2>
+                    <h2 class="sur-titre mb-8 block reveal-text">Pour qui —</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto">
                     <!-- Option 1: Universel -->
                     <div class="premium-card bg-white flex flex-col group fade-in-up">
                         <div class="h-64 w-full overflow-hidden">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1hvoTVWkRX0BYJ-q7ZFRwDP_zUe__3c2V"
+                            <img src="https://drive.google.com/thumbnail—sz=w2000&id=1hvoTVWkRX0BYJ-q7ZFRwDP_zUe__3c2V"
                                 class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
                                 alt="Universel">
                         </div>
@@ -562,14 +659,14 @@
                             </h3>
                             <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
                             <p class="text-[#1F455E] font-medium leading-relaxed text-left">
-                                Adapté à tous les types de cheveux européens et asiatiques, avec un focus sur la
-                                densité, la chute saisonnière et la santé du cuir chevelu.
+                                Adapt� � tous les types de cheveux europ�ens et asiatiques, avec un focus sur la
+                                densit�, la chute saisonni�re et la sant� du cuir chevelu.
                             </p>
                         </div>
                         <div class="p-8 pt-0">
                             <button
                                 class="w-full py-5 bg-[#CFA674] text-white text-[13px] uppercase tracking-widest font-bold hover:opacity-80 transition-all rounded shadow-lg">
-                                Réserver le Programme
+                                R�server le Programme
                             </button>
                         </div>
                     </div>
@@ -577,25 +674,25 @@
                     <!-- Option 2: Afro -->
                     <div class="premium-card bg-white flex flex-col group fade-in-up stagger-1">
                         <div class="h-64 w-full overflow-hidden">
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=15I1smZioVVU7W-7ZqUUUpFly1SN_8uhx"
+                            <img src="https://drive.google.com/thumbnail—sz=w2000&id=15I1smZioVVU7W-7ZqUUUpFly1SN_8uhx"
                                 class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
                                 alt="Afro">
                         </div>
                         <div class="p-8 space-y-4 flex-grow">
                             <h3
                                 class="text-2xl font-bold text-[#CFA674] mb-4 uppercase tracking-widest text-left leading-tight">
-                                Cheveux Afro-Texturés
+                                Cheveux Afro-Textur�s
                             </h3>
                             <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
                             <p class="text-[#1F455E] font-medium leading-relaxed text-left">
-                                Spécifiquement conçu pour les textures crépues, frisées et bouclées, abordant les enjeux
-                                d'hydratation profonde, d'élasticité et de pousse.
+                                Sp�cifiquement con�u pour les textures cr�pues, fris�es et boucl�es, abordant les enjeux
+                                d'hydratation profonde, d'�lasticit� et de pousse.
                             </p>
                         </div>
                         <div class="p-8 pt-0">
                             <button
                                 class="w-full py-5 bg-[#CFA674] text-white text-[13px] uppercase tracking-widest font-bold hover:opacity-80 transition-all rounded shadow-lg">
-                                Réserver le Programme
+                                R�server le Programme
                             </button>
                         </div>
                     </div>
@@ -616,8 +713,8 @@
                             </a>
                         </div>
                         <p class="leading-relaxed max-w-xl text-white">
-                            L'excellence de la trichologie moderne au service de votre capital capillaire. Expertise,
-                            science et rituel d'exception.
+                            TrichoZen - Expertise trichologique au service de la sant— de votre cuir chevelu et de vos
+                            cheveux. Diagnostic — Formation — Conseil — Sensibilisation.
                         </p>
                         <div class="flex gap-6 text-[#CFA674] justify-start">
                             <a class="hover:text-white transition-colors" href="#" aria-label="Instagram">
@@ -625,6 +722,13 @@
                                     fill="currentColor">
                                     <path
                                         d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                </svg>
+                            </a>
+                            <a class="hover:text-white transition-colors" href="#" aria-label="TikTok">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.89 2.89 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 15.68a6.34 6.34 0 0 0 6.26 6.32 6.33 6.33 0 0 0 6.31-6.32V10.22a8.21 8.21 0 0 0 5.77 2.21V8.9a5.2 5.2 0 0 1-3.75-2.21z" />
                                 </svg>
                             </a>
                             <a class="hover:text-white transition-colors mb-3" href="#" aria-label="LinkedIn">
@@ -657,23 +761,23 @@
                         </ul>
                     </div>
                     <div class="md:col-span-2 space-y-6">
-                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCI—T—</h5>
                         <ul class="space-y-4">
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="#">Qui sommes-nous</a></li>
+                                    href="#">Qui
+                                    sommes-nous</a></li>
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="contact.html">Contact</a></li>
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="#">Presse</a></li>
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="#">Mentions Légales</a></li>
+                                    href="#">Mentions L—gales</a></li>
                         </ul>
                     </div>
                     <div class="md:col-span-4 space-y-6">
                         <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
-                        <p class="leading-relaxed text-white">Inscrivez-vous pour recevoir nos dernières actualités
-                            scientifiques.
-                        </p>
+                        <p class="leading-relaxed text-white">Recevez nos conseils d'experte en sant— capillaire et les
+                            actualit—s TrichoZen directement dans votre bo—te mail.</p>
                         <div class="flex">
                             <input
                                 class="bg-[#142D3D] border border-white/10 px-6 py-3 flex-1 text-sm focus:outline-none focus:border-[#CFA674]/50 text-white"
@@ -686,11 +790,10 @@
                 </div>
                 <div
                     class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
-                    <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED .
-                    </p>
+                    <p class="text-white/40 font-medium text-[10px]">2026 TRICHOZEN - TOUS DROITS R—SERV—S.</p>
                     <div class="flex gap-12">
                         <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">POLITIQUE DE
-                            CONFIDENTIALITÉ</a>
+                            CONFIDENTIALIT—</a>
                         <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">CGV</a>
                     </div>
                 </div>
