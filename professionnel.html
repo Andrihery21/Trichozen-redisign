@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark" lang="fr">
 
 <head>
@@ -440,7 +440,14 @@
         }
 
         @media (max-width: 480px) {
-            .hero-title { font-size: clamp(1.4rem, 7vw, 2rem) !important; }
+            .hero-title, 
+            h1.font-display, 
+            h1[class*='font-display'],
+            h1.text-7xl, 
+            h1.text-5xl { 
+                font-size: 36px !important; 
+                line-height: 1.2 !important;
+            }
             .sur-titre { font-size: clamp(0.75rem, 3.5vw, 1rem) !important; }
             .w-72 { max-width: 8rem !important; }
         }
@@ -450,10 +457,12 @@
             font-size: 24px !important;
         }
 
-        /* Hero headings: 64px fixe sur toutes les pages */
-        .hero-title { font-size: 64px !important; }
-        h1.font-display, h1[class*='font-display'] { font-size: 64px !important; }
-        h1.text-7xl, h1.text-5xl { font-size: 64px !important; }
+        /* Hero headings: 64px fixe sur desktop */
+        @media (min-width: 481px) {
+            .hero-title { font-size: 64px !important; }
+            h1.font-display, h1[class*='font-display'] { font-size: 64px !important; }
+            h1.text-7xl, h1.text-5xl { font-size: 64px !important; }
+        }
     </style>
 </head>
 
@@ -561,11 +570,10 @@
                         class="w-full h-full object-cover parallax-hero" alt="Academy">
                     <div class="absolute inset-0 bg-black/10"></div>
                 </div>
-                <div
-                    class="relative z-10 grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 items-center w-full max-w-[1600px] mx-auto">
+                <div class="relative z-10 w-full max-w-[1400px] mx-auto">
                     <div class="space-y-8 reveal-text">
                         <div
-                            class="leading-snug border-l-4 border-[#CFA674] pl-4 md:pl-8 pr-12 md:pr-24 py-8 bg-[#2F6385]/15 backdrop-blur-sm w-full">
+                            class="leading-snug border-l-4 border-[#CFA674] pl-4 md:pl-12 pr-12 md:pr-24 py-12 bg-[#2F6385]/15 backdrop-blur-sm max-w-5xl">
                             <h1 class="text-7xl md:text-9xl font-display text-white leading-none">
                                 Formations Professionnelles</h1>
                             <p
@@ -579,31 +587,6 @@
                             </p>
                         </div>
                     </div>
-                    <div class="flex justify-center md:justify-end fade-in-up stagger-2">
-                        <div
-                            class="luxury-glass p-0 rounded-2xl border border-[#CFA674]/20 relative group max-w-sm premium-card framed-content overflow-hidden">
-                            <div
-                                class="absolute -top-4 -right-4 bg-[#CFA674] text-background-dark px-4 py-1 text-[10px] font-bold uppercase tracking-widest z-20">
-                                Formation Phare
-                            </div>
-                            <div class="corner-frame corner-tl"></div>
-                            <div class="corner-frame corner-tr"></div>
-                            <div class="corner-frame corner-bl"></div>
-                            <div class="corner-frame corner-br"></div>
-                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1cxx7qxtKX2bIx3Bq-7e9NA5_MwU2ugh2"
-                                class="w-full h-40 object-cover transition-all duration-700" alt="Formation">
-                            <div class="pt-4 px-6 pb-6">
-                                <h3 class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider">
-                                    Trichologie
-                                    Fondamentale</h3>
-                                <p class="text-sm text-[#1F455E] mb-4 font-bold">Prix : 1500€</p>
-                                <button
-                                    class="w-full py-4 text-[13px] uppercase tracking-wider font-bold bg-[#1F455E] text-white hover:opacity-80 transition-all rounded">
-                                    Voir le Dossier
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -612,7 +595,7 @@
                 <div class="max-w-7xl mx-auto text-center">
                     <span class="sur-titre mb-16 reveal-text block">NOTRE CATALOGUE DE FORMATIONS</span>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <!-- Card Template -->
+                        <!-- Card 1 -->
                         <div
                             class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
                             <div class="overflow-hidden h-48 w-full">
@@ -620,130 +603,18 @@
                                     class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
                                     alt="Formation">
                             </div>
-                            <div class="px-8">
+                            <div class="px-8 flex-grow">
                                 <h3
                                     class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                    Trichologie Fondamentale</h3>
+                                    Trichologie fonctionnelle</h3>
                                 <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
                                 <p class="text-[#1F455E] font-medium leading-relaxed text-left">Maîtrisez les bases
-                                    physiologiques
-                                    et les pathologies du cuir chevelu.</p>
+                                    physiologiques et les pathologies du cuir chevelu.</p>
                             </div>
                             <div
                                 class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                                <span>Durée : 3 Jours</span>
-                                <span>1500€</span>
-                            </div>
-                        </div>
-                        <div
-                            class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-1 overflow-hidden">
-                            <div class="overflow-hidden h-48 w-full">
-                                <img src="https://drive.google.com/thumbnail?sz=w2000&id=1B5Up9lUMkpcjBGxHKVbxV_h4UP4DAvpA"
-                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                    alt="Formation">
-                            </div>
-                            <div class="px-8">
-                                <h3
-                                    class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                    Protocoles de Soins Premium</h3>
-                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">Intégrez nos techniques
-                                    exclusives
-                                    de massage et de soin en cabine.</p>
-                            </div>
-                            <div
-                                class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                                <span>Durée : 2 Jours</span>
-                                <span>950€</span>
-                            </div>
-                        </div>
-                        <div
-                            class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-2 overflow-hidden">
-                            <div class="overflow-hidden h-48 w-full">
-                                <img src="https://drive.google.com/thumbnail?sz=w2000&id=16lgZ0HsO8o8YEsBuPCVi2u_12dsgXOxc"
-                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                    alt="Formation">
-                            </div>
-                            <div class="px-8">
-                                <h3
-                                    class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                    Business & Management</h3>
-                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">Optimisez la
-                                    rentabilité de votre
-                                    espace trichologie de luxe.</p>
-                            </div>
-                            <div
-                                class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                                <span>Durée : 1 Jour</span>
-                                <span>600€</span>
-                            </div>
-                        </div>
-                        <div
-                            class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
-                            <div class="overflow-hidden h-48 w-full">
-                                <img src="https://drive.google.com/thumbnail?sz=w2000&id=1hvoTVWkRX0BYJ-q7ZFRwDP_zUe__3c2V"
-                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                    alt="Formation">
-                            </div>
-                            <div class="px-8">
-                                <h3
-                                    class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                    Expertise Afro-Texturés</h3>
-                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">Spécialisation avancée
-                                    sur les
-                                    problématiques des cheveux crépus.</p>
-                            </div>
-                            <div
-                                class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                                <span>Durée : 2 Jours</span>
-                                <span>1100€</span>
-                            </div>
-                        </div>
-                        <div
-                            class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-1 overflow-hidden">
-                            <div class="overflow-hidden h-48 w-full">
-                                <img src="https://drive.google.com/thumbnail?sz=w2000&id=15I1smZioVVU7W-7ZqUUUpFly1SN_8uhx"
-                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                    alt="Formation">
-                            </div>
-                            <div class="px-8">
-                                <h3
-                                    class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                    Analyse
-                                    Microscopique</h3>
-                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">Apprenez à utiliser les
-                                    outils de
-                                    diagnostic technologique de pointe.</p>
-                            </div>
-                            <div
-                                class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                                <span>Durée : 1 Jour</span>
-                                <span>450€</span>
-                            </div>
-                        </div>
-                        <div
-                            class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-2 overflow-hidden">
-                            <div class="overflow-hidden h-48 w-full">
-                                <img src="https://drive.google.com/thumbnail?sz=w2000&id=1vG_C14VfFw6dIxD5ndPQQuFAXWIZ5XwJ"
-                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                    alt="Formation">
-                            </div>
-                            <div class="px-8">
-                                <h3
-                                    class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                    Masterclass Ventes</h3>
-                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">Techniques de
-                                    recommandation retail
-                                    pour produits d'exception.</p>
-                            </div>
-                            <div
-                                class="mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold">
-                                <span>Durée : 1 Jour</span>
-                                <span>400€</span>
+                                <span>Durée : 10 semaines</span>
+                                <span>Sur devis</span>
                             </div>
                         </div>
                     </div>
@@ -757,7 +628,7 @@
                     </h2>
                     <p class="text-white/75 text-lg leading-relaxed font-sans font-medium max-w-3xl mx-auto">
                         La trichologie fonctionnelle va au-delà de la surface. C'est une lecture du corps à travers ses
-                        cheveux — inflammation, carences, déséquilibres hormonaux, pratiques capillaires inadaptées.
+                        cheveux inflammation, carences, déséquilibres hormonaux, pratiques capillaires inadaptées.
                         Chez
                         TrichoZen, chaque formation repose sur des bases scientifiques solides, une pédagogie de terrain
                         et
@@ -781,9 +652,10 @@
                                     <span class="w-4 h-4 bg-[#CFA674]"></span> APPROCHE FONCTIONNELLE
                                 </h3>
                                 <p class="text-[#1F455E] font-medium leading-relaxed">
-                                    Approche ancrée dans la trichologie fonctionnelle — pas uniquement cosmétique.
+                                    Approche ancrée dans la trichologie fonctionnelle, pas uniquement cosmétique.
                                     Comprendre le cuir chevelu en profondeur pour des résultats durables et concrets
                                     pour vos clients.
+
                                 </p>
                             </div>
 
@@ -804,7 +676,7 @@
                                     <span class="w-4 h-4 bg-[#CFA674]"></span> CE QUE VOUS ALLEZ OBTENIR
                                 </h3>
                                 <ul class="list-disc pl-5 space-y-4 text-[#1F455E] font-medium leading-relaxed">
-                                    <li>Certification trichologie TrichoZen à l'issue des modules fondamentaux.</li>
+
                                     <li>Badge officiel "Expert Certifié" reconnu dans la profession.</li>
                                     <li>Accès à la communauté privée des trichologues TrichoZen.</li>
                                     <li>Formation dispensée par Yébé Diouf, trichologue fonctionnelle avec plus de 5 ans
@@ -837,7 +709,6 @@
             </section>
 
 
-            <!-- Footer -->
             <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
                 <div class="container mx-auto px-6 md:px-16">
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
@@ -850,26 +721,36 @@
                                 </a>
                             </div>
                             <p class="leading-relaxed max-w-xl text-white">
-                                L'excellence de la trichologie moderne au service de votre capital capillaire.
-                                Expertise,
-                                science et rituel d'exception.
+                                Expertise trichologique au service de la santé de votre cuir chevelu et de vos cheveux.
+                                Diagnostic · Formation · Conseil · Sensibilisation.
                             </p>
                             <div class="flex gap-6 text-[#CFA674] justify-start">
-                                <a class="hover:text-white transition-colors" href="#" aria-label="Instagram">
+                                <a class="hover:text-white transition-colors"
+                                    href="https://www.instagram.com/yebediouf/" aria-label="Instagram">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="currentColor">
                                         <path
                                             d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                                     </svg>
                                 </a>
-                                <a class="hover:text-white transition-colors mb-3" href="#" aria-label="LinkedIn">
+                                <a class="hover:text-white transition-colors"
+                                    href="https://www.tiktok.com/@yebe_trichologue" aria-label="TikTok">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.06-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.59-1.01V14.5a7.5 7.5 0 1 1-7.5-7.5c.34 0 .68.04 1.01.12v4.01a3.5 3.5 0 1 0 2.49 3.37V0L12.525.02z" />
+                                    </svg>
+                                </a>
+                                <a class="hover:text-white transition-colors"
+                                    href="https://fr.linkedin.com/in/yebe-diouf" aria-label="LinkedIn">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 24 24"
                                         fill="currentColor">
                                         <path
                                             d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
                                     </svg>
                                 </a>
-                                <a class="hover:text-white transition-colors" href="#" aria-label="YouTube">
+                                <a class="hover:text-white transition-colors"
+                                    href="https://www.youtube.com/@yebe_trichologue" aria-label="YouTube">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="currentColor">
                                         <path
@@ -884,9 +765,9 @@
                                 <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                         href="#">Home</a></li>
                                 <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                        href="#">Particuliers</a></li>
+                                        href="particulier.html">Particuliers</a></li>
                                 <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                        href="#">Professionnels</a></li>
+                                        href="professionnel.html">Professionnels</a></li>
                                 <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                         href="#">Ressources</a></li>
                             </ul>
@@ -895,7 +776,8 @@
                             <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">SOCIÉTÉ</h5>
                             <ul class="space-y-4">
                                 <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                        href="#">Qui sommes-nous</a></li>
+                                        href="a-propos.html">Qui
+                                        sommes-nous</a></li>
                                 <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                         href="contact.html">Contact</a></li>
                                 <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
@@ -906,8 +788,9 @@
                         </div>
                         <div class="md:col-span-4 space-y-6">
                             <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
-                            <p class="leading-relaxed text-white">Inscrivez-vous pour recevoir nos dernières actualités
-                                scientifiques.
+                            <p class="leading-relaxed text-white">Recevez nos conseils d'experte en santé capillaire et
+                                les
+                                actualités TrichoZen directement dans votre boîte mail.
                             </p>
                             <div class="flex">
                                 <input
@@ -921,9 +804,7 @@
                     </div>
                     <div
                         class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
-                        <p class="text-white/40 font-medium text-[10px]">2024 TRICHOZEN MEDICAL GROUP, ALLRIGHT RESERVED
-                            .
-                        </p>
+                        <p class="text-white/40 font-medium text-[10px]">2026 TrichoZen — Tous droits réservés.</p>
                         <div class="flex gap-12">
                             <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">POLITIQUE DE
                                 CONFIDENTIALITÉ</a>
