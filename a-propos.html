@@ -435,15 +435,26 @@
         }
 
         @media (max-width: 480px) {
-            .text-7xl, .text-9xl { font-size: clamp(1.8rem, 9vw, 2.5rem) !important; }
+            .hero-title, 
+            h1.font-display, 
+            h1[class*='font-display'],
+            h1.text-7xl, 
+            h1.text-5xl, 
+            h1.text-8xl, 
+            h1.text-9xl { 
+                font-size: 36px !important; 
+                line-height: 1.2 !important;
+            }
             .sur-titre { font-size: clamp(0.75rem, 3.5vw, 1rem) !important; }
             .w-72 { max-width: 8rem !important; }
         }
 
-        /* Hero headings: 64px fixe sur toutes les pages */
-        .hero-title { font-size: 64px !important; }
-        h1.font-display, h1[class*='font-display'] { font-size: 64px !important; }
-        h1.text-7xl, h1.text-5xl, h1.text-8xl, h1.text-9xl { font-size: 64px !important; }
+        /* Hero headings: 64px fixe sur desktop */
+        @media (min-width: 481px) {
+            .hero-title { font-size: 64px !important; }
+            h1.font-display, h1[class*='font-display'] { font-size: 64px !important; }
+            h1.text-7xl, h1.text-5xl, h1.text-8xl, h1.text-9xl { font-size: 64px !important; }
+        }
     </style>
 </head>
 
