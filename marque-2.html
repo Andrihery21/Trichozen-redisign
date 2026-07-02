@@ -303,12 +303,74 @@
             background: rgba(255,255,255,0.98);
             z-index: 200;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1.75rem;
+            align-items: stretch;
+            justify-content: flex-start;
+            gap: 1rem;
             padding: 2rem;
+            overflow-y: auto;
         }
         #mobile-menu.open { display: flex; }
+        #mobile-menu > a,
+        .mobile-menu-toggle {
+            color: #1F455E;
+            font-family: Montserrat, sans-serif;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.9rem 0.75rem;
+            border-radius: 0.25rem;
+            background: transparent;
+            text-align: left;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #mobile-menu > a:hover,
+        .mobile-menu-toggle:hover {
+            color: #CFA674;
+        }
+        .mobile-menu-toggle {
+            border: none;
+            cursor: pointer;
+        }
+        .mobile-submenu {
+            display: none;
+            flex-direction: column;
+            gap: 0.65rem;
+            padding-left: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .mobile-menu-item.open .mobile-submenu {
+            display: flex;
+        }
+        .mobile-submenu a {
+            color: #1F455E;
+            font-family: Montserrat, sans-serif;
+            font-size: 0.8125rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.55rem 0;
+        }
+        .mobile-submenu a:hover {
+            color: #CFA674;
+        }
+        .mobile-menu-toggle span {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .mobile-menu-item.open .mobile-menu-toggle span {
+            transform: rotate(180deg);
+        }
         #mobile-menu-close {
             position: absolute;
             top: 1.25rem; right: 1.25rem;
@@ -394,7 +456,6 @@
                         <a class="dropdown-item"
                             href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie
                             Fonctionnelle</a>
-
                     </div>
                 </div>
                 <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/a-propos-2/">À propos</a>
@@ -404,7 +465,7 @@
                     <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
                         <a class="dropdown-item" href="https://www.trichozen.com/marque-2/">Espace Marques &amp;
                             Médias</a>
-                        <a class="dropdown-item" href="https://www.trichozen.com/blog-2/">Votre blog TrichoZen</a>
+                       
                         <a class="dropdown-item" href="https://trichozen-w8fpmw.subscribepage.io/"
                             target="_blank">S'inscrire à la NewsLetter</a>
                     </div>
@@ -434,22 +495,32 @@
                 aria-label="Fermer">
                 <span class="material-symbols-outlined" style="font-size:2rem;color:#1F455E">close</span>
             </button>
-            <a href="https://www.trichozen.com/home-2-new/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Home</a>
-            <a href="https://www.trichozen.com/particulier/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Particuliers</a>
-            <a href="https://www.trichozen.com/professionnel/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Professionnels</a>
-            <a href="https://www.trichozen.com/a-propos-2/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">À
-                propos</a>
-            <a href="https://www.trichozen.com/blog-2/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Blog</a>
-            <a href="https://www.trichozen.com/contact-2/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Contact</a>
+            <a href="https://www.trichozen.com/home-2-new/">Home</a>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Particuliers <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/diagnostic/">Diagnostic</a>
+                    <a href="https://www.trichozen.com/programme-essentiel-2/">Programme Essentiel</a>
+                </div>
+            </div>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Professionnels <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/professionnel/">Catalogue des formations</a>
+                    <a href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie Fonctionnelle</a>
+                </div>
+            </div>
+            <a href="https://www.trichozen.com/a-propos-2/">À propos</a>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Ressources <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/marque-2/">Espace Marques &amp; Médias</a>
+                    <a href="https://trichozen-w8fpmw.subscribepage.io/">S'inscrire à la NewsLetter</a>
+                </div>
+            </div>
+            <a href="https://www.trichozen.com/contact-2/">Contact</a>
             <a href="https://calendly.com/trichozen"
-                style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;">RDV
-                Expertise</a>
+                style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;display:inline-flex;justify-content:center;align-items:center;text-align:center;">RDV Expertise</a>
         </div>
 
 
@@ -463,7 +534,7 @@
                 <div class="floating-shape"
                     style="width: 200px; height: 200px; bottom: 10%; right: 5%; animation-delay: 3s;"></div>
                 <div class="absolute inset-0 z-0">
-                    <img src="https://lh3.googleusercontent.com/d/1FW6hlJH8uTVEzGhfOizQTRM49kQYLhB2"
+                    <img src="https://lh3.googleusercontent.com/d/1vYJxJlLHqZ9faWp1IdzSnp0oQ_kdAPAz"
                         class="w-full h-full object-cover parallax-hero" alt="Hero Background">
                     <div class="absolute inset-0 bg-black/40"></div>
                 </div>
@@ -474,8 +545,8 @@
                             <h1 class="hero-title text-center">
                                 L'expertise trichologique au service de votre crédibilité</h1>
                             <div class="fade-in-up stagger-1 mt-8 text-center">
-                                <a href="https://www.trichozen.com/contact-2/"
-                                    class="inline-block bg-[#CFA674] text-white px-12 py-5 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded shadow-2xl mx-auto">
+                                <a href="https://www.trichozen.com/contact-2/" target="_blank"
+                                    class="inline-block bg-[#CFA674] text-white px-6 sm:px-12 py-5 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded shadow-2xl mx-auto">
                                     Discutons de votre projet
                                 </a>
                             </div>
@@ -572,7 +643,7 @@
                         <div class="lg:w-1/2">
                             <div class="sticky top-32 relative">
                                 <div class="aspect-[4/5] overflow-hidden shadow-2xl relative z-10 group rounded">
-                                    <img src="https://lh3.googleusercontent.com/d/1HlEc4dQ_cAcr6ZXr6Iyb5A_swe2Mx8Cw"
+                                    <img src="https://lh3.googleusercontent.com/d/1nUwB_8NDLv0vpfQI2F3Aoytx2H6GnWsP"
                                         class="w-full h-full object-cover brightness-90 group-hover:scale-105 transition-all duration-1000"
                                         alt="Collab 1">
                                 </div>
@@ -638,7 +709,7 @@
                         <div class="lg:w-1/2">
                             <div class="sticky top-32 relative">
                                 <div class="aspect-[4/5] overflow-hidden shadow-2xl relative z-10 group rounded">
-                                    <img src="https://lh3.googleusercontent.com/d/1ljfqpY3oJKsgu2JY71NYWQQeITDSf0_4"
+                                    <img src="https://lh3.googleusercontent.com/d/1hdaCbWd2o0z33Xa8_iQVDmNSSBRBXLtu"
                                         class="w-full h-full object-cover brightness-90 group-hover:scale-105 transition-all duration-1000"
                                         alt="Collab 2">
                                 </div>
@@ -706,7 +777,7 @@
                             <h4 class="text-[#CFA674] uppercase tracking-wider font-sans font-bold"
                                 style="font-size:20px !important;">Organisateur d'événement</h4>
                             <div class="w-1/3 h-[2px] bg-[#CFA674]/80 my-4"></div>
-                            <p class="text-[#1F455E] leading-relaxed text-sm">Conférences et masterclasses sur-mesure
+                            <p class="text-[#1F455E] leading-relaxed text-sm">Conférences et masterclass sur-mesure
                                 autour
                                 de la trichologie fonctionnelle et de la santé du cuir chevelu.</p>
                         </div>
@@ -925,8 +996,8 @@
                 <div class="container mx-auto px-6 md:px-16">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                         <div class="aspect-square md:aspect-video lg:aspect-square overflow-hidden shadow-2xl scale-in">
-                            <img alt="Innovation" class="w-full h-full object-cover"
-                                src="https://lh3.googleusercontent.com/d/1ljfqpY3oJKsgu2JY71NYWQQeITDSf0_4">
+                            <img alt="Innovation" class="w-full h-full object-cover object-[center_20%]"
+                                src="https://lh3.googleusercontent.com/d/1V85fFywHL66lnA2HfRoo-xk_Hb4JcNUF">
                         </div>
                         <div class="space-y-12">
                             <div class="space-y-4">
@@ -975,12 +1046,11 @@
             <section class="py-32 px-8 bg-[#FBF5F0] text-center text-[#1F455E] relative overflow-hidden">
                 <div class="relative z-10 max-w-4xl mx-auto space-y-12">
                     <h2
-                        class="text-4xl md:text-5xl font-display uppercase tracking-widest leading-tight text-[#1F455E]">
-                        Votre projet
-                        mérite une expertise à la hauteur</h2>
+                        class="text-[#1F455E] uppercase tracking-wider text-4xl font-display">
+                        Votre projet mérite une expertise à la hauteur</h2>
                     <p class="text-lg font-sans font-medium leading-relaxed text-[#1F455E] max-w-2xl mx-auto">
                         Partenariat, intervention médias, consulting trichologique, ateliers en entreprise : parlez-nous
-                        de votre projet et nous vous répondrons sous 48 heures ouvrées.</p>
+                        de votre projet et nous vous répondrons <br> sous 48 heures ouvrées.</p>
                     <div class="flex flex-col md:flex-row justify-center items-center gap-8 pt-8">
                         <a href="https://drive.google.com/file/d/1Vuy-ORTy8JF8hJPkFS6nwqc3SdL0nzxh/view?usp=drive_link"
                             target="_blank"
@@ -1016,7 +1086,7 @@
                         </p>
                         <div class="flex gap-6 text-[#CFA674] justify-start">
                             <a class="hover:text-white transition-colors" href="https://www.instagram.com/yebediouf/"
-                                aria-label="Instagram">
+                                target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="currentColor">
                                     <path
@@ -1025,7 +1095,8 @@
                                 </svg>
                             </a>
                             <a class="hover:text-white transition-colors"
-                                href="https://www.tiktok.com/@yebe_trichologue" aria-label="TikTok">
+                                href="https://www.tiktok.com/@yebe_trichologue" target="_blank"
+                                rel="noopener noreferrer" aria-label="TikTok">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                     viewBox="0 0 24 24">
                                     <path
@@ -1033,8 +1104,8 @@
                                     </path>
                                 </svg>
                             </a>
-                            <a class="hover:text-white transition-colors" href="https://fr.linkedin.com/in/yebe-diouf"
-                                aria-label="LinkedIn">
+                            <a class="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"
+                                href="https://fr.linkedin.com/in/yebe-diouf" aria-label="LinkedIn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 24 24"
                                     fill="currentColor">
                                     <path
@@ -1043,7 +1114,8 @@
                                 </svg>
                             </a>
                             <a class="hover:text-white transition-colors"
-                                href="https://www.youtube.com/@yebe_trichologue" aria-label="YouTube">
+                                href="https://www.youtube.com/@yebe_trichologue" target="_blank"
+                                rel="noopener noreferrer" aria-label="YouTube">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="currentColor">
                                     <path
@@ -1063,7 +1135,7 @@
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="https://www.trichozen.com/professionnel/">Professionnels</a></li>
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="https://www.trichozen.com/blog-2/">Ressources</a></li>
+                                    href="https://www.trichozen.com/marque-2/">Espace marques</a></li>
                         </ul>
                     </div>
                     <div class="md:col-span-2 space-y-6">
@@ -1076,7 +1148,7 @@
                                     href="https://www.trichozen.com/contact-2/">Contact</a></li>
 
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="#">Mentions Légales</a></li>
+                                    href="https://www.trichozen.com/mentions-legales-2/">Mentions Légales</a></li>
                         </ul>
                     </div>
                     <div class="md:col-span-4 space-y-6">
@@ -1094,9 +1166,8 @@
                     class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
                     <p class="text-white/40 font-medium text-[10px]">2026 TrichoZen — Tous droits réservés.</p>
                     <div class="flex gap-12">
-                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">POLITIQUE DE
-                            CONFIDENTIALITÉ</a>
-                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">CGV</a>
+                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="https://www.trichozen.com/politique-de-cookies/">Politique de cookies (UE)</a>
+                       
                     </div>
                 </div>
             </div>
@@ -1125,6 +1196,17 @@
             if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
                 document.body.classList.add('reduce-motion');
             }
+        
+            // Mobile menu accordéon
+            document.querySelectorAll('.mobile-menu-toggle').forEach((toggle) => {
+                toggle.addEventListener('click', () => {
+                    const item = toggle.closest('.mobile-menu-item');
+                    if (!item) return;
+
+                    const isOpen = item.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+            });
         </script>
     </div>
 </body>

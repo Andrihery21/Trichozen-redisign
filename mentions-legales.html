@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mentions légales | Trichozen</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: "#CFA674", light: "#CFA674", dark: "#1F455E" },
+                        "brand-blue": { DEFAULT: "#1F455E", light: "#1F455E", dark: "#1F455E" },
+                        gold: { DEFAULT: "#CFA674", light: "#CFA674", dark: "#CFA674" }
+                    },
+                    fontFamily: {
+                        display: ["Oswald", "sans-serif"],
+                        sans: ["Montserrat", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body { @apply bg-[#EEF5FD] text-[#1F455E] font-sans; }
+        h1, h2, h3 { @apply font-display uppercase; }
+        .sur-titre { @apply font-sans font-medium uppercase text-[20px] tracking-[0.25em] text-[#CFA674]; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .nav-link {
+            @apply text-[14px] uppercase tracking-[0.1em] font-medium transition-all duration-300 text-[#1F455E] hover:text-[#CFA674] flex items-center gap-1 relative;
+            padding: 0.5rem 0;
+        }
+        .nav-link span { color: #CFA674; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .dropdown-group:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0; visibility: hidden; transform: translateY(10px);
+            transition: all 0.3s ease;
+            background: #FBF5F0;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(207, 166, 116, 0.3);
+        }
+        .dropdown-item {
+            @apply block px-6 py-3 text-[14px] uppercase tracking-widest text-[#1F455E] hover:text-[#CFA674] hover:bg-gradient-to-r from-primary/10 to-transparent transition-all duration-300;
+            border-left: 3px solid transparent;
+        }
+        .dropdown-item:hover { border-left-color: #CFA674; padding-left: 1.5rem; }
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.98);
+            z-index: 200;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            gap: 1rem;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        #mobile-menu.open { display: flex; }
+        #mobile-menu > a,
+        .mobile-menu-toggle {
+            color: #1F455E;
+            font-family: Montserrat, sans-serif;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.9rem 0.75rem;
+            border-radius: 0.25rem;
+            background: transparent;
+            text-align: left;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #mobile-menu > a:hover,
+        .mobile-menu-toggle:hover {
+            color: #CFA674;
+        }
+        .mobile-menu-toggle {
+            border: none;
+            cursor: pointer;
+        }
+        .mobile-submenu {
+            display: none;
+            flex-direction: column;
+            gap: 0.65rem;
+            padding-left: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .mobile-menu-item.open .mobile-submenu {
+            display: flex;
+        }
+        .mobile-submenu a {
+            color: #1F455E;
+            font-family: Montserrat, sans-serif;
+            font-size: 0.8125rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.55rem 0;
+        }
+        .mobile-submenu a:hover {
+            color: #CFA674;
+        }
+        .mobile-menu-toggle span {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .mobile-menu-item.open .mobile-menu-toggle span {
+            transform: rotate(180deg);
+        }
+        #mobile-menu-close {
+            position: absolute;
+            top: 1.25rem; right: 1.25rem;
+            background: none; border: none;
+            cursor: pointer; color: #1F455E;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark font-sans text-[#1F455E] selection:bg-primary selection:text-white">
+    <div style="width: 100%; max-width: 100%; margin: 0; padding: 0; display: block;">
+        <!-- Navbar -->
+        <nav
+            class="fixed top-0 left-0 w-full z-50 glass-nav h-20 flex justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
+            <!-- Logo Section (Left) -->
+            <div class="flex justify-start">
+                <a class="block w-40 hover:opacity-80 transition-opacity" href="https://www.trichozen.com/home-2-new/">
+                    <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc" alt="TRICHOZEN"
+                        class="w-full h-auto object-contain"
+                        style="filter: brightness(0) saturate(100%) invert(21%) sepia(21%) saturate(3207%) hue-rotate(176deg) brightness(96%) contrast(101%);">
+                </a>
+            </div>
+
+            <!-- Navigation Links (Center) -->
+            <div class="hidden lg:flex items-center gap-8 justify-center">
+                <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/home-2-new/">Home</a>
+                <div class="relative dropdown-group">
+                    <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/particulier/">Particuliers <span
+                            class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                        <a class="dropdown-item" href="https://www.trichozen.com/diagnostic/">Diagnostic</a>
+                        <a class="dropdown-item" href="https://www.trichozen.com/programme-essentiel-2/">Programme
+                            Essentiel</a>
+                    </div>
+                </div>
+                <div class="relative dropdown-group">
+                    <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/professionnel/">Professionnels
+                        <span class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
+                        <a class="dropdown-item" href="https://www.trichozen.com/professionnel/">Catalogue des
+                            formations</a>
+                        <div class="h-px bg-white/10 mx-6 my-1"></div>
+                        <a class="dropdown-item"
+                            href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie
+                            Fonctionnelle</a>
+                    </div>
+                </div>
+                <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/a-propos-2/">À propos</a>
+                <div class="relative dropdown-group">
+                    <a class="nav-link text-[#1F455E]" href="#">Ressources <span
+                            class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                        <a class="dropdown-item" href="https://www.trichozen.com/marque-2/">Espace Marques &amp;
+                            Médias</a>
+                       
+                        <a class="dropdown-item" href="https://trichozen-w8fpmw.subscribepage.io/"
+                            target="_blank">S'inscrire à la NewsLetter</a>
+                    </div>
+                </div>
+                <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/contact-2/">Contact</a>
+            </div>
+
+            <!-- CTA Button (Right) -->
+            <div class="flex justify-end items-center gap-3">
+                <a href="https://calendly.com/trichozen"
+                    class="hidden md:block bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded">
+                    RDV Expertise
+                </a>
+                <!-- Hamburger button — mobile only -->
+                <button id="burger-btn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Menu"
+                    onclick="document.getElementById('mobile-menu').classList.add('open')">
+                    <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                    <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                    <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+            <button id="mobile-menu-close" onclick="document.getElementById('mobile-menu').classList.remove('open')"
+                aria-label="Fermer">
+                <span class="material-symbols-outlined" style="font-size:2rem;color:#1F455E">close</span>
+            </button>
+            <a href="https://www.trichozen.com/home-2-new/">Home</a>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Particuliers <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/diagnostic/">Diagnostic</a>
+                    <a href="https://www.trichozen.com/programme-essentiel-2/">Programme Essentiel</a>
+                </div>
+            </div>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Professionnels <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/professionnel/">Catalogue des formations</a>
+                    <a href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie Fonctionnelle</a>
+                </div>
+            </div>
+            <a href="https://www.trichozen.com/a-propos-2/">À propos</a>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Ressources <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/marque-2/">Espace Marques &amp; Médias</a>
+                    <a href="https://trichozen-w8fpmw.subscribepage.io/">S'inscrire à la NewsLetter</a>
+                </div>
+            </div>
+            <a href="https://www.trichozen.com/contact-2/">Contact</a>
+            <a href="https://calendly.com/trichozen"
+                style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;display:inline-flex;justify-content:center;align-items:center;text-align:center;">RDV Expertise</a>
+        </div>
+
+        <main class="pt-10">
+            <section class="py-20 px-6 md:px-10 lg:px-16 bg-[#FBF5F0]">
+                <div class="max-w-5xl mx-auto">
+                    <span class="sur-titre block mb-4">Mentions légales</span>
+                    <h1 class="text-4xl md:text-5xl text-[#1F455E] leading-tight">Informations légales et conditions d’utilisation</h1>
+                    <p class="mt-6 text-base font-medium leading-relaxed text-[#1F455E] max-w-3xl">
+                        Toutes les informations ci-dessous sont fournies à titre indicatif et peuvent être mises à jour sans préavis.
+                    </p>
+                </div>
+            </section>
+
+        <section class="py-16 px-6 md:px-10 lg:px-16">
+            <div class="max-w-5xl mx-auto space-y-6">
+                <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                    <h2 class="text-2xl text-[#1F455E] mb-4">Éditeur du site</h2>
+                    <p class="text-base font-medium leading-relaxed text-[#1F455E]">
+                        Le site trichozen.com est édité par Bloom’Up Consulting, sous le numéro 88297702800027.<br />
+                        Siège social : 65 rue gambetta 92150 Suresnes<br />
+                        Email : <a href="mailto:yebefaye@gmail.com" class="text-[#CFA674] hover:underline">yebefaye@gmail.com</a><br />
+                        Téléphone : 0634627930
+                    </p>
+                </article>
+
+                <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                    <h2 class="text-2xl text-[#1F455E] mb-4">Directrice de la publication</h2>
+                    <p class="text-base font-medium leading-relaxed text-[#1F455E]">Yébé Diouf</p>
+                </article>
+
+                <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                    <h2 class="text-2xl text-[#1F455E] mb-4">Hébergeur</h2>
+                    <p class="text-base font-medium leading-relaxed text-[#1F455E]">
+                        Le site est hébergé par O2switch, SARL au capital de 100 000 €<br />
+                        RCS Clermont-Ferrand<br />
+                        Adresse : 222-224 Boulevard Gustave Flaubert, 63000 Clermont-Ferrand<br />
+                        Téléphone : 04 44 44 60 40
+                    </p>
+                </article>
+
+                <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                    <h2 class="text-2xl text-[#1F455E] mb-4">Propriété intellectuelle</h2>
+                    <p class="text-base font-medium leading-relaxed text-[#1F455E]">
+                        La marque TrichoZen appartient à Yébé Diouf. Toute reproduction ou représentation totale ou partielle de ce site par quelque procédé que ce soit, sans autorisation expresse, est interdite.
+                    </p>
+                </article>
+
+                <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                    <h2 class="text-2xl text-[#1F455E] mb-4">Responsabilité</h2>
+                    <p class="text-base font-medium leading-relaxed text-[#1F455E]">
+                        BLOOM’UP CONSULTING s’efforce de fournir sur le site des informations aussi précises que possible. Toutefois, elle ne saurait être tenue responsable des omissions, inexactitudes ou carences dans la mise à jour des informations.
+                    </p>
+                </article>
+
+                <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                    <h2 class="text-2xl text-[#1F455E] mb-4">Données personnelles</h2>
+                    <p class="text-base font-medium leading-relaxed text-[#1F455E]">
+                        Conformément à la loi « Informatique et Libertés », vous disposez d’un droit d’accès, de rectification et de suppression des données vous concernant. Pour l’exercer, adressez-vous à <a href="mailto:yebefaye@gmail.com" class="text-[#CFA674] hover:underline">yebefaye@gmail.com</a>.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
+            <div class="container mx-auto px-6 md:px-16">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
+                    <div class="md:col-span-4 space-y-5">
+                        <div class="flex items-center gap-3">
+                            <a class="block w-72 hover:opacity-80 transition-opacity"
+                                href="https://www.trichozen.com/home-2-new/">
+                                <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc"
+                                    alt="TRICHOZEN" class="w-full h-auto object-contain"
+                                    style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
+                            </a>
+                        </div>
+                        <p class="leading-relaxed max-w-xl text-white">
+                            Expertise trichologique au service de la santé de votre cuir chevelu et de vos cheveux.
+                            Diagnostic · Formation · Conseil · Sensibilisation.
+                        </p>
+                        <div class="flex gap-6 text-[#CFA674] justify-start">
+                            <a class="hover:text-white transition-colors" href="https://www.instagram.com/yebediouf/"
+                                target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+                                    </path>
+                                </svg>
+                            </a>
+                            <a class="hover:text-white transition-colors"
+                                href="https://www.tiktok.com/@yebe_trichologue" target="_blank"
+                                rel="noopener noreferrer" aria-label="TikTok">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.06-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.59-1.01V14.5a7.5 7.5 0 1 1-7.5-7.5c.34 0 .68.04 1.01.12v4.01a3.5 3.5 0 1 0 2.49 3.37V0L12.525.02z">
+                                    </path>
+                                </svg>
+                            </a>
+                            <a class="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"
+                                href="https://fr.linkedin.com/in/yebe-diouf" aria-label="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z">
+                                    </path>
+                                </svg>
+                            </a>
+                            <a class="hover:text-white transition-colors"
+                                href="https://www.youtube.com/@yebe_trichologue" target="_blank"
+                                rel="noopener noreferrer" aria-label="YouTube">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 space-y-6">
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
+                        <ul class="space-y-4">
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/home-2-new/">Home</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/particulier/">Particuliers</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/professionnel/">Professionnels</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/marque-2/">Espace marques</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:col-span-2 space-y-6">
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">A PROPOS</h5>
+                        <ul class="space-y-4">
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/a-propos-2/">Qui
+                                    sommes-nous</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/contact-2/">Contact</a></li>
+
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/mentions-legales-2/">Mentions Légales</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:col-span-4 space-y-6">
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
+                        <p class="leading-relaxed text-white">Recevez nos conseils d'experte en santé capillaire et les
+                            actualités TrichoZen directement dans votre boîte mail.
+                        </p>
+                        <a href="https://trichozen-w8fpmw.subscribepage.io/" target="_blank"
+                            class="inline-block bg-[#CFA674] text-white px-6 py-4 text-[13px] uppercase tracking-wider font-sans font-medium hover:opacity-80 transition-all duration-300 rounded text-center">
+                            S'inscrire à la newsletter
+                        </a>
+                    </div>
+                </div>
+                <div
+                    class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
+                    <p class="text-white/40 font-medium text-[10px]">2026 TrichoZen — Tous droits réservés.</p>
+                    <div class="flex gap-12">
+                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="https://www.trichozen.com/politique-de-cookies/">Politique de cookies (UE)</a>
+                       
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <div class="bg-noise"></div>
+
+        <script>
+            // Intersection Observer for Reveal Animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('.reveal-text, .fade-in-up, .scale-in').forEach(el => {
+                    observer.observe(el);
+                });
+            });
+
+            if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+                document.body.classList.add('reduce-motion');
+            }
+        
+            // Mobile menu accordéon
+            document.querySelectorAll('.mobile-menu-toggle').forEach((toggle) => {
+                toggle.addEventListener('click', () => {
+                    const item = toggle.closest('.mobile-menu-item');
+                    if (!item) return;
+
+                    const isOpen = item.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+            });
+        </script>
+    </div>
+</body>
+
+</html>

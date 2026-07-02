@@ -7,32 +7,20 @@
     <title>Le Programme Essentiel — Comprendre, Prévenir, Préserver | Trichozen</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2—family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
+        rel="stylesheet">
     <link
-        href="https://fonts.googleapis.com/css2—family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": {
-                            DEFAULT: "#CFA674",
-                            light: "#CFA674",
-                            dark: "#1F455E"
-                        },
-                        "brand-blue": {
-                            DEFAULT: "#1F455E",
-                            light: "#1F455E",
-                            dark: "#1F455E"
-                        },
-                        "gold": {
-                            DEFAULT: "#CFA674",
-                            light: "#CFA674",
-                            dark: "#CFA674"
-                        },
+                        "primary": { DEFAULT: "#CFA674", light: "#CFA674", dark: "#1F455E" },
+                        "brand-blue": { DEFAULT: "#1F455E", light: "#1F455E", dark: "#1F455E" },
+                        "gold": { DEFAULT: "#CFA674", light: "#CFA674", dark: "#CFA674" },
                         "background-dark": "#0F0F12",
                         "background-light": "#1A1A23",
                         "glass-white": "rgba(255, 255, 255, 0.08)",
@@ -57,9 +45,7 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-        }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
 
         .premium-card {
             background: white;
@@ -70,11 +56,21 @@
             overflow: hidden;
             position: relative;
         }
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
         .premium-card:hover {
             border-color: rgba(230, 193, 92, 0.3);
             transform: translateY(-8px);
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
         }
+        .premium-card:hover::before { opacity: 1; }
 
         .glass-nav {
             background: rgba(255, 255, 255, 0.95);
@@ -86,233 +82,125 @@
             @apply text-[14px] uppercase tracking-[0.1em] font-medium transition-all duration-300 text-[#1F455E] hover:text-[#CFA674] flex items-center gap-1 relative;
             padding: 0.5rem 0;
         }
-        .nav-link span {
-            color: #CFA674;
-        }
+        .nav-link span { color: #CFA674; }
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
             background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
             transition: width 0.3s ease;
         }
-        .nav-link:hover::after {
-            width: 100%;
-        }
+        .nav-link:hover::after { width: 100%; }
         .dropdown-group:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+            opacity: 1; visibility: visible; transform: translateY(0);
         }
         .dropdown-menu {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
+            opacity: 0; visibility: hidden; transform: translateY(10px);
             transition: all 0.3s ease;
             background: #FBF5F0;
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(207, 166, 116, 0.3); /* Gold #CFA674 */
+            border: 1px solid rgba(207, 166, 116, 0.3);
         }
         .dropdown-item {
             @apply block px-6 py-3 text-[14px] uppercase tracking-widest text-[#1F455E] hover:text-[#CFA674] hover:bg-gradient-to-r from-primary/10 to-transparent transition-all duration-300;
             border-left: 3px solid transparent;
         }
-        .dropdown-item:hover {
-            border-left-color: #CFA674;
-            padding-left: 1.5rem;
-        }
+        .dropdown-item:hover { border-left-color: #CFA674; padding-left: 1.5rem; }
 
         .luxury-glass {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 20px 40px -4px rgba(0, 0, 0, 0.1), inset 0 0 30px rgba(255, 255, 255, 0.2);
         }
 
         .bg-noise {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            opacity: 0.03;
+            position: absolute; inset: 0; z-index: 0; opacity: 0.03;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
             pointer-events: none;
         }
-        
-        /* ============================================
-           ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
-           ============================================ */
 
-        .sur-titre {
-            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
-        }
-
-        .hero-title {
-            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
-        }
+        .sur-titre { @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674]; }
+        .hero-title { @apply font-display font-normal uppercase text-[64px] leading-tight text-white; }
 
         @layer base {
             h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
             h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
-            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
+            h3 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
             h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
             h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
             h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
             p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
         }
 
-        .quote-style {
-            @apply font-sans font-medium italic text-[23px] leading-relaxed;
-        }
+        .quote-style { @apply font-sans font-medium italic text-[22px] leading-relaxed; }
 
-        /* Reveal Animations */
         @keyframes revealText {
             0% { transform: translateY(100%); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
-        
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes scaleIn {
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
-        
         @keyframes glowPulse {
             0% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
             50% { box-shadow: 0 0 20px rgba(230, 193, 92, 0.6); }
             100% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
         }
-
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(10deg); }
         }
 
         .reveal-text {
-            opacity: 0;
-            transform: translateY(20px);
+            opacity: 0; transform: translateY(20px);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        
-        .reveal-text.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal-text.visible { opacity: 1; transform: translateY(0); }
 
         .fade-in-up {
-            opacity: 0;
-            transform: translateY(40px);
+            opacity: 0; transform: translateY(40px);
             transition: all 1s ease-out;
         }
-
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
 
         .scale-in {
-            opacity: 0;
-            transform: scale(0.9);
+            opacity: 0; transform: scale(0.9);
             transition: all 0.8s ease-out;
         }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
 
-        .scale-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
         .stagger-1 { transition-delay: 100ms; }
         .stagger-2 { transition-delay: 200ms; }
         .stagger-3 { transition-delay: 300ms; }
         .stagger-4 { transition-delay: 400ms; }
 
-        .hover-glow:hover {
-            animation: glowPulse 2s infinite;
+        .hover-glow:hover { animation: glowPulse 2s infinite; }
+
+        .parallax-hero {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
-        /* Luxury Glassmorphism */
-        .luxury-glass {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 4px 6px -1px rgba(0, 0, 0, 0.05), 
-                0 20px 40px -4px rgba(0, 0, 0, 0.1),
-                inset 0 0 30px rgba(255, 255, 255, 0.2);
+        @keyframes ticker-slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
-
-        /* Premium Card Style */
-        .premium-card {
-            background: white;
-            border: none;
-            border-radius: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            position: relative;
+        .ticker-wrapper {
+            display: inline-flex;
+            animation: ticker-slide 30s linear infinite;
         }
+        .ticker-wrapper:hover { animation-play-state: paused; }
 
-        .premium-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .premium-card:hover {
-            border-color: rgba(230, 193, 92, 0.3);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
-        }
-
-        .premium-card:hover::before {
-            opacity: 1;
-        }
-
-        /* corner frames */
-        .corner-frame {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            border-color: #CFA674;
-            pointer-events: none;
-            z-index: 10;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .corner-frame::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-color: #CFA674;
-            transition: all 0.5s ease;
-            opacity: 0.5;
-        }
-
-        .corner-tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
-        .corner-tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
-        .corner-bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
-        .corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
-
-        .corner-tl::after { top: 4px; left: 4px; border-top: 1px solid; border-left: 1px solid; }
-        .corner-tr::after { top: 4px; right: 4px; border-top: 1px solid; border-right: 1px solid; }
-        .corner-bl::after { bottom: 4px; left: 4px; border-bottom: 1px solid; border-left: 1px solid; }
-        .corner-br::after { bottom: 4px; right: 4px; border-bottom: 1px solid; border-right: 1px solid; }
-
-        /* Floating Shapes */
         .floating-shape {
             position: absolute;
             border-radius: 50%;
@@ -321,19 +209,8 @@
             animation: float 10s infinite ease-in-out;
         }
 
-        /* Parallax Hero */
-        .parallax-hero {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        /* Reduced Motion Support */
         @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
+            *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
@@ -356,12 +233,74 @@
             background: rgba(255,255,255,0.98);
             z-index: 200;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1.75rem;
+            align-items: stretch;
+            justify-content: flex-start;
+            gap: 1rem;
             padding: 2rem;
+            overflow-y: auto;
         }
         #mobile-menu.open { display: flex; }
+        #mobile-menu > a,
+        .mobile-menu-toggle {
+            color: #1F455E;
+            font-family: Montserrat, sans-serif;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.9rem 0.75rem;
+            border-radius: 0.25rem;
+            background: transparent;
+            text-align: left;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #mobile-menu > a:hover,
+        .mobile-menu-toggle:hover {
+            color: #CFA674;
+        }
+        .mobile-menu-toggle {
+            border: none;
+            cursor: pointer;
+        }
+        .mobile-submenu {
+            display: none;
+            flex-direction: column;
+            gap: 0.65rem;
+            padding-left: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .mobile-menu-item.open .mobile-submenu {
+            display: flex;
+        }
+        .mobile-submenu a {
+            color: #1F455E;
+            font-family: Montserrat, sans-serif;
+            font-size: 0.8125rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.55rem 0;
+        }
+        .mobile-submenu a:hover {
+            color: #CFA674;
+        }
+        .mobile-menu-toggle span {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .mobile-menu-item.open .mobile-menu-toggle span {
+            transform: rotate(180deg);
+        }
         #mobile-menu-close {
             position: absolute;
             top: 1.25rem; right: 1.25rem;
@@ -370,9 +309,9 @@
         }
 
         @layer base {
-            h1 { font-size: clamp(1.75rem, 4.5vw, 3rem) !important; }
+            h1 { font-size: clamp(1.75rem, 4.5vw, 4rem) !important; }
             h2 { font-size: clamp(1.4rem, 3.5vw, 2.5rem) !important; }
-            h3 { font-size: clamp(1rem, 2.5vw, 2rem) !important; }
+            h3 { font-size: clamp(1rem, 2.5vw, 1.5rem) !important; }
             h4 { font-size: clamp(0.9rem, 2vw, 1.5rem) !important; }
         }
 
@@ -397,23 +336,9 @@
         }
 
         @media (max-width: 480px) {
-            .hero-title, 
-            h1.font-display, 
-            h1[class*='font-display'],
-            h1.text-7xl, 
-            h1.text-5xl { 
-                font-size: 36px !important; 
-                line-height: 1.2 !important;
-            }
+            .hero-title { font-size: clamp(1.4rem, 7vw, 2rem) !important; }
             .sur-titre { font-size: clamp(0.75rem, 3.5vw, 1rem) !important; }
             .w-72 { max-width: 8rem !important; }
-        }
-
-        /* Hero headings: 64px fixe sur desktop */
-        @media (min-width: 481px) {
-            .hero-title { font-size: 64px !important; }
-            h1.font-display, h1[class*='font-display'] { font-size: 64px !important; }
-            h1.text-7xl, h1.text-5xl { font-size: 64px !important; }
         }
     </style>
 </head>
@@ -463,7 +388,7 @@
                     <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
                         <a class="dropdown-item" href="https://www.trichozen.com/marque-2/">Espace Marques &amp;
                             Médias</a>
-                        <a class="dropdown-item" href="https://www.trichozen.com/blog-2/">Votre blog TrichoZen</a>
+                       
                         <a class="dropdown-item" href="https://trichozen-w8fpmw.subscribepage.io/"
                             target="_blank">S'inscrire à la NewsLetter</a>
                     </div>
@@ -493,22 +418,32 @@
                 aria-label="Fermer">
                 <span class="material-symbols-outlined" style="font-size:2rem;color:#1F455E">close</span>
             </button>
-            <a href="https://www.trichozen.com/home-2-new/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Home</a>
-            <a href="https://www.trichozen.com/particulier/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Particuliers</a>
-            <a href="https://www.trichozen.com/professionnel/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Professionnels</a>
-            <a href="https://www.trichozen.com/a-propos-2/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">À
-                propos</a>
-            <a href="https://www.trichozen.com/blog-2/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Blog</a>
-            <a href="https://www.trichozen.com/contact-2/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Contact</a>
+            <a href="https://www.trichozen.com/home-2-new/">Home</a>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Particuliers <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/diagnostic/">Diagnostic</a>
+                    <a href="https://www.trichozen.com/programme-essentiel-2/">Programme Essentiel</a>
+                </div>
+            </div>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Professionnels <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/professionnel/">Catalogue des formations</a>
+                    <a href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie Fonctionnelle</a>
+                </div>
+            </div>
+            <a href="https://www.trichozen.com/a-propos-2/">À propos</a>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Ressources <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/marque-2/">Espace Marques &amp; Médias</a>
+                    <a href="https://trichozen-w8fpmw.subscribepage.io/">S'inscrire à la NewsLetter</a>
+                </div>
+            </div>
+            <a href="https://www.trichozen.com/contact-2/">Contact</a>
             <a href="https://calendly.com/trichozen"
-                style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;">RDV
-                Expertise</a>
+                style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;display:inline-flex;justify-content:center;align-items:center;text-align:center;">RDV Expertise</a>
         </div>
 
 
@@ -518,8 +453,9 @@
             <section
                 class="relative min-h-screen flex items-center justify-center text-center overflow-hidden bg-[#1F455E]">
                 <div class="absolute inset-0 z-0">
-                    <img src="https://lh3.googleusercontent.com/d/1MM15x3rSKJaImu1YYtzqc2ah16PGg5WW"
-                        class="w-full h-full object-cover parallax-hero" alt="Hero Background">
+                    <img src="https://lh3.googleusercontent.com/d/1pXuq2uBGgnUD3T079b7f08cHp42aRjLT"
+                        class="w-full h-full object-cover parallax-hero" alt="Hero Background"
+                        style="object-position: center 35%;">
                     <div class="absolute inset-0 bg-gradient-to-b from-[#1F455E]/10 via-[#0E2635]/10 to-[#1F455E]/10">
                     </div>
                     <div class="floating-shape w-[600px] h-[600px] -top-[200px] -left-[200px] opacity-20"></div>
@@ -529,13 +465,15 @@
                 <div class="relative z-10 px-6 max-w-5xl mx-auto">
                     <div class="leading-snug border-l-4 border-[#CFA674] px-8 md:px-24 py-8 bg-white/20">
                         <div class="fade-in-up">
-                            <span class="sur-titre block mb-10">Programme Capillaire · Édition Grand Public</span>
+                            <span class="sur-titre block mb-6"
+                                style="background-color: #CFA674; color: #ffffff; display: inline-block; padding: 6px 22px; white-space: nowrap;">Programme
+                                Capillaire · Édition Grand Public</span>
                         </div>
-                        <h1 class="hero-title mb-6 tracking-[0.05em] fade-in-up stagger-1">
+                        <h1 class="hero-title mb-4 tracking-[0.05em] fade-in-up stagger-1">
                             Le Programme Essentiel
                         </h1>
                         <p
-                            class="text-base md:text-lg font-sans font-medium text-white max-w-xl mx-auto mb-12 leading-relaxed fade-in-up stagger-2">
+                            class="text-base md:text-lg font-sans font-medium text-white max-w-xl mx-auto mb-8 leading-relaxed fade-in-up stagger-2">
                             Comprendre ce qui se passe avec vos cheveux. Apprendre à les lire. Construire une
                             stratégie capillaire qui dure.
                         </p>
@@ -566,56 +504,22 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="premium-card bg-white p-10 fade-in-up flex flex-col items-start text-left">
-                            <span
-                                class="absolute top-5 right-6 text-7xl font-display font-medium text-[#CFA674]/10">01</span>
-                            <span class="material-symbols-outlined text-4xl text-[#CFA674] mb-4">search</span>
-                            <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">Vous
-                                traitez les
-                                symptômes</h3>
-                            <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Shampoing anti-chute sur une
-                                carence en fer. Huile sur une inflammation chronique. Sérum sur une alopécie de
-                                traction. Le
-                                bon produit sur la mauvaise cause ne donne jamais de résultat durable.</p>
+                            <span class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">Approche scientifique</span>
+                            <span class="absolute top-5 right-6 text-4xl text-[#CFA674] material-symbols-outlined">science</span>
+                            <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">La trichologie vulgarisée</h3>
+                            <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Un contenu ancré dans la science du cheveu, rendu accessible. Pas de jargon inutile : des explications claires, des exemples concrets, des mécanismes compris une fois pour toutes.</p>
                         </div>
-                        <div
-                            class="premium-card bg-white p-10 fade-in-up stagger-1 flex flex-col items-start text-left">
-                            <span
-                                class="absolute top-5 right-6 text-7xl font-display font-medium text-[#CFA674]/10">02</span>
-                            <span class="material-symbols-outlined text-4xl text-[#CFA674] mb-4">hourglass_empty</span>
-                            <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">Vous
-                                agissez trop
-                                tard</h3>
-                            <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Les pertes capillaires sont
-                                silencieuses pendant des années avant de devenir visibles. La fenêtre d'action se ferme
-                                progressivement. Chaque mois sans réponse coûte des follicules.</p>
+                        <div class="premium-card bg-white p-10 fade-in-up stagger-1 flex flex-col items-start text-left">
+                            <span class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">Diagnostic et stratégie</span>
+                            <span class="absolute top-5 right-6 text-4xl text-[#CFA674] material-symbols-outlined">search</span>
+                            <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">Lire ses propres signaux</h3>
+                            <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Apprendre à observer son cuir chevelu, à identifier les déclencheurs, à distinguer une chute réactionnelle d'une alopécie. Ce programme vous donne les outils pour faire la différence.</p>
                         </div>
-                        <div
-                            class="premium-card bg-white p-10 fade-in-up stagger-2 flex flex-col items-start text-left">
-                            <span
-                                class="absolute top-5 right-6 text-7xl font-display font-medium text-[#CFA674]/10">03</span>
-                            <span class="material-symbols-outlined text-4xl text-[#CFA674] mb-4">payments</span>
-                            <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">Vous
-                                surinvestissez
-                                en produits</h3>
-                            <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Le marché capillaire repose
-                                sur
-                                votre confusion. Des étagères pleines. Des routines complexes. Des promesses non tenues.
-                                Moins de produits, mieux choisis, sur les bonnes bases — c'est ça qui marche.</p>
-                        </div>
-                        <div
-                            class="premium-card bg-white p-10 fade-in-up stagger-3 flex flex-col items-start text-left">
-                            <span
-                                class="absolute top-5 right-6 text-7xl font-display font-medium text-[#CFA674]/10">04</span>
-                            <span class="material-symbols-outlined text-4xl text-[#CFA674] mb-4">genetics</span>
-                            <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">
-                                Votre texture mérite
-                                une approche spécifique</h3>
-                            <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Les cheveux crépus, frisés et
-                                bouclés ont une biologie particulière, des fragilités propres, des ennemis spécifiques —
-                                à
-                                commencer par les coiffures trop serrées sur les tempes. Ce programme vous parle
-                                vraiment.
-                            </p>
+                        <div class="premium-card bg-white p-10 fade-in-up stagger-2 flex flex-col items-start text-left">
+                            <span class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">Toutes textures</span>
+                            <span class="absolute top-5 right-6 text-4xl text-[#CFA674] material-symbols-outlined">spa</span>
+                            <h3 class="text-2xl font-bold text-[#CFA674] uppercase tracking-wider mb-3 w-full">Adapté à votre réalité</h3>
+                            <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Ce programme s'adresse à toute personne qui veut comprendre sa santé capillaire. Une attention particulière est portée aux cheveux afro texturés, trop souvent mal accompagnées, avec des modules dédiés à l'alopécie de traction et à la casse.</p>
                         </div>
                     </div>
                 </div>
@@ -651,11 +555,7 @@
                             <p class="text-sm text-[#1F455E] font-medium leading-relaxed">Structure, microbiote, film
                                 hydrolipidique. Les spécificités du cuir chevelu afro. Comment l'observer et
                                 l'entretenir comme une peau médicale.</p>
-                            <div class="absolute top-4 right-0 z-10">
-                                <span
-                                    class="bg-[#CFA674] text-white px-5 py-2 text-[10px] uppercase tracking-widest font-bold">Textures
-                                    afro</span>
-                            </div>
+
                         </div>
                         <div class="premium-card bg-white p-8 fade-in-up stagger-2">
                             <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">LA CHUTE
@@ -679,11 +579,7 @@
                                 expliquée. Les signaux d'alerte précoces, ce qui est encore récupérable, et comment
                                 protéger durablement les zones fragiles.
                             </p>
-                            <div class="absolute top-4 right-0 z-10">
-                                <span
-                                    class="bg-[#CFA674] text-white px-5 py-2 text-[10px] uppercase tracking-widest font-bold">Priorité
-                                    #1</span>
-                            </div>
+
                         </div>
                         <div class="premium-card bg-white p-8 fade-in-up stagger-1">
                             <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">DENSITÉ ·
@@ -698,11 +594,7 @@
                                 aux textures afro.
 
                             </p>
-                            <div class="absolute top-4 right-0 z-10">
-                                <span
-                                    class="bg-[#CFA674] text-white px-5 py-2 text-[10px] uppercase tracking-widest font-bold">Textures
-                                    afro</span>
-                            </div>
+
                         </div>
                         <div class="premium-card bg-white p-8 fade-in-up stagger-2">
                             <p class="text-[11px] uppercase tracking-[0.2em] text-[#1F455E] font-bold mb-4">LE CORPS
@@ -749,11 +641,7 @@
                                 folliculaire à 20, 30, 40 ans et plus. Sortir de l'errance produit. Mettre en place une
                                 stratégie capillaire qui dure.
                             </p>
-                            <div class="absolute top-4 right-0 z-10">
-                                <span
-                                    class="bg-[#CFA674] text-white px-5 py-2 text-[10px] uppercase tracking-widest font-bold">Vision
-                                    long terme</span>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -769,8 +657,8 @@
                                 <h2 class="text-[40px] font-display text-[#1F455E] uppercase leading-tight">
                                     Ce programme vous concerne</h2>
                             </div>
-                            <ul class="space-y-0">
-                                <li class="flex items-start gap-4 py-5 border-b border-[#1F455E]/10 fade-in-up">
+                            <div class="space-y-0">
+                                <div class="flex items-start gap-4 py-5 border-b border-[#1F455E]/10 fade-in-up">
                                     <span
                                         class="w-6 h-6 border border-[#CFA674] flex items-center justify-center shrink-0 mt-0.5 text-[11px] text-[#CFA674] font-bold">✓</span>
                                     <span class="text-[15px] text-[#1F455E] font-medium leading-relaxed">Vous perdez vos
@@ -778,8 +666,8 @@
                                         réponse honnête sur ce qui est encore possible. Vous avez essayé beaucoup de
                                         choses et voulez comprendre pourquoi rien ne dure.
                                     </span>
-                                </li>
-                                <li
+                                </div>
+                                <div
                                     class="flex items-start gap-4 py-5 border-b border-[#1F455E]/10 fade-in-up stagger-1">
                                     <span
                                         class="w-6 h-6 border border-[#CFA674] flex items-center justify-center shrink-0 mt-0.5 text-[11px] text-[#CFA674] font-bold">✓</span>
@@ -789,24 +677,19 @@
                                         programme s'adresse à toute personne soucieuse de sa santé capillaire, quel que
                                         soit son type de cheveux.
                                     </span>
-                                </li>
-                                <li
-                                    class="flex items-start gap-4 py-5 border-b border-[#1F455E]/10 fade-in-up stagger-2">
-                                    <span
-                                        class="w-6 h-6 border border-[#CFA674] flex items-center justify-center shrink-0 mt-0.5 text-[11px] text-[#CFA674] font-bold">✓</span>
-                                    <span class="text-[15px] text-[#1F455E] font-medium leading-relaxed">La majorité des
-                                        femmes qui perdent leurs cheveux ne traitent pas la bonne cause. Ce programme
-                                        change ça, avec des faits, pas des promesses. Yébé Diouf, experte en trichologie
-                                        fonctionnelle
-                                    </span>
-                                </li>
-
-                            </ul>
+                                </div>
+                                <div class="pt-8 pb-5 fade-in-up stagger-2">
+                                    <p
+                                        class="quote-style text-[#1F455E] border-l-2 border-[#CFA674] pl-8 py-6 bg-[#EEF5FD] text-[22px]">
+                                        "La majorité des femmes qui perdent leurs cheveux ne traitent pas la bonne cause. Ce programme change ça,  avec des faits, pas des promesses." Yébé Diouf
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                         <div class="lg:w-2/5">
                             <div class="sticky top-32 relative">
                                 <div class="aspect-[4/5] overflow-hidden shadow-2xl relative z-10 group">
-                                    <img src="https://lh3.googleusercontent.com/d/1WbNbos-zgmFNgj7ocKbcG1WPuo2AyYDP"
+                                    <img src="https://lh3.googleusercontent.com/d/1HH5-vPsUtWt4v5yUdxgOH3oJCcN6n_Mj"
                                         class="w-full h-full object-cover brightness-90 group-hover:scale-105 transition-all duration-1000"
                                         alt="Expertise Trichozen">
                                 </div>
@@ -923,93 +806,12 @@
                         </div>
                     </div>
 
-            </section>
-
-            <!-- TESTIMONIALS -->
-            <section class="py-24 px-8 md:px-24 bg-[#FBF5F0]">
-                <div class="max-w-7xl mx-auto">
-                    <div class="mb-16 reveal-text text-center">
-                        <span class="sur-titre block mb-4">Témoignages</span>
-                        <h2 class="text-[40px] font-display text-[#1F455E] uppercase leading-tight mx-auto max-w-2xl">Ce
-                            qu'elles en disent</h2>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="premium-card bg-white p-8 flex flex-col space-y-6 fade-in-up">
-                            <div class="flex text-[#CFA674]">
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                            </div>
-                            <p class="quote-style text-[#1F455E]">
-                                « J'ai enfin compris pourquoi mes tempes ne repoussaient pas. L'alopécie de traction, je
-                                n'avais jamais entendu ce mot. J'ai arrêté les nattes serrées et en 8 mois j'ai vu une
-                                vraie
-                                différence. »
-                            </p>
-                            <div class="pt-4 mt-auto">
-                                <h4 class="text-[#CFA674] text-sm uppercase tracking-widest font-bold">Maëva T.</h4>
-                                <p class="text-xs text-[#1F455E]/40 mt-1">Palier Stratégie · Cheveux crépus</p>
-                            </div>
-                        </div>
-                        <div class="premium-card bg-white p-8 flex flex-col space-y-6 fade-in-up stagger-1">
-                            <div class="flex text-[#CFA674]">
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                            </div>
-                            <p class="quote-style text-[#1F455E]">
-                                « Ce programme m'a appris que ma chute venait de ma ferritine basse. Mon médecin avait
-                                dit
-                                que ma prise de sang était normale. Maintenant je sais pourquoi ça ne suffisait pas. »
-                            </p>
-                            <div class="pt-4 mt-auto">
-                                <h4 class="text-[#CFA674] text-sm uppercase tracking-widest font-bold">Inès K.</h4>
-                                <p class="text-xs text-[#1F455E]/40 mt-1">Palier Solo · Cheveux frisés</p>
-                            </div>
-                        </div>
-                        <div class="premium-card bg-white p-8 flex flex-col space-y-6 fade-in-up stagger-2">
-                            <div class="flex text-[#CFA674]">
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-sm"
-                                    style="font-variation-settings: 'FILL' 1;">star</span>
-                            </div>
-                            <p class="quote-style text-[#1F455E]">
-                                « J'ai arrêté d'acheter des produits au hasard. J'ai simplifié ma routine et pour la
-                                première fois depuis 3 ans, ma chute saisonnière est passée de dramatique à gérable. »
-                            </p>
-                            <div class="pt-4 mt-auto">
-                                <h4 class="text-[#CFA674] text-sm uppercase tracking-widest font-bold">Christelle M.
-                                </h4>
-                                <p class="text-xs text-[#1F455E]/40 mt-1">Palier Premium · Cheveux bouclés</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </section>
 
+
             <!-- FAQ -->
-            <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
+            <section class="py-24 px-8 md:px-24 bg-[#FBF5F0]">
                 <div class="max-w-4xl mx-auto space-y-12">
                     <div class="mb-16 flex flex-col items-center text-center">
                         <p class="sur-titre mb-8 reveal-text block">Questions fréquentes</p>
@@ -1063,36 +865,8 @@
                                 curieuse de comprendre son corps capillaire.
                             </div>
                         </details>
-                        <details class="group py-8 border-b border-[#1F455E]/10 cursor-pointer">
-                            <summary class="flex justify-between items-center list-none outline-none">
-                                <span
-                                    class="text-[12px] uppercase tracking-[0.3em] font-medium text-[#1F455E] group-hover:text-[#CFA674] transition-colors">Ce
-                                    programme remplace-t-il une consultation médicale ?
-                                </span>
-                                <span
-                                    class="material-symbols-outlined text-[#CFA674] transition-transform group-open:rotate-180">expand_more</span>
-                            </summary>
-                            <div class="mt-8 text-[#1F455E] font-medium leading-relaxed max-w-2xl">Non. Ce programme
-                                vous donne les clés pour comprendre vos signaux et savoir quand consulter, et quoi
-                                demander à votre médecin. Un module est consacré aux signaux d'alerte qui nécessitent
-                                une consultation impérative. Il complète le suivi médical, il ne le remplace pas.</div>
-                        </details>
-                        <details class="group py-8 border-b border-[#1F455E]/10 cursor-pointer">
-                            <summary class="flex justify-between items-center list-none outline-none">
-                                <span
-                                    class="text-[12px] uppercase tracking-[0.3em] font-medium text-[#1F455E] group-hover:text-[#CFA674] transition-colors">Ce
-                                    programme remplace-t-il une consultation médicale ?</span>
-                                <span
-                                    class="material-symbols-outlined text-[#CFA674] transition-transform group-open:rotate-180">expand_more</span>
-                            </summary>
-                            <div class="mt-8 text-[#1F455E] font-medium leading-relaxed max-w-2xl">Non, et c'est dit
-                                clairement dans le programme. Il vous donne les clés pour comprendre vos signaux et
-                                savoir
-                                quand consulter — et quoi demander à votre médecin. Il y a un module entier sur les
-                                signaux
-                                d'alerte qui nécessitent une consultation impérative. Ce programme complète le suivi
-                                médical, il ne le remplace pas.</div>
-                        </details>
+
+                        
 
                     </div>
                 </div>
@@ -1121,7 +895,7 @@
                         </p>
                         <div class="flex gap-6 text-[#CFA674] justify-start">
                             <a class="hover:text-white transition-colors" href="https://www.instagram.com/yebediouf/"
-                                aria-label="Instagram">
+                                target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="currentColor">
                                     <path
@@ -1130,7 +904,8 @@
                                 </svg>
                             </a>
                             <a class="hover:text-white transition-colors"
-                                href="https://www.tiktok.com/@yebe_trichologue" aria-label="TikTok">
+                                href="https://www.tiktok.com/@yebe_trichologue" target="_blank"
+                                rel="noopener noreferrer" aria-label="TikTok">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                     viewBox="0 0 24 24">
                                     <path
@@ -1138,8 +913,8 @@
                                     </path>
                                 </svg>
                             </a>
-                            <a class="hover:text-white transition-colors" href="https://fr.linkedin.com/in/yebe-diouf"
-                                aria-label="LinkedIn">
+                            <a class="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"
+                                href="https://fr.linkedin.com/in/yebe-diouf" aria-label="LinkedIn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 24 24"
                                     fill="currentColor">
                                     <path
@@ -1148,7 +923,8 @@
                                 </svg>
                             </a>
                             <a class="hover:text-white transition-colors"
-                                href="https://www.youtube.com/@yebe_trichologue" aria-label="YouTube">
+                                href="https://www.youtube.com/@yebe_trichologue" target="_blank"
+                                rel="noopener noreferrer" aria-label="YouTube">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="currentColor">
                                     <path
@@ -1168,7 +944,7 @@
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="https://www.trichozen.com/professionnel/">Professionnels</a></li>
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="https://www.trichozen.com/blog-2/">Ressources</a></li>
+                                    href="https://www.trichozen.com/marque-2/">Espace marques</a></li>
                         </ul>
                     </div>
                     <div class="md:col-span-2 space-y-6">
@@ -1181,7 +957,7 @@
                                     href="https://www.trichozen.com/contact-2/">Contact</a></li>
 
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="#">Mentions Légales</a></li>
+                                    href="https://www.trichozen.com/mentions-legales-2/">Mentions Légales</a></li>
                         </ul>
                     </div>
                     <div class="md:col-span-4 space-y-6">
@@ -1199,9 +975,8 @@
                     class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
                     <p class="text-white/40 font-medium text-[10px]">2026 TrichoZen — Tous droits réservés.</p>
                     <div class="flex gap-12">
-                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">POLITIQUE DE
-                            CONFIDENTIALITÉ</a>
-                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">CGV</a>
+                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="https://www.trichozen.com/politique-de-cookies/">Politique de cookies (UE)</a>
+                       
                     </div>
                 </div>
             </div>
@@ -1234,6 +1009,17 @@
             if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
                 document.body.classList.add('reduce-motion');
             }
+        
+            // Mobile menu accordéon
+            document.querySelectorAll('.mobile-menu-toggle').forEach((toggle) => {
+                toggle.addEventListener('click', () => {
+                    const item = toggle.closest('.mobile-menu-item');
+                    if (!item) return;
+
+                    const isOpen = item.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+            });
         </script>
     </div>
 </body>

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Politique des cookies | Trichozen</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: "#CFA674", light: "#CFA674", dark: "#1F455E" },
+                        "brand-blue": { DEFAULT: "#1F455E", light: "#1F455E", dark: "#1F455E" },
+                        gold: { DEFAULT: "#CFA674", light: "#CFA674", dark: "#CFA674" }
+                    },
+                    fontFamily: {
+                        display: ["Oswald", "sans-serif"],
+                        sans: ["Montserrat", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body { @apply bg-[#EEF5FD] text-[#1F455E] font-sans; }
+        h1, h2, h3 { @apply font-display uppercase; }
+        .sur-titre { @apply font-sans font-medium uppercase text-[20px] tracking-[0.25em] text-[#CFA674]; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .nav-link {
+            @apply text-[14px] uppercase tracking-[0.1em] font-medium transition-all duration-300 text-[#1F455E] hover:text-[#CFA674] flex items-center gap-1 relative;
+            padding: 0.5rem 0;
+        }
+        .nav-link span { color: #CFA674; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, #CFA674 0%, #CFA674 100%);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .dropdown-group:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0; visibility: hidden; transform: translateY(10px);
+            transition: all 0.3s ease;
+            background: #FBF5F0;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(207, 166, 116, 0.3);
+        }
+        .dropdown-item {
+            @apply block px-6 py-3 text-[14px] uppercase tracking-widest text-[#1F455E] hover:text-[#CFA674] hover:bg-gradient-to-r from-primary/10 to-transparent transition-all duration-300;
+            border-left: 3px solid transparent;
+        }
+        .dropdown-item:hover { border-left-color: #CFA674; padding-left: 1.5rem; }
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.98);
+            z-index: 200;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            gap: 1rem;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        #mobile-menu.open { display: flex; }
+        #mobile-menu > a,
+        .mobile-menu-toggle {
+            color: #1F455E;
+            font-family: Montserrat, sans-serif;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.9rem 0.75rem;
+            border-radius: 0.25rem;
+            background: transparent;
+            text-align: left;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #mobile-menu > a:hover,
+        .mobile-menu-toggle:hover {
+            color: #CFA674;
+        }
+        .mobile-menu-toggle {
+            border: none;
+            cursor: pointer;
+        }
+        .mobile-submenu {
+            display: none;
+            flex-direction: column;
+            gap: 0.65rem;
+            padding-left: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .mobile-menu-item.open .mobile-submenu {
+            display: flex;
+        }
+        .mobile-submenu a {
+            color: #1F455E;
+            font-family: Montserrat, sans-serif;
+            font-size: 0.8125rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.55rem 0;
+        }
+        .mobile-submenu a:hover {
+            color: #CFA674;
+        }
+        .mobile-menu-toggle span {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .mobile-menu-item.open .mobile-menu-toggle span {
+            transform: rotate(180deg);
+        }
+        #mobile-menu-close {
+            position: absolute;
+            top: 1.25rem; right: 1.25rem;
+            background: none; border: none;
+            cursor: pointer; color: #1F455E;
+        }
+        main p, main li { @apply text-base font-medium leading-relaxed text-[#1F455E]; }
+        main p a { @apply text-[#CFA674] hover:underline; }
+        main a { @apply text-[#CFA674] hover:underline; }
+    </style>
+</head>
+
+<body class="bg-background-dark font-sans text-[#1F455E] selection:bg-primary selection:text-white">
+    <div style="width: 100%; max-width: 100%; margin: 0; padding: 0; display: block;">
+        <nav
+            class="fixed top-0 left-0 w-full z-50 glass-nav h-20 flex justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
+            <!-- Logo Section (Left) -->
+            <div class="flex justify-start">
+                <a class="block w-40 hover:opacity-80 transition-opacity" href="https://www.trichozen.com/home-2-new/">
+                    <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc" alt="TRICHOZEN"
+                        class="w-full h-auto object-contain"
+                        style="filter: brightness(0) saturate(100%) invert(21%) sepia(21%) saturate(3207%) hue-rotate(176deg) brightness(96%) contrast(101%);">
+                </a>
+            </div>
+
+            <!-- Navigation Links (Center) -->
+            <div class="hidden lg:flex items-center gap-8 justify-center">
+                <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/home-2-new/">Home</a>
+                <div class="relative dropdown-group">
+                    <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/particulier/">Particuliers <span
+                            class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                        <a class="dropdown-item" href="https://www.trichozen.com/diagnostic/">Diagnostic</a>
+                        <a class="dropdown-item" href="https://www.trichozen.com/programme-essentiel-2/">Programme
+                            Essentiel</a>
+                    </div>
+                </div>
+                <div class="relative dropdown-group">
+                    <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/professionnel/">Professionnels
+                        <span class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-72 dropdown-menu shadow-2xl">
+                        <a class="dropdown-item" href="https://www.trichozen.com/professionnel/">Catalogue des
+                            formations</a>
+                        <div class="h-px bg-white/10 mx-6 my-1"></div>
+                        <a class="dropdown-item"
+                            href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie
+                            Fonctionnelle</a>
+                    </div>
+                </div>
+                <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/a-propos-2/">À propos</a>
+                <div class="relative dropdown-group">
+                    <a class="nav-link text-[#1F455E]" href="#">Ressources <span
+                            class="material-symbols-outlined text-[14px]">expand_more</span></a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
+                        <a class="dropdown-item" href="https://www.trichozen.com/marque-2/">Espace Marques &amp;
+                            Médias</a>
+                       
+                        <a class="dropdown-item" href="https://trichozen-w8fpmw.subscribepage.io/"
+                            target="_blank">S'inscrire à la NewsLetter</a>
+                    </div>
+                </div>
+                <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/contact-2/">Contact</a>
+            </div>
+
+            <!-- CTA Button (Right) -->
+            <div class="flex justify-end items-center gap-3">
+                <a href="https://calendly.com/trichozen"
+                    class="hidden md:block bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded">
+                    RDV Expertise
+                </a>
+                <!-- Hamburger button — mobile only -->
+                <button id="burger-btn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Menu"
+                    onclick="document.getElementById('mobile-menu').classList.add('open')">
+                    <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                    <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                    <span class="block w-6 h-0.5 bg-[#1F455E]"></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+            <button id="mobile-menu-close" onclick="document.getElementById('mobile-menu').classList.remove('open')"
+                aria-label="Fermer">
+                <span class="material-symbols-outlined" style="font-size:2rem;color:#1F455E">close</span>
+            </button>
+            <a href="https://www.trichozen.com/home-2-new/">Home</a>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Particuliers <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/diagnostic/">Diagnostic</a>
+                    <a href="https://www.trichozen.com/programme-essentiel-2/">Programme Essentiel</a>
+                </div>
+            </div>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Professionnels <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/professionnel/">Catalogue des formations</a>
+                    <a href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie Fonctionnelle</a>
+                </div>
+            </div>
+            <a href="https://www.trichozen.com/a-propos-2/">À propos</a>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Ressources <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/marque-2/">Espace Marques &amp; Médias</a>
+                    <a href="https://trichozen-w8fpmw.subscribepage.io/">S'inscrire à la NewsLetter</a>
+                </div>
+            </div>
+            <a href="https://www.trichozen.com/contact-2/">Contact</a>
+            <a href="https://calendly.com/trichozen"
+                style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;display:inline-flex;justify-content:center;align-items:center;text-align:center;">RDV Expertise</a>
+        </div>
+
+        <main class="pt-24 bg-[#EEF5FD]">
+            <section class="py-20 px-6 md:px-10 lg:px-16 bg-[#EEF5FD]">
+                <div class="max-w-6xl mx-auto">
+                    <span class="sur-titre block mb-4">Politique des cookies</span>
+                    <h1 class="text-4xl md:text-5xl text-[#1F455E] leading-tight">Politique des cookies</h1>
+                    <p class="mt-6 text-base font-medium leading-relaxed text-[#1F455E] max-w-3xl">
+                        Cette politique de cookies a été mise à jour pour la dernière fois le 31 août 2024 et s’applique aux citoyens et aux résidents permanents légaux de l’Espace Économique Européen et de la Suisse.
+                    </p>
+                </div>
+            </section>
+
+            <section class="py-16 px-6 md:px-10 lg:px-16">
+                <div class="max-w-6xl mx-auto space-y-10">
+                    <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                        <h2 class="text-2xl text-[#1F455E] mb-4">1. Introduction</h2>
+                        <p>Notre site web, <a href="https://www.trichozen.com">https://www.trichozen.com</a> (ci-après : « le site web ») utilise des cookies et autres technologies liées (par simplification, toutes ces technologies sont désignées par le terme « cookies »). Des cookies sont également placés par des tierces parties que nous avons engagées. Dans le document ci-dessous, nous vous informons de l’utilisation des cookies sur notre site web.</p>
+                    </article>
+
+                    <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                        <h2 class="text-2xl text-[#1F455E] mb-4">2. Que sont les cookies ?</h2>
+                        <p>Un cookie est un petit fichier simple envoyé avec les pages de ce site web et stocké par votre navigateur sur le disque dur de votre ordinateur ou d’un autre appareil. Les informations qui y sont stockées peuvent être renvoyées à nos serveurs ou aux serveurs des tierces parties concernées lors d’une visite ultérieure.</p>
+                    </article>
+
+                    <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                        <h2 class="text-2xl text-[#1F455E] mb-4">3. Que sont les scripts ?</h2>
+                        <p>Un script est un élément de code utilisé pour que notre site web fonctionne correctement et de manière interactive. Ce code est exécuté sur notre serveur ou sur votre appareil.</p>
+                    </article>
+
+                    <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                        <h2 class="text-2xl text-[#1F455E] mb-4">4. Qu’est-ce qu’une balise invisible ?</h2>
+                        <p>Une balise invisible (ou balise web) est un petit morceau de texte ou d’image invisible sur un site web, utilisé pour suivre le trafic sur un site web. Pour ce faire, diverses données vous concernant sont stockées à l’aide de balises invisibles.</p>
+                    </article>
+
+                    <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                        <h2 class="text-2xl text-[#1F455E] mb-4">5. Cookies</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-xl text-[#1F455E] mb-3">5.1 Cookies techniques ou fonctionnels</h3>
+                                <p>Certains cookies assurent le fonctionnement correct de certaines parties du site web et la prise en compte de vos préférences en tant qu’internaute. En plaçant des cookies fonctionnels, nous vous facilitons la visite de notre site web. Ainsi, vous n’avez pas besoin de saisir à plusieurs reprises les mêmes informations lors de la visite de notre site web et, par exemple, les éléments restent dans votre panier jusqu’à votre paiement. Nous pouvons déposer ces cookies sans votre consentement.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl text-[#1F455E] mb-3">5.2 Cookies de marketing/suivi</h3>
+                                <p>Les cookies de marketing/suivi sont des cookies ou toute autre forme de stockage local, utilisés pour créer des profils d’utilisateurs afin d’afficher de la publicité ou de suivre l’utilisateur sur ce site web ou sur plusieurs sites web dans des finalités marketing similaires.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl text-[#1F455E] mb-3">5.3 Réseaux sociaux</h3>
+                                <p>Sur notre site web, nous avons inclus du contenu provenant de Instagram et LinkedIn pour promouvoir des pages web (par exemple, « like », « pin ») ou les partager (par exemple, « tweet ») sur des réseaux sociaux comme Instagram et LinkedIn. Ce contenu est intégré grâce un code obtenu de Instagram et LinkedIn et place des cookies. Ce contenu peut stocker et traiter certaines informations à des fins de publicité personnalisée.</p>
+                                <p>Veuillez lire la déclaration de confidentialité de ces réseaux sociaux (qui peut être modifiée régulièrement) afin de savoir ce qu’ils font de vos données (personnelles) traitées en utilisant ces cookies. Les données récupérées sont anonymisées autant que possible. Instagram et LinkedIn se trouvent aux États-Unis.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                        <h2 class="text-2xl text-[#1F455E] mb-4">6. Cookies placés</h2>
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="text-xl text-[#1F455E] mb-3">WordPress</h3>
+                                <p class="font-semibold">Fonctionnel</p>
+                                <p>Consent to service wordpress</p>
+                                <h4 class="text-lg text-[#1F455E] mt-6 mb-2">Utilisation</h4>
+                                <p>Nous utilisons WordPress pour le développement du site web. <a href="https://cookiedatabase.org/service/wordpress/" target="_blank" rel="noopener">En savoir plus sur WordPress</a></p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-2">Partage de données</h4>
+                                <p>Ces données ne sont pas partagées avec des tierces parties.</p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-3">Fonctionnel</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <p class="font-semibold">Nom</p>
+                                        <p><a href="https://cookiedatabase.org/cookie/wordpress/wp_preferences_user_/" target="_blank" rel="noopener">WP_PREFERENCES_USER_*</a></p>
+                                        <p class="font-semibold">Expiration</p>
+                                        <p>persistent</p>
+                                        <p class="font-semibold">Fonction</p>
+                                        <p>Store user preferences</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Nom</p>
+                                        <p><a href="https://cookiedatabase.org/cookie/wordpress/wpemojisettingssupports/" target="_blank" rel="noopener">wpEmojiSettingsSupports</a></p>
+                                        <p class="font-semibold">Expiration</p>
+                                        <p>session</p>
+                                        <p class="font-semibold">Fonction</p>
+                                        <p>Store browser details</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Nom</p>
+                                        <p><a href="https://cookiedatabase.org/cookie/wordpress/wordpress_test_cookie/" target="_blank" rel="noopener">wordpress_test_cookie</a></p>
+                                        <p class="font-semibold">Expiration</p>
+                                        <p>session</p>
+                                        <p class="font-semibold">Fonction</p>
+                                        <p>Read if cookies can be placed</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Nom</p>
+                                        <p><a href="https://cookiedatabase.org/cookie/wordpress/wp-settings/" target="_blank" rel="noopener">wp-settings-*</a></p>
+                                        <p class="font-semibold">Expiration</p>
+                                        <p>persistent</p>
+                                        <p class="font-semibold">Fonction</p>
+                                        <p>Store user preferences</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Nom</p>
+                                        <p><a href="https://cookiedatabase.org/cookie/wordpress/wp-settings-time/" target="_blank" rel="noopener">wp-settings-time-*</a></p>
+                                        <p class="font-semibold">Expiration</p>
+                                        <p>1 year</p>
+                                        <p class="font-semibold">Fonction</p>
+                                        <p>Store user preferences</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Nom</p>
+                                        <p><a href="https://cookiedatabase.org/cookie/wordpress/wp_lang/" target="_blank" rel="noopener">wp_lang</a></p>
+                                        <p class="font-semibold">Expiration</p>
+                                        <p>session</p>
+                                        <p class="font-semibold">Fonction</p>
+                                        <p>Stocker les réglages de langue</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Nom</p>
+                                        <p><a href="https://cookiedatabase.org/cookie/wordpress/wordpress_logged_in_/" target="_blank" rel="noopener">wordpress_logged_in_*</a></p>
+                                        <p class="font-semibold">Expiration</p>
+                                        <p>persistent</p>
+                                        <p class="font-semibold">Fonction</p>
+                                        <p>Store logged in users</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl text-[#1F455E] mb-3">LiteSpeed</h3>
+                                <p class="font-semibold">Fonctionnel</p>
+                                <p>Consent to service litespeed</p>
+                                <h4 class="text-lg text-[#1F455E] mt-6 mb-2">Utilisation</h4>
+                                <p>Nous utilisons LiteSpeed pour l’hébergement du site web. <a href="https://cookiedatabase.org/service/litespeed/" target="_blank" rel="noopener">En savoir plus sur LiteSpeed</a></p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-2">Partage de données</h4>
+                                <p>Ces données ne sont pas partagées avec des tierces parties.</p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-3">Fonctionnel</h4>
+                                <p class="font-semibold">Nom</p>
+                                <p><a href="https://cookiedatabase.org/cookie/litespeed/_lscache_vary/" target="_blank" rel="noopener">_lscache_vary</a></p>
+                                <p class="font-semibold">Expiration</p>
+                                <p>2 days</p>
+                                <p class="font-semibold">Fonction</p>
+                                <p>Provide the prevention of cached pages</p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl text-[#1F455E] mb-3">Google Fonts</h3>
+                                <p class="font-semibold">Finalité en attente d’enquête</p>
+                                <p class="text-base font-medium leading-relaxed text-[#1F455E]">Consent to service google-fonts</p>
+                                <h4 class="text-lg text-[#1F455E] mt-6 mb-2">Utilisation</h4>
+                                <p class="text-base font-medium leading-relaxed text-[#1F455E]">Nous utilisons Google Fonts pour l’affichage des polices web. <a href="https://cookiedatabase.org/service/google-fonts/" target="_blank" rel="noopener">En savoir plus sur Google Fonts</a></p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-2">Partage de données</h4>
+                                <p class="text-base font-medium leading-relaxed text-[#1F455E]">Pour plus d’informations, veuillez lire la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">déclaration de confidentialité Google Fonts</a>.</p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-3">Finalité en attente d’enquête</h4>
+                                <p class="font-semibold">Nom</p>
+                                <p class="text-base font-medium leading-relaxed text-[#1F455E]">Google Fonts API</p>
+                                <p class="font-semibold">Expiration</p>
+                                <p class="text-base font-medium leading-relaxed text-[#1F455E]">—</p>
+                                <p class="font-semibold">Fonction</p>
+                                <p class="text-base font-medium leading-relaxed text-[#1F455E]">—</p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl text-[#1F455E] mb-3">YouTube</h3>
+                                <p class="font-semibold">Finalité en attente d’enquête</p>
+                                <p>Consent to service youtube</p>
+                                <h4 class="text-lg text-[#1F455E] mt-6 mb-2">Utilisation</h4>
+                                <p>Nous utilisons YouTube pour l’affichage de vidéos. <a href="https://cookiedatabase.org/service/youtube/" target="_blank" rel="noopener">En savoir plus sur YouTube</a></p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-2">Partage de données</h4>
+                                <p>Pour plus d’informations, veuillez lire la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">déclaration de confidentialité YouTube</a>.</p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-3">Finalité en attente d’enquête</h4>
+                                <p class="font-semibold">Nom</p>
+                                <p>GPS</p>
+                                <p class="font-semibold">Expiration</p>
+                                <p>—</p>
+                                <p class="font-semibold">Fonction</p>
+                                <p>—</p>
+                                <p class="font-semibold mt-4">Nom</p>
+                                <p>VISITOR_INFO1_LIVE</p>
+                                <p class="font-semibold">Expiration</p>
+                                <p>—</p>
+                                <p class="font-semibold">Fonction</p>
+                                <p>—</p>
+                                <p class="font-semibold mt-4">Nom</p>
+                                <p>YSC</p>
+                                <p class="font-semibold">Expiration</p>
+                                <p>—</p>
+                                <p class="font-semibold">Fonction</p>
+                                <p>—</p>
+                                <p class="font-semibold mt-4">Nom</p>
+                                <p>PREF</p>
+                                <p class="font-semibold">Expiration</p>
+                                <p>—</p>
+                                <p class="font-semibold">Fonction</p>
+                                <p>—</p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl text-[#1F455E] mb-3">Calendly</h3>
+                                <p class="font-semibold">Finalité en attente d’enquête</p>
+                                <p>Consent to service calendly</p>
+                                <h4 class="text-lg text-[#1F455E] mt-6 mb-2">Utilisation</h4>
+                                <p>Nous utilisons Calendly pour la création de contenu. <a href="https://cookiedatabase.org/service/calendly/" target="_blank" rel="noopener">En savoir plus sur Calendly</a></p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-2">Partage de données</h4>
+                                <p>Pour plus d’informations, veuillez lire la <a href="https://calendly.com/pages/privacy" target="_blank" rel="noopener">déclaration de confidentialité Calendly</a>.</p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-3">Finalité en attente d’enquête</h4>
+                                <p class="font-semibold">Nom</p>
+                                <p>_calendly_session</p>
+                                <p class="font-semibold">Expiration</p>
+                                <p>—</p>
+                                <p class="font-semibold">Fonction</p>
+                                <p>—</p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl text-[#1F455E] mb-3">LinkedIn</h3>
+                                <p class="font-semibold">Finalité en attente d’enquête</p>
+                                <p>Consent to service linkedin</p>
+                                <h4 class="text-lg text-[#1F455E] mt-6 mb-2">Utilisation</h4>
+                                <p>Nous utilisons LinkedIn pour l’affichage de publications sociales récentes et/ou des boutons de partage de réseaux sociaux. <a href="https://cookiedatabase.org/service/linkedin/" target="_blank" rel="noopener">En savoir plus sur LinkedIn</a></p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-2">Partage de données</h4>
+                                <p>Pour plus d’informations, veuillez lire la <a href="https://www.linkedin.com/legal/privacy-policy" target="_blank" rel="noopener">déclaration de confidentialité LinkedIn</a>.</p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-3">Finalité en attente d’enquête</h4>
+                                <div class="space-y-3">
+                                    <p class="font-semibold">Nom</p>
+                                    <p>sdsc</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>lms_ads</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>lms_analytics</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>_guid</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>li_alerts</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>li_gc</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>AnalyticsSyncHistory</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>bcookie</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>li-oatml</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>BizographicsOptOut</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>li_sugr</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>UserMatchHistory</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>linkedin_oauth_</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>lidc</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>bscookie</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>X-LI-IDC</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl text-[#1F455E] mb-3">Divers</h3>
+                                <p class="font-semibold">Finalité en attente d’enquête</p>
+                                <p>Consent to service divers</p>
+                                <h4 class="text-lg text-[#1F455E] mt-6 mb-2">Utilisation</h4>
+                                <p>—</p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-2">Partage de données</h4>
+                                <p>Le partage des données est en cours d’enquête</p>
+                                <h4 class="text-lg text-[#1F455E] mt-4 mb-3">Finalité en attente d’enquête</h4>
+                                <div class="space-y-4">
+                                    <p class="font-semibold">Nom</p>
+                                    <p>uagSvgConfirmation</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>*_state</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>wpformsChallengeStep</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>wpformsChallengeTimerId</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>spectraCopyPasteStyles</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>WP_DATA_USER_2</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>wpformsChallengeSecondsLeft</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>loglevel</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>cmplz_functional</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>cmplz_preferences</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>cmplz_marketing</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>cmplz_consented_services</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>WP_DATA_USER_3</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>cmplz_cookie_data</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>cmplz_policy_id</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>cmplz_statistics</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>cmplz_banner-status</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>burst_uid</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>session_id</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>email_id</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>rank-math-option-general-index</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>rank-math-option-sitemap-index</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>uagSettingState</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>rank-math-option-titles-index</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>rank-math-option-search-index</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>whats-new-cache-ZXcvZmVlZC8</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>whats-new-cache-expiry-ZXcvZmVlZC8</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>__3g4_session_id</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>GDPR_REMOVAL_FLAG</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>perf_dv6Tr4n</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>i18nextLng</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>adobeCleanFontAdded</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>burst-tasks-storage</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>burst-insights-storage</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>WP_DATA_USER_5</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>_wpinitialpermissionstate</p>
+                                    <p class="font-semibold">Nom</p>
+                                    <p>__wpfvdk</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                        <h2 class="text-2xl text-[#1F455E] mb-4">7. Consentement</h2>
+                        <p>Lorsque vous visitez notre site web pour la première fois, nous vous montrerons une fenêtre contextuelle avec une explication sur les cookies. Dès que vous cliquez sur « Accepter », vous consentez à ce que nous utilisions tous les cookies et extensions comme décrit dans la fenêtre contextuelle et la présente politique de cookies. Vous pouvez désactiver l’utilisation des cookies via votre navigateur, mais veuillez noter que notre site web pourrait ne plus fonctionner correctement.</p>
+                        <h3 class="text-xl text-[#1F455E] mt-6 mb-3">7.1 Gérez vos réglages de consentement</h3>
+                        <div class="space-y-2">
+                            <p><strong>Fonctionnel</strong> — Toujours activé</p>
+                            <p><strong>Préférences</strong> — Préférences</p>
+                            <p><strong>Marketing</strong> — Marketing</p>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                        <h2 class="text-2xl text-[#1F455E] mb-4">8. Activer/désactiver et supprimer les cookies</h2>
+                        <p>Vous pouvez utiliser votre navigateur internet pour supprimer automatiquement ou manuellement les cookies. Vous pouvez également spécifier que certains cookies ne peuvent pas être placés. Une autre option consiste à modifier les réglages de votre navigateur Internet afin que vous receviez un message à chaque fois qu’un cookie est placé. Pour plus d’informations sur ces options, reportez-vous aux instructions de la section Aide de votre navigateur.</p>
+                        <p>Veuillez noter que notre site web peut ne pas marcher correctement si tous les cookies sont désactivés. Si vous supprimez les cookies dans votre navigateur, ils seront de nouveau placés après votre consentement lorsque vous revisiterez notre site web.</p>
+                    </article>
+
+                    <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                        <h2 class="text-2xl text-[#1F455E] mb-4">9. Vos droits concernant les données personnelles</h2>
+                        <ul class="list-disc pl-5 space-y-3">
+                            <li>Vous avez le droit de savoir pourquoi vos données personnelles sont nécessaires, ce qui leur arrivera et combien de temps elles seront conservées.</li>
+                            <li>Droit d’accès : vous avez le droit d’accéder à vos données personnelles que nous connaissons.</li>
+                            <li>Droit de rectification : vous avez le droit à tout moment de compléter, corriger, faire supprimer ou bloquer vos données personnelles.</li>
+                            <li>Si vous nous donnez votre consentement pour le traitement de vos données, vous avez le droit de révoquer ce consentement et de faire supprimer vos données personnelles.</li>
+                            <li>Droit de transférer vos données : vous avez le droit de demander toutes vos données personnelles au responsable du traitement et de les transférer dans leur intégralité à un autre responsable du traitement.</li>
+                            <li>Droit d’opposition : vous pouvez vous opposer au traitement de vos données. Nous obtempérerons, à moins que certaines raisons ne justifient ce traitement.</li>
+                        </ul>
+                        <p>Pour exercer ces droits, veuillez nous contacter. Veuillez vous référer aux coordonnées au bas de cette politique de cookies. Si vous avez une plainte concernant la façon dont nous traitons vos données, nous aimerions en être informés, mais vous avez également le droit de déposer une plainte auprès de l’autorité de contrôle (l’autorité chargée de la protection des données).</p>
+                    </article>
+
+                    <article class="bg-white rounded-none border border-[#1F455E]/10 p-8 shadow-sm">
+                        <h2 class="text-2xl text-[#1F455E] mb-4">10. Coordonnées</h2>
+                        <p>Pour des questions et/ou des commentaires sur notre politique de cookies et cette déclaration, veuillez nous contacter en utilisant les coordonnées suivantes :</p>
+                        <p>Trichozen<br />
+                        xxx<br />
+                        France<br />
+                        Site web : <a href="https://www.trichozen.com">https://www.trichozen.com</a><br />
+                        E-mail : <a href="mailto:rgpd@trichozen.com">rgpd@trichozen.com</a></p>
+                        <p>Cette politique de cookies a été synchronisée avec <a href="https://cookiedatabase.org/" target="_blank" rel="noopener">cookiedatabase.org</a> le 16 octobre 2024.</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
+            <div class="container mx-auto px-6 md:px-16">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
+                    <div class="md:col-span-4 space-y-5">
+                        <div class="flex items-center gap-3">
+                            <a class="block w-72 hover:opacity-80 transition-opacity"
+                                href="https://www.trichozen.com/home-2-new/">
+                                <img src="https://lh3.googleusercontent.com/d/1JkhhnP0DEKJYBUBLCBPOwqqJN625VQTc"
+                                    alt="TRICHOZEN" class="w-full h-auto object-contain"
+                                    style="filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(271%) hue-rotate(345deg) brightness(88%) contrast(88%);">
+                            </a>
+                        </div>
+                        <p class="leading-relaxed max-w-xl text-white">
+                            Expertise trichologique au service de la santé de votre cuir chevelu et de vos cheveux.
+                            Diagnostic · Formation · Conseil · Sensibilisation.
+                        </p>
+                        <div class="flex gap-6 text-[#CFA674] justify-start">
+                            <a class="hover:text-white transition-colors" href="https://www.instagram.com/yebediouf/"
+                                target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+                                    </path>
+                                </svg>
+                            </a>
+                            <a class="hover:text-white transition-colors"
+                                href="https://www.tiktok.com/@yebe_trichologue" target="_blank"
+                                rel="noopener noreferrer" aria-label="TikTok">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.06-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.59-1.01V14.5a7.5 7.5 0 1 1-7.5-7.5c.34 0 .68.04 1.01.12v4.01a3.5 3.5 0 1 0 2.49 3.37V0L12.525.02z">
+                                    </path>
+                                </svg>
+                            </a>
+                            <a class="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"
+                                href="https://fr.linkedin.com/in/yebe-diouf" aria-label="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z">
+                                    </path>
+                                </svg>
+                            </a>
+                            <a class="hover:text-white transition-colors"
+                                href="https://www.youtube.com/@yebe_trichologue" target="_blank"
+                                rel="noopener noreferrer" aria-label="YouTube">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 space-y-6">
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NAVIGATION</h5>
+                        <ul class="space-y-4">
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/home-2-new/">Home</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/particulier/">Particuliers</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/professionnel/">Professionnels</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/marque-2/">Espace marques</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:col-span-2 space-y-6">
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">A PROPOS</h5>
+                        <ul class="space-y-4">
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/a-propos-2/">Qui
+                                    sommes-nous</a></li>
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/contact-2/">Contact</a></li>
+
+                            <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
+                                    href="https://www.trichozen.com/mentions-legales-2/">Mentions Légales</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:col-span-4 space-y-6">
+                        <h5 class="text-[11px] uppercase tracking-widest text-[#CFA674] font-bold">NEWSLETTER</h5>
+                        <p class="leading-relaxed text-white">Recevez nos conseils d'experte en santé capillaire et les
+                            actualités TrichoZen directement dans votre boîte mail.
+                        </p>
+                        <a href="https://trichozen-w8fpmw.subscribepage.io/" target="_blank"
+                            class="inline-block bg-[#CFA674] text-white px-6 py-4 text-[13px] uppercase tracking-wider font-sans font-medium hover:opacity-80 transition-all duration-300 rounded text-center">
+                            S'inscrire à la newsletter
+                        </a>
+                    </div>
+                </div>
+                <div
+                    class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
+                    <p class="text-white/40 font-medium text-[10px]">2026 TrichoZen — Tous droits réservés.</p>
+                    <div class="flex gap-12">
+                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="https://www.trichozen.com/politique-de-cookies/">Politique de cookies (UE)</a>
+                       
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('.reveal-text, .fade-in-up, .scale-in').forEach(el => {
+                    observer.observe(el);
+                });
+            });
+            if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+                document.body.classList.add('reduce-motion');
+            }
+        
+            // Mobile menu accordéon
+            document.querySelectorAll('.mobile-menu-toggle').forEach((toggle) => {
+                toggle.addEventListener('click', () => {
+                    const item = toggle.closest('.mobile-menu-item');
+                    if (!item) return;
+
+                    const isOpen = item.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+            });
+        </script>
+    </div>
+</body>
+
+</html>

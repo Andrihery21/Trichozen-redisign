@@ -650,12 +650,74 @@
             background: rgba(255,255,255,0.98);
             z-index: 200;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1.75rem;
+            align-items: stretch;
+            justify-content: flex-start;
+            gap: 1rem;
             padding: 2rem;
+            overflow-y: auto;
         }
         #mobile-menu.open { display: flex; }
+        #mobile-menu > a,
+        .mobile-menu-toggle {
+            color: #1F455E;
+            font-family: Montserrat, sans-serif;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.9rem 0.75rem;
+            border-radius: 0.25rem;
+            background: transparent;
+            text-align: left;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #mobile-menu > a:hover,
+        .mobile-menu-toggle:hover {
+            color: #CFA674;
+        }
+        .mobile-menu-toggle {
+            border: none;
+            cursor: pointer;
+        }
+        .mobile-submenu {
+            display: none;
+            flex-direction: column;
+            gap: 0.65rem;
+            padding-left: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .mobile-menu-item.open .mobile-submenu {
+            display: flex;
+        }
+        .mobile-submenu a {
+            color: #1F455E;
+            font-family: Montserrat, sans-serif;
+            font-size: 0.8125rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.55rem 0;
+        }
+        .mobile-submenu a:hover {
+            color: #CFA674;
+        }
+        .mobile-menu-toggle span {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .mobile-menu-item.open .mobile-menu-toggle span {
+            transform: rotate(180deg);
+        }
         #mobile-menu-close {
             position: absolute;
             top: 1.25rem; right: 1.25rem;
@@ -760,7 +822,7 @@
                     <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
                         <a class="dropdown-item" href="https://www.trichozen.com/marque-2/">Espace Marques &amp;
                             Médias</a>
-                        <a class="dropdown-item" href="https://www.trichozen.com/blog-2/">Votre blog TrichoZen</a>
+                       
                         <a class="dropdown-item" href="https://trichozen-w8fpmw.subscribepage.io/"
                             target="_blank">S'inscrire à la NewsLetter</a>
                     </div>
@@ -790,22 +852,32 @@
                 aria-label="Fermer">
                 <span class="material-symbols-outlined" style="font-size:2rem;color:#1F455E">close</span>
             </button>
-            <a href="https://www.trichozen.com/home-2-new/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Home</a>
-            <a href="https://www.trichozen.com/particulier/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Particuliers</a>
-            <a href="https://www.trichozen.com/professionnel/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Professionnels</a>
-            <a href="https://www.trichozen.com/a-propos-2/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">À
-                propos</a>
-            <a href="https://www.trichozen.com/blog-2/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Blog</a>
-            <a href="https://www.trichozen.com/contact-2/"
-                style="color:#1F455E;font-family:Montserrat,sans-serif;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;text-decoration:none;">Contact</a>
+            <a href="https://www.trichozen.com/home-2-new/">Home</a>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Particuliers <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/diagnostic/">Diagnostic</a>
+                    <a href="https://www.trichozen.com/programme-essentiel-2/">Programme Essentiel</a>
+                </div>
+            </div>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Professionnels <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/professionnel/">Catalogue des formations</a>
+                    <a href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie Fonctionnelle</a>
+                </div>
+            </div>
+            <a href="https://www.trichozen.com/a-propos-2/">À propos</a>
+            <div class="mobile-menu-item">
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Ressources <span>▾</span></button>
+                <div class="mobile-submenu">
+                    <a href="https://www.trichozen.com/marque-2/">Espace Marques &amp; Médias</a>
+                    <a href="https://trichozen-w8fpmw.subscribepage.io/">S'inscrire à la NewsLetter</a>
+                </div>
+            </div>
+            <a href="https://www.trichozen.com/contact-2/">Contact</a>
             <a href="https://calendly.com/trichozen"
-                style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;">RDV
-                Expertise</a>
+                style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;display:inline-flex;justify-content:center;align-items:center;text-align:center;">RDV Expertise</a>
         </div>
 
         <section class="relative h-screen w-full overflow-hidden">
@@ -1595,7 +1667,7 @@
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
                                     href="https://www.trichozen.com/professionnel/">Professionnels</a></li>
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="https://www.trichozen.com/blog-2/">Ressources</a></li>
+                                    href="https://www.trichozen.com/marque-2/">Espace marques</a></li>
                         </ul>
                     </div>
                     <div class="md:col-span-2 space-y-6">
@@ -1608,7 +1680,7 @@
                                     href="https://www.trichozen.com/contact-2/">Contact</a></li>
 
                             <li><a class="text-[14px] font-medium uppercase tracking-wider transition-colors"
-                                    href="#">Mentions Légales</a></li>
+                                    href="https://www.trichozen.com/mentions-legales-2/">Mentions Légales</a></li>
                         </ul>
                     </div>
                     <div class="md:col-span-4 space-y-6">
@@ -1626,9 +1698,8 @@
                     class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
                     <p class="text-white/40 font-medium text-[10px]">2026 TrichoZen — Tous droits réservés.</p>
                     <div class="flex gap-12">
-                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">POLITIQUE DE
-                            CONFIDENTIALITÉ</a>
-                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="#">CGV</a>
+                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="https://www.trichozen.com/politique-de-cookies/">Politique de cookies (UE)</a>
+                       
                     </div>
                 </div>
             </div>
@@ -1699,6 +1770,17 @@
                     slideInterval = setInterval(nextSlide, 5000);
                 });
             }
+
+            // Mobile menu accordéon
+            document.querySelectorAll('.mobile-menu-toggle').forEach((toggle) => {
+                toggle.addEventListener('click', () => {
+                    const item = toggle.closest('.mobile-menu-item');
+                    if (!item) return;
+
+                    const isOpen = item.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+            });
 
             // Gestion du carrousel des formations avec défilement
             const formationsContainer = document.getElementById('formations-container');
