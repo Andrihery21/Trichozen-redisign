@@ -1,21 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark" lang="fr">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Formations Trichologie pour Professionnels | Devenez Trichologue Certifié — TrichoZen</title>
-    <meta name="description"
-        content="Formations en trichologie fonctionnelle pour professionnels du cheveu : devenez trichologue expert certifié. Formation cuir chevelu, cheveux texturés, diagnostic capillaire, en présentiel et en ligne." />
-    <meta name="keywords"
-        content="formations trichologie, formation trichologie, devenir trichologue, devenir expert trichologie, formation capillaire certifiante, formation cuir chevelu, formation professionnelle capillaire, formation cheveux en ligne, devenir expert capillaire" />
+    <title>Article | Trichozen - Expertise Capillaire</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet">
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -64,22 +59,49 @@
         .animate-fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
-
-        .premium-card {
-            background: white;
-            border: none;
-            border-radius: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            position: relative;
+        
+        /* NEXT GEN ANIMATIONS */
+        @keyframes revealText {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
-        .premium-card:hover {
-            border-color: rgba(230, 193, 92, 0.3);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 100ms; }
+        .stagger-2 { transition-delay: 200ms; }
+        .stagger-3 { transition-delay: 300ms; }
+
+        :root {
+            --primary-bordeaux: #800020;
+            --brand-blue: #1F455E;
+            --gold-accent: #CFA674;
+        }
         .glass-nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
@@ -129,110 +151,38 @@
             padding-left: 1.5rem;
         }
 
-        .luxury-glass {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
+        /* ADVANCED DESIGN REFINEMENTS */
         .bg-noise {
             position: absolute;
             inset: 0;
             z-index: 0;
-            opacity: 0.03;
+            opacity: 0.05;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
             pointer-events: none;
         }
-        
-        /* ============================================
-           ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
-           ============================================ */
 
-        /* Reveal Animations */
-        @keyframes revealText {
-            0% { transform: translateY(100%); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        .parallax-hero {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+        .article-content {
+            @apply text-[#1F455E] leading-[1.8] font-medium;
         }
-        
-        @keyframes glowPulse {
-            0% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
-            50% { box-shadow: 0 0 20px rgba(230, 193, 92, 0.6); }
-            100% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
+        .article-content h2 {
+            @apply text-3xl md:text-4xl font-display text-[#1F455E] uppercase mt-12 mb-6;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
+        .article-content p {
+            @apply mb-8 text-[16px] font-medium leading-relaxed;
+        }
+        .article-content blockquote {
+            @apply my-12 py-6 pl-8 border-l-2 border-[#CFA674] bg-[#FBF5F0] font-sans font-medium italic text-[23px] leading-relaxed text-[#1F455E] relative;
         }
 
-        .reveal-text {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .reveal-text.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s ease-out;
-        }
-
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .scale-in {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.8s ease-out;
-        }
-
-        .scale-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        .stagger-1 { transition-delay: 100ms; }
-        .stagger-2 { transition-delay: 200ms; }
-        .stagger-3 { transition-delay: 300ms; }
-        .stagger-4 { transition-delay: 400ms; }
-
-        .hover-glow:hover {
-            animation: glowPulse 2s infinite;
-        }
-
-        /* Luxury Glassmorphism */
-        .luxury-glass {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 4px 6px -1px rgba(0, 0, 0, 0.05), 
-                0 20px 40px -4px rgba(0, 0, 0, 0.1),
-                inset 0 0 30px rgba(255, 255, 255, 0.2);
-        }
-
-        /* Premium Card Style */
         .premium-card {
-            background: white;
+            background: #fbf5f0;
             border: none;
             border-radius: 0;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -240,7 +190,6 @@
             overflow: hidden;
             position: relative;
         }
-
         .premium-card::before {
             content: '';
             position: absolute;
@@ -252,114 +201,30 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-
         .premium-card:hover {
-            border-color: rgba(230, 193, 92, 0.3);
             transform: translateY(-8px);
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
         }
-
         .premium-card:hover::before {
             opacity: 1;
         }
 
-        /* Corner Frames with Double Border */
-        .corner-frame {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            border-color: #CFA674;
-            pointer-events: none;
-            z-index: 10;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .corner-frame::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-color: #CFA674;
-            transition: all 0.5s ease;
-            opacity: 0.5;
+
+        .drop-cap:first-letter {
+            @apply text-7xl font-display text-[#CFA674] float-left mr-4 mt-2 leading-[0.8];
         }
 
-        .corner-tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
-        .corner-tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
-        .corner-bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
-        .corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
-
-        .corner-tl::after { top: 4px; left: 4px; border-top: 1px solid; border-left: 1px solid; }
-        .corner-tr::after { top: 4px; right: 4px; border-top: 1px solid; border-right: 1px solid; }
-        .corner-bl::after { bottom: 4px; left: 4px; border-bottom: 1px solid; border-left: 1px solid; }
-        .corner-br::after { bottom: 4px; right: 4px; border-bottom: 1px solid; border-right: 1px solid; }
-
-        .framed-content:hover .corner-tl { transform: translate(-15px, -15px); }
-        .framed-content:hover .corner-tr { transform: translate(15px, -15px); }
-        .framed-content:hover .corner-bl { transform: translate(-15px, 15px); }
-        .framed-content:hover .corner-br { transform: translate(15px, 15px); }
-
-        .framed-content:hover .corner-frame::after {
-            opacity: 1;
-            border-color: #CFA674;
-            transform: scale(0.9);
-        }
-
-        /* Floating Shapes */
-        .floating-shape {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(230, 193, 92, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
-            z-index: 0;
-            animation: float 10s infinite ease-in-out;
-        }
-
-        /* Watermark Text */
-        .watermark-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 15vw;
-            font-weight: 700;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.03);
-            white-space: nowrap;
-            pointer-events: none;
-            z-index: 0;
-            font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 0.1em;
-        }
-
-        /* Parallax Hero */
-        .parallax-hero {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            object-position: center 38%;
-        }
-       
-        /* Image Container Overlay */
-        .image-container {
-            position: relative;
+        .blog-card {
+            background: #ffffff;
+            border: 1px solid rgba(31, 69, 94, 0.1);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
+            position: relative;
         }
-
-        .image-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .image-container:hover::after {
-            opacity: 0.5;
+        .blog-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(230, 193, 92, 0.4);
         }
 
         .sur-titre {
@@ -367,7 +232,8 @@
         }
 
         .hero-title {
-            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
+            @apply font-display font-normal uppercase text-[64px] leading-tight text-white/95;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         @layer base {
@@ -382,6 +248,10 @@
 
         .quote-style {
             @apply font-sans font-medium italic text-[23px] leading-relaxed;
+        }
+
+        .share-btn {
+            @apply flex items-center justify-center w-12 h-12 rounded-full border border-[#CFA674]/20 text-[#CFA674] hover:bg-[#CFA674] hover:text-white transition-all duration-300;
         }
 
         /* ===== RESPONSIVE SYSTEM ===== */
@@ -503,36 +373,15 @@
         }
 
         @media (max-width: 480px) {
-            .hero-title, 
-            h1.font-display, 
-            h1[class*='font-display'],
-            h1.text-7xl, 
-            h1.text-5xl { 
-                font-size: 36px !important; 
-                line-height: 1.2 !important;
-            }
+            .hero-title { font-size: clamp(1.4rem, 7vw, 2rem) !important; }
             .sur-titre { font-size: clamp(0.75rem, 3.5vw, 1rem) !important; }
             .w-72 { max-width: 8rem !important; }
-        }
-
-        /* Titre des cards : fixé à 24px sur toute la page professionnels */
-        .premium-card h3 {
-            font-size: 24px !important;
-        }
-
-        /* Hero headings: 64px fixe sur desktop */
-        @media (min-width: 481px) {
-            .hero-title { font-size: 64px !important; }
-            h1.font-display, h1[class*='font-display'] { font-size: 64px !important; }
-            h1.text-7xl, h1.text-5xl { font-size: 64px !important; }
         }
     </style>
 </head>
 
-<body class="bg-background-dark font-sans text-gray-200">
-    <div style="width: 100%; max-width: 100%; margin: 0; padding: 0; display: block;">
-        <!-- Navbar -->
-        <nav
+<body class="bg-white font-sans text-[#1F455E] selection:bg-primary selection:text-white">
+    <nav
             class="fixed top-0 left-0 w-full z-50 glass-nav h-20 flex justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
             <!-- Logo Section (Left) -->
             <div class="flex justify-start">
@@ -565,7 +414,7 @@
                         <a class="dropdown-item"
                             href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie
                             Fonctionnelle</a>
-                            <a class="dropdown-item" href="https://www.trichozen.com/formation-trichologie-afro-textures/">Trichologie Cheveux Afro-Texturés</a>
+                        <a class="dropdown-item" href="https://www.trichozen.com/formation-trichologie-afro-textures/">Trichologie Cheveux Afro-Texturés</a>
                     </div>
                 </div>
                 <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/a-propos-2/">À propos</a>
@@ -618,7 +467,7 @@
                 <div class="mobile-submenu">
                     <a href="https://www.trichozen.com/professionnel/">Catalogue des formations</a>
                     <a href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie Fonctionnelle</a>
-                        <a href="https://www.trichozen.com/formation-trichologie-afro-textures/">Trichologie Cheveux Afro-Texturés</a>
+                    <a href="https://www.trichozen.com/formation-trichologie-afro-textures/">Trichologie Cheveux Afro-Texturés</a>
                 </div>
             </div>
             <a href="https://www.trichozen.com/a-propos-2/">À propos</a>
@@ -634,188 +483,196 @@
                 style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;display:inline-flex;justify-content:center;align-items:center;text-align:center;">RDV Expertise</a>
         </div>
 
+    <!-- Article Hero Section -->
+    <header class="relative h-screen w-full overflow-hidden flex items-end pb-20">
+        <div class="absolute inset-0 z-0 parallax-hero"
+            style='background-image: url("https://lh3.googleusercontent.com/d/1T4e8ocyJebBiKjOar7E58qkT73Wk7_I3");'>
+        </div>
 
-        <!-- Main Content -->
-        <main class="pt-10">
-            <!-- Section 1: Hero Professionnels -->
-            <section class="relative h-screen flex items-center px-8 md:px-24 overflow-hidden border-b border-white/10">
-                <!-- Floating Shapes -->
-                <div class="floating-shape"
-                    style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;">
-                </div>
-                <div class="floating-shape"
-                    style="width: 200px; height: 200px; bottom: 10%; right: 5%; animation-delay: 3s;"></div>
-                <div class="absolute inset-0 z-0">
-                    <img src="https://drive.google.com/thumbnail?sz=w2000&amp;id=1dlUSoQF9fOv3aCH_wIHXfEzDuBRUr3Ku"
-                        class="w-full h-full object-cover parallax-hero" alt="Academy">
-                    <div class="absolute inset-0 bg-black/10"></div>
-                </div>
-                <div class="relative z-10 w-full max-w-[1400px] mx-auto flex justify-center">
-                    <div class="space-y-7 reveal-text w-full max-w-5xl">
-                        <div
-                            class="leading-snug border-l-4 border-[#CFA674] px-6 md:px-16 py-12 bg-[#2F6385]/15 text-center">
-                            <h1 class="text-7xl md:text-8xl font-display text-white leading-none">
-                                Formations Professionnelles</h1>
-                            <p
-                                class="text-xl text-white/80 font-medium max-w-3xl leading-relaxed fade-in-up stagger-1 mt-6 mx-auto">
-                                Vous êtes coiffeur, esthéticien ou professionnel du bien-être capillaire ? Nos
-                                formations en
-                                trichologie fonctionnelle vous permettent d'aller bien au-delà du soin : comprendre le
-                                cuir
-                                chevelu en profondeur, poser un diagnostic capillaire rigoureux et devenir trichologue
-                                expert de référence dans votre domaine.
-                            </p>
-                        </div>
+        <div class="container mx-auto px-6 md:px-16 relative z-10">
+            <div class="max-w-4xl reveal-text">
+                <h1 class="hero-title text-glow mb-8">
+                    Les Fondamentaux de la Trichologie Moderne
+                </h1>
+                <div
+                    class="flex flex-wrap items-center gap-8 text-[11px] uppercase tracking-[0.2em] text-white/90 font-medium">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[#CFA674] text-sm">person</span>
+                        PAR DR. ELÉONORE S.
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[#CFA674] text-sm">calendar_today</span>
+                        24 JANVIER 2024
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[#CFA674] text-sm">schedule</span>
+                        8 MIN DE LECTURE
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </header>
 
-            <!-- Section 2: Catalog Grid -->
-            <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
-                <div class="max-w-7xl mx-auto text-center">
-                    <span class="sur-titre mb-16 reveal-text block">NOTRE CATALOGUE DE FORMATIONS</span>
-                    <div class="flex flex-wrap justify-center gap-8">
-                        <!-- Card 1 -->
-                        <a href="https://www.trichozen.com/formation-trichologie-fonctionnelle/" target="_blank"
-                            class="premium-card block w-full md:w-[500px] max-w-lg pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
-                            <div class="overflow-hidden h-64 w-full">
-                                <img src="https://drive.google.com/thumbnail?sz=w2000&amp;id=1cFi0CCdELHylosZacslVPIK1BAfSCImp"
-                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                    style="object-position: center 25%;" alt="Formation">
-                            </div>
-                            <div class="px-6 md:px-8 flex-grow">
-                                <h3
-                                    class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                    Trichologie fonctionnelle</h3>
-                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">Maîtrisez les bases
-                                    physiologiques et les pathologies du cuir chevelu.</p>
-                            </div>
-                            <div
-                                class="mx-6 md:mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[10px] md:text-[11px] uppercase tracking-wider text-[#CFA674] font-bold whitespace-nowrap">
-                                <span>Durée : 10 semaines</span>
-                                <span>Prix : à partir de 1 800 €</span>
-                            </div>
-                        </a>
-                        <!-- Card 2 - Trichologie Cheveux Afro-Texturés -->
-                        <a href="https://www.trichozen.com/formation-trichologie-afro-textures/" target="_blank"
-                            class="premium-card block w-full md:w-[500px] max-w-lg pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
-                            <div class="overflow-hidden h-64 w-full">
-                                <img src="https://drive.google.com/thumbnail?sz=w2000&id=1iLbuzJCtfTyFkxjQYr3s43esfXtPTd-P"
-                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                    style="object-position: center 25%;" alt="Trichologie Cheveux Afro-Texturés">
-                            </div>
-                            <div class="px-6 md:px-8 flex-grow">
-                                <h3
-                                    class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                    Trichologie Cheveux Afro-Texturés</h3>
-                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">Approfondissez
-                                    votre expertise des spécificités biologiques et diagnostiques des cheveux
-                                    afro-texturés, avec des protocoles et un suivi adaptés.</p>
-                            </div>
-                            <div
-                                class="mx-6 md:mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[10px] md:text-[11px] uppercase tracking-wider text-[#CFA674] font-bold whitespace-nowrap">
-                                <span>Durée : 10 semaines</span>
-                                <span>Prix : 2 800 €</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
+    <!-- Article Content -->
+    <main class="relative bg-[#EEF5FD] pt-12 pb-24">
+        <div class="bg-noise"></div>
+        <div class="container mx-auto px-6 md:px-16 relative z-10">
+            <div class="relative">
+                <!-- Share Sidebar (Desktop) -->
+                <aside class="hidden lg:flex flex-col gap-4 absolute -left-24 top-0 h-fit">
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-[#CFA674] mb-4 vertical-rl">SHARE</span>
+                    <a href="#" class="share-btn"><span class="material-symbols-outlined text-lg">facebook</span></a>
+                    <a href="#" class="share-btn"><span class="material-symbols-outlined text-lg">share</span></a>
+                    <a href="#" class="share-btn"><span class="material-symbols-outlined text-lg">link</span></a>
+                </aside>
 
-            <!-- Section 3: Bloc Différenciation -->
-            <section class="py-24 px-8 md:px-24 bg-[#0E2635]">
-                <div class="max-w-5xl mx-auto text-center space-y-10 reveal-text">
-                    <h2 class="font-display uppercase text-white">Pourquoi se former à la trichologie avec TrichoZen ?
-                    </h2>
-                    <p class="text-white/75 text-lg leading-relaxed font-sans font-medium max-w-3xl mx-auto">
-                        La trichologie fonctionnelle va au-delà de la surface. C'est une lecture du corps à travers ses
-                        cheveux inflammation, carences, déséquilibres hormonaux, pratiques capillaires inadaptées.
-                        Chez
-                        TrichoZen, chaque formation repose sur des bases scientifiques solides, une pédagogie de terrain
-                        et
-                        une vision transversale qui concerne tous les types de cheveux, avec un accent particulier sur
-                        les
-                        cheveux texturés. Vous repartez opérationnel, différencié, expert.
+                <!-- Content -->
+                <article class="max-w-6xl mx-auto article-content fade-in-up">
+                    <p class="drop-cap">
+                        La trichologie, du grec "trichos" signifiant cheveu, s'impose aujourd'hui comme la clé de voûte 
+                        de la dermatologie esthétique et fonctionnelle. Cette discipline rigoureuse se consacre à l'étude 
+                        approfondie du système pileux et du cuir chevelu, considéré non plus comme une simple surface de 
+                        soin, mais comme un organe vivant et complexe. Le follicule pileux est l'une des structures les 
+                        plus métaboliquement actives du corps humain, capable de régénérer une fibre de kératine avec 
+                        une précision biologique fascinante. Comprendre sa physiologie moléculaire, ses interactions 
+                        permanentes avec les systèmes endocrinien et vasculaire, ainsi que sa sensibilité aux variations 
+                        de l'homéostasie, est indispensable pour quiconque souhaite préserver durablement son capital 
+                        capillaire. Chaque cellule de la matrice pilaire travaille en synergie pour produire la tige que 
+                        nous observons, faisant de chaque cheveu un témoin direct de notre équilibre biologique interne.
                     </p>
-                </div>
-            </section>
 
-            <!-- Section 4: Bloc Réassurance + CTA -->
-            <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
-                <div class="max-w-7xl mx-auto">
-                    <div class="flex flex-col lg:flex-row gap-20">
-                        <div class="lg:w-3/5 space-y-10">
-                            <span class="sur-titre reveal-text block mb-10">CE QUI REND NOS FORMATIONS UNIQUES</span>
+                    <p>
+                        Le cycle de vie du cheveu est une chorégraphie biologique orchestrée en trois phases immuables, 
+                        dont l'équilibre dicte la densité et la pérennité de votre chevelure. La phase anagène, période 
+                        de croissance active s'étalant sur plusieurs années, voit la matrice pilaire se diviser à une 
+                        vitesse record, alimentée par un réseau capillaire dense. Elle est suivie de la phase catagène, 
+                        une transition brève mais critique où le follicule subit une involution programmée, se détachant 
+                        de la papille dermique. Enfin, la phase télogène marque le repos et la chute inéluctable de la 
+                        tige ancienne, préparant le terrain pour la naissance d'un nouveau follicule. Chez TrichoZen, 
+                        nous savons qu'un raccourcissement systémique de la phase anagène ou un passage prématuré en 
+                        phase télogène est le signal d'alarme d'un dérèglement profond qu'il convient de diagnostiquer 
+                        avec la plus grande précision scientifique pour éviter l'épuisement prématuré du capital pilaire.
+                    </p>
 
-                            <div class="space-y-4">
-                                <h3 class="flex items-start gap-4 uppercase tracking-wider font-bold text-[#CFA674]"
-                                    style="font-size:24px !important;">
-                                    <span class="w-4 h-4 bg-[#CFA674] mt-1.5 flex-shrink-0"></span> APPROCHE
-                                    FONCTIONNELLE
-                                </h3>
-                                <p class="text-[#1F455E] font-medium leading-relaxed">
-                                    Approche ancrée dans la trichologie fonctionnelle, pas uniquement cosmétique.
-                                    Comprendre le cuir chevelu en profondeur pour des résultats durables et concrets
-                                    pour vos clients.
-
-                                </p>
-                            </div>
-
-                            <div class="space-y-4">
-                                <h3 class="flex items-start gap-4 uppercase tracking-wider font-bold text-[#CFA674]"
-                                    style="font-size:24px !important;">
-                                    <span class="w-4 h-4 bg-[#CFA674] mt-1.5 flex-shrink-0"></span> CONTENU SCIENTIFIQUE
-                                </h3>
-                                <p class="text-[#1F455E] font-medium leading-relaxed">
-                                    Contenu scientifique rigoureux rendu accessible et directement applicable en cabinet
-                                    dès le lendemain de la formation.
-                                </p>
-                            </div>
-
-                            <div class="space-y-4">
-                                <h3 class="flex items-start gap-4 uppercase tracking-wider font-bold text-[#CFA674]"
-                                    style="font-size:24px !important;">
-                                    <span class="w-4 h-4 bg-[#CFA674] mt-1.5 flex-shrink-0"></span> CE QUE VOUS ALLEZ
-                                    OBTENIR
-                                </h3>
-                                <ul
-                                    class="list-disc pl-5 space-y-4 text-[#1F455E] font-medium leading-relaxed text-[16px]">
-
-                                    <li>Une formation dispensée par Yébé Diouf, experte en trichologie fonctionnelle.
-                                    </li>
-                                    <li>Un certificat de formation à l'issue de votre parcours.</li>
-                                    <li>L'accès à vie à vos supports de formation.</li>
-                                </ul>
-                            </div>
-
-                            <div class="pt-4">
-                                <a href="https://calendly.com/trichozen/appel-de-clarte-formation-sante-capillaire"
-                                    class="inline-block bg-[#1F455E] text-white px-8 py-4 text-[13px] uppercase tracking-wider font-bold hover:opacity-80 transition-all transform hover:scale-105 shadow-xl rounded">
-                                    Réserver un entretien stratégique
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="lg:w-2/5">
-                            <div class="sticky top-32 relative">
-                                <div class="aspect-[4/5] overflow-hidden shadow-2xl relative z-10 group">
-                                    <img src="https://drive.google.com/thumbnail?sz=w2000&amp;id=1JPUuCluayA1fQ3tZDCyRw7HzZmnXQy_0"
-                                        class="w-full h-full object-cover brightness-90 group-hover:scale-105 transition-all duration-1000"
-                                        alt="Formation TrichoZen">
-                                </div>
-                                <div
-                                    class="absolute -top-10 -right-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 -z-10">
-                                </div>
-                            </div>
+                    <div class="my-16 relative group">
+                        <img src="https://lh3.googleusercontent.com/d/1WbNbos-zgmFNgj7ocKbcG1WPuo2AyYDP"
+                            alt="Analyse capillaire"
+                            class="w-full h-[60vh] object-cover rounded-lg shadow-2xl brightness-90 transition-all duration-700 group-hover:scale-[1.02]">
+                        <div class="mt-4 text-[10px] uppercase tracking-widest text-[#1F455E] italic text-center">
+                            Analyse microscopique de l'organe folliculaire en phase anagène.
                         </div>
                     </div>
-                </div>
-            </section>
 
+                    <h2>L'Unicité de votre Capital Capillaire</h2>
+                    <p>
+                        Votre patrimoine capillaire est une entité dynamique, sculptée par votre héritage génétique 
+                        mais continuellement modulée par votre environnement direct. Ce que la science moderne appelle 
+                        l'exposome — l'ensemble des agressions extérieures telles que la pollution atmosphérique, 
+                        les rayons UV, le stress oxydatif et les radicaux libres — exerce une pression constante sur 
+                        la gaine épithéliale et la structure cutanée. Ce stress environnemental peut induire une 
+                        sénescence prématurée des cellules souches logées dans le "bulge" du follicule, altérant ainsi 
+                        la qualité des futurs cycles. Parallèlement, les fluctuations hormonales, notamment l'équilibre 
+                        des androgènes ou de la fonction thyroïdienne, agissent comme des modulateurs de l'expression 
+                        génique au sein de la papille dermique, influençant radicalement le diamètre, la pigmentation 
+                        et la robustesse globale de chaque fibre capillaire produite.
+                    </p>
 
-            <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
+                    <p>
+                        L'approche TrichoZen redéfinit les standards de l'expertise capillaire en intégrant une dimension 
+                        prédictive, préventive et résolument holistique. Par l'usage systématique de la trichoscopie 
+                        numérique à haute résolution, nos experts sont en mesure de visualiser des marqueurs 
+                        biométriques invisibles à l'œil nu, tels que la variabilité du diamètre pilaire, l'état de 
+                        vascularisation périfolliculaire ou l'obstruction éventuelle de l'ostium. Ces données 
+                        quantitatives, croisées avec une analyse rigoureuse de vos antécédents, de vos habitudes de 
+                        vie et de votre profil métabolique, nous permettent de concevoir des protocoles de soins 
+                        d'exception réellement personnalisés. Il ne s'agit plus de traiter un symptôme par une solution 
+                        standardisée, mais de restaurer avec précision l'écosystème vital de votre cuir chevelu pour 
+                        offrir à vos follicules un environnement biologique propice à une régénération optimale, stable 
+                        et pérenne sur le long terme.
+                    </p>
+
+                    <h2>L'Équilibre du Microbiome Scalpaire</h2>
+                    <p>
+                        Le cuir chevelu n'est pas une zone isolée ; c'est un biome riche abritant des milliards de 
+                        micro-organismes essentiels. Ce microbiome, composé de bactéries et de levures vivant en 
+                        symbiose, constitue la première ligne de défense contre les agressions pathogènes et joue un 
+                        rôle crucial dans la modulation immunitaire cutanée. Une dysbiose — ou déséquilibre de cet 
+                        écosystème délicat — peut générer des micro-inflammations invisibles mais chroniques qui 
+                        affaiblissent directement l'ancrage du cheveu. Ces réactions inflammatoires activent des 
+                        cascades enzymatiques destructrices pouvant mener à la fibrose périfolliculaire, un phénomène 
+                        qui entrave la croissance normale. La préservation et le rétablissement de cet équilibre 
+                        microbiotique sont donc au cœur de notre stratégie pour maintenir une barrière protectrice 
+                        efficace et un environnement folliculaire sain.
+                    </p>
+                    
+                    <h2>Nutrition et Métabolisme de la Kératine</h2>
+                    <p>
+                        La kératine, cette protéine fibreuse structurante constituant plus de 90% de la tige capillaire, 
+                        est le fruit d'une biosynthèse exigeante nécessitant un apport constant en nutriments 
+                        spécifiques. Les acides aminés soufrés, tels que la cystine et la méthionine, constituent les 
+                        ponts disulfures qui assureront la solidité et l'élasticité du cheveu. Cependant, cette synthèse 
+                        ne peut être optimale sans la présence de co-facteurs essentiels : le fer (stocké sous forme de 
+                        ferritine), le zinc, le sélénium et les vitamines du groupe B, particulièrement la biotine et 
+                        le panthénol. Une carence, même légère ou infra-clinique, impacte immédiatement la vitesse de 
+                        mitose des cellules de la matrice, résultant en une fibre plus fine, plus fragile and moins 
+                        résistante. Chez TrichoZen, nous accordons une importance capitale à l'optimisation nutritionnelle 
+                        et métabolique, car la vitalité de la fibre capillaire commence systématiquement par un apport 
+                        biochimique adéquat au cœur même de la racine.
+                    </p>
+
+                    <div
+                        class="mt-20 p-12 bg-[#FBF5F0] border border-[#CFA674]/20 rounded-xl relative overflow-hidden group">
+                        <h4 class="text-xl font-display text-[#1F455E] mb-4">Besoin d'un accompagnement sur mesure ?
+                        </h4>
+                        <p class="text-sm text-[#1F455E] mb-8 w-full">
+                            Nos experts vous accueillent en présentiel ou en téléconsultation pour réaliser votre bilan
+                            trichologique complet et définir votre protocole d'exception.
+                        </p>
+                        <button
+                            class="bg-[#CFA674] text-white px-4 py-3 text-[13px] font-sans uppercase tracking-wide font-medium transition-all hover:opacity-80 rounded shadow-xl">
+                            Prendre Rendez-vous
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Related Articles -->
+    <section class="py-24 bg-white border-t border-[#1F455E]/5">
+        <div class="container mx-auto px-6 md:px-16">
+            <span class="sur-titre mb-16 reveal-text block">À découvrir également</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Related Article 1 -->
+                <article
+                    class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-1 overflow-hidden">
+                    <div class="overflow-hidden h-48 w-full">
+                        <img src="https://lh3.googleusercontent.com/d/1ooepodjUD4m4olQKg4N9O8yZmCrfIl6_" alt="Article"
+                            class="w-full h-full object-cover transition-all duration-700 hover:scale-110">
+                    </div>
+                    <div class="px-8 mt-4">
+                        <h3 class="!text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
+                            Les rituels de soin premium en 2024</h3>
+                        <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
+                        <p class="text-[#1F455E] font-medium leading-relaxed text-left text-sm">
+                            Découvrez les dernières innovations en matière de soins capillaires de luxe et les
+                            protocoles d'exception TrichoZen.
+                        </p>
+                    </div>
+                    <div class="mx-8 pt-4 border-t border-[#1F455E]/10">
+                        <a href="#"
+                            class="text-[10px] uppercase tracking-widest font-bold text-[#1F455E] hover:text-[#CFA674] transition-all flex items-center gap-2">
+                            LIRE <span class="material-symbols-outlined text-sm">arrow_right_alt</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Add more related articles as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
             <div class="container mx-auto px-6 md:px-16">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
                     <div class="md:col-span-4 space-y-5">
@@ -920,38 +777,22 @@
                 </div>
             </div>
         </footer>
-
-
-        </main>
-        <div class="bg-noise"></div>
-
-        <script>
-            // ============================================
-            // ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
-            // ============================================
-
-            // Intersection Observer for Reveal Animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
-            // Initialize on DOM load
-            document.addEventListener('DOMContentLoaded', () => {
-                // Observe all reveal elements
-                document.querySelectorAll('.reveal-text, .fade-in-up, .scale-in').forEach(el => {
-                    observer.observe(el);
-                });
-            });
-        
+            const animatedElements = document.querySelectorAll('.reveal-text, .fade-in-up');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    
             // Mobile menu accordéon
             document.querySelectorAll('.mobile-menu-toggle').forEach((toggle) => {
                 toggle.addEventListener('click', () => {
@@ -963,7 +804,6 @@
                 });
             });
         </script>
-    </div>
 </body>
 
 </html>

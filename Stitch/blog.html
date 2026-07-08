@@ -1,21 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark" lang="fr">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Formations Trichologie pour Professionnels | Devenez Trichologue Certifié — TrichoZen</title>
-    <meta name="description"
-        content="Formations en trichologie fonctionnelle pour professionnels du cheveu : devenez trichologue expert certifié. Formation cuir chevelu, cheveux texturés, diagnostic capillaire, en présentiel et en ligne." />
-    <meta name="keywords"
-        content="formations trichologie, formation trichologie, devenir trichologue, devenir expert trichologie, formation capillaire certifiante, formation cuir chevelu, formation professionnelle capillaire, formation cheveux en ligne, devenir expert capillaire" />
+    <title>Blog | Trichozen - Votre Blog de Trichologie</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet">
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -64,22 +59,78 @@
         .animate-fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
-
-        .premium-card {
-            background: white;
-            border: none;
-            border-radius: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            position: relative;
+        
+        /* NEXT GEN ANIMATIONS */
+        @keyframes revealText {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
-        .premium-card:hover {
-            border-color: rgba(230, 193, 92, 0.3);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(230, 193, 92, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
+        }
+
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s ease-out;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .stagger-1 { transition-delay: 100ms; }
+        .stagger-2 { transition-delay: 200ms; }
+        .stagger-3 { transition-delay: 300ms; }
+        .stagger-4 { transition-delay: 400ms; }
+        .stagger-5 { transition-delay: 500ms; }
+        .stagger-6 { transition-delay: 600ms; }
+
+        .hover-glow:hover {
+            animation: glowPulse 2s infinite;
+        }
+
+        :root {
+            --primary-bordeaux: #800020;
+            --brand-blue: #1F455E;
+            --gold-accent: #CFA674;
+        }
         .glass-nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
@@ -128,97 +179,17 @@
             border-left-color: #CFA674;
             padding-left: 1.5rem;
         }
-
-        .luxury-glass {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
+        
+        /* ADVANCED DESIGN REFINEMENTS */
         .bg-noise {
             position: absolute;
             inset: 0;
             z-index: 0;
-            opacity: 0.03;
+            opacity: 0.05;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
             pointer-events: none;
         }
-        
-        /* ============================================
-           ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
-           ============================================ */
 
-        /* Reveal Animations */
-        @keyframes revealText {
-            0% { transform: translateY(100%); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        @keyframes glowPulse {
-            0% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
-            50% { box-shadow: 0 0 20px rgba(230, 193, 92, 0.6); }
-            100% { box-shadow: 0 0 5px rgba(230, 193, 92, 0.2); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-        }
-
-        .reveal-text {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .reveal-text.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s ease-out;
-        }
-
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .scale-in {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.8s ease-out;
-        }
-
-        .scale-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        .stagger-1 { transition-delay: 100ms; }
-        .stagger-2 { transition-delay: 200ms; }
-        .stagger-3 { transition-delay: 300ms; }
-        .stagger-4 { transition-delay: 400ms; }
-
-        .hover-glow:hover {
-            animation: glowPulse 2s infinite;
-        }
-
-        /* Luxury Glassmorphism */
         .luxury-glass {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
             backdrop-filter: blur(20px);
@@ -230,9 +201,57 @@
                 inset 0 0 30px rgba(255, 255, 255, 0.2);
         }
 
+        .corner-frame {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-color: #CFA674;
+            pointer-events: none;
+            z-index: 10;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .corner-frame::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-color: #CFA674; /* Gold Accent */
+            transition: all 0.5s ease;
+            opacity: 0.5;
+        }
+
+        .corner-tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
+        .corner-tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
+        .corner-bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
+        .corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
+
+        .corner-tl::after { top: 4px; left: 4px; border-top: 1px solid; border-left: 1px solid; }
+        .corner-tr::after { top: 4px; right: 4px; border-top: 1px solid; border-right: 1px solid; }
+        .corner-bl::after { bottom: 4px; left: 4px; border-bottom: 1px solid; border-left: 1px solid; }
+        .corner-br::after { bottom: 4px; right: 4px; border-bottom: 1px solid; border-right: 1px solid; }
+
+        .framed-content:hover .corner-tl { transform: translate(-15px, -15px); }
+        .framed-content:hover .corner-tr { transform: translate(15px, -15px); }
+        .framed-content:hover .corner-bl { transform: translate(-15px, 15px); }
+        .framed-content:hover .corner-br { transform: translate(15px, 15px); }
+
+        .framed-content:hover .corner-frame::after {
+             opacity: 1;
+             border-color: #CFA674;
+             transform: scale(0.9);
+        }
+
+        .parallax-hero {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
         /* Premium Card Style */
         .premium-card {
-            background: white;
+            background: #FBF5F0;
             border: none;
             border-radius: 0;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -263,84 +282,6 @@
             opacity: 1;
         }
 
-        /* Corner Frames with Double Border */
-        .corner-frame {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            border-color: #CFA674;
-            pointer-events: none;
-            z-index: 10;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .corner-frame::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-color: #CFA674;
-            transition: all 0.5s ease;
-            opacity: 0.5;
-        }
-
-        .corner-tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
-        .corner-tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
-        .corner-bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
-        .corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
-
-        .corner-tl::after { top: 4px; left: 4px; border-top: 1px solid; border-left: 1px solid; }
-        .corner-tr::after { top: 4px; right: 4px; border-top: 1px solid; border-right: 1px solid; }
-        .corner-bl::after { bottom: 4px; left: 4px; border-bottom: 1px solid; border-left: 1px solid; }
-        .corner-br::after { bottom: 4px; right: 4px; border-bottom: 1px solid; border-right: 1px solid; }
-
-        .framed-content:hover .corner-tl { transform: translate(-15px, -15px); }
-        .framed-content:hover .corner-tr { transform: translate(15px, -15px); }
-        .framed-content:hover .corner-bl { transform: translate(-15px, 15px); }
-        .framed-content:hover .corner-br { transform: translate(15px, 15px); }
-
-        .framed-content:hover .corner-frame::after {
-            opacity: 1;
-            border-color: #CFA674;
-            transform: scale(0.9);
-        }
-
-        /* Floating Shapes */
-        .floating-shape {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(230, 193, 92, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
-            z-index: 0;
-            animation: float 10s infinite ease-in-out;
-        }
-
-        /* Watermark Text */
-        .watermark-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 15vw;
-            font-weight: 700;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.03);
-            white-space: nowrap;
-            pointer-events: none;
-            z-index: 0;
-            font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 0.1em;
-        }
-
-        /* Parallax Hero */
-        .parallax-hero {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            object-position: center 38%;
-        }
-       
-        /* Image Container Overlay */
         .image-container {
             position: relative;
             overflow: hidden;
@@ -360,6 +301,14 @@
 
         .image-container:hover::after {
             opacity: 0.5;
+        }
+
+        .premium-card img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .premium-card:hover img {
+            transform: scale(1.1) rotate(1deg);
         }
 
         .sur-titre {
@@ -476,62 +425,32 @@
         }
 
         @layer base {
-            h1 { font-size: clamp(1.75rem, 4.5vw, 3rem) !important; }
-            h2 { font-size: clamp(1.4rem, 3.5vw, 2.5rem) !important; }
-            h3 { font-size: clamp(1rem, 2.5vw, 2rem) !important; }
-            h4 { font-size: clamp(0.9rem, 2vw, 1.5rem) !important; }
+            h1 { font-size: clamp(1.75rem, 4.5vw, 3rem); }
+            h2 { font-size: clamp(1.4rem, 3.5vw, 2.5rem); }
+            h3 { font-size: clamp(1rem, 2.5vw, 2rem); }
+            h4 { font-size: clamp(0.9rem, 2vw, 1.5rem); }
         }
 
         @media (max-width: 1024px) {
-            .text-7xl { font-size: clamp(2.5rem, 8vw, 4.5rem) !important; }
-            .text-8xl { font-size: clamp(2.5rem, 8vw, 4.5rem) !important; }
-            .text-9xl { font-size: clamp(3rem, 10vw, 6rem) !important; }
             .leading-snug.border-l-4 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
         }
 
         @media (max-width: 768px) {
-            .text-7xl { font-size: clamp(1.8rem, 7vw, 2.8rem) !important; }
-            .text-8xl { font-size: clamp(1.8rem, 7vw, 2.8rem) !important; }
-            .text-9xl { font-size: clamp(2rem, 8vw, 3rem) !important; }
-            .text-5xl { font-size: clamp(1.5rem, 6vw, 2.2rem) !important; }
             .leading-snug.border-l-4 { padding-left: 1rem !important; padding-right: 1rem !important; }
             .absolute.-bottom-10.-left-10 { bottom: -0.5rem !important; left: 0 !important; }
             .absolute.-top-10.-right-10 { display: none !important; }
-            .absolute.-top-10.-left-10 { display: none !important; }
-            .whitespace-nowrap { white-space: normal !important; }
-            .brand-logo { width: 100px !important; margin: 0 20px !important; }
         }
 
         @media (max-width: 480px) {
-            .hero-title, 
-            h1.font-display, 
-            h1[class*='font-display'],
-            h1.text-7xl, 
-            h1.text-5xl { 
-                font-size: 36px !important; 
-                line-height: 1.2 !important;
-            }
+            .hero-title { font-size: clamp(1.4rem, 7vw, 2rem) !important; }
             .sur-titre { font-size: clamp(0.75rem, 3.5vw, 1rem) !important; }
             .w-72 { max-width: 8rem !important; }
-        }
-
-        /* Titre des cards : fixé à 24px sur toute la page professionnels */
-        .premium-card h3 {
-            font-size: 24px !important;
-        }
-
-        /* Hero headings: 64px fixe sur desktop */
-        @media (min-width: 481px) {
-            .hero-title { font-size: 64px !important; }
-            h1.font-display, h1[class*='font-display'] { font-size: 64px !important; }
-            h1.text-7xl, h1.text-5xl { font-size: 64px !important; }
         }
     </style>
 </head>
 
-<body class="bg-background-dark font-sans text-gray-200">
+<body class="bg-[#EEF5FD] font-sans text-[#1F455E] selection:bg-primary selection:text-white">
     <div style="width: 100%; max-width: 100%; margin: 0; padding: 0; display: block;">
-        <!-- Navbar -->
         <nav
             class="fixed top-0 left-0 w-full z-50 glass-nav h-20 flex justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] items-center px-8 md:px-12">
             <!-- Logo Section (Left) -->
@@ -565,7 +484,7 @@
                         <a class="dropdown-item"
                             href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie
                             Fonctionnelle</a>
-                            <a class="dropdown-item" href="https://www.trichozen.com/formation-trichologie-afro-textures/">Trichologie Cheveux Afro-Texturés</a>
+                        <a class="dropdown-item" href="https://www.trichozen.com/formation-trichologie-afro-textures/">Trichologie Cheveux Afro-Texturés</a>
                     </div>
                 </div>
                 <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/a-propos-2/">À propos</a>
@@ -575,7 +494,7 @@
                     <div class="absolute top-full left-1/2 -translate-x-1/2 w-64 dropdown-menu shadow-2xl">
                         <a class="dropdown-item" href="https://www.trichozen.com/marque-2/">Espace Marques &amp;
                             Médias</a>
-                       
+
                         <a class="dropdown-item" href="https://trichozen-w8fpmw.subscribepage.io/"
                             target="_blank">S'inscrire à la NewsLetter</a>
                     </div>
@@ -607,23 +526,27 @@
             </button>
             <a href="https://www.trichozen.com/home-2-new/">Home</a>
             <div class="mobile-menu-item">
-                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Particuliers <span>▾</span></button>
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Particuliers
+                    <span>▾</span></button>
                 <div class="mobile-submenu">
                     <a href="https://www.trichozen.com/diagnostic/">Diagnostic</a>
                     <a href="https://www.trichozen.com/programme-essentiel-2/">Programme Essentiel</a>
                 </div>
             </div>
             <div class="mobile-menu-item">
-                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Professionnels <span>▾</span></button>
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Professionnels
+                    <span>▾</span></button>
                 <div class="mobile-submenu">
                     <a href="https://www.trichozen.com/professionnel/">Catalogue des formations</a>
-                    <a href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie Fonctionnelle</a>
-                        <a href="https://www.trichozen.com/formation-trichologie-afro-textures/">Trichologie Cheveux Afro-Texturés</a>
+                    <a href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie
+                        Fonctionnelle</a>
+                    <a href="https://www.trichozen.com/formation-trichologie-afro-textures/">Trichologie Cheveux Afro-Texturés</a>
                 </div>
             </div>
             <a href="https://www.trichozen.com/a-propos-2/">À propos</a>
             <div class="mobile-menu-item">
-                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Ressources <span>▾</span></button>
+                <button type="button" class="mobile-menu-toggle" aria-expanded="false">Ressources
+                    <span>▾</span></button>
                 <div class="mobile-submenu">
                     <a href="https://www.trichozen.com/marque-2/">Espace Marques &amp; Médias</a>
                     <a href="https://trichozen-w8fpmw.subscribepage.io/">S'inscrire à la NewsLetter</a>
@@ -631,191 +554,206 @@
             </div>
             <a href="https://www.trichozen.com/contact-2/">Contact</a>
             <a href="https://calendly.com/trichozen"
-                style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;display:inline-flex;justify-content:center;align-items:center;text-align:center;">RDV Expertise</a>
+                style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;display:inline-flex;justify-content:center;align-items:center;text-align:center;">RDV
+                Expertise</a>
         </div>
 
 
-        <!-- Main Content -->
-        <main class="pt-10">
-            <!-- Section 1: Hero Professionnels -->
-            <section class="relative h-screen flex items-center px-8 md:px-24 overflow-hidden border-b border-white/10">
-                <!-- Floating Shapes -->
-                <div class="floating-shape"
-                    style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;">
+        <!-- Hero Section -->
+        <section
+            class="relative h-screen w-full overflow-hidden flex items-center px-8 md:px-24 border-b border-white/10 bg-[#0E2635]">
+            <!-- Floating Shapes -->
+            <div class="floating-shape" style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;">
+            </div>
+            <div class="floating-shape"
+                style="width: 200px; height: 200px; bottom: 10%; right: 5%; animation-delay: 3s;">
+            </div>
+
+            <div class="absolute inset-0 z-0 parallax-hero"
+                style='background-image: url("https://drive.google.com/thumbnail?sz=w2000&id=1Fbge9P2W1TEUrfogqNZlEEBK96cLfErT");'>
+            </div>
+            <div class="absolute inset-0 bg-black/10"></div>
+
+            <div
+                class="relative z-10 grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 items-center w-full max-w-[1600px] mx-auto">
+                <div class="space-y-8 reveal-text">
+                    <div
+                        class="leading-snug border-l-4 border-[#CFA674] pl-4 md:pl-8 pr-8 md:pr-12 py-8 bg-white/20 w-fit inline-block">
+                        <h1 class="hero-title font-display text-white leading-none mb-6 whitespace-nowrap">
+                            LE BLOG TRICHOZEN</h1>
+                        <p
+                            class="text-xl text-white/80 font-medium max-w-2xl leading-relaxed fade-in-up stagger-1 mt-6">
+                            Ici, on apprend ensemble à mieux comprendre et prendre soin de sa santé capillaire.
+                        </p>
+                    </div>
                 </div>
-                <div class="floating-shape"
-                    style="width: 200px; height: 200px; bottom: 10%; right: 5%; animation-delay: 3s;"></div>
-                <div class="absolute inset-0 z-0">
-                    <img src="https://drive.google.com/thumbnail?sz=w2000&amp;id=1dlUSoQF9fOv3aCH_wIHXfEzDuBRUr3Ku"
-                        class="w-full h-full object-cover parallax-hero" alt="Academy">
-                    <div class="absolute inset-0 bg-black/10"></div>
-                </div>
-                <div class="relative z-10 w-full max-w-[1400px] mx-auto flex justify-center">
-                    <div class="space-y-7 reveal-text w-full max-w-5xl">
-                        <div
-                            class="leading-snug border-l-4 border-[#CFA674] px-6 md:px-16 py-12 bg-[#2F6385]/15 text-center">
-                            <h1 class="text-7xl md:text-8xl font-display text-white leading-none">
-                                Formations Professionnelles</h1>
-                            <p
-                                class="text-xl text-white/80 font-medium max-w-3xl leading-relaxed fade-in-up stagger-1 mt-6 mx-auto">
-                                Vous êtes coiffeur, esthéticien ou professionnel du bien-être capillaire ? Nos
-                                formations en
-                                trichologie fonctionnelle vous permettent d'aller bien au-delà du soin : comprendre le
-                                cuir
-                                chevelu en profondeur, poser un diagnostic capillaire rigoureux et devenir trichologue
-                                expert de référence dans votre domaine.
+            </div>
+        </section>
+
+
+
+        <!-- Blog Articles Grid -->
+        <section class="py-24 bg-[#EEF5FD] px-8 md:px-24">
+            <div class="max-w-7xl mx-auto text-center">
+                <span class="sur-titre mb-16 reveal-text block">NOTRE BLOG EXPERTISE</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Article 1 -->
+                    <div
+                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
+                        <div class="overflow-hidden h-48 w-full">
+                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=12NXectfscgpki_F8FPodhkAjIi56VBA6"
+                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
+                                alt="Article de blog">
+                        </div>
+                        <div class="px-8 mt-4">
+                            <h3 class="!text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
+                                Les Fondamentaux de la Trichologie</h3>
+                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
+                            <p class="text-[#1F455E] font-medium leading-relaxed text-left text-sm">
+                                Découvrez les bases essentielles de la science capillaire et comprenez la structure de
+                                vos
+                                cheveux.
                             </p>
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 2: Catalog Grid -->
-            <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
-                <div class="max-w-7xl mx-auto text-center">
-                    <span class="sur-titre mb-16 reveal-text block">NOTRE CATALOGUE DE FORMATIONS</span>
-                    <div class="flex flex-wrap justify-center gap-8">
-                        <!-- Card 1 -->
-                        <a href="https://www.trichozen.com/formation-trichologie-fonctionnelle/" target="_blank"
-                            class="premium-card block w-full md:w-[500px] max-w-lg pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
-                            <div class="overflow-hidden h-64 w-full">
-                                <img src="https://drive.google.com/thumbnail?sz=w2000&amp;id=1cFi0CCdELHylosZacslVPIK1BAfSCImp"
-                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                    style="object-position: center 25%;" alt="Formation">
-                            </div>
-                            <div class="px-6 md:px-8 flex-grow">
-                                <h3
-                                    class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                    Trichologie fonctionnelle</h3>
-                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">Maîtrisez les bases
-                                    physiologiques et les pathologies du cuir chevelu.</p>
-                            </div>
-                            <div
-                                class="mx-6 md:mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[10px] md:text-[11px] uppercase tracking-wider text-[#CFA674] font-bold whitespace-nowrap">
-                                <span>Durée : 10 semaines</span>
-                                <span>Prix : à partir de 1 800 €</span>
-                            </div>
-                        </a>
-                        <!-- Card 2 - Trichologie Cheveux Afro-Texturés -->
-                        <a href="https://www.trichozen.com/formation-trichologie-afro-textures/" target="_blank"
-                            class="premium-card block w-full md:w-[500px] max-w-lg pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
-                            <div class="overflow-hidden h-64 w-full">
-                                <img src="https://drive.google.com/thumbnail?sz=w2000&id=1iLbuzJCtfTyFkxjQYr3s43esfXtPTd-P"
-                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                    style="object-position: center 25%;" alt="Trichologie Cheveux Afro-Texturés">
-                            </div>
-                            <div class="px-6 md:px-8 flex-grow">
-                                <h3
-                                    class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                    Trichologie Cheveux Afro-Texturés</h3>
-                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">Approfondissez
-                                    votre expertise des spécificités biologiques et diagnostiques des cheveux
-                                    afro-texturés, avec des protocoles et un suivi adaptés.</p>
-                            </div>
-                            <div
-                                class="mx-6 md:mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[10px] md:text-[11px] uppercase tracking-wider text-[#CFA674] font-bold whitespace-nowrap">
-                                <span>Durée : 10 semaines</span>
-                                <span>Prix : 2 800 €</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 3: Bloc Différenciation -->
-            <section class="py-24 px-8 md:px-24 bg-[#0E2635]">
-                <div class="max-w-5xl mx-auto text-center space-y-10 reveal-text">
-                    <h2 class="font-display uppercase text-white">Pourquoi se former à la trichologie avec TrichoZen ?
-                    </h2>
-                    <p class="text-white/75 text-lg leading-relaxed font-sans font-medium max-w-3xl mx-auto">
-                        La trichologie fonctionnelle va au-delà de la surface. C'est une lecture du corps à travers ses
-                        cheveux inflammation, carences, déséquilibres hormonaux, pratiques capillaires inadaptées.
-                        Chez
-                        TrichoZen, chaque formation repose sur des bases scientifiques solides, une pédagogie de terrain
-                        et
-                        une vision transversale qui concerne tous les types de cheveux, avec un accent particulier sur
-                        les
-                        cheveux texturés. Vous repartez opérationnel, différencié, expert.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 4: Bloc Réassurance + CTA -->
-            <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
-                <div class="max-w-7xl mx-auto">
-                    <div class="flex flex-col lg:flex-row gap-20">
-                        <div class="lg:w-3/5 space-y-10">
-                            <span class="sur-titre reveal-text block mb-10">CE QUI REND NOS FORMATIONS UNIQUES</span>
-
-                            <div class="space-y-4">
-                                <h3 class="flex items-start gap-4 uppercase tracking-wider font-bold text-[#CFA674]"
-                                    style="font-size:24px !important;">
-                                    <span class="w-4 h-4 bg-[#CFA674] mt-1.5 flex-shrink-0"></span> APPROCHE
-                                    FONCTIONNELLE
-                                </h3>
-                                <p class="text-[#1F455E] font-medium leading-relaxed">
-                                    Approche ancrée dans la trichologie fonctionnelle, pas uniquement cosmétique.
-                                    Comprendre le cuir chevelu en profondeur pour des résultats durables et concrets
-                                    pour vos clients.
-
-                                </p>
-                            </div>
-
-                            <div class="space-y-4">
-                                <h3 class="flex items-start gap-4 uppercase tracking-wider font-bold text-[#CFA674]"
-                                    style="font-size:24px !important;">
-                                    <span class="w-4 h-4 bg-[#CFA674] mt-1.5 flex-shrink-0"></span> CONTENU SCIENTIFIQUE
-                                </h3>
-                                <p class="text-[#1F455E] font-medium leading-relaxed">
-                                    Contenu scientifique rigoureux rendu accessible et directement applicable en cabinet
-                                    dès le lendemain de la formation.
-                                </p>
-                            </div>
-
-                            <div class="space-y-4">
-                                <h3 class="flex items-start gap-4 uppercase tracking-wider font-bold text-[#CFA674]"
-                                    style="font-size:24px !important;">
-                                    <span class="w-4 h-4 bg-[#CFA674] mt-1.5 flex-shrink-0"></span> CE QUE VOUS ALLEZ
-                                    OBTENIR
-                                </h3>
-                                <ul
-                                    class="list-disc pl-5 space-y-4 text-[#1F455E] font-medium leading-relaxed text-[16px]">
-
-                                    <li>Une formation dispensée par Yébé Diouf, experte en trichologie fonctionnelle.
-                                    </li>
-                                    <li>Un certificat de formation à l'issue de votre parcours.</li>
-                                    <li>L'accès à vie à vos supports de formation.</li>
-                                </ul>
-                            </div>
-
-                            <div class="pt-4">
-                                <a href="https://calendly.com/trichozen/appel-de-clarte-formation-sante-capillaire"
-                                    class="inline-block bg-[#1F455E] text-white px-8 py-4 text-[13px] uppercase tracking-wider font-bold hover:opacity-80 transition-all transform hover:scale-105 shadow-xl rounded">
-                                    Réserver un entretien stratégique
-                                </a>
-                            </div>
+                        <div
+                            class="mx-8 pt-4 border-t border-black/5 flex justify-between items-center text-[11px] uppercase tracking-wider text-[#CFA674] font-bold">
+                            <span>5 min de lecture</span>
+                            <button class="hover:text-[#1F455E] transition-colors flex items-center gap-2">
+                                LIRE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
                         </div>
+                    </div>
 
-                        <div class="lg:w-2/5">
-                            <div class="sticky top-32 relative">
-                                <div class="aspect-[4/5] overflow-hidden shadow-2xl relative z-10 group">
-                                    <img src="https://drive.google.com/thumbnail?sz=w2000&amp;id=1JPUuCluayA1fQ3tZDCyRw7HzZmnXQy_0"
-                                        class="w-full h-full object-cover brightness-90 group-hover:scale-105 transition-all duration-1000"
-                                        alt="Formation TrichoZen">
-                                </div>
-                                <div
-                                    class="absolute -top-10 -right-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 -z-10">
-                                </div>
-                            </div>
+                    <!-- Article 2 -->
+                    <div
+                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-1 overflow-hidden">
+                        <div class="overflow-hidden h-48 w-full">
+                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1jFCEsV1TcmqaMk1Hnd8GBmngjDpYOEaG"
+                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
+                                alt="Article de blog">
+                        </div>
+                        <div class="px-8 mt-4">
+                            <h3 class="!text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
+                                Soins Capillaires Premium</h3>
+                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
+                            <p class="text-[#1F455E] font-medium leading-relaxed text-left text-sm">
+                                Les rituels de beauté exclusifs pour des cheveux d'exception.
+                            </p>
+                        </div>
+                        <div
+                            class="mx-8 pt-4 border-t border-black/5 flex justify-between items-center text-[11px] uppercase tracking-wider text-[#CFA674] font-bold">
+                            <span>7 min de lecture</span>
+                            <button class="hover:text-[#1F455E] transition-colors flex items-center gap-2">
+                                LIRE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Article 3 -->
+                    <div
+                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-2 overflow-hidden">
+                        <div class="overflow-hidden h-48 w-full">
+                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1ooepodjUD4m4olQKg4N9O8yZmCrfIl6_"
+                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
+                                alt="Article de blog">
+                        </div>
+                        <div class="px-8 mt-4">
+                            <h3 class="!text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
+                                Diagnostic Capillaire Avancé</h3>
+                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
+                            <p class="text-[#1F455E] font-medium leading-relaxed text-left text-sm">
+                                L'expertise scientifique de TrichoZen au service de la santé de vos cheveux.
+                            </p>
+                        </div>
+                        <div
+                            class="mx-8 pt-4 border-t border-black/5 flex justify-between items-center text-[11px] uppercase tracking-wider text-[#CFA674] font-bold">
+                            <span>6 min de lecture</span>
+                            <button class="hover:text-[#1F455E] transition-colors flex items-center gap-2">
+                                LIRE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Article 4 -->
+                    <div
+                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
+                        <div class="overflow-hidden h-48 w-full">
+                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1IDQsIhnsCekA1auQdeXaZuFmP2AMn-D9"
+                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
+                                alt="Article de blog">
+                        </div>
+                        <div class="px-8 mt-4">
+                            <h3 class="!text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
+                                Innovations en Trichologie</h3>
+                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
+                            <p class="text-[#1F455E] font-medium leading-relaxed text-left text-sm">
+                                Les dernières percées technologiques pour préserver votre capital capillaire.
+                            </p>
+                        </div>
+                        <div
+                            class="mx-8 pt-4 border-t border-black/5 flex justify-between items-center text-[11px] uppercase tracking-wider text-[#CFA674] font-bold">
+                            <span>8 min de lecture</span>
+                            <button class="hover:text-[#1F455E] transition-colors flex items-center gap-2">
+                                LIRE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Article 5 -->
+                    <div
+                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-1 overflow-hidden">
+                        <div class="overflow-hidden h-48 w-full">
+                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=1TssF2KPdJBLwL8OgYDGKClu84Gfx2fsx"
+                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
+                                alt="Article de blog">
+                        </div>
+                        <div class="px-8 mt-4">
+                            <h3 class="!text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
+                                Protocoles de Traitement</h3>
+                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
+                            <p class="text-[#1F455E] font-medium leading-relaxed text-left text-sm">
+                                Des solutions personnalisées fondées sur la science de la chevelure.
+                            </p>
+                        </div>
+                        <div
+                            class="mx-8 pt-4 border-t border-black/5 flex justify-between items-center text-[11px] uppercase tracking-wider text-[#CFA674] font-bold">
+                            <span>9 min de lecture</span>
+                            <button class="hover:text-[#1F455E] transition-colors flex items-center gap-2">
+                                LIRE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Article 6 -->
+                    <div
+                        class="premium-card pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-2 overflow-hidden">
+                        <div class="overflow-hidden h-48 w-full">
+                            <img src="https://drive.google.com/thumbnail?sz=w2000&id=15YLVnJOnjMiIE4gV0pYK00UwReGbE941"
+                                class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
+                                alt="Article de blog">
+                        </div>
+                        <div class="px-8 mt-4">
+                            <h3 class="!text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
+                                Formation Professionnelle</h3>
+                            <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
+                            <p class="text-[#1F455E] font-medium leading-relaxed text-left text-sm">
+                                Développez votre expertise et devenez un référent en trichologie moderne.
+                            </p>
+                        </div>
+                        <div
+                            class="mx-8 pt-4 border-t border-black/5 flex justify-between items-center text-[11px] uppercase tracking-wider text-[#CFA674] font-bold">
+                            <span>10 min de lecture</span>
+                            <button class="hover:text-[#1F455E] transition-colors flex items-center gap-2">
+                                LIRE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-
-            <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
+        <!-- Footer -->
+        <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
             <div class="container mx-auto px-6 md:px-16">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
                     <div class="md:col-span-4 space-y-5">
@@ -913,45 +851,38 @@
                     class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-medium">
                     <p class="text-white/40 font-medium text-[10px]">2026 TrichoZen — Tous droits réservés.</p>
                     <div class="flex gap-12">
-                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="https://www.trichozen.com/politique-de-confidentialite/">Politique de confidentialité</a>
-                        <a class="text-white/40 transition-colors font-medium text-[10px]" href="https://www.trichozen.com/cgv/">CGV</a>
-                       
+                        <a class="text-white/40 transition-colors font-medium text-[10px]"
+                            href="https://www.trichozen.com/politique-de-confidentialite/">Politique de confidentialité</a>
+                        <a class="text-white/40 transition-colors font-medium text-[10px]"
+                            href="https://www.trichozen.com/cgv/">CGV</a>
+
                     </div>
                 </div>
             </div>
         </footer>
 
-
-        </main>
-        <div class="bg-noise"></div>
-
         <script>
-            // ============================================
-            // ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
-            // ============================================
-
-            // Intersection Observer for Reveal Animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            // Initialize on DOM load
+            // NEXT GEN ANIMATIONS OBSERVER
             document.addEventListener('DOMContentLoaded', () => {
-                // Observe all reveal elements
-                document.querySelectorAll('.reveal-text, .fade-in-up, .scale-in').forEach(el => {
-                    observer.observe(el);
-                });
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target); // Only animate once
+                        }
+                    });
+                }, observerOptions);
+
+                const animatedElements = document.querySelectorAll('.reveal-text, .fade-in-up, .scale-in');
+                animatedElements.forEach(el => observer.observe(el));
             });
-        
+
             // Mobile menu accordéon
             document.querySelectorAll('.mobile-menu-toggle').forEach((toggle) => {
                 toggle.addEventListener('click', () => {

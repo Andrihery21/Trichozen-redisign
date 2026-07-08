@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark" lang="fr">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Formations Trichologie pour Professionnels | Devenez Trichologue Certifié — TrichoZen</title>
+    <title>Diagnostic Capillaire Paris | Cuir Chevelu Sensible, Chute, Démangeaisons — TrichoZen</title>
     <meta name="description"
-        content="Formations en trichologie fonctionnelle pour professionnels du cheveu : devenez trichologue expert certifié. Formation cuir chevelu, cheveux texturés, diagnostic capillaire, en présentiel et en ligne." />
+        content="Problèmes capillaires sans réponse ? TrichoZen propose un diagnostic capillaire personnalisé à Paris ou en ligne : cuir chevelu sensible, démangeaisons, perte de cheveux, pellicules chroniques, sécheresse capillaire.">
     <meta name="keywords"
-        content="formations trichologie, formation trichologie, devenir trichologue, devenir expert trichologie, formation capillaire certifiante, formation cuir chevelu, formation professionnelle capillaire, formation cheveux en ligne, devenir expert capillaire" />
+        content="problèmes capillaires · cuir chevelu sensible · pellicules chroniques · démangeaisons cuir chevelu · perte de cheveux solution · sécheresse capillaire · diagnostic capillaire Paris · diagnostic en ligne · diagnostic en présentiel">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap"
@@ -148,6 +148,28 @@
         /* ============================================
            ELEGANT ANIMATIONS (DESIGN.HTML STYLE)
            ============================================ */
+
+        .sur-titre {
+            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
+        }
+
+        .hero-title {
+            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
+        }
+
+        @layer base {
+            h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
+            h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
+            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
+            h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
+            h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
+            h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
+            p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
+        }
+
+        .quote-style {
+            @apply font-sans font-medium italic text-[23px] leading-relaxed;
+        }
 
         /* Reveal Animations */
         @keyframes revealText {
@@ -337,9 +359,8 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            object-position: center 38%;
         }
-       
+
         /* Image Container Overlay */
         .image-container {
             position: relative;
@@ -362,26 +383,15 @@
             opacity: 0.5;
         }
 
-        .sur-titre {
-            @apply font-sans font-medium uppercase text-[24px] tracking-widest text-[#CFA674];
-        }
-
-        .hero-title {
-            @apply font-display font-normal uppercase text-[64px] leading-tight text-white;
-        }
-
-        @layer base {
-            h1 { @apply font-display font-normal uppercase text-[48px] leading-tight; }
-            h2 { @apply font-display font-normal uppercase text-[40px] leading-tight; }
-            h3 { @apply font-sans font-bold uppercase text-[32px] leading-tight; }
-            h4 { @apply font-sans font-bold uppercase text-[24px] leading-tight; }
-            h5 { @apply font-sans font-bold uppercase text-[20px] leading-tight; }
-            h6 { @apply font-sans font-bold uppercase text-[16px] leading-tight; }
-            p { @apply font-sans font-medium text-[16px] leading-relaxed text-[#1F455E]; }
-        }
-
-        .quote-style {
-            @apply font-sans font-medium italic text-[23px] leading-relaxed;
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
         /* ===== RESPONSIVE SYSTEM ===== */
@@ -390,7 +400,7 @@
         img, video { max-width: 100%; height: auto; }
 
         .hero-title { font-size: clamp(1.8rem, 5vw, 4rem) !important; }
-        .sur-titre { font-size: clamp(0.8rem, 1.8vw, 1.5rem) !important; }
+        .sur-titre { font-size: 1.5rem !important; }
         .quote-style { font-size: clamp(0.95rem, 1.8vw, 1.4rem) !important; }
 
         #mobile-menu {
@@ -511,11 +521,11 @@
                 font-size: 36px !important; 
                 line-height: 1.2 !important;
             }
-            .sur-titre { font-size: clamp(0.75rem, 3.5vw, 1rem) !important; }
+            .sur-titre { font-size: 1.5rem !important; }
             .w-72 { max-width: 8rem !important; }
         }
 
-        /* Titre des cards : fixé à 24px sur toute la page professionnels */
+        /* Titre des cards : fixé à 24px sur toute la page particuliers */
         .premium-card h3 {
             font-size: 24px !important;
         }
@@ -529,7 +539,7 @@
     </style>
 </head>
 
-<body class="bg-background-dark font-sans text-gray-200">
+<body class="bg-background-dark font-sans text-gray-200 selection:bg-primary selection:text-white overflow-x-hidden">
     <div style="width: 100%; max-width: 100%; margin: 0; padding: 0; display: block;">
         <!-- Navbar -->
         <nav
@@ -565,7 +575,6 @@
                         <a class="dropdown-item"
                             href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie
                             Fonctionnelle</a>
-                            <a class="dropdown-item" href="https://www.trichozen.com/formation-trichologie-afro-textures/">Trichologie Cheveux Afro-Texturés</a>
                     </div>
                 </div>
                 <a class="nav-link text-[#1F455E]" href="https://www.trichozen.com/a-propos-2/">À propos</a>
@@ -618,7 +627,6 @@
                 <div class="mobile-submenu">
                     <a href="https://www.trichozen.com/professionnel/">Catalogue des formations</a>
                     <a href="https://www.trichozen.com/formation-trichologie-fonctionnelle/">Trichologie Fonctionnelle</a>
-                        <a href="https://www.trichozen.com/formation-trichologie-afro-textures/">Trichologie Cheveux Afro-Texturés</a>
                 </div>
             </div>
             <a href="https://www.trichozen.com/a-propos-2/">À propos</a>
@@ -634,188 +642,141 @@
                 style="background:#CFA674;color:#fff;padding:0.75rem 2rem;font-family:Montserrat,sans-serif;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;text-decoration:none;border-radius:0.25rem;display:inline-flex;justify-content:center;align-items:center;text-align:center;">RDV Expertise</a>
         </div>
 
-
         <!-- Main Content -->
         <main class="pt-10">
-            <!-- Section 1: Hero Professionnels -->
+
+            <!-- Section 1: Hero Particuliers -->
             <section class="relative h-screen flex items-center px-8 md:px-24 overflow-hidden border-b border-white/10">
                 <!-- Floating Shapes -->
                 <div class="floating-shape"
-                    style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;">
+                    style="width: 300px; height: 300px; top: 15%; right: 10%; animation-delay: 0s;">
                 </div>
                 <div class="floating-shape"
-                    style="width: 200px; height: 200px; bottom: 10%; right: 5%; animation-delay: 3s;"></div>
+                    style="width: 150px; height: 150px; bottom: 15%; left: 10%; animation-delay: 4s;"></div>
                 <div class="absolute inset-0 z-0">
-                    <img src="https://drive.google.com/thumbnail?sz=w2000&amp;id=1dlUSoQF9fOv3aCH_wIHXfEzDuBRUr3Ku"
-                        class="w-full h-full object-cover parallax-hero" alt="Academy">
+                    <img src="https://lh3.googleusercontent.com/d/1p0w2LgiCGk1LJu3guPVWaJgDZeLH65g_"
+                        class="w-full h-full object-cover parallax-hero" alt="Ambience"
+                        style="object-position: center 25%;">
                     <div class="absolute inset-0 bg-black/10"></div>
                 </div>
+
                 <div class="relative z-10 w-full max-w-[1400px] mx-auto flex justify-center">
-                    <div class="space-y-7 reveal-text w-full max-w-5xl">
+                    <div class="space-y-8 reveal-text w-full max-w-5xl">
                         <div
-                            class="leading-snug border-l-4 border-[#CFA674] px-6 md:px-16 py-12 bg-[#2F6385]/15 text-center">
-                            <h1 class="text-7xl md:text-8xl font-display text-white leading-none">
-                                Formations Professionnelles</h1>
+                            class="leading-snug border-l-4 border-[#CFA674] px-6 md:px-16 py-12 bg-white/10  text-center">
+                            <h1 class="text-7xl md:text-7xl font-display text-white leading-none">
+                                Votre sanctuaire capillaire</h1>
                             <p
-                                class="text-xl text-white/80 font-medium max-w-3xl leading-relaxed fade-in-up stagger-1 mt-6 mx-auto">
-                                Vous êtes coiffeur, esthéticien ou professionnel du bien-être capillaire ? Nos
-                                formations en
-                                trichologie fonctionnelle vous permettent d'aller bien au-delà du soin : comprendre le
-                                cuir
-                                chevelu en profondeur, poser un diagnostic capillaire rigoureux et devenir trichologue
-                                expert de référence dans votre domaine.
+                                class="text-xl text-white/80 font-medium max-w-2xl leading-relaxed fade-in-up stagger-1 mt-6 mx-auto">
+                                Vous observez une chute, des démangeaisons ou un cuir chevelu sensible sans trouver de
+                                réponse claire ? Découvrez nos accompagnements sur-mesure, en ligne ou en présentiel à
+                                Paris.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Section 2: Catalog Grid -->
-            <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
-                <div class="max-w-7xl mx-auto text-center">
-                    <span class="sur-titre mb-16 reveal-text block">NOTRE CATALOGUE DE FORMATIONS</span>
-                    <div class="flex flex-wrap justify-center gap-8">
-                        <!-- Card 1 -->
-                        <a href="https://www.trichozen.com/formation-trichologie-fonctionnelle/" target="_blank"
-                            class="premium-card block w-full md:w-[500px] max-w-lg pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
-                            <div class="overflow-hidden h-64 w-full">
-                                <img src="https://drive.google.com/thumbnail?sz=w2000&amp;id=1cFi0CCdELHylosZacslVPIK1BAfSCImp"
-                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                    style="object-position: center 25%;" alt="Formation">
-                            </div>
-                            <div class="px-6 md:px-8 flex-grow">
-                                <h3
-                                    class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                    Trichologie fonctionnelle</h3>
-                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">Maîtrisez les bases
-                                    physiologiques et les pathologies du cuir chevelu.</p>
-                            </div>
-                            <div
-                                class="mx-6 md:mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[10px] md:text-[11px] uppercase tracking-wider text-[#CFA674] font-bold whitespace-nowrap">
-                                <span>Durée : 10 semaines</span>
-                                <span>Prix : à partir de 1 800 €</span>
-                            </div>
-                        </a>
-                        <!-- Card 2 - Trichologie Cheveux Afro-Texturés -->
-                        <a href="https://www.trichozen.com/formation-trichologie-afro-textures/" target="_blank"
-                            class="premium-card block w-full md:w-[500px] max-w-lg pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
-                            <div class="overflow-hidden h-64 w-full">
-                                <img src="https://drive.google.com/thumbnail?sz=w2000&id=1iLbuzJCtfTyFkxjQYr3s43esfXtPTd-P"
-                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
-                                    style="object-position: center 25%;" alt="Trichologie Cheveux Afro-Texturés">
-                            </div>
-                            <div class="px-6 md:px-8 flex-grow">
-                                <h3
-                                    class="text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
-                                    Trichologie Cheveux Afro-Texturés</h3>
-                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
-                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">Approfondissez
-                                    votre expertise des spécificités biologiques et diagnostiques des cheveux
-                                    afro-texturés, avec des protocoles et un suivi adaptés.</p>
-                            </div>
-                            <div
-                                class="mx-6 md:mx-8 pt-4 border-t border-white/10 flex justify-between items-center text-[10px] md:text-[11px] uppercase tracking-wider text-[#CFA674] font-bold whitespace-nowrap">
-                                <span>Durée : 10 semaines</span>
-                                <span>Prix : 2 800 €</span>
-                            </div>
-                        </a>
-                    </div>
+            <!-- Section 2: Grid Services -->
+            <section id="prestations" class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
+                <div class="text-center mb-16 flex flex-col items-center">
+                    <h2 class="sur-titre mb-8 reveal-text block">NOS PRESTATIONS</h2>
                 </div>
-            </section>
-
-            <!-- Section 3: Bloc Différenciation -->
-            <section class="py-24 px-8 md:px-24 bg-[#0E2635]">
-                <div class="max-w-5xl mx-auto text-center space-y-10 reveal-text">
-                    <h2 class="font-display uppercase text-white">Pourquoi se former à la trichologie avec TrichoZen ?
-                    </h2>
-                    <p class="text-white/75 text-lg leading-relaxed font-sans font-medium max-w-3xl mx-auto">
-                        La trichologie fonctionnelle va au-delà de la surface. C'est une lecture du corps à travers ses
-                        cheveux inflammation, carences, déséquilibres hormonaux, pratiques capillaires inadaptées.
-                        Chez
-                        TrichoZen, chaque formation repose sur des bases scientifiques solides, une pédagogie de terrain
-                        et
-                        une vision transversale qui concerne tous les types de cheveux, avec un accent particulier sur
-                        les
-                        cheveux texturés. Vous repartez opérationnel, différencié, expert.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 4: Bloc Réassurance + CTA -->
-            <section class="py-24 px-8 md:px-24 bg-[#EEF5FD]">
-                <div class="max-w-7xl mx-auto">
-                    <div class="flex flex-col lg:flex-row gap-20">
-                        <div class="lg:w-3/5 space-y-10">
-                            <span class="sur-titre reveal-text block mb-10">CE QUI REND NOS FORMATIONS UNIQUES</span>
-
-                            <div class="space-y-4">
-                                <h3 class="flex items-start gap-4 uppercase tracking-wider font-bold text-[#CFA674]"
-                                    style="font-size:24px !important;">
-                                    <span class="w-4 h-4 bg-[#CFA674] mt-1.5 flex-shrink-0"></span> APPROCHE
-                                    FONCTIONNELLE
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <a href="https://www.trichozen.com/diagnostic/" class="h-full block" target="_blank">
+                        <div
+                            class="premium-card h-full pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up overflow-hidden">
+                            <div class="overflow-hidden h-48 w-full">
+                                <img src="https://lh3.googleusercontent.com/d/1HlEc4dQ_cAcr6ZXr6Iyb5A_swe2Mx8Cw"
+                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
+                                    alt="Diagnostic en ligne">
+                            </div>
+                            <div class="px-8 flex-grow">
+                                <h3
+                                    class="!text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
+                                    Diagnostic capillaire en ligne
                                 </h3>
-                                <p class="text-[#1F455E] font-medium leading-relaxed">
-                                    Approche ancrée dans la trichologie fonctionnelle, pas uniquement cosmétique.
-                                    Comprendre le cuir chevelu en profondeur pour des résultats durables et concrets
-                                    pour vos clients.
+                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
+                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">
+                                    Une analyse complète à distance pour comprendre les causes de vos problèmes
+                                    capillaires
+                                    et retrouver la santé de vos cheveux.
 
                                 </p>
                             </div>
+                            <div
+                                class="mx-8 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold hover:opacity-70 transition-opacity">
+                                <span>Durée : 30 min</span>
+                                <span>90€</span>
+                            </div>
+                        </div>
+                    </a>
 
-                            <div class="space-y-4">
-                                <h3 class="flex items-start gap-4 uppercase tracking-wider font-bold text-[#CFA674]"
-                                    style="font-size:24px !important;">
-                                    <span class="w-4 h-4 bg-[#CFA674] mt-1.5 flex-shrink-0"></span> CONTENU SCIENTIFIQUE
+                    <!-- Card 2 -->
+                    <a href="https://www.trichozen.com/diagnostic/" target="_blank" class="h-full block">
+                        <div
+                            class="premium-card h-full pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-1 overflow-hidden">
+                            <div class="overflow-hidden h-48 w-full">
+                                <img src="https://lh3.googleusercontent.com/d/1t49ySDHoXzE-f8PudZ3Ntyxwq1wtVQDX"
+                                    class="w-full h-full object-cover transition-all duration-700 hover:scale-110"
+                                    style="object-position: center 25%;" alt="Diagnostic en présentiel">
+                            </div>
+                            <div class="px-8 flex-grow">
+                                <h3
+                                    class="!text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
+                                    Diagnostic capillaire en présentiel
                                 </h3>
-                                <p class="text-[#1F455E] font-medium leading-relaxed">
-                                    Contenu scientifique rigoureux rendu accessible et directement applicable en cabinet
-                                    dès le lendemain de la formation.
+                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
+                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">
+                                    Une consultation à Paris avec observation directe du cuir chevelu pour un bilan
+                                    capillaire complet et personnalisé.
+
                                 </p>
                             </div>
+                            <div
+                                class="mx-8 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold hover:opacity-70 transition-opacity">
+                                <span>Durée : 45 min</span>
+                                <span>150€</span>
+                            </div>
+                        </div>
+                    </a>
 
-                            <div class="space-y-4">
-                                <h3 class="flex items-start gap-4 uppercase tracking-wider font-bold text-[#CFA674]"
-                                    style="font-size:24px !important;">
-                                    <span class="w-4 h-4 bg-[#CFA674] mt-1.5 flex-shrink-0"></span> CE QUE VOUS ALLEZ
-                                    OBTENIR
+                    <!-- Card 3 -->
+                    <a href="https://www.trichozen.com/programme-essentiel-2/" target="_blank" class="h-full block">
+                        <div
+                            class="premium-card h-full pb-8 pt-0 px-0 space-y-4 flex flex-col justify-between fade-in-up stagger-2 overflow-hidden">
+                            <div class="overflow-hidden h-48 w-full">
+                                <img src="https://lh3.googleusercontent.com/d/1UVD2kYCoSbEu4omFE96VrivHMZalIFq-"
+                                    class="w-full h-full object-cover object-top transition-all duration-700 hover:scale-110"
+                                    alt="Programme Essentiel">
+                            </div>
+                            <div class="px-8 flex-grow">
+                                <h3
+                                    class="!text-[24px] font-bold text-[#CFA674] mb-2 uppercase tracking-wider text-left">
+                                    Programme Essentiel
                                 </h3>
-                                <ul
-                                    class="list-disc pl-5 space-y-4 text-[#1F455E] font-medium leading-relaxed text-[16px]">
+                                <div class="border-b border-[#CFA674] w-1/2 mb-4"></div>
+                                <p class="text-[#1F455E] font-medium leading-relaxed text-left">
+                                    Une formation en ligne pour comprendre enfin ce qui se passe avec vos cheveux et
+                                    apprendre à en prendre soin durablement.
 
-                                    <li>Une formation dispensée par Yébé Diouf, experte en trichologie fonctionnelle.
-                                    </li>
-                                    <li>Un certificat de formation à l'issue de votre parcours.</li>
-                                    <li>L'accès à vie à vos supports de formation.</li>
-                                </ul>
+                                </p>
                             </div>
-
-                            <div class="pt-4">
-                                <a href="https://calendly.com/trichozen/appel-de-clarte-formation-sante-capillaire"
-                                    class="inline-block bg-[#1F455E] text-white px-8 py-4 text-[13px] uppercase tracking-wider font-bold hover:opacity-80 transition-all transform hover:scale-105 shadow-xl rounded">
-                                    Réserver un entretien stratégique
-                                </a>
+                            <div
+                                class="mx-8 flex justify-between items-center text-[13px] uppercase tracking-wider text-[#CFA674] font-bold hover:opacity-70 transition-opacity">
+                                <span>Durée : 3 mois</span>
+                                <span>497€</span>
                             </div>
                         </div>
-
-                        <div class="lg:w-2/5">
-                            <div class="sticky top-32 relative">
-                                <div class="aspect-[4/5] overflow-hidden shadow-2xl relative z-10 group">
-                                    <img src="https://drive.google.com/thumbnail?sz=w2000&amp;id=1JPUuCluayA1fQ3tZDCyRw7HzZmnXQy_0"
-                                        class="w-full h-full object-cover brightness-90 group-hover:scale-105 transition-all duration-1000"
-                                        alt="Formation TrichoZen">
-                                </div>
-                                <div
-                                    class="absolute -top-10 -right-10 w-64 h-64 border-[1.5px] border-[#CFA674]/50 -z-10">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </section>
 
 
-            <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
+        </main>
+        <!-- Official Footer from design.html -->
+        <footer class="bg-[#0E2635] text-white/80 pt-24 pb-12 border-t border-white/15 reveal-text">
             <div class="container mx-auto px-6 md:px-16">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-4 fade-in-up stagger-1">
                     <div class="md:col-span-4 space-y-5">
@@ -922,7 +883,7 @@
         </footer>
 
 
-        </main>
+
         <div class="bg-noise"></div>
 
         <script>
@@ -951,6 +912,10 @@
                     observer.observe(el);
                 });
             });
+            // Performance optimization
+            if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+                document.body.classList.add('reduce-motion');
+            }
         
             // Mobile menu accordéon
             document.querySelectorAll('.mobile-menu-toggle').forEach((toggle) => {
